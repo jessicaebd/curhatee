@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReplyForumsTable extends Migration
+class CreatePaymentTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateReplyForumsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reply_forums', function (Blueprint $table) {
+        Schema::create('payment_types', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('user_id')->references('id')->on('users')->constrained();
-            $table->foreignUuid('forum_id')->references('id')->on('forums')->constrained();
-            $table->text('content');
-            $table->integer('like');
+            $table->string('type_name');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateReplyForumsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reply_forums');
+        Schema::dropIfExists('payment_types');
     }
 }

@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Hospital extends Model
+class PaymentType extends Model
 {
     use HasFactory;
-
-    protected $casts = [
-        'id' => 'string'
-    ];
 }

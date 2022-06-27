@@ -14,7 +14,11 @@ class CreateArticlesTable extends Migration
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('psychologist_id')->references('id')->on('psychologists')->constrained();
+            $table->string('title');
+            $table->text('content');
+            $table->string('image');
             $table->timestamps();
         });
     }
