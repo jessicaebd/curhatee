@@ -19,10 +19,11 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('image');
-            $table->string('role');
-            $table->string('subscribe_status');
-            $table->dateTime('expiry_date');
+            $table->string('phone');
+            $table->string('image')->default('user-profile.jpg');
+            $table->string('role')->default('User');
+            $table->string('subscription_status')->default('invalid');
+            $table->dateTime('expiry_date')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
