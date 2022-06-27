@@ -21,6 +21,7 @@ class CreateTransactionsTable extends Migration
             $table->integer('price');
             $table->string('detail');
             $table->string('status');
+            $table->dateTime('time');
             $table->timestamps();
         });
     }

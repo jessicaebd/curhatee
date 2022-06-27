@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class PaymentType extends Model
 {
     use HasFactory;
+        
+    protected $casts = [
+        'id' => 'string'
+    ];
 }
