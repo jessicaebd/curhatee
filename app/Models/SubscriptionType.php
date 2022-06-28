@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\Uuid;
 
-class Review extends Model
+class SubscriptionType extends Model
 {
-    use HasFactory;
+    use HasFactory;  
     use Uuid;
-    
+          
     protected $casts = [
         'id' => 'string'
     ];

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\Uuid;
 
-class Review extends Model
+class Subscription extends Model
 {
     use HasFactory;
     use Uuid;
