@@ -3,6 +3,11 @@
 namespace App\Models;
 
 use App\Traits\Uuid;
+use App\Models\Diary;
+use App\Models\Forum;
+use App\Models\ReplyForum;
+use App\Models\Transaction;
+use App\Models\Subscription;
 use App\Models\SubscriptionType;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -48,5 +53,28 @@ class User extends Authenticatable
         'id' => 'string'
     ];
 
+    public function diary()
+    {
+        return $this->hasMany(Diary::class);
+    }
+    
+    public function transaction()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 
+    public function forum()
+    {
+        return $this->hasMany(Forum::class);
+    }
+
+    public function replyForum()
+    {
+        return $this->hasMany(ReplyForum::class);
+    }
+
+    public function subscription()
+    {
+        return $this->hasMany(Subscription::class);
+    }
 }
