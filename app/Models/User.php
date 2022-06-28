@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\Uuid;
+use App\Models\SubscriptionType;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Traits\Uuid;
 
 class User extends Authenticatable
 {
@@ -46,4 +47,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'id' => 'string'
     ];
+
+
 }
