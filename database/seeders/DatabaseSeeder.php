@@ -14,20 +14,20 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            UserSeeder::class,
-            ArticleSeeder::class,
+            UserSeeder::class,   
             DiarySeeder::class,
             ForumSeeder::class,
             HospitalSeeder::class,
-            PaymentTypeSeeder::class,
-            PodcastSeeder::class,
             PsychologistSeeder::class,
             PsychologistScheduleSeeder::class,
+            PodcastSeeder::class,
+            ArticleSeeder::class,
             ReplyForumSeeder::class,
-            ReviewSeeder::class,
-            TransactionSeeder::class,
+            ReviewSeeder::class,   
+            PaymentTypeSeeder::class,     
             SubscriptionSeeder::class,
             SubscriptionTypeSeeder::class,
+            TransactionSeeder::class,
         ]);
     }
 }
