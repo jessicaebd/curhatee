@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-4 ">
             <div class="card mb-3" style="height: 22rem;">
-                <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height: 70%">
+                <img src="{{ asset('storage/images/logo.png') }}" class="card-img-top" alt="..." style="height: 70%">
                 <div class="card-body">
                     <h5 class="card-title">Berkenalan dengan Kesehatan Mental</h5>
 
@@ -24,7 +24,8 @@
 
         <div class="col-md-4 ">
             <div class="card mb-3" style="height: 22rem;">
-                <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height: 70%">
+                <img src="{{ asset('storage/images/logo.png') }}" class="card-img-top" alt="..."
+                    style="height: 70%">
                 <div class="card-body">
                     <h5 class="card-title">Berkenalan dengan Kesehatan Mental</h5>
 
@@ -46,7 +47,8 @@
 
         <div class="col-md-4 ">
             <div class="card mb-3" style="height: 22rem;">
-                <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height: 70%">
+                <img src="{{ asset('storage/images/logo.png') }}" class="card-img-top" alt="..."
+                    style="height: 70%">
                 <div class="card-body">
                     <h5 class="card-title">Berkenalan dengan Kesehatan Mental</h5>
 
@@ -68,7 +70,8 @@
 
         <div class="col-md-4">
             <div class="card mb-3" style="height: 22rem;">
-                <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height: 70%">
+                <img src="{{ asset('storage/images/logo.png') }}" class="card-img-top" alt="..."
+                    style="height: 70%">
                 <div class="card-body">
                     <h5 class="card-title">Berkenalan dengan Kesehatan Mental</h5>
 
