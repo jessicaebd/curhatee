@@ -4,6 +4,7 @@ use App\Http\Controllers\ConsultationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ Auth::routes();
 Route::controller(HomeController::class)
     ->group(function () {
         Route::get('/', 'index')->name('home');
+        Route::get('/home', 'index')->name('home');
         Route::get('/article', 'article')->name('article');
         Route::get('/video', 'video')->name('video');
     });
@@ -29,6 +31,4 @@ Route::controller(HomeController::class)
 Route::get('/consultation/psychologists', [ConsultationController::class, 'index'])->name('consultation');
 
 
-Route::get('/profile', function () {
-    return view('profile');
-});
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');

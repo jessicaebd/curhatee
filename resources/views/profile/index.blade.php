@@ -5,8 +5,8 @@
 @section('content')
     <div class="container d-flex justify-content-center py-5 mt-5">
         <div class="card-profile">
-            <div class="d-flex align-items-center "> <img src="#" class="img profile-image rounded-pill"
-                    alt="profile-picture" width="150" height="150">
+            <div class="d-flex align-items-center "> <img src="{{ asset('storage/users/' . $user->image) }}"
+                    class="img profile-image rounded-pill" alt="profile-picture" width="150" height="150">
                 <div class="ms-5">
                     <h5 class="text-dark m-font fw-bold">Peter Parker <small
                             class="text-muted ms-2 fw-normal xs-font">Student</small>
