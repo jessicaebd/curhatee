@@ -17,6 +17,8 @@ class CreateSubscriptionsTable extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->references('id')->on('users')->constrained();
             $table->foreignUuid('subscription_type_id')->references('id')->on('subscription_types')->constrained();
+            $table->foreignUuid('payment_type_id')->references('id')->on('payment_types')->constrained();
+            $table->dateTime('activation_date');
             $table->timestamps();
         });
     }

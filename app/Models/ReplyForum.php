@@ -2,16 +2,28 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 use App\Traits\Uuid;
+use App\Models\Forum;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ReplyForum extends Model
 {
     use HasFactory;
     use Uuid;
-    
+
     protected $casts = [
         'id' => 'string'
     ];
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function forum()
+    {
+        return $this->belongsTo(Forum::class);
+    }
 }

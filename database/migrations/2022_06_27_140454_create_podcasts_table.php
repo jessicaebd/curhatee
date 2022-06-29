@@ -15,6 +15,7 @@ class CreatePodcastsTable extends Migration
     {
         Schema::create('podcasts', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignUuid('psychologist_id')->references('id')->on('psychologists')->constrained();
             $table->string('title');
             $table->string('spotify_url');
             $table->dateTime('date');

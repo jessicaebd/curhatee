@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class PsychologistsSeeder extends Seeder
+class PsychologistSeeder extends Seeder
 {
     /**
      * Run the database seeds.
