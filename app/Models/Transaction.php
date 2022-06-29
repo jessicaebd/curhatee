@@ -29,13 +29,13 @@ class Transaction extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function paymentType()
-    {
-        return $this->hasOne(PaymentType::class);
-    }
-
     public function review()
     {
         return $this->hasOne(Review::class);
+    }
+        
+    public function paymentType()
+    {
+        return $this->belongsTo(PaymentType::class, 'payment_type_id');
     }
 }

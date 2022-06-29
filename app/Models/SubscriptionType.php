@@ -15,4 +15,9 @@ class SubscriptionType extends Model
     protected $casts = [
         'id' => 'string'
     ];
+
+    public function subscription()
+    {
+        return $this->hasMany(Subscription::class);
+    }
 }

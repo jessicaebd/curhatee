@@ -24,11 +24,11 @@ class Subscription extends Model
 
     public function paymentType()
     {
-        return $this->hasOne(PaymentType::class);
+        return $this->belongsTo(PaymentType::class, 'payment_type_id');
     }
 
     public function subscriptionType()
     {
-        return $this->hasOne(SubscriptionType::class);
+        return $this->belongsTo(SubscriptionType::class, 'subscription_type_id');
     }
 }

@@ -18,6 +18,6 @@ class Hospital extends Model
 
     public function psychologist()
     {
-        return $this->belongsTo(Psychologist::class);
+        return $this->hasMany(Psychologist::class);
     }
 }

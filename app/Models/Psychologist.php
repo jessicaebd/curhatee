@@ -42,6 +42,6 @@ class Psychologist extends Model
 
     public function hospital()
     {
-        return $this->hasOne(Hospital::class);
+        return $this->belongsTo(Hospital::class, 'hospital_id');
     }
 }

@@ -20,11 +20,11 @@ class PaymentType extends Model
 
     public function transaction()
     {
-        return $this->belongsTo(Transaction::class);
+        return $this->hasMany(Transaction::class);
     }
 
     public function subscription()
     {
-        return $this->belongsTo(Subscription::class);
+        return $this->hasMany(Subscription::class);
     }
 }
