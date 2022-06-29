@@ -22,3 +22,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/consultation/psychologists', function () {
     return view('consultation.index');
 });
+
+Route::get('/profile', function () {
+    return view('profile');
+});
