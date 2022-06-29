@@ -19,3 +19,14 @@ a {
 .text-primary {
     color: var(--main-blue);
 }
+
+.btn-primary {
+    background-color: var(--main-blue);
+    border: 2px solid var(--main-blue);
+    color: white;
+}
+
+.btn-outline-primary {
+    border: 2px solid var(--main-blue);
+    color: var(--main-blue);
+}

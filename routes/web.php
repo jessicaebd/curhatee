@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConsultationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -17,8 +18,12 @@ use App\Http\Controllers\HomeController;
 
 Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::controller(HomeController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('home');
+        Route::get('/article', 'article')->name('article');
+        Route::get('/video', 'video')->name('video');
+    });
 
-Route::get('/consultation/psychologists', function () {
-    return view('consultation.index');
-});
+
+Route::get('/consultation/psychologists', [ConsultationController::class, 'index'])->name('consultation');
