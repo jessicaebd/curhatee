@@ -25,15 +25,10 @@ Route::controller(HomeController::class)
         Route::get('/video', 'video')->name('video');
     });
 
-<<<<<<< HEAD
 
 Route::get('/consultation/psychologists', [ConsultationController::class, 'index'])->name('consultation');
-=======
-Route::get('/consultation/psychologists', function () {
-    return view('consultation.index');
-});
+
 
 Route::get('/profile', function () {
     return view('profile');
 });
->>>>>>> 6483c0655f2ddd2db0dc3a705c9f339d4311c04f
