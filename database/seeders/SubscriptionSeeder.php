@@ -2,7 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
+use App\Models\PaymentType;
+use App\Models\Subscription;
 use Illuminate\Database\Seeder;
+use App\Models\SubscriptionType;
 
 class SubscriptionSeeder extends Seeder
 {
