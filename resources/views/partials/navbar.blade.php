@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ asset('images/logo-only.png') }}" alt="" style="height: 2rem">
+            <img src="{{ asset('storage/images/logo-only.png') }}" alt="" style="height: 2rem">
             <span class="text-primary fw-bold ms-2">Curhatee</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
