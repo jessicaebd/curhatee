@@ -1,0 +1,21 @@
+:root {
+    --main-blue : #2934D0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.home-menu { 
+    transition: all .2s ease-in-out; 
+    border-radius: 10%;
+}
+.home-menu:hover { 
+    transform: scale(1.1);
+    border: 2px solid var(--main-blue);
+}
+
+.text-primary {
+    color: var(--main-blue);
+}
