@@ -25,7 +25,7 @@ class TransactionSeeder extends Seeder
             'price' => 100000,
             'detail' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illum optio. Enim autem iste qui voluptatem eum beatae suscipit mollitia ipsum nam molestiae ex, sint culpa porro provident rerum dolor?',
             'status' => 'done',
-            'time' => '28-06-2022'
+            'time' => '2022-06-28'
         ]);
 
         Transaction::create([
@@ -35,7 +35,7 @@ class TransactionSeeder extends Seeder
             'price' => 200000,
             'detail' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illum optio. Enim autem iste qui voluptatem eum beatae suscipit mollitia ipsum nam molestiae ex, sint culpa porro provident rerum dolor?',
             'status' => 'done',
-            'time' => '29-06-2022'
+            'time' => '2022-05-29'
         ]);
 
         Transaction::create([
@@ -45,7 +45,7 @@ class TransactionSeeder extends Seeder
             'price' => 200000,
             'detail' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illum optio. Enim autem iste qui voluptatem eum beatae suscipit mollitia ipsum nam molestiae ex, sint culpa porro provident rerum dolor?',
             'status' => 'done',
-            'time' => '28-05-2022'
+            'time' => '2022-04-28'
         ]);
 
         Transaction::create([
@@ -55,7 +55,7 @@ class TransactionSeeder extends Seeder
             'price' => 100000,
             'detail' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illum optio. Enim autem iste qui voluptatem eum beatae suscipit mollitia ipsum nam molestiae ex, sint culpa porro provident rerum dolor?',
             'status' => 'done',
-            'time' => '27-06-2022'
+            'time' => '2022-05-27'
         ]);
     }
 }

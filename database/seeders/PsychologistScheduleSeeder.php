@@ -19,7 +19,19 @@ class PsychologistScheduleSeeder extends Seeder
 
         PsychologistSchedule::create([
             'psychologist_id' => Psychologist::all()->random()->id,
-            'time' => '22-07-2022',
+            'time' => '2022-03-19',
+            'detail' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio mollitia saepe cumque voluptatum reiciendis, fugit animi cupiditate exercitationem consequatur amet ipsum modi repudiandae repellat illo iusto aperiam dolorem, quae minima.'
+        ]);
+
+        PsychologistSchedule::create([
+            'psychologist_id' => Psychologist::all()->random()->id,
+            'time' => '2022-03-19',
+            'detail' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio mollitia saepe cumque voluptatum reiciendis, fugit animi cupiditate exercitationem consequatur amet ipsum modi repudiandae repellat illo iusto aperiam dolorem, quae minima.'
+        ]);
+
+        PsychologistSchedule::create([
+            'psychologist_id' => Psychologist::all()->random()->id,
+            'time' => '2022-03-18',
             'detail' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio mollitia saepe cumque voluptatum reiciendis, fugit animi cupiditate exercitationem consequatur amet ipsum modi repudiandae repellat illo iusto aperiam dolorem, quae minima.'
         ]);
     }

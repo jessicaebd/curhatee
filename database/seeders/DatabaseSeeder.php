@@ -20,14 +20,14 @@ class DatabaseSeeder extends Seeder
             HospitalSeeder::class,
             PsychologistSeeder::class,
             PsychologistScheduleSeeder::class,
-            PodcastSeeder::class,
             ArticleSeeder::class,
-            ReplyForumSeeder::class,
-            ReviewSeeder::class,   
-            PaymentTypeSeeder::class,     
+            ReplyForumSeeder::class,    
+            PaymentTypeSeeder::class,
+            SubscriptionTypeSeeder::class,     
             SubscriptionSeeder::class,
-            SubscriptionTypeSeeder::class,
             TransactionSeeder::class,
+            PodcastSeeder::class,
+            ReviewSeeder::class,  
         ]);
     }
 }
