@@ -13,6 +13,24 @@ class PaymentTypeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        PaymentType::create([
+            'type_name' => 'Credit Card',
+        ]);
+
+        PaymentType::create([
+            'type_name' => 'Debit Card',
+        ]);
+
+        PaymentType::create([
+            'type_name' => 'OVO',
+        ]);
+
+        PaymentType::create([
+            'type_name' => 'GoPay',
+        ]);
+
+        PaymentType::create([
+            'type_name' => 'ShopeePay',
+        ]);
     }
 }
