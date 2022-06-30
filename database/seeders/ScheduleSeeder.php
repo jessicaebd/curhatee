@@ -23,7 +23,7 @@ class ScheduleSeeder extends Seeder
             foreach ($days as $day) {
                 for ($hour = 8; $hour < 17; $hour++) {
                     Schedule::create([
-                        'psychologist_id' => Psychologist::all()->random()->id,
+                        'psychologist_id' => $psychologist->id,
                         'day' => $day,
                         'dateBook' => null,
                         'startTime' => Carbon::parse('2022-02-02 ' .$hour . ':00:00'),
