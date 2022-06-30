@@ -7,7 +7,7 @@ use App\Models\Psychologist;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class PsychologistSchedule extends Model
+class Schedule extends Model
 {
     use HasFactory;
     use Uuid;

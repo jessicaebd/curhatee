@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Traits\Uuid;
 use App\Models\Review;
 use App\Models\PaymentType;
-use App\Models\PsychologistSchedule;
+use App\Models\Schedule;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -19,9 +19,9 @@ class Transaction extends Model
         'id' => 'string'
     ];
 
-    public function psychologistSchedule()
+    public function schedule()
     {
-        return $this->belongsTo(PsychologistSchedule::class, 'psychologist_schedule_id');
+        return $this->belongsTo(Schedule::class, 'psychologist_schedule_id');
     }
 
     public function user()

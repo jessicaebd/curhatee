@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             ForumSeeder::class,
             HospitalSeeder::class,
             PsychologistSeeder::class,
-            PsychologistScheduleSeeder::class,
+            ScheduleSeeder::class,
             ArticleSeeder::class,
             ReplyForumSeeder::class,    
             PaymentTypeSeeder::class,

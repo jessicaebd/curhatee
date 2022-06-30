@@ -7,7 +7,7 @@ use App\Models\Article;
 use App\Models\Podcast;
 use App\Models\Hospital;
 use App\Models\Transaction;
-use App\Models\PsychologistSchedule;
+use App\Models\Schedule;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -30,9 +30,9 @@ class Psychologist extends Model
         return $this->hasMany(Article::class);
     }
 
-    public function psychologistSchedule()
+    public function schedule()
     {
-        return $this->hasMany(PsychologistSchedule::class);
+        return $this->hasMany(Schedule::class);
     }
 
     public function hospital()
