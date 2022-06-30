@@ -15,8 +15,6 @@
             </a>
         </div>
 
-
-
         <div class="row">
             @foreach ($articles as $article)
                 <div class="col-md-4 ">
