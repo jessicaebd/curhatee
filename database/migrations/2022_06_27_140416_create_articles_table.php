@@ -15,7 +15,8 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('psychologist_id')->references('id')->on('psychologists')->constrained();
+            // $table->foreignUuid('psychologist_id')->references('id')->on('psychologists')->constrained();
+            $table->string('author');
             $table->string('title');
             $table->text('content');
             $table->string('image');
