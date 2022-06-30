@@ -9,9 +9,8 @@
             @foreach ($psychologists as $psychologist)
                 <div class="col-md-3">
                     <a href="/consultation/psychologists/{{ $psychologist->id }}" class="text-decoration-none text-dark">
-                        <div class="card" style="width: 18rem;">
+                        <div class="card mb-5" style="width: 18rem;">
 
-                            {{-- <img src="https://source.unsplash.com/random/720x480/?doctor" class="card-img-top"> --}}
                             <img src="{{ asset('storage/psychologists/' . $psychologist->image) }}" class="card-img-top">
 
                             <div class="card-body">
