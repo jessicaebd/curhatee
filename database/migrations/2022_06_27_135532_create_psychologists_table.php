@@ -18,8 +18,10 @@ class CreatePsychologistsTable extends Migration
             $table->string('name');
             $table->string('image');
             $table->string('email');
+            $table->string('phone');
             $table->string('password');
             $table->integer('rating');
+            $table->integer('fee');
             $table->string('description');
             $table->foreignUuid('hospital_id')->references('id')->on('hospitals')->constrained();
             $table->timestamps();
