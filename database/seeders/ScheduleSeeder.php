@@ -29,6 +29,7 @@ class ScheduleSeeder extends Seeder
                         'startTime' => Carbon::parse('2022-02-02 ' .$hour . ':00:00'),
                         'endTime' => Carbon::parse('2022-02-02 ' . $hour+1 . ':00:00'),
                         'detail' => 'Schedule Detail',
+                        'status' => 'Open',
                     ]);
                 }
             }
