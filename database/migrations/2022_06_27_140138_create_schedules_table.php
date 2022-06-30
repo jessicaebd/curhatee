@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePsychologistSchedulesTable extends Migration
+class CreateSchedulesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreatePsychologistSchedulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('psychologist_schedules', function (Blueprint $table) {
+        Schema::create('schedules', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('psychologist_id')->references('id')->on('psychologists')->constrained();
-            $table->dateTime('time');
+            $table->string('day');
+            $table->dateTime('dateBook')->nullable();
+            $table->dateTime('startTime');
+            $table->dateTime('endTime');
             $table->string('detail');
             $table->timestamps();
         });
@@ -29,6 +32,6 @@ class CreatePsychologistSchedulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('psychologist_schedules');
+        Schema::dropIfExists('schedules');
     }
 }

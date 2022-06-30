@@ -7,17 +7,23 @@ use App\Models\Psychologist;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class PsychologistSchedule extends Model
+class Schedule extends Model
 {
     use HasFactory;
     use Uuid;
-    
+
     protected $casts = [
         'id' => 'string'
     ];
 
     public function psychologist()
     {
-        return $this->belongsTo(Psychologist::class);
+        return $this->belongsTo(Psychologist::class, 'psychologist_id');
+    }
+
+
+    public function transaction()
+    {
+        return $this->hasMany(Transaction::class);
     }
 }

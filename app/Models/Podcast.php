@@ -18,6 +18,6 @@ class Podcast extends Model
 
     public function psychologist()
     {
-        return $this->belongsTo(Psychologist::class);
+        return $this->belongsTo(Psychologist::class, 'psychologist_id');
     }
 }

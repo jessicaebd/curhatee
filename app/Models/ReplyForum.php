@@ -19,11 +19,11 @@ class ReplyForum extends Model
     
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function forum()
     {
-        return $this->belongsTo(Forum::class);
+        return $this->belongsTo(Forum::class, 'forum_id');
     }
 }
