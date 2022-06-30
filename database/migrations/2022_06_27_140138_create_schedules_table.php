@@ -21,6 +21,7 @@ class CreateSchedulesTable extends Migration
             $table->dateTime('startTime');
             $table->dateTime('endTime');
             $table->string('detail');
+            $table->string('status')->default('Open');
             $table->timestamps();
         });
     }
