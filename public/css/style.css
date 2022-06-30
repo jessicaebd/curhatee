@@ -1,5 +1,5 @@
 :root {
-    --main-blue : #2934D0;
+    --main-blue: #2934d0;
 }
 
 a {
@@ -7,11 +7,11 @@ a {
     color: black;
 }
 
-.home-menu { 
-    transition: all .2s ease-in-out; 
+.home-menu {
+    transition: all 0.2s ease-in-out;
     border-radius: 10%;
 }
-.home-menu:hover { 
+.home-menu:hover {
     transform: scale(1.1);
     border: 2px solid var(--main-blue);
 }
@@ -29,4 +29,10 @@ a {
 .btn-outline-primary {
     border: 2px solid var(--main-blue);
     color: var(--main-blue);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
 }

@@ -46,7 +46,7 @@ class PsychologistSeeder extends Seeder
         ]);
 
         Psychologist::create([
-            'name' => 'Mrs. Maria Yulinda Ayu Natalia',
+            'name' => 'Mrs. Maria Yulinda Ayu',
             'image' => 'psychologist-Maria.png',
             'email' => 'maria.yulinda@kinderhuette.com',
             'password' => 'Maria2323',

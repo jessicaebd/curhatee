@@ -13,7 +13,7 @@ class ConsultationController extends Controller
         return view('consultation.index', compact('psychologists'));
     }
 
-    public function show() {
-        return view('consultation.show');
+    public function show(Psychologist $psychologist) {
+        return view('consultation.show', compact('psychologist'));
     }
 }
