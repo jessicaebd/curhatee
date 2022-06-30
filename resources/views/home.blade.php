@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-md-3">
                 <a href="{{ route('consultation') }}">
-                    <div class="card home-menu" style="width: 14rem;">
+                    <div class="card home-menu" style="width: 18rem;">
                         <img src="{{ asset('storage/images/menu/consultation.png') }}" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title text-center">Consultation</h5>
@@ -24,7 +24,7 @@
 
             <div class="col-md-3">
                 <a href="/consultation">
-                    <div class="card home-menu" style="width: 14rem;">
+                    <div class="card home-menu" style="width: 18rem;">
                         <img src="{{ asset('storage/images/menu/forum.png') }}" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title text-center">Forum</h5>
@@ -35,7 +35,7 @@
 
             <div class="col-md-3">
                 <a href="/consultation">
-                    <div class="card home-menu" style="width: 14rem;">
+                    <div class="card home-menu" style="width: 18rem;">
                         <img src="{{ asset('storage/images/menu/diary.png') }}" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title text-center">Diary</h5>
@@ -46,7 +46,7 @@
 
             <div class="col-md-3">
                 <a href="/consultation">
-                    <div class="card home-menu" style="width: 14rem;">
+                    <div class="card home-menu" style="width: 18rem;">
                         <img src="{{ asset('storage/images/menu/podcast.png') }}" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title text-center">Podcast</h5>
