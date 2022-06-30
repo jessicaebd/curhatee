@@ -35,11 +35,6 @@ class Psychologist extends Model
         return $this->hasMany(PsychologistSchedule::class);
     }
 
-    public function transaction()
-    {
-        return $this->hasMany(Transaction::class);
-    }
-
     public function hospital()
     {
         return $this->belongsTo(Hospital::class, 'hospital_id');

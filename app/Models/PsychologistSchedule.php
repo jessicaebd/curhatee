@@ -11,13 +11,19 @@ class PsychologistSchedule extends Model
 {
     use HasFactory;
     use Uuid;
-    
+
     protected $casts = [
         'id' => 'string'
     ];
 
     public function psychologist()
     {
-        return $this->belongsTo(Psychologist::class);
+        return $this->belongsTo(Psychologist::class, 'psychologist_id');
+    }
+
+
+    public function transaction()
+    {
+        return $this->hasMany(Transaction::class);
     }
 }
