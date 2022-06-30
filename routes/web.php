@@ -19,6 +19,7 @@ use App\Http\Controllers\ProfileController;
 
 Auth::routes();
 
+// home
 Route::controller(HomeController::class)
     ->group(function () {
         Route::get('/', 'index')->name('home');
@@ -27,8 +28,9 @@ Route::controller(HomeController::class)
         Route::get('/video', 'video')->name('video');
     });
 
-
-Route::get('/consultation/psychologists', [ConsultationController::class, 'index'])->name('consultation');
+// consultation
+Route::get('/consultation/psychologists', [ConsultationController::class, 'index']);
+Route::get('/consultation/psychologists/{psychologist}', [ConsultationController::class, 'index']);
 
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
