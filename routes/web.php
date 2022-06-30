@@ -32,8 +32,8 @@ Route::controller(HomeController::class)
 
 // consultation
 Route::get('/consultation/psychologists', [ConsultationController::class, 'index'])->name('consultation');
-Route::get('/consultation/psychologists/{psychologist}', [ConsultationController::class, 'show']);
-Route::get('/consultation/psychologists/{psychologist}/{date}', [ConsultationController::class, 'detail']);
+Route::get('/consultation/psychologists/{psychologist}', [ConsultationController::class, 'show'])->name('detail');
+Route::get('/consultation/psychologists/{psychologist}/hour', [ConsultationController::class, 'detail']);
 
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
