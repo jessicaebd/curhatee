@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ConsultationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,3 +37,27 @@ Route::get('/consultation/psychologists/{psychologist}/{date}', [ConsultationCon
 
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+
+
+Route::prefix('admin/')
+    ->middleware('admin')
+    ->group(function () {
+        // Route::get('/admin', 'index')->name('admin');
+
+        // Admin Page
+        Route::controller(AdminController::class)
+            ->group(function () {
+                Route::get('/article', 'article')->name('manage_article');
+            });
+
+        // Article CRUD
+        Route::prefix('admin/article')
+            ->controller(ArticleController::class)
+            ->group(function () {
+                Route::get('/add', 'create')->name('add_article');
+                Route::post('/add', 'store')->name('store_article');
+                Route::get('/edit/{article}', 'edit')->name('edit_article');
+                Route::post('/edit/{article}', 'update')->name('update_article');
+                Route::delete('/delete/{article}', 'destroy')->name('delete_article');
+            });
+    });

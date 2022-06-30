@@ -1,10 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+
 :root {
     --main-blue: #2934d0;
+}
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    letter-spacing: 0.5px;
 }
 
 a {
     text-decoration: none;
     color: black;
+}
+
+.l-font {
+    font-size: 1.2rem;
+}
+
+.m-font {
+    font-size: 1rem;
+}
+
+.s-font {
+    font-size: 0.8rem;
+}
+
+.xs-font {
+    font-size: 0.7rem;
 }
 
 .home-menu {
@@ -36,3 +59,4 @@ a {
     height: 250px;
     object-fit: cover;
 }
+
