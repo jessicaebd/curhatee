@@ -32,11 +32,10 @@ class ArticleController extends Controller
         $article->author = $request->author;
         $article->title = $request->title;
         $article->content = $request->content;
-        $article->image = $request->image;
 
         $imageExt = $request->image->getClientOriginalExtension();
-        $imageName = substr($article->id, 0, 8) . "-" . time() . $imageExt;
-        $request->image->storeAs('public/article', $imageName);
+        $imageName = substr($article->id, 0, 8) . "-" . time() . "." . $imageExt;
+        $request->image->storeAs('public/articles/', $imageName);
 
         $article->image = $imageName;
         $article->save();
