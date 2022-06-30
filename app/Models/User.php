@@ -53,11 +53,16 @@ class User extends Authenticatable
         'id' => 'string'
     ];
 
+    public function isAdmin()
+    {
+        return $this->role === 'Admin';
+    }
+
     public function diary()
     {
         return $this->hasMany(Diary::class);
     }
-    
+
     public function transaction()
     {
         return $this->hasMany(Transaction::class);
