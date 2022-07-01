@@ -16,12 +16,12 @@ class CreatePsychologistsTable extends Migration
         Schema::create('psychologists', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
-            $table->string('image');
             $table->string('email');
-            $table->string('phone');
             $table->string('password');
+            $table->string('phone');
             $table->integer('rating');
             $table->integer('fee');
+            $table->string('image');
             $table->string('description');
             $table->foreignUuid('hospital_id')->references('id')->on('hospitals')->constrained();
             $table->timestamps();

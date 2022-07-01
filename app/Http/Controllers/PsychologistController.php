@@ -101,7 +101,7 @@ class PsychologistController extends Controller
 
         $psychologist->save();
 
-        return redirect()->route('manage_psychologist')->withSuccess('New psychologist added');
+        return redirect()->route('manage_psychologist')->withSuccess('Succesfully updated psychologist data');
     }
 
     public function destroy(Psychologist $psychologist)

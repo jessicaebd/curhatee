@@ -37,7 +37,9 @@
                                         style="background-color: #efefef;">
                                         <div class="ps-2">
                                             <p class="small text-center text-muted mb-1">Transaction</p>
-                                            <p class="mb-0 text-center">{{ $psychologist->transaction->count() }}</p>
+                                            <p class="mb-0 text-center">
+                                                {{ $psychologist->schedule->count() }}
+                                            </p>
                                         </div>
                                         <div class="px-2">
                                             <p class="small text-center text-muted mb-1">Fee</p>
