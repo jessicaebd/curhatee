@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\PsychologistController;
 
@@ -50,6 +51,7 @@ Route::prefix('/admin')
             ->group(function () {
                 Route::get('/article', 'article')->name('manage_article');
                 Route::get('/psychologist', 'psychologist')->name('manage_psychologist');
+                Route::get('/hospital', 'hospital')->name('manage_hospital');
             });
 
         // Article CRUD
@@ -71,5 +73,15 @@ Route::prefix('/admin')
                 Route::get('/edit/{psychologist}', 'edit')->name('edit_psychologist');
                 Route::post('/edit/{psychologist}', 'update')->name('update_psychologist');
                 Route::delete('/delete/{psychologist}', 'destroy')->name('delete_psychologist');
+            });
+
+        Route::prefix('/hospital')
+            ->controller(HospitalController::class)
+            ->group(function () {
+                Route::get('/add', 'create')->name('add_hospital');
+                Route::post('/add', 'store')->name('store_hospital');
+                Route::get('/edit/{hospital}', 'edit')->name('edit_hospital');
+                Route::post('/edit/{hospital}', 'update')->name('update_hospital');
+                Route::delete('/delete/{hospital}', 'destroy')->name('delete_hospital');
             });
     });

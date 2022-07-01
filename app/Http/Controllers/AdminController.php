@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Hospital;
 use App\Models\Psychologist;
 use Illuminate\Http\Request;
 
@@ -23,5 +24,11 @@ class AdminController extends Controller
     {
         $psychologists = Psychologist::all();
         return view('admin.psychologist.index', compact('psychologists'));
+    }
+
+    public function hospital()
+    {
+        $hospitals = Hospital::all();
+        return view('admin.hospital.index', compact('hospitals'));
     }
 }

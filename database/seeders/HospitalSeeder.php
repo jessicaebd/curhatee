@@ -15,6 +15,7 @@ class HospitalSeeder extends Seeder
     public function run()
     {
         Hospital::create([
+            'image' => 'default-hospital.jpg',
             'name' => 'Rumah Sakit Mitra Keluarga Kemayoran',
             'address' => 'Jl. HBR Motik, Landas Pacu Timur, Kemayoran, RT.13/RW.6, Pademangan Tim., Pademangan, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 10630',
             'contact' => '021-6545555',
@@ -24,6 +25,7 @@ class HospitalSeeder extends Seeder
         ]);
 
         Hospital::create([
+            'image' => 'default-hospital.jpg',
             'name' => 'Rumah Sakit Mitra Keluarga Kelapa Gading',
             'address' => 'Jl. Bukit Gading Raya Blok E No.2, Kelapa Gading Barat, Kelapa Gading, RT.18/RW.8, Klp. Gading Bar., Klp. Gading, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14240',
             'contact' => '021-45852700',
@@ -31,6 +33,7 @@ class HospitalSeeder extends Seeder
         ]);
 
         Hospital::create([
+            'image' => 'default-hospital.jpg',
             'name' => 'Rumah Sakit Mitra Keluarga Surabaya',
             'address' => 'Jl. Satelit Indah II, Darmo Satelit, Tanjungsari, Suko Manunggal, Kota SBY, Jawa Timur 60187',
             'contact' => '031-7345333',
@@ -40,6 +43,7 @@ class HospitalSeeder extends Seeder
         ]);
 
         Hospital::create([
+            'image' => 'default-hospital.jpg',
             'name' => 'Rumah Sakit Mitra Keluarga Tegal',
             'address' => 'Jl. Sipelem No.4 Kemandungan, Kraton, Tegal Bar., Kota Tegal, Jawa Tengah 52114',
             'contact' => '021-6545007',
@@ -48,6 +52,7 @@ class HospitalSeeder extends Seeder
         ]);
 
         Hospital::create([
+            'image' => 'default-hospital.jpg',
             'name' => 'Rumah Sakit EMC Pekayon',
             'address' => 'Jl. Pulo Ribung No.1, Pekayon Jaya, Bekasi Sel., Kota Bekasi, Jawa Barat 17148',
             'contact' => '021-29779977',
@@ -57,6 +62,7 @@ class HospitalSeeder extends Seeder
         ]);
 
         Hospital::create([
+            'image' => 'default-hospital.jpg',
             'name' => 'Rumah Sakit EMC Pulomas',
             'address' => 'Jl. Pulomas Barat VI No. 20, Pulomas, RT.1/RW.11, Kayu Putih, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13210',
             'contact' => '021-29779977',
@@ -66,6 +72,7 @@ class HospitalSeeder extends Seeder
         ]);
 
         Hospital::create([
+            'image' => 'default-hospital.jpg',
             'name' => 'Rumah Sakit EMC Alam Sutera',
             'address' => 'Jl. Alam Sutera Boulevard Kav. 25, Pakulonan, Serpong Utara, Pakulonan, Serpong Utara, Kota Tangerang Selatan, Banten 15325',
             'contact' => '021-29779977',
@@ -75,6 +82,7 @@ class HospitalSeeder extends Seeder
         ]);
 
         Hospital::create([
+            'image' => 'default-hospital.jpg',
             'name' => 'Rumah Sakit Husada Jakarta',
             'address' => 'Jl. Raya Mangga Besar No.137-139, Mangga Dua Sel., Kec. Sawah Besar, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta',
             'contact' => '021-6260108',
@@ -82,6 +90,7 @@ class HospitalSeeder extends Seeder
         ]);
 
         Hospital::create([
+            'image' => 'default-hospital.jpg',
             'name' => 'Rumah Sakit Tebet',
             'address' => 'Jl. Letjen M.T. Haryono, Kavling 13 No. 8, RT.11/RW.5, Tebet Barat, Jakarta Selatan, Daerah Khusus Ibukota Jakarta 15810',
             'contact' => '021-83754044',
@@ -91,6 +100,7 @@ class HospitalSeeder extends Seeder
         ]);
 
         Hospital::create([
+            'image' => 'default-hospital.jpg',
             'name' => 'Rumah Sakit JIH',
             'address' => 'Jl. Ringroad Utara No. 160, Condong Catur, Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55283',
             'contact' => '0274-4463535',
