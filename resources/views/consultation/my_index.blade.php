@@ -8,7 +8,7 @@
         @foreach ($transactions as $transaction)
             <div class="card">
                 <div class="card-body">
-                    <p>{{ $transaction->schedule-> }}</p>
+                    <p>{{ $transaction->schedule->psychologist->name }}</p>
                     <p>{{ $transaction->status }}</p>
                     <p>{{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y @ H:i') }}</p>
                 </div>

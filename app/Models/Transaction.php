@@ -21,7 +21,7 @@ class Transaction extends Model
 
     public function schedule()
     {
-        return $this->belongsTo(Schedule::class, 'psychologist_schedule_id');
+        return $this->belongsTo(Schedule::class, 'schedule_id');
     }
 
     public function user()
