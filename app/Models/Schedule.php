@@ -18,7 +18,7 @@ class Schedule extends Model
 
     public function psychologist()
     {
-        return $this->belongsTo(Psychologist::class, 'psychologist_id');
+        return $this->belongsTo(Psychologist::class);
     }
 
 
