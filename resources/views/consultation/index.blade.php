@@ -14,7 +14,7 @@
                             <img src="{{ asset('storage/psychologists/' . $psychologist->image) }}" class="card-img-top">
 
                             <div class="card-body">
-                                <h5 class="card-title text-center">{{ $psychologist->name }}</h5>
+                                <p class="card-title text-center fw-bold">{{ $psychologist->name }}</p>
 
                                 <p class="card-title text-center">
                                     @for ($i = 0; $i < 5; $i++)
