@@ -32,13 +32,15 @@ Route::controller(HomeController::class)
     });
 
 // consultation
-Route::prefix('/consultation/psychologists')
+Route::prefix('/consultation')
     ->controller(ConsultationController::class)
     ->middleware('auth')
     ->group(function () {
-        Route::get('/', 'index')->name('consultation');
-        Route::get('/{psychologist}', 'show');
-        Route::post('/{psychologist}', 'store');
+        Route::get('/psychologists', 'index');
+        Route::get('/psychologists/{psychologist}', 'show')->name('detail');
+        Route::post('/psychologists/{psychologist}', 'store');
+        Route::get('/', 'my_index');
+        Route::get('/{transaction}', 'my_show');
     });
 
 
