@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\PaymentType;
 use App\Models\Psychologist;
-use App\Models\PsychologistSchedule;
 use App\Models\Schedule;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -20,14 +19,22 @@ class ConsultationController extends Controller
 
     public function show(Psychologist $psychologist) 
     {
+        // generate schedule baru untuk yg sdh lewat
+        $today = Carbon::today('Asia/Bangkok')->addDays(1);
+        Schedule::where('dateBook', '<', $today)->update(['status' => 'Open', 'dateBook' => null]);
+
         if(request('date')) {
             // ambil string
             $date_string = (request('date'));
+
             // convert ke date lagi
             $date = Carbon::createFromFormat('Y-m-d', $date_string); 
 
             // ambil semua jam si dokter di hari yg dipilih
             $schedules = Schedule::where('psychologist_id', $psychologist->id)->Where('day', $date->format('l'))->get();
+
+            // filter yg statusnya open
+            // $schedules = $schedules->where('status', 'Open');   
 
             $payment_types = PaymentType::all();
 
@@ -58,7 +65,7 @@ class ConsultationController extends Controller
         $psychologist = Psychologist::find($request->psychologist);
         $transaction->price = $psychologist->fee;
 
-        $transaction->status = 'Pending';
+        $transaction->status = 'Waiting for psychologist to confirm';
 
         $schedule = Schedule::find($request->schedule);
         $startTime = Carbon::createFromFormat('Y-m-d H:i:s', $schedule->startTime)->format('H:i:s');
@@ -67,13 +74,22 @@ class ConsultationController extends Controller
         $transaction->detail = 'tes aja dulu';
         $transaction->save();
 
-        return redirect('/')->with('status', 'Pemesanan berhasil');
+        // ubah status schedule
+        $schedule->status = 'Booked';
+        $schedule->dateBook = $request->date;
+        $schedule->save();
+
+        return redirect('/')->with('status', 'Booking request success! Waiting for psychologist to confirm.');
     }
 
     // buat konsultasi yg udh dipesan
     public function my_index () {
         $transactions = Transaction::where('user_id', auth()->user()->id)->get();
         return view('consultation.my_index', compact('transactions'));
+    }
+
+    public function my_show (Transaction $transaction) {
+        return view('consultation.my_show', compact('transaction'));
     }
 
 }
