@@ -1,19 +1,34 @@
 @extends('layouts.main')
 
-@section('title', 'Consultation')
+@section('title', 'My Consultation')
 
 @section('content')
     <div class="container">
-        <h3 class="text-center mt-3 mb-4">My Consultation</h3>
-        @foreach ($transactions as $transaction)
-            <div class="card">
-                <div class="card-body">
-                    <p>{{ $transaction->schedule->psychologist->name }}</p>
-                    <p>{{ $transaction->status }}</p>
-                    <p>{{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y @ H:i') }}</p>
+        <h3 class="text-center mb-3">My Consultation</h3>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10">
+                <div class="row">
+                    @foreach ($transactions as $transaction)
+                        <div class="col-md-6">
+                            <a href="/consultation/{{ $transaction->id }}">
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <p class="card-text">{{ $transaction->schedule->psychologist->name }}</p>
+                                        <p class="card-text">
+                                            {{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y @ H:i') }}
+                                        </p>
+                                        <p class="card-text">Status: {{ $transaction->status }}</p>
+
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
             </div>
-        @endforeach
+        </div>
+
+
 
     </div>
 
