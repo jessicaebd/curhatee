@@ -25,7 +25,8 @@
                                         @endif
                                     @endfor
                                 </p>
-                                <p class="card-title text-center">Rp. 50.000</p>
+                                <p class="card-title text-center">Rp. {{ number_format($psychologist->fee, 0, ',', '.') }}
+                                </p>
                             </div>
                         </div>
                     </a>
