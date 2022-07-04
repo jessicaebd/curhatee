@@ -83,6 +83,9 @@
                                     <a class="dropdown-item" href="#">My profile</a>
                                 </li>
                                 <li>
+                                    <a class="dropdown-item" href="/consultation/">My Consultation</a>
+                                </li>
+                                <li>
                                     <a class="dropdown-item" href="#">Settings</a>
                                 </li>
                                 <li>

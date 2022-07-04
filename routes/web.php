@@ -33,9 +33,16 @@ Route::controller(HomeController::class)
     });
 
 // consultation
-Route::get('/consultation/psychologists', [ConsultationController::class, 'index'])->name('consultation');
-Route::get('/consultation/psychologists/{psychologist}', [ConsultationController::class, 'show'])->name('detail');
-Route::get('/consultation/psychologists/{psychologist}/hour', [ConsultationController::class, 'detail']);
+Route::prefix('/consultation')
+    ->controller(ConsultationController::class)
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/psychologists', 'index');
+        Route::get('/psychologists/{psychologist}', 'show')->name('detail');
+        Route::post('/psychologists/{psychologist}', 'store');
+        Route::get('/', 'my_index');
+        Route::get('/{transaction}', 'my_show');
+    });
 
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');

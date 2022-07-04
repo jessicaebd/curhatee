@@ -14,7 +14,7 @@
                             <img src="{{ asset('storage/psychologists/' . $psychologist->image) }}" class="card-img-top">
 
                             <div class="card-body">
-                                <h5 class="card-title text-center">{{ $psychologist->name }}</h5>
+                                <p class="card-title text-center fw-bold">{{ $psychologist->name }}</p>
 
                                 <p class="card-title text-center">
                                     @for ($i = 0; $i < 5; $i++)
@@ -25,7 +25,8 @@
                                         @endif
                                     @endfor
                                 </p>
-                                <p class="card-title text-center">Rp. 50.000</p>
+                                <p class="card-title text-center">Rp. {{ number_format($psychologist->fee, 0, ',', '.') }}
+                                </p>
                             </div>
                         </div>
                     </a>

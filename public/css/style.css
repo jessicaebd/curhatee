@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap");
 
 :root {
     --main-blue: #2934d0;
 }
 
 body {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     letter-spacing: 0.5px;
 }
 
@@ -43,6 +43,10 @@ a {
     color: var(--main-blue);
 }
 
+.text-justify {
+    text-align: justify;
+}
+
 .btn-primary {
     background-color: var(--main-blue);
     border: 2px solid var(--main-blue);
@@ -59,4 +63,3 @@ a {
     height: 250px;
     object-fit: cover;
 }
-

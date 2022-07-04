@@ -5,14 +5,15 @@
 @section('content')
     <div class="container mt-5">
         @if (session('status'))
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('status') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
 
         <div class="row">
             <div class="col-md-3">
-                <a href="{{ route('consultation') }}">
+                <a href="/consultation/psychologists">
                     <div class="card home-menu" style="width: 18rem;">
                         <img src="{{ asset('storage/images/menu/consultation.png') }}" class="card-img-top">
                         <div class="card-body">

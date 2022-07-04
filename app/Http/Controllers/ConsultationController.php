@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\PaymentType;
 use App\Models\Psychologist;
-use App\Models\PsychologistSchedule;
 use App\Models\Schedule;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class ConsultationController extends Controller
@@ -19,14 +19,22 @@ class ConsultationController extends Controller
 
     public function show(Psychologist $psychologist) 
     {
+        // generate schedule baru untuk yg sdh lewat
+        $today = Carbon::today('Asia/Bangkok')->addDays(1);
+        Schedule::where('dateBook', '<', $today)->update(['status' => 'Open', 'dateBook' => null]);
+
         if(request('date')) {
             // ambil string
             $date_string = (request('date'));
+
             // convert ke date lagi
             $date = Carbon::createFromFormat('Y-m-d', $date_string); 
 
             // ambil semua jam si dokter di hari yg dipilih
             $schedules = Schedule::where('psychologist_id', $psychologist->id)->Where('day', $date->format('l'))->get();
+
+            // filter yg statusnya open
+            // $schedules = $schedules->where('status', 'Open');   
 
             $payment_types = PaymentType::all();
 
@@ -40,8 +48,48 @@ class ConsultationController extends Controller
         return view('consultation.show', compact('psychologist', 'today'));
     }
 
-    public function detail(Psychologist $psychologist, Carbon $date) {
-        $payment_types = PaymentType::all();
-        return view('consultation.detail', compact('psychologist', 'date', 'payment_types'));
+    public function store(Request $request) {
+        $request->validate([
+            'date' => 'required|date',
+            'psychologist' => 'required|exists:psychologists,id',
+            'schedule' => 'required|exists:schedules,id',
+            'payment_type' => 'required|exists:payment_types,id',
+        ]);
+
+        // buat transaksi baru
+        $transaction = new \App\Models\Transaction;
+        $transaction->user_id = auth()->user()->id;
+        $transaction->schedule_id = $request->schedule;
+        $transaction->payment_type_id = $request->payment_type;
+
+        $psychologist = Psychologist::find($request->psychologist);
+        $transaction->price = $psychologist->fee;
+
+        $transaction->status = 'Waiting for psychologist to confirm';
+
+        $schedule = Schedule::find($request->schedule);
+        $startTime = Carbon::createFromFormat('Y-m-d H:i:s', $schedule->startTime)->format('H:i:s');
+        $transaction->time = Carbon::createFromFormat('Y-m-d H:i:s', $request->date . ' ' . $startTime);
+
+        $transaction->detail = 'tes aja dulu';
+        $transaction->save();
+
+        // ubah status schedule
+        $schedule->status = 'Booked';
+        $schedule->dateBook = $request->date;
+        $schedule->save();
+
+        return redirect('/')->with('status', 'Booking request success! Waiting for psychologist to confirm.');
     }
+
+    // buat konsultasi yg udh dipesan
+    public function my_index () {
+        $transactions = Transaction::where('user_id', auth()->user()->id)->get();
+        return view('consultation.my_index', compact('transactions'));
+    }
+
+    public function my_show (Transaction $transaction) {
+        return view('consultation.my_show', compact('transaction'));
+    }
+
 }
