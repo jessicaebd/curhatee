@@ -17,6 +17,7 @@
                                         <p class="card-text">
                                             {{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y @ H:i') }}
                                         </p>
+
                                         <p class="card-text">Status: {{ $transaction->status }}</p>
 
                                     </div>
