@@ -1,4 +1,6 @@
-@extends('layouts.main')
+@extends('layouts.main-admin')
+
+@section('title', 'Manage Articles')
 
 @section('content')
     <div class="container mt-5">
@@ -26,19 +28,24 @@
                         <div class="card-body">
                             <h5 class="card-title fw-bold m-font">{{ $article->title }}</h5>
 
-                            <div class="d-flex justify-content-between">
-                                <p class="card-text me-3"><small class="text-muted">
-                                        {{ Str::words($article->author, 3, '') }}</small>
-                                </p>
-                                <p class="card-text me-3">
-                                    <small class="text-muted">
-                                        <i class="bi bi-clock me-2"></i>
-                                        {{ $article->updated_at->diffForHumans() }}
-                                    </small>
-                                </p>
+                            <div class="row d-flex justify-content-between my-2">
+                                <div class="col-6">
+                                    <p class="card-text"><small class="text-muted">
+                                            {{ Str::words($article->psychologist->name, 3, '') }}</small>
+                                    </p>
+                                </div>
+
+                                <div class="col-6">
+                                    <p class="card-text">
+                                        <small class="text-muted">
+                                            <i class="bi bi-clock me-2"></i>
+                                            {{ $article->updated_at->diffForHumans() }}
+                                        </small>
+                                    </p>
+                                </div>
                             </div>
 
-                            <div class="d-flex justify-content-end">
+                            <div class="d-flex justify-content-end pt-1">
                                 <a href="{{ route('edit_article', $article->id) }}" class="btn btn-primary me-3">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>

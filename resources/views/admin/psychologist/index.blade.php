@@ -1,4 +1,6 @@
-@extends('layouts.main')
+@extends('layouts.main-admin')
+
+@section('title', 'Manage Psychologists')
 
 @section('content')
     <div class="container mt-5">
