@@ -41,15 +41,15 @@ class PsychologistController extends Controller
         $psychologist->hospital_id = $request->hospital_id;
         $psychologist->description = 'I am a psychologist and I am available for your appointment.';
 
-        $imageExt = $request->image->getClientOriginalExtension();
-        $imageName = substr($psychologist->id, 0, 8) . "-" . time() . "." . $imageExt;
+        $destination_path = 'public/psychologists';
+        $image = $request->file('image');
+        $imageExt = $image->getClientOriginalExtension();
+        $image_name = substr($psychologist->id, 0, 8) . "-" . time() . "." . $imageExt;
+        $path = $request->file('image')->storeAs($destination_path, $image_name);
+        $psychologist->image = $image_name;
 
-        $request->image->storeAs('public/psychologists/', $imageName);
-
-        $psychologist->image = $imageName;
         $psychologist->save();
-
-        return redirect()->route('manage_psychologist')->withSuccess('New psychologist added');
+        return redirect()->route('manage_psychologist')->withSuccess('New psychologist added!');
     }
 
     public function show($id)
@@ -86,17 +86,17 @@ class PsychologistController extends Controller
         $psychologist->hospital_id = $request->hospital_id;
         $psychologist->description = $request->description;
 
-
         if ($request->image !== NULL) {
             $request->validate([
                 'image' => 'required|file|image|mimes:jpg,jpeg,png|max:10240'
             ]);
 
-            $imageExt = $request->image->getClientOriginalExtension();
-            $imageName = substr($psychologist->id, 0, 8) . "-" . time() . "." . $imageExt;
-
-            $request->image->storeAs('public/psychologists/', $imageName);
-            $psychologist->image = $imageName;
+            $destination_path = 'public/psychologists';
+            $image = $request->file('image');
+            $imageExt = $image->getClientOriginalExtension();
+            $image_name = substr($psychologist->id, 0, 8) . "-" . time() . "." . $imageExt;
+            $path = $request->file('image')->storeAs($destination_path, $image_name);
+            $psychologist->image = $image_name;
         }
 
         $psychologist->save();

@@ -16,7 +16,7 @@ class ArticleSeeder extends Seeder
     public function run()
     {
         Article::create([
-            'psychologist_id' => Psychologist::all()->random()->id,
+            'author' => 'Dr. John Doe',
             'title' => 'Berkenalan dengan Kesehatan Mental',
             'content' => '<p>Kesehatan mental begitu istimewa, hingga WHO menetapkan setiap tanggal 10 Oktober diperingati sebagai Hari Kesehatan Jiwa Sedunia. Ditetapkannya momen ini tentu memiliki tujuan, yaitu mengkampanyekan kesehatan mental dan memberikan edukasi kepada masyarakat mengenai isu-isu yang relevan berkaitan dengan kesehatan mental.</p>
 
@@ -48,7 +48,7 @@ class ArticleSeeder extends Seeder
         ]);
 
         Article::create([
-            'psychologist_id' => Psychologist::all()->random()->id,
+            'author' => 'Dr. John Doe',
             'title' => 'Kesehatan Mental',
             'content' => 'Pengertian Kesehatan Mental<br><br>
 
@@ -137,7 +137,7 @@ class ArticleSeeder extends Seeder
         ]);
 
         Article::create([
-            'psychologist_id' => Psychologist::all()->random()->id,
+            'author' => 'Dr. John Doe',
             'title' => 'Langkah Mudah Menjaga Kesehatan Mental',
             'content' => '<p>Dengan banyaknya tuntutan dalam kehidupan yang disertai tekanan, tidaklah heran seseorang akan mudah merasa stress yang dapat mengakibatkan gangguan kesehatan mental. Karir, bisnis, pendidikan, asmara, keluarga, hingga macet pun dapat berkontribusi mengganggu stabilitas mental seseorang.</p><br>
 
@@ -185,7 +185,7 @@ class ArticleSeeder extends Seeder
         ]);
 
         Article::create([
-            'psychologist_id' => Psychologist::all()->random()->id,
+            'author' => 'Dr. John Doe',
             'title' => '7 Cara yang Bisa Dilakukan untuk Menjaga Kesehatan Mental',
             'content' => '<p>Tidak hanya kesehatan fisik, kesehatan mental juga perlu dijaga. Menjaga kesehatan mental dapat dilakukan dengan beragam cara. Bila mentalmu sehat, kamu bisa menjalani aktivitas sehari-hari dengan baik, menjalin hubungan yang sehat dengan orang lain, serta lebih produktif dalam belajar atau bekerja.</p><br>
 
@@ -236,7 +236,7 @@ class ArticleSeeder extends Seeder
         ]);
 
         Article::create([
-            'psychologist_id' => Psychologist::all()->random()->id,
+            'author' => 'Dr. John Doe',
             'title' => 'Curhat Bisa Membantu Menjaga Kesehatan Mental, Ini Alasannya',
             'content' => '<p>Saat mengalami masalah atau sedang merasa tertekan, sangat normal jika seseorang mulai menarik diri dan menjadi lebih diam dari biasanya. Umumnya, orang yang mengalami masalah merasa sulit saat harus menyampaikan apa yang dirasakan dan merasa bisa menyelesaikan masalah sendiri. Namun, hal ini ternyata malah bisa membuat keadaan menjadi semakin buruk, terutama terkait kesehatan mental.</p><br>
 
@@ -259,7 +259,7 @@ class ArticleSeeder extends Seeder
         ]);
 
         Article::create([
-            'psychologist_id' => Psychologist::all()->random()->id,
+            'author' => 'Dr. John Doe',
             'title' => 'Manfaat Curhat bagi Kesehatan Mental, Tak Hanya Meringankan Beban Pikiran',
             'content' => '<p>Curhat atau curahan hati adalah bercerita tentang masalah maupun segala sesuatu kepada orang terdekat yang dipercaya. Tak bisa dimungkiri, setiap orang tentu memiliki masalah masing-masing.</p><br>
 
@@ -310,7 +310,7 @@ class ArticleSeeder extends Seeder
         ]);
 
         Article::create([
-            'psychologist_id' => Psychologist::all()->random()->id,
+            'author' => 'Dr. John Doe',
             'title' => 'Gangguan Kesehatan Mental yang Berbahaya Jika Tidak Diatasi',
             'content' => '<p>Terdapat berbagai gangguan kesehatan mental yang bisa berbahaya bila dibiarkan tanpa penanganan. Gangguan kesehatan mental ini tidak hanya menyerang psikis saja, tapi bisa menyebabkan sederet masalah fisik. Nah, berikut ini gangguan kesehatan mental dan dampaknya bagi kesehatan bila dibiarkan berlarut-larut.</p><br>
 
@@ -347,7 +347,7 @@ class ArticleSeeder extends Seeder
         ]);
 
         Article::create([
-            'psychologist_id' => Psychologist::all()->random()->id,
+            'author' => 'Dr. John Doe',
             'title' => 'Bahaya Diagnosis Diri Terhadap Kesehatan Mental',
             'content' => '<p>Menurut World Health Organization (WHO), seseorang dapat dikatakan sehat mental apabila memiliki kemampuan untuk memanfaatkan potensi yang dimiliki, menghadapi permasalahan sehari-hari dan bekerja secara produktif. Selain itu, memberikan kontribusi yang baik terhadap masyarakat juga menjadi kriteria yang harus dipenuhi.</p><br>
 
@@ -380,7 +380,7 @@ class ArticleSeeder extends Seeder
         ]);
 
         Article::create([
-            'psychologist_id' => Psychologist::all()->random()->id,
+            'author' => 'Dr. John Doe',
             'title' => 'Jenis Penyakit Mental yang Berbahaya, Ketahui Cara Mengatasinya',
             'content' => '<p>Terdapat beberapa jenis penyakit mental yang berbahaya dan perlu diwaspadai. Dengan mengetahui beberapa penyakit mental yang berbahaya, bisa meningkatkan kesadaran Anda untuk melakukan perawatan yang baik ketika mengalami gangguan ini. Sehingga kondisi bisa lebih terkontrol dengan baik untuk mengurangi risiko yang semakin parah. Berikut beberapa jenis penyakit mental yang berbahaya perlu Anda ketahui :</p><br><br>
 
@@ -463,7 +463,7 @@ class ArticleSeeder extends Seeder
         ]);
 
         Article::create([
-            'psychologist_id' => Psychologist::all()->random()->id,
+            'author' => 'Dr. John Doe',
             'title' => '8 Manfaat Mengagumkan Olahraga untuk Kesehatan Mental',
             'content' => 'Manfaat Mengagumkan Olahraga untuk Kesehatan Mental<br><br>
 

@@ -22,7 +22,7 @@
                 <div class="col-md-4 ">
                     <div class="card mb-3" style="height: 26rem;">
                         <img class="card-img-top"
-                            src="{{ file_exists(public_path() . "/storage/articles/$article->image") ? asset("storage/articles/$article->image") : asset('storage/articles/article.jpg') }}"
+                            src="{{ file_exists(public_path() . "storage/images/articles/$article->image") ? asset("storage/images/articles/$article->image") : asset('storage/images/articles/default-article.jpg') }}"
                             alt="Article image" style="height: 15rem">
 
                         <div class="card-body">
@@ -31,7 +31,7 @@
                             <div class="row d-flex justify-content-between my-2">
                                 <div class="col-6">
                                     <p class="card-text"><small class="text-muted">
-                                            {{ Str::words($article->psychologist->name, 3, '') }}</small>
+                                            {{ Str::words($article->author, 3, '') }}</small>
                                     </p>
                                 </div>
 

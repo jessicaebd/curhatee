@@ -24,7 +24,6 @@ class ArticleController extends Controller
             'author' => 'required',
             'title' => 'required',
             'content' => 'required',
-            'image' => 'required|file|image|mimes:jpg,jpeg,png|max:10240',
         ]);
 
         $article = new Article();
@@ -33,14 +32,24 @@ class ArticleController extends Controller
         $article->title = $request->title;
         $article->content = $request->content;
 
-        $imageExt = $request->image->getClientOriginalExtension();
-        $imageName = substr($article->id, 0, 8) . "-" . time() . "." . $imageExt;
-        $request->image->storeAs('public/articles/', $imageName);
+        if ($request->hasFile('image')) {
+            $request->validate(
+                ['image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10240'],
+            );
 
-        $article->image = $imageName;
+            $destination_path = 'public/images/articles';
+            $image = $request->file('image');
+            $imageExt = $image->getClientOriginalExtension();
+            $image_name = substr($article->id, 0, 8) . "-" . time() . "." . $imageExt;
+            $path = $request->file('image')->storeAs($destination_path, $image_name);
+
+            $article->image = $image_name;
+        } else {
+            $article->image = 'article.jpg';
+        }
+
         $article->save();
-
-        return redirect()->route('manage_article')->withSuccess('New office added');
+        return redirect()->route('manage_article')->withSuccess('New article added!');
     }
 
     public function show($id)
@@ -71,20 +80,22 @@ class ArticleController extends Controller
                 'image' => 'required|file|image|mimes:jpg,jpeg,png|max:10240'
             ]);
 
-            $imageExt = $request->image->getClientOriginalExtension();
-            $imageName = substr($article->id, 0, 8) . "-" . time() . $imageExt;
-            $request->image->storeAs('public/article', $imageName);
+            $destination_path = 'public/images/articles';
+            $image = $request->file('image');
+            $imageExt = $image->getClientOriginalExtension();
+            $image_name = substr($article->id, 0, 8) . "-" . time() . "." . $imageExt;
+            $path = $request->file('image')->storeAs($destination_path, $image_name);
 
-            $article->image = $imageName;
+            $article->image = $image_name;
         }
 
         $article->save();
-        return redirect()->route('manage_article')->withSuccess('Article updated');
+        return redirect()->route('manage_article')->withSuccess('Article succesfully updated!');
     }
 
     public function destroy(Article $article)
     {
         $article->delete();
-        return redirect()->route('manage_article')->withSuccess('Article successfully deleted');
+        return redirect()->route('manage_article')->withSuccess('Article successfully deleted!');
     }
 }

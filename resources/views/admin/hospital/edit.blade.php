@@ -6,7 +6,7 @@
             <div class="col-12 col-lg-9 col-xl-7">
                 <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                     <div class="card-body p-4 p-md-5">
-                        <h3 class="fw-bolder">Hospital Registration Form</h3>
+                        <h3 class="fw-bolder">Edit Hospital Information</h3>
 
                         <hr class="mb-4 pb-2 pb-md-0 mb-md-5" style="color: #2934d0;">
 
@@ -21,14 +21,15 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('add_hospital') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('edit_hospital', $hospital->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
 
                             <div class="col-md-12 mb-4">
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" class="form-control form-control-lg" id="name" name="name"
-                                        value="{{ old('name') }}">
+                                        value="{{ old('name') ? old('name') : $hospital->name }}" disabled>
                                 </div>
                             </div>
 
@@ -37,7 +38,8 @@
                                     <div class="form-group">
                                         <label for="address">Address</label>
                                         <input type="text" class="form-control form-control-lg" id="address"
-                                            name="address" value="{{ old('address') }}">
+                                            name="address"
+                                            value="{{ old('address') ? old('address') : $hospital->address }}">
                                     </div>
                                 </div>
 
@@ -45,7 +47,8 @@
                                     <div class="form-group">
                                         <label for="contact">Contact</label>
                                         <input type="text" class="form-control form-control-lg" id="contact"
-                                            name="contact" value="{{ old('contact') }}">
+                                            name="contact"
+                                            value="{{ old('contact') ? old('contact') : $hospital->contact }}">
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +63,7 @@
                             <div class="col-md-12 mb-4">
                                 <div class="form-group">
                                     <label for="description">Description</label>
-                                    <textarea class="form-control form-control-lg" id="description" name="description" rows="3"></textarea>
+                                    <textarea class="form-control form-control-lg" id="description" name="description" rows="3">{{ old('description') ? old('description') : $hospital->description }}</textarea>
                                 </div>
                             </div>
 
