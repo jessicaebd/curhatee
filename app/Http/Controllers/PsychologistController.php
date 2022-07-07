@@ -3,12 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hospital;
+use Illuminate\Support\Str;
 use App\Models\Psychologist;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class PsychologistController extends Controller
 {
+    public function login()
+    {
+        return view('psychologist.login');
+    }
+
+    public function authenticate(Request $request)
+    {
+        if(Auth::guard('webpsychologist')
+               ->attempt($request->only(['email', 'password'])))
+        {
+            return redirect()->route('admin.home');
+        }
+    }
+
+    public function logout()
+    {
+        Auth::guard('webpsychologist')->logout();
+
+        return redirect()->route('psychologist.login');
+    }
+
+
     public function index()
     {
         return view('admin.psychologist.index');

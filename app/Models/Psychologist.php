@@ -8,10 +8,11 @@ use App\Models\Podcast;
 use App\Models\Hospital;
 use App\Models\Transaction;
 use App\Models\Schedule;
-use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Psychologist extends Model
+class Psychologist extends Authenticatable
 {
     use HasFactory;
     use Uuid;

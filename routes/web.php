@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\ConsultationController;
@@ -21,7 +22,18 @@ use App\Http\Controllers\PsychologistController;
 |
 */
 
+// auth
 Auth::routes();
+
+Route::controller(PsychologistController::class)
+    ->prefix('psychologist')
+    ->middleware('auth:webpsychologist')
+    ->group(function () {
+        Route::post('/psychologist/login', [PsychologistController::class, 'login']);
+        Route::get('/psychologist/logout', [PsychologistController::class, 'logout']);              
+    });
+
+
 
 // home
 Route::controller(HomeController::class)
@@ -45,9 +57,11 @@ Route::prefix('/consultation')
     });
 
 
+// profiles
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
 
+// admins
 Route::prefix('/admin')
     ->middleware('admin')
     ->group(function () {
