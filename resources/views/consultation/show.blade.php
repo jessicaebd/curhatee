@@ -24,7 +24,7 @@
                 </h5>
                 <p class="card-text text-justify">{{ $psychologist->description }}</p>
                 <p class="card-title fw-bold">Working at</p>
-                <a href="/hospital/{{ $psychologist->hospital->id }}" class="card-link text-decoration-underline">
+                <a href="/hospitals/{{ $psychologist->hospital->id }}" class="card-link text-decoration-underline">
                     {{ $psychologist->hospital->name }}
                 </a>
             </div>

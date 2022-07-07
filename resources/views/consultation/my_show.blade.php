@@ -26,12 +26,16 @@
                     </tr>
                     <tr>
                         <td>Fee</td>
-                        <td>: Rp. {{ number_format($transaction->fee, 0, ',', '.') }}</td>
+                        <td>: Rp. {{ number_format($transaction->price, 0, ',', '.') }}</td>
                     </tr>
 
                     <tr>
+                        <td>Paid with</td>
+                        <td>: {{ $transaction->paymentType->type_name }}</td>
+                    </tr>
+                    <tr>
                         <td>Description:</td>
-                        <td>{{ $transaction->description }}</td>
+                        <td>: {{ $transaction->detail }}</td>
                     </tr>
                 </table>
             </div>

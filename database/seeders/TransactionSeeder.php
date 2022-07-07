@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\PaymentType;
+use App\Models\Psychologist;
 use App\Models\Transaction;
 use App\Models\Schedule;
 use Illuminate\Database\Seeder;
@@ -20,6 +21,7 @@ class TransactionSeeder extends Seeder
         //
         Transaction::create([
             'user_id' => User::all()->random()->id,
+            'psychologist_id' => Psychologist::all()->random()->id,
             'schedule_id' => Schedule::all()->random()->id,
             'payment_type_id' => PaymentType::all()->random()->id,
             'price' => 100000,
@@ -30,6 +32,7 @@ class TransactionSeeder extends Seeder
 
         Transaction::create([
             'user_id' => User::all()->random()->id,
+            'psychologist_id' => Psychologist::all()->random()->id,
             'schedule_id' => Schedule::all()->random()->id,
             'payment_type_id' => PaymentType::all()->random()->id,
             'price' => 200000,
@@ -40,6 +43,7 @@ class TransactionSeeder extends Seeder
 
         Transaction::create([
             'user_id' => User::all()->random()->id,
+            'psychologist_id' => Psychologist::all()->random()->id,
             'schedule_id' => Schedule::all()->random()->id,
             'payment_type_id' => PaymentType::all()->random()->id,
             'price' => 200000,
@@ -50,6 +54,7 @@ class TransactionSeeder extends Seeder
 
         Transaction::create([
             'user_id' => User::all()->random()->id,
+            'psychologist_id' => Psychologist::all()->random()->id,
             'schedule_id' => Schedule::all()->random()->id,
             'payment_type_id' => PaymentType::all()->random()->id,
             'price' => 100000,
