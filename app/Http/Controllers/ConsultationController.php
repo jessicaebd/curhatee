@@ -59,13 +59,14 @@ class ConsultationController extends Controller
         // buat transaksi baru
         $transaction = new \App\Models\Transaction;
         $transaction->user_id = auth()->user()->id;
+        $transaction->psychologist_id = $request->psychologist;
         $transaction->schedule_id = $request->schedule;
         $transaction->payment_type_id = $request->payment_type;
 
         $psychologist = Psychologist::find($request->psychologist);
         $transaction->price = $psychologist->fee;
-
-        $transaction->status = 'Waiting for psychologist to confirm';
+       
+        $transaction->status = 'Pending';
 
         $schedule = Schedule::find($request->schedule);
         $startTime = Carbon::createFromFormat('Y-m-d H:i:s', $schedule->startTime)->format('H:i:s');
@@ -80,6 +81,14 @@ class ConsultationController extends Controller
         $schedule->save();
 
         return redirect('/')->with('status', 'Booking request success! Waiting for psychologist to confirm.');
+    }
+
+    public function update (Request $request) {
+        $transaction = Transaction::find($request->transaction_id);
+        $transaction->status = 'Confirmed';
+        $transaction->save();
+
+        return redirect('/psychologist')->with('status', 'Booking request accepted! The user will be notified');
     }
 
     // buat konsultasi yg udh dipesan

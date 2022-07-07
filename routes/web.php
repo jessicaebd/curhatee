@@ -27,10 +27,12 @@ Auth::routes();
 
 Route::controller(PsychologistController::class)
     ->prefix('psychologist')
-    ->middleware('auth:webpsychologist')
+    // ->middleware('auth:webpsychologist')
     ->group(function () {
-        Route::post('/psychologist/login', [PsychologistController::class, 'login']);
-        Route::get('/psychologist/logout', [PsychologistController::class, 'logout']);              
+        Route::get('/login', 'login');
+        Route::post('/login', 'authenticate');
+        Route::get('/logout', 'logout');
+        Route::get('/', 'psychologist_index');              
     });
 
 
@@ -54,6 +56,8 @@ Route::prefix('/consultation')
         Route::post('/psychologists/{psychologist}', 'store');
         Route::get('/', 'my_index');
         Route::get('/{transaction}', 'my_show');
+        Route::post('/{transaction}', 'my_store');
+        Route::put('/{transaction}', 'update');
     });
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hospital;
+use App\Models\Transaction;
 use Illuminate\Support\Str;
 use App\Models\Psychologist;
 use Illuminate\Http\Request;
@@ -16,11 +17,17 @@ class PsychologistController extends Controller
     }
 
     public function authenticate(Request $request)
-    {
-        if(Auth::guard('webpsychologist')
-               ->attempt($request->only(['email', 'password'])))
+    {   
+        $request->validate([
+            'email' => 'required|string',
+            'password' => 'required|string',
+        ]);
+
+        if(Auth::guard('webpsychologist')->attempt($request->only(['email', 'password'])))
         {
-            return redirect()->route('admin.home');
+            return redirect('psychologist/');
+        } else {
+            return redirect('psychologist/login')->withErrors(['email' => 'These credentials do not match our records']);
         }
     }
 
@@ -31,7 +38,14 @@ class PsychologistController extends Controller
         return redirect()->route('psychologist.login');
     }
 
+    public function psychologist_index()
+    {
+        $psychologist = Auth::guard('webpsychologist')->user();
+        $transactions = Transaction::where('psychologist_id', $psychologist->id)->get();
+        return view('psychologist.index', compact('transactions'));
+    }
 
+    // controller admin
     public function index()
     {
         return view('admin.psychologist.index');
