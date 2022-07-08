@@ -11,20 +11,25 @@ use Illuminate\Support\Facades\Auth;
 
 class PsychologistController extends Controller
 {
+    public function dashboard()
+    {
+        $psychologists = Psychologist::all();
+        return view('psychologist.dashboard');
+    }
+
     public function login()
     {
         return view('psychologist.login');
     }
 
     public function authenticate(Request $request)
-    {   
+    {
         $request->validate([
             'email' => 'required|string',
             'password' => 'required|string',
         ]);
 
-        if(Auth::guard('webpsychologist')->attempt($request->only(['email', 'password'])))
-        {
+        if (Auth::guard('webpsychologist')->attempt($request->only(['email', 'password']))) {
             return redirect('psychologist/');
         } else {
             return redirect('psychologist/login')->withErrors(['email' => 'These credentials do not match our records']);
@@ -42,7 +47,7 @@ class PsychologistController extends Controller
     {
         $psychologist = Auth::guard('webpsychologist')->user();
         $transactions = Transaction::where('psychologist_id', $psychologist->id)->get();
-        return view('psychologist.index', compact('transactions'));
+        return view('psychologist.dashboard', compact('psychologist', 'transactions'));
     }
 
     // controller admin
