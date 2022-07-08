@@ -69,3 +69,10 @@ a {
     height: 250px;
     object-fit: cover;
 }
+
+.psychologist-card:hover {
+    color: var(--main-blue);
+    transform: scale(1.05);
+    animation-duration: 2ms;
+    border: 2px solid var(--main-blue);
+}

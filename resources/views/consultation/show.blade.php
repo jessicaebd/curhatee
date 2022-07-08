@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h3 class="text-center mb-3">Book a Psychologist</h3>
+        <h2 class="text-center mb-4">Book a Psychologist</h2>
 
         <div class="row d-flex justify-content-center">
             {{-- psychologist details --}}
@@ -115,7 +115,7 @@
                     @for ($i = 0; $i < 7; $i++)
                         <div class="mb-2">
                             <a
-                                href="{{ route('detail', ['psychologist' => $psychologist->id, 'date' => $today->addDays(1)->toDateString()]) }}">
+                                href="{{ route('psychologist_detail', ['psychologist' => $psychologist->id, 'date' => $today->addDays(1)->toDateString()]) }}">
                                 <div class="card p-2">
                                     {{ $today->format('l, d F Y') }}
                                 </div>

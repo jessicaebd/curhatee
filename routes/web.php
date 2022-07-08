@@ -29,10 +29,10 @@ Route::controller(PsychologistController::class)
     ->prefix('psychologist')
     // ->middleware('auth:webpsychologist')
     ->group(function () {
-        Route::get('/login', 'login');
+        Route::get('/login', 'login')->name('psychologist_login');
         Route::post('/login', 'authenticate');
         Route::get('/logout', 'logout');
-        Route::get('/', 'psychologist_index');              
+        Route::get('/', 'psychologist_index');
     });
 
 
@@ -52,7 +52,7 @@ Route::prefix('/consultation')
     ->middleware('auth')
     ->group(function () {
         Route::get('/psychologists', 'index');
-        Route::get('/psychologists/{psychologist}', 'show')->name('detail');
+        Route::get('/psychologists/{psychologist}', 'show')->name('psychologist_detail');
         Route::post('/psychologists/{psychologist}', 'store');
         Route::get('/', 'my_index');
         Route::get('/{transaction}', 'my_show');
@@ -69,9 +69,7 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::prefix('/admin')
     ->middleware('admin')
     ->group(function () {
-        // Route::get('/admin', 'index')->name('admin');
 
-        // Admin Page
         Route::controller(AdminController::class)
             ->group(function () {
                 Route::get('/article', 'article')->name('manage_article');
@@ -79,7 +77,6 @@ Route::prefix('/admin')
                 Route::get('/hospital', 'hospital')->name('manage_hospital');
             });
 
-        // Article CRUD
         Route::prefix('/article')
             ->controller(ArticleController::class)
             ->group(function () {
