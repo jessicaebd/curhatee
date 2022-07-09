@@ -4,12 +4,12 @@
 
 @section('content')
     <div class="content">
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-12">
                 <h5 class="transaction-title">You've spent</h5>
                 <h2 class="transaction-value">Rp 4.518.000.500</h2>
             </div>
-        </div>
+        </div> --}}
 
         <div class="row">
             <div class="col-12">
@@ -37,8 +37,8 @@
                             <table class="table table-borderless transaction-table w-100 active" id="table-all">
                                 <thead>
                                     <tr>
-                                        <th>Game</th>
-                                        <th>Item</th>
+                                        <th>Consultation</th>
+                                        <th>Patient</th>
                                         <th>Price</th>
                                         <th class="status-header">Status</th>
                                         <th class="action-header">Action</th>
@@ -46,121 +46,42 @@
                                 </thead>
 
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <div
-                                                class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
-                                                <img class="transaction-img" src="./assets/img/home/cover.png"
-                                                    alt="">
-
+                                    @foreach ($transactions as $transaction)
+                                        <tr>
+                                            <td>
                                                 <div
-                                                    class="d-flex flex-column justify-content-center align-items-start mt-2">
-                                                    <h5 class="transaction-game">Mobile Legen...</h5>
-                                                    <h5 class="transaction-type">Desktop</h5>
+                                                    class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
+                                                    <img class="transaction-img" src="./assets/img/home/cover.png"
+                                                        alt="">
+                                                    <div
+                                                        class="d-flex flex-column justify-content-center align-items-start mt-2">
+                                                        <h5 class="transaction-game">
+                                                            {{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y') }}
+                                                        </h5>
+                                                        <h5 class="transaction-type">
+                                                            {{ \Carbon\Carbon::parse($transaction->time)->format('@ H:i') }}
+                                                        </h5>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td>200 Gold</td>
-                                        <td>Rp 290.000</td>
-                                        <td class="status">
-                                            <span
-                                                class="pending w-auto d-flex  justify-content-center align-self-center">Pending</span>
-                                        </td>
-                                        <td class="action"><button class="btn-transaction mx-auto">Details</button></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <div
-                                                class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
-                                                <img class="transaction-img" src="./assets/img/home/cover-1.png"
-                                                    alt="">
-
-                                                <div
-                                                    class="d-flex flex-column justify-content-center align-items-start mt-2">
-                                                    <h5 class="transaction-game">Call Of Duty Ne...</h5>
-                                                    <h5 class="transaction-type">Desktop</h5>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>550 Gold</td>
-                                        <td>Rp 740.000</td>
-                                        <td class="status">
-                                            <span
-                                                class="success w-auto d-flex  justify-content-center align-self-center">Success</span>
-                                        </td>
-                                        <td class="action"><button class="btn-transaction mx-auto">Details</button></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <div
-                                                class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
-                                                <img class="transaction-img" src="./assets/img/home/cover-2.png"
-                                                    alt="">
-
-                                                <div
-                                                    class="d-flex flex-column justify-content-center align-items-start mt-2">
-                                                    <h5 class="transaction-game">Clash of Clans</h5>
-                                                    <h5 class="transaction-type">Mobile</h5>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>100 Gold</td>
-                                        <td>Rp 120.000</td>
-                                        <td class="status">
-                                            <span
-                                                class="failed w-auto d-flex  justify-content-center align-self-center">Failed</span>
-                                        </td>
-                                        <td class="action"><button class="btn-transaction mx-auto">Details</button></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <div
-                                                class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
-                                                <img class="transaction-img" src="./assets/img/home/cover-3.png"
-                                                    alt="">
-
-                                                <div
-                                                    class="d-flex flex-column justify-content-center align-items-start mt-2">
-                                                    <h5 class="transaction-game">The Royale Ga...</h5>
-                                                    <h5 class="transaction-type">Desktop</h5>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>225 Gold</td>
-                                        <td>Rp 200.000</td>
-                                        <td class="status">
-                                            <span
-                                                class="pending w-auto d-flex  justify-content-center align-self-center">Pending</span>
-                                        </td>
-                                        <td class="action"><button class="btn-transaction mx-auto">Details</button></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <div
-                                                class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
-                                                <img class="transaction-img" src="./assets/img/home/cover-1.png"
-                                                    alt="">
-
-                                                <div
-                                                    class="d-flex flex-column justify-content-center align-items-start mt-2">
-                                                    <h5 class="transaction-game">Call Of Duty Ne...</h5>
-                                                    <h5 class="transaction-type">Desktop</h5>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>550 Gold</td>
-                                        <td>Rp 740.000</td>
-                                        <td class="status">
-                                            <span
-                                                class="success w-auto d-flex  justify-content-center align-self-center">Success</span>
-                                        </td>
-                                        <td class="action"><button class="btn-transaction mx-auto">Details</button></td>
-                                    </tr>
-
+                                            </td>
+                                            <td>
+                                                {{ $transaction->user->name }}
+                                            </td>
+                                            <td>
+                                                Rp. {{ number_format($transaction->price, 0, ',', '.') }}
+                                            </td>
+                                            <td class="status">
+                                                <span
+                                                    class="pending w-auto d-flex  justify-content-center align-self-center">
+                                                    {{ $transaction->status }}
+                                                </span>
+                                            </td>
+                                            <td class="action">
+                                                <a href="/psychologist/transactions/{{ $transaction->id }}"
+                                                    class="btn-transaction mx-auto">Details</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                     <tr>
                                         <td>
                                             <div

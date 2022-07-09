@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class PsychologistController extends Controller
 {
-    public function dashboard()
-    {
-        $psychologists = Psychologist::all();
-        return view('psychologist.dashboard');
-    }
+    // public function dashboard()
+    // {
+    //     $psychologists = Psychologist::all();
+    //     return view('psychologist.dashboard');
+    // }
 
     public function login()
     {
@@ -49,6 +49,22 @@ class PsychologistController extends Controller
         $transactions = Transaction::where('psychologist_id', $psychologist->id)->get();
         return view('psychologist.dashboard', compact('psychologist', 'transactions'));
     }
+
+    public function psychologist_show(Transaction $transaction)
+    {
+        $psychologist = Auth::guard('webpsychologist')->user();
+        return view('psychologist.show', compact('psychologist', 'transaction'));
+    }
+
+    public function psychologist_update(Transaction $transaction)
+    {
+        $transaction->status = 'Confirmed';
+        $transaction->save();
+        $psychologist = Auth::guard('webpsychologist')->user();
+        return view('psychologist.show', compact('psychologist', 'transaction'))->with('status', 'Transaction confirmed');
+    }
+
+
 
     // controller admin
     public function index()

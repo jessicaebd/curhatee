@@ -33,6 +33,8 @@ Route::controller(PsychologistController::class)
         Route::post('/login', 'authenticate');
         Route::get('/logout', 'logout');
         Route::get('/', 'psychologist_index');
+        Route::get('/transactions/{transaction}', 'psychologist_show');
+        Route::put('/transactions/{transaction}', 'psychologist_update');
     });
 
 
