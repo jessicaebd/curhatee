@@ -17,8 +17,7 @@ class TransactionSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        //
+    {  
         // Transaction::create([
         //     'user_id' => User::all()->random()->id,
         //     'psychologist_id' => Psychologist::all()->random()->id,

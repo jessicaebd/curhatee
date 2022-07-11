@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
             SubscriptionSeeder::class,
             TransactionSeeder::class,
             PodcastSeeder::class,
-            ReviewSeeder::class,  
+            ReviewSeeder::class,
+            ChatSeeder::class,  
         ]);
     }
 }

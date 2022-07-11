@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\Uuid;
 use App\Models\Diary;
 use App\Models\Forum;
+use App\Models\Chat;
 use App\Models\ReplyForum;
 use App\Models\Transaction;
 use App\Models\Subscription;
@@ -81,5 +82,10 @@ class User extends Authenticatable
     public function subscription()
     {
         return $this->hasMany(Subscription::class);
+    }
+
+    public function chat()
+    {
+        return $this->hasMany(Chat::class);
     }
 }

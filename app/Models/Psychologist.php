@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\Podcast;
 use App\Models\Hospital;
 use App\Models\Transaction;
+use App\Models\Chat;
 use App\Models\Schedule;
 // use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -34,6 +35,16 @@ class Psychologist extends Authenticatable
     public function schedule()
     {
         return $this->hasMany(Schedule::class);
+    }
+
+    public function chat()
+    {
+        return $this->hasMany(Chat::class);
+    }
+
+    public function transaction()
+    {
+        return $this->hasMany(Transaction::class);
     }
 
     public function hospital()
