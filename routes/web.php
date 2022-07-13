@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\PsychologistController;
+use App\Http\Controllers\ChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,17 +28,20 @@ Auth::routes();
 
 Route::controller(PsychologistController::class)
     ->prefix('psychologist')
-    // ->middleware('auth:webpsychologist')
     ->group(function () {
         Route::get('/login', 'login')->name('psychologist_login');
         Route::post('/login', 'authenticate');
+    });
+
+Route::controller(PsychologistController::class)
+    ->prefix('psychologist')
+    ->middleware('auth:webpsychologist')
+    ->group(function () {
         Route::get('/logout', 'logout');
         Route::get('/', 'psychologist_index');
         Route::get('/transactions/{transaction}', 'psychologist_show');
         Route::put('/transactions/{transaction}', 'psychologist_update');
     });
-
-
 
 // home
 Route::controller(HomeController::class)
@@ -62,10 +66,18 @@ Route::prefix('/consultation')
         Route::put('/{transaction}', 'update');
     });
 
+// chat
+Route::prefix('/chat')
+    ->controller(ChatController::class)
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/psychologists/{psychologist}', 'indexUser')->name('chat_for_user');
+        Route::post('/psychologists/{psychologist}', 'store');
+        Route::get('/users/{user}', 'indexPsychologist')->name('chat_for_psychologist');
+    });
 
 // profiles
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-
 
 // admins
 Route::prefix('/admin')

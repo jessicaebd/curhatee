@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\TransactionType;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateTransactionsTable extends Migration
 {
@@ -17,7 +18,8 @@ class CreateTransactionsTable extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->references('id')->on('users')->constrained();
             $table->foreignUuid('psychologist_id')->references('id')->on('psychologists')->constrained();
-            $table->foreignUuid('schedule_id')->references('id')->on('schedules')->constrained();
+            $table->foreignUuid('transaction_type_id')->references('id')->on('transaction_types')->constrained();
+            $table->foreignUuid('schedule_id')->references('id')->on('schedules')->constrained()->nullable();
             $table->foreignUuid('payment_type_id')->references('id')->on('payment_types')->constrained();
             $table->integer('price');
             $table->string('detail');

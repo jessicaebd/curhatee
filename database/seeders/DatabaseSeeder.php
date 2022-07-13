@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             PaymentTypeSeeder::class,
             SubscriptionTypeSeeder::class,     
             SubscriptionSeeder::class,
+            TransactionTypeSeeder::class,
             TransactionSeeder::class,
             PodcastSeeder::class,
             ReviewSeeder::class,
