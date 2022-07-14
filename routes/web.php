@@ -71,9 +71,8 @@ Route::prefix('/chat')
     ->controller(ChatController::class)
     ->middleware('auth')
     ->group(function () {
-        Route::get('/psychologists/{psychologist}', 'indexUser')->name('chat_for_user');
-        Route::post('/psychologists/{psychologist}', 'store');
-        Route::get('/users/{user}', 'indexPsychologist')->name('chat_for_psychologist');
+        Route::get('/{transaction}', 'index')->name('chat_page');
+        Route::post('/{transaction}', 'store')->name('store_chat');
     });
 
 // profiles

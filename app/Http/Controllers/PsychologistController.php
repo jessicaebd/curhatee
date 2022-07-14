@@ -6,6 +6,7 @@ use App\Models\Hospital;
 use App\Models\Transaction;
 use Illuminate\Support\Str;
 use App\Models\Psychologist;
+use App\Models\ConsultationType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,7 +48,9 @@ class PsychologistController extends Controller
     {
         $psychologist = Auth::guard('webpsychologist')->user();
         $transactions = Transaction::where('psychologist_id', $psychologist->id)->get();
-        return view('psychologist.dashboard', compact('psychologist', 'transactions'));
+        $online_consultation_id = ConsultationType::where('name', 'Online Consultation')->first()->id;
+        $offline_consultation_id = ConsultationType::where('name', 'Offline Consultation')->first()->id;
+        return view('psychologist.dashboard', compact('psychologist', 'transactions', 'online_consultation_id', 'offline_consultation_id'));
     }
 
     public function psychologist_show(Transaction $transaction)

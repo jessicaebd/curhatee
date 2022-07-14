@@ -8,6 +8,7 @@ use App\Models\Review;
 use App\Models\PaymentType;
 use App\Models\ConsultationType;
 use App\Models\Schedule;
+use App\Models\Psychologist;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -42,6 +43,11 @@ class Transaction extends Model
 
     public function consultationType()
     {
-        return $this->belongsTo(ConsultationType::class, 'payment_type_id');
+        return $this->belongsTo(ConsultationType::class, 'consultation_type_id');
+    }
+
+    public function psychologist()
+    {
+        return $this->belongsTo(Psychologist::class, 'psychologist_id');
     }
 }

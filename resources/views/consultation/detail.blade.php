@@ -7,7 +7,8 @@
         <h3 class="text-center mb-3">Psychologist Details</h3>
         <div class="row d-flex justify-content-center">
             <div class="col-md-4">
-                <img src="{{ asset('storage/psychologists/' . $psychologist->image) }}" style="width: 350px; height: 250px">
+                <img src="{{ asset('storage/images/psychologists/' . $psychologist->image) }}"
+                    style="width: 350px; height: 250px">
 
             </div>
             <div class="col-md-6">

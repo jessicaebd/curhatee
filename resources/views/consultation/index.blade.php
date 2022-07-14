@@ -14,7 +14,7 @@
                         <div class="card-body p-4">
                             <div class="d-flex text-black">
                                 <div class="flex-shrink-0">
-                                    <img src="{{ file_exists(public_path() . "/storage/psychologists/$psychologist->image") ? asset("/storage/psychologists/$psychologist->image") : asset('/storage/psychologists/default-psychologist.jpg') }}"
+                                    <img src="{{ file_exists(public_path() . "/storage/images/psychologists/$psychologist->image") ? asset("/storage/images/psychologists/$psychologist->image") : asset('/storage/psychologists/default-psychologist.jpg') }}"
                                         alt="profile" class="img-fluid"
                                         style="width: 7rem; height:7rem; border-radius: 10px;">
                                 </div>

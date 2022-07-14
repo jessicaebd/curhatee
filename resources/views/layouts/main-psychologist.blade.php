@@ -30,7 +30,7 @@
                     </button>
 
                     <div class="profile-img">
-                        <img src="{{ asset('storage/psychologists/' . $psychologist->image) }}" alt=""
+                        <img src="{{ asset('storage/images/psychologists/' . $psychologist->image) }}" alt=""
                             class="rounded-circle" style="height: 100px; width: 100px;">
                     </div>
 
@@ -153,7 +153,7 @@
                     <div class="d-flex justify-content-between align-items-center w-100">
                         <h2 class="nav-title">My Transactions</h2>
                         <button id="toggle-navbar" onclick="toggleNavbar()">
-                            <img src="{{ asset('storage/psychologists/' . $psychologist->image) }}" alt="">
+                            <img src="{{ asset('storage/images/psychologists/' . $psychologist->image) }}" alt="">
                         </button>
                     </div>
                 </div>

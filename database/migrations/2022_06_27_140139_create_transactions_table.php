@@ -18,7 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->foreignUuid('user_id')->references('id')->on('users')->constrained();
             $table->foreignUuid('psychologist_id')->references('id')->on('psychologists')->constrained();
             $table->foreignUuid('consultation_type_id')->references('id')->on('consultation_types')->constrained();
-            $table->foreignUuid('schedule_id')->references('id')->on('schedules')->constrained()->nullable();
+            $table->foreignUuid('schedule_id')->references('id')->on('schedules')->constrained();
             $table->foreignUuid('payment_type_id')->references('id')->on('payment_types')->constrained();
             $table->integer('price');
             $table->string('detail');

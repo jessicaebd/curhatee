@@ -15,10 +15,11 @@ class CreateChatsTable extends Migration
     {
         Schema::create('chats', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('user_id')->references('id')->on('users')->constrained();
+            $table->foreignUuid('user_id')->references('id')->on('users')->constrained()->nullable();
             $table->foreignUuid('psychologist_id')->references('id')->on('psychologists')->constrained();
             $table->foreignUuid('transaction_id')->references('id')->on('transactions')->constrained();
-            $table->string('message');
+            $table->string('message')->nullable();
+            $table->string('image')->nullable();
             $table->timestamp('sent_at');
             $table->timestamps();
         });
