@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\TransactionType;
+use App\Models\ConsultationType;
 use Illuminate\Database\Seeder;
 
-class TransactionTypeSeeder extends Seeder
+class ConsultationTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,11 +14,11 @@ class TransactionTypeSeeder extends Seeder
      */
     public function run()
     {
-        Transaction::create([
+        ConsultationType::create([
             'name' => 'Offline Consultation',
         ]);
 
-        Transaction::create([
+        ConsultationType::create([
             'name' => 'Online Consultation',
         ]);
     }

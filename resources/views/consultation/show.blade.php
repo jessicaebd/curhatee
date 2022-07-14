@@ -30,7 +30,7 @@
             </div>
 
             <div class="col-md-5">
-                {{-- CHOOSE DAY --}}
+                {{-- CHOOSE HOURS --}}
                 @if (request('date'))
 
                     <h5>Consultation for <b>{{ $date->format('l, d F Y') }}</b></h5>
@@ -105,11 +105,13 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
-
+                        <button type="submit" class="btn btn-primary" name="submit" value="online-consultation">Chat
+                            Now</button>
+                        <button type="submit" class="btn btn-primary" name="submit" value="offline-consultation">Book
+                            Appointment</button>
                     </form>
                 @else
-                    {{-- CHOOSE HOURS --}}
+                    {{-- CHOOSE DAY --}}
                     <label for="schedule" class="form-label">Choose a day:</label>
 
                     @for ($i = 0; $i < 7; $i++)

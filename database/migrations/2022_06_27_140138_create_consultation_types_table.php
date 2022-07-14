@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTransactionTypesTable extends Migration
+class CreateConsultationTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTransactionTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('transaction_types', function (Blueprint $table) {
+        Schema::create('consultation_types', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateTransactionTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transaction_types');
+        Schema::dropIfExists('consultation_types');
     }
 }

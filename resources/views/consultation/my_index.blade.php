@@ -20,6 +20,17 @@
 
                                         <p class="card-text">Status: {{ $transaction->status }}</p>
 
+                                        @if ($transaction->consultation_type_id == $online_consultation_id)
+                                            <a href="">
+                                                <button type="button" class="btn btn-primary">Chat Online</button>
+                                            </a>
+                                        @elseif($transaction->consultation_type_id == $offline_consultation_id)
+                                            <a href="">
+                                                <button type="button" class="btn btn-info">Book Appointment</button>
+                                            </a>
+                                        @endif
+
+
                                     </div>
                                 </div>
                             </a>

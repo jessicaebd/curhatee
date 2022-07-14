@@ -9,7 +9,8 @@
         <div class="row">
             @foreach ($psychologists as $psychologist)
                 <div class="col-12 col-md-6 mb-4">
-                    <div class="card psychologist-card shadow-sm" style="border-radius: 15px; height: 10rem;">
+                    <a class="card psychologist-card shadow-sm" style="border-radius: 15px; height: 10rem;"
+                        href="{{ route('psychologist_detail', $psychologist->id) }}">
                         <div class="card-body p-4">
                             <div class="d-flex text-black">
                                 <div class="flex-shrink-0">
@@ -39,20 +40,11 @@
                                             <p class="mb-0 fw-bolder text-end">Rp.
                                                 {{ number_format($psychologist->fee, 0, ',', '.') }}</p>
                                         </div>
-
-                                        <div class="button">
-                                            <a href="{{ route('chat_for_user', $psychologist->id) }}">
-                                                <button type="button" class="btn btn-primary">Chat Online</button>
-                                            </a>
-                                            <a href="{{ route('psychologist_detail', $psychologist->id) }}">
-                                                <button type="button" class="btn btn-info">Book Appointment</button>
-                                            </a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             @endforeach
         </div>
