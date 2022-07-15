@@ -11,9 +11,9 @@
         @endif
 
         <div class="d-flex justify-content-between mb-3">
-            <h3 class=" fw-bold">Hospitals</h3>
+            <h3 class=" fw-bold">@lang('index_hospital.hospital')</h3>
             <a href="{{ route('add_hospital') }}" class="btn btn-primary my-auto">
-                <i class="bi bi-plus-circle me-2"></i>Register Hospital
+                <i class="bi bi-plus-circle me-2"></i>@lang('index_hospital.register_hospital')
             </a>
         </div>
 
@@ -30,7 +30,7 @@
                             <div class="d-flex justify-content-end align-items-end">
                                 <a href="{{ route('edit_hospital', $hospital->id) }}"
                                     class="btn btn-outline-primary me-1 flex-grow-1">
-                                    <i class="bi bi-pencil-square me-2"></i> Edit
+                                    <i class="bi bi-pencil-square me-2"></i> @lang('index_hospital.edit')
                                 </a>
 
                                 <form action="{{ route('delete_hospital', $hospital->id) }}" method="POST">

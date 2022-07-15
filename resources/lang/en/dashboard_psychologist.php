@@ -1,0 +1,19 @@
+<?php
+    return [
+        'all_trx' => 'All transaction', //Asumsi
+        'success' => 'Success',
+        'pending' => 'Pending',
+        'failed' => 'Failed',
+        'consultation' => 'Consultation',
+        'patient' => 'Patient',
+        'consultation_type' => 'Consultation Type',
+        'price' => 'Price',
+        'status' => 'Status',
+        'action' => 'Action',
+        'chat' => 'Chat',
+        'details' => 'Details',
+        'hari_tanggal' => 'Day Date',
+        'jam' => 'Hour(s)',
+        'offline_consultation' => 'Offline Consultation'
+    ];
+?>

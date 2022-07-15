@@ -6,7 +6,7 @@
             <div class="col-12 col-lg-9 col-xl-7">
                 <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                     <div class="card-body p-4 p-md-5">
-                        <h3 class="fw-bolder">Hospital Registration Form</h3>
+                        <h3 class="fw-bolder">@lang('add_hospital.hospital_registraion_form')</h3>
 
                         <hr class="mb-4 pb-2 pb-md-0 mb-md-5" style="color: #2934d0;">
 
@@ -26,7 +26,7 @@
 
                             <div class="col-md-12 mb-4">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label for="name">@lang('add_hospital.name')</label>
                                     <input type="text" class="form-control form-control-lg" id="name" name="name"
                                         value="{{ old('name') }}">
                                 </div>
@@ -35,7 +35,7 @@
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label for="address">Address</label>
+                                        <label for="address">@lang('add_hospital.address')</label>
                                         <input type="text" class="form-control form-control-lg" id="address"
                                             name="address" value="{{ old('address') }}">
                                     </div>
@@ -43,7 +43,7 @@
 
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label for="contact">Contact</label>
+                                        <label for="contact">@lang('add_hospital.contact')</label>
                                         <input type="text" class="form-control form-control-lg" id="contact"
                                             name="contact" value="{{ old('contact') }}">
                                     </div>
@@ -52,14 +52,14 @@
 
                             <div class="col-md-12 mb-4">
                                 <div class="form-group">
-                                    <label for="image">Image</label>
+                                    <label for="image">@lang('add_hospital.contact')</label>
                                     <input type="file" class="form-control" id="image" name="image">
                                 </div>
                             </div>
 
                             <div class="col-md-12 mb-4">
                                 <div class="form-group">
-                                    <label for="description">Description</label>
+                                    <label for="description">@lang('add_hospital.description')</label>
                                     <textarea class="form-control form-control-lg" id="description" name="description" rows="3"></textarea>
                                 </div>
                             </div>

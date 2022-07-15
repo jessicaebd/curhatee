@@ -6,7 +6,7 @@
             <div class="col-12 col-lg-9 col-xl-7">
                 <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                     <div class="card-body p-4 p-md-5">
-                        <h3 class="fw-bolder">Edit Psychologist Information</h3>
+                        <h3 class="fw-bolder">@lang('edit_psychologist.edit_psychologist_information')</h3>
 
                         <hr class="mb-4 pb-2 pb-md-0 mb-md-5" style="color: #2934d0;">
 
@@ -27,7 +27,7 @@
 
                             <div class="col-md-12 mb-4">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label for="name">@lang('edit_psychologist.name')</label>
                                     <input type="text" class="form-control form-control-lg" id="name" name="name"
                                         value="{{ old('name') ? old('name') : $psychologist->name }}" disabled>
                                 </div>
@@ -61,7 +61,7 @@
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label for="email">Email</label>
+                                        <label for="email">@lang('edit_psychologist.email')</label>
                                         <input type="email" class="form-control form-control-lg" id="email"
                                             name="email"
                                             value="{{ old('email') ? old('email') : $psychologist->email }}">
@@ -70,7 +70,7 @@
 
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label for="phone">Phone</label>
+                                        <label for="phone">@lang('edit_psychologist.phone')</label>
                                         <input type="text" class="form-control form-control-lg" id="phone"
                                             name="phone"
                                             value="{{ old('phone') ? old('phone') : $psychologist->phone }}">
@@ -80,7 +80,7 @@
 
                             <div class="col-md-12 mb-4">
                                 <div class="form-group">
-                                    <label for="hospital_id">Hospital</label>
+                                    <label for="hospital_id">@lang('edit_psychologist.hospital')</label>
                                     <select class="form-control form-control-lg col-10" id="hospital_id" name="hospital_id">
                                         <option
                                             value="{{ old('hospital_id') ? old('hospital_id') : $psychologist->hospital_id }}">
@@ -95,7 +95,7 @@
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label for="fee">Fee (IDR)</label>
+                                        <label for="fee">@lang('edit_psychologist.fee') (IDR)</label>
                                         <input type="number" class="form-control form-control-lg" id="fee"
                                             name="fee" value="{{ old('fee') ? old('fee') : $psychologist->fee }}">
                                     </div>
@@ -103,7 +103,7 @@
 
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label for="rating">Rating</label>
+                                        <label for="rating">@lang('edit_psychologist.rating')</label>
                                         <input type="number" class="form-control form-control-lg" id="rating"
                                             name="rating" placeholder="1" min="1" max="5"
                                             value="{{ old('rating') ? old('rating') : $psychologist->rating }}">
@@ -113,14 +113,14 @@
 
                             <div class="col-md-12 mb-4">
                                 <div class="form-group">
-                                    <label for="image">Profile Picture</label>
+                                    <label for="image">@lang('edit_psychologist.profile_picture')</label>
                                     <input type="file" class="form-control" id="image" name="image">
                                 </div>
                             </div>
 
                             <div class="col-md-12 mb-4">
                                 <div class="form-group">
-                                    <label for="description">Description</label>
+                                    <label for="description">@lang('edit_psychologist.description')</label>
                                     <textarea class="form-control form-control-lg" id="description" name="description" rows="3">{{ old('description') ? old('description') : $psychologist->description }}</textarea>
                                 </div>
                             </div>

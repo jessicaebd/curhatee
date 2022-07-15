@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h2 class="text-center mb-4">Book a Psychologist</h2>
+        <h2 class="text-center mb-4">@lang('show_consultation.book_a_psychologist')</h2>
 
         <div class="row d-flex justify-content-center">
             {{-- psychologist details --}}
@@ -24,7 +24,7 @@
                     </p>
                 </h5>
                 <p class="card-text text-justify">{{ $psychologist->description }}</p>
-                <p class="card-title fw-bold">Working at</p>
+                <p class="card-title fw-bold">@lang('show_consultation.working_at')</p>
                 <a href="/hospitals/{{ $psychologist->hospital->id }}" class="card-link text-decoration-underline">
                     {{ $psychologist->hospital->name }}
                 </a>
@@ -34,7 +34,7 @@
                 {{-- CHOOSE HOURS --}}
                 @if (request('date'))
 
-                    <h5>Consultation for <b>{{ $date->format('l, d F Y') }}</b></h5>
+                    <h5>@lang('show_consultation.consultation_for')<b>{{ $date->format('l, d F Y') }}</b></h5>
 
                     <form action="/consultation/psychologists/{{ $psychologist->id }}" method="post">
                         @csrf
@@ -59,7 +59,7 @@
                         </div> --}}
 
                         <div class="mb-3">
-                            <label for="hours" class="form-label">Choose hours:</label>
+                            <label for="hours" class="form-label">@lang('show_consultation.choose_hours')</label>
                             <div class="row">
                                 @foreach ($schedules as $schedule)
                                     <div class="col-md-4">
@@ -84,13 +84,13 @@
 
                         {{-- TOTAL PRICE --}}
                         <div class="mb-3">
-                            <label for="price" class="form-label">Total price:</label>
+                            <label for="price" class="form-label">@lang('show_consultation.total_price')</label>
                             <h5 class="card-title fw-bold">Rp. {{ number_format($psychologist->fee, 0, ',', '.') }}</h5>
                         </div>
 
 
                         <div class="mb-3">
-                            <label for="payment_type" class="form-label">Choose your payment type:</label>
+                            <label for="payment_type" class="form-label">@lang('show_consultation.choose_your_payment_type')</label>
                             <select class="form-select @error('payment_type') is-invalid @enderror" name="payment_type">
                                 <option selected disabled>-</option>
 
@@ -106,14 +106,12 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary" name="submit" value="online-consultation">Chat
-                            Now</button>
-                        <button type="submit" class="btn btn-primary" name="submit" value="offline-consultation">Book
-                            Appointment</button>
+                        <button type="submit" class="btn btn-primary" name="submit" value="online-consultation">@lang('show_consultation.chat_now')</button>
+                        <button type="submit" class="btn btn-primary" name="submit" value="offline-consultation">@lang('show_consultation.book_appoinment')</button>
                     </form>
                 @else
                     {{-- CHOOSE DAY --}}
-                    <label for="schedule" class="form-label">Choose a day:</label>
+                    <label for="schedule" class="form-label">@lang('show_consultation.choose_a_day')</label>
 
                     @for ($i = 0; $i < 7; $i++)
                         <div class="mb-2">

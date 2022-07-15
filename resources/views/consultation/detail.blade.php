@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h3 class="text-center mb-3">Psychologist Details</h3>
+        <h3 class="text-center mb-3">@lang('detail.psychologist_detail')</h3>
         <div class="row d-flex justify-content-center">
             <div class="col-md-4">
                 <img src="{{ asset('storage/images/psychologists/' . $psychologist->image) }}"
@@ -45,7 +45,7 @@
                     </div> --}}
 
                     <div class="mb-3">
-                        <label for="payment_type" class="form-label">Choose your payment type:</label>
+                        <label for="payment_type" class="form-label">@lang('detail.choose_your_payment_type'):</label>
                         <select class="form-select">
                             <option selected disabled>-</option>
 

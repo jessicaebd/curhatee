@@ -27,7 +27,7 @@
 
                             <div class="d-flex justify-content-center mb-2">
                                 @if ($user->subscription_status == 'valid')
-                                    <p class="text-muted mb-4">Expiry Date: {{ $user->expiry_date }}</p>
+                                    <p class="text-muted mb-4">@lang('index_profile.expiry_date'){{ $user->expiry_date }}</p>
                                 @endif
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Full Name</p>
+                                    <p class="mb-0">@lang('index_profile.full_name')</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">{{ $user->name }}</p>
@@ -73,7 +73,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Email</p>
+                                    <p class="mb-0">@lang('index_profile.email')</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">{{ $user->email }}</p>
@@ -82,7 +82,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Phone</p>
+                                    <p class="mb-0">@lang('index_profile.phone')</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">{{ $user->phone }}</p>
@@ -91,7 +91,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Address</p>
+                                    <p class="mb-0">@lang('index_profile.address')</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
@@ -100,7 +100,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Expiry Date</p>
+                                    <p class="mb-0">@lang('index_profile.exp_date')</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">{{ $user->expiry_date }}</p>

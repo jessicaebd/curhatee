@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h3 class="text-center mb-3">My Consultation</h3>
+        <h3 class="text-center mb-3">@lang('my_index.my_consultation')</h3>
         <div class="row d-flex justify-content-center">
             <div class="col-md-10">
                 <div class="row">
@@ -17,15 +17,15 @@
                                         {{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y @ H:i') }}
                                     </p>
 
-                                    <p class="card-text">Status: {{ $transaction->status }}</p>
+                                    <p class="card-text">@lang('my_index.status'): {{ $transaction->status }}</p>
 
                                     @if ($transaction->consultation_type_id == $online_consultation_id)
                                         <a href="{{ route('chat_page_user', $transaction->id) }}">
-                                            <button type="button" class="btn btn-primary">Chat Online</button>
+                                            <button type="button" class="btn btn-primary">@lang('my_index.chat_online')</button>
                                         </a>
                                     @elseif($transaction->consultation_type_id == $offline_consultation_id)
                                         <a href="/consultation/{{ $transaction->id }}">
-                                            <button type="button" class="btn btn-info">See Appointment</button>
+                                            <button type="button" class="btn btn-info">@lang('my_index.see_appointment')</button>
                                         </a>
                                     @endif
 

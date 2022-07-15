@@ -16,19 +16,19 @@
                 <ul class="nav nav-tabs d-flex justify-content-start align-items-center" id="tableTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all"
-                            type="button" role="tab" aria-controls="all" aria-selected="true">All Trx</button>
+                            type="button" role="tab" aria-controls="all" aria-selected="true">@lang('dashboard_psychologist.all_trx')</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="success-tab" data-bs-toggle="tab" data-bs-target="#success"
-                            type="button" role="tab" aria-controls="success" aria-selected="false">Success</button>
+                            type="button" role="tab" aria-controls="success" aria-selected="false">@lang('dashboard_psychologist.success')</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending"
-                            type="button" role="tab" aria-controls="pending" aria-selected="false">Pending</button>
+                            type="button" role="tab" aria-controls="pending" aria-selected="false">@lang('dashboard_psychologist.pending')</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="failed-tab" data-bs-toggle="tab" data-bs-target="#failed"
-                            type="button" role="tab" aria-controls="failed" aria-selected="false">Failed</button>
+                            type="button" role="tab" aria-controls="failed" aria-selected="false">@lang('dashboard_psychologist.failed')</button>
                     </li>
                 </ul>
                 <div class="tab-content" id="tableTabContent">
@@ -37,12 +37,12 @@
                             <table class="table table-borderless transaction-table w-100 active" id="table-all">
                                 <thead>
                                     <tr>
-                                        <th>Consultation</th>
-                                        <th>Patient</th>
-                                        <th class="action-header">Consultation Type</th>
-                                        <th>Price</th>
-                                        <th class="status-header">Status</th>
-                                        <th class="action-header">Action</th>
+                                        <th>@lang('dashboard_psychologist.consultation')</th>
+                                        <th>@lang('dashboard_psychologist.patient')</th>
+                                        <th class="action-header">@lang('dashboard_psychologist.consultation_type')</th>
+                                        <th>@lang('dashboard_psychologist.price')</th>
+                                        <th class="status-header">@lang('dashboard_psychologist.status')</th>
+                                        <th class="action-header">@lang('dashboard_psychologist.action')</th>
                                     </tr>
                                 </thead>
 
@@ -84,10 +84,10 @@
                                             <td class="action">
                                                 @if ($transaction->consultation_type_id == $online_consultation_id)
                                                     <a href="{{ route('chat_page_psychologist', $transaction->id) }}"
-                                                        class="btn-transaction mx-auto">Chat</a>
+                                                        class="btn-transaction mx-auto">@lang('dashboard_psychologist.chat')</a>
                                                 @elseif($transaction->consultation_type_id == $offline_consultation_id)
                                                     <a href="/psychologist/transactions/{{ $transaction->id }}"
-                                                        class="btn-transaction mx-auto">Details</a>
+                                                        class="btn-transaction mx-auto">@lang('dashboard_psychologist.details')</a>
                                                 @endif
                                             </td>
                                         </tr>
@@ -101,19 +101,19 @@
 
                                                 <div
                                                     class="d-flex flex-column justify-content-center align-items-start mt-2">
-                                                    <h5 class="transaction-game">Hari Tanggal</h5>
-                                                    <h5 class="transaction-type">Jam</h5>
+                                                    <h5 class="transaction-game">@lang('dashboard_psychologist.hari_tanggal')</h5>
+                                                    <h5 class="transaction-type">@lang('dashboard_psychologist.jam')</h5>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>NANTI HAPUS</td>
-                                        <td>Offline Consultation</td>
+                                        <td>@lang('dashboard_psychologist.offline_consultation')</td>
                                         <td>Rp 290.000</td>
                                         <td class="status">
                                             <span
-                                                class="pending w-auto d-flex  justify-content-center align-self-center">Pending</span>
+                                                class="pending w-auto d-flex  justify-content-center align-self-center">@lang('dashboard_psychologist.pending')</span>
                                         </td>
-                                        <td class="action"><button class="btn-transaction mx-auto">Details</button></td>
+                                        <td class="action"><button class="btn-transaction mx-auto">@lang('dashboard_psychologist.details')</button></td>
                                     </tr>
                                 </tbody>
                             </table>

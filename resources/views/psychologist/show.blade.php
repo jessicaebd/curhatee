@@ -17,7 +17,7 @@
                                                 class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
                                                 <div
                                                     class="d-flex flex-column justify-content-center align-items-start mt-2">
-                                                    <h5 class="transaction-game">Transaction ID</h5>
+                                                    <h5 class="transaction-game">@lang('show_psychologist.transaction_id')</h5>
                                                 </div>
                                             </div>
                                         </td>
@@ -34,7 +34,7 @@
                                                 class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
                                                 <div
                                                     class="d-flex flex-column justify-content-center align-items-start mt-2">
-                                                    <h5 class="transaction-game">Patient</h5>
+                                                    <h5 class="transaction-game">@lang('show_psychologist.patient')</h5>
                                                 </div>
                                             </div>
                                         </td>
@@ -51,7 +51,7 @@
                                                 class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
                                                 <div
                                                     class="d-flex flex-column justify-content-center align-items-start mt-2">
-                                                    <h5 class="transaction-game">Date</h5>
+                                                    <h5 class="transaction-game">@lang('show_psychologist.date')</h5>
                                                 </div>
                                             </div>
                                         </td>
@@ -68,7 +68,7 @@
                                                 class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
                                                 <div
                                                     class="d-flex flex-column justify-content-center align-items-start mt-2">
-                                                    <h5 class="transaction-game">Fee</h5>
+                                                    <h5 class="transaction-game">@lang('show_psychologist.fee')</h5>
                                                 </div>
                                             </div>
                                         </td>
@@ -85,7 +85,7 @@
                                                 class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
                                                 <div
                                                     class="d-flex flex-column justify-content-center align-items-start mt-2">
-                                                    <h5 class="transaction-game">Paid with</h5>
+                                                    <h5 class="transaction-game">@lang('show_psychologist.paid_with')</h5>
                                                 </div>
                                             </div>
                                         </td>
@@ -102,7 +102,7 @@
                                                 class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
                                                 <div
                                                     class="d-flex flex-column justify-content-center align-items-start mt-2">
-                                                    <h5 class="transaction-game">Description</h5>
+                                                    <h5 class="transaction-game">@lang('show_psychologist.description')</h5>
                                                 </div>
                                             </div>
                                         </td>
@@ -119,7 +119,7 @@
                                                 class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
                                                 <div
                                                     class="d-flex flex-column justify-content-center align-items-start mt-2">
-                                                    <h5 class="transaction-game">Status</h5>
+                                                    <h5 class="transaction-game">@lang('show_psychologist.status')</h5>
                                                 </div>
                                             </div>
                                         </td>
@@ -138,7 +138,7 @@
                                         @csrf
                                         @method('put')
                                         <input type="hidden" name="transaction_id" value="{{ $transaction->id }}">
-                                        <button type="submit" class="btn btn-primary">Accept Consultation</button>
+                                        <button type="submit" class="btn btn-primary">@lang('show_psychologist.accept_consultation')</button>
                                     </form>
                                 </div>
                             @endif

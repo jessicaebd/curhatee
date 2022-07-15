@@ -52,7 +52,7 @@
             @csrf
             <input type="text" name="message" id="message" placeholder="Type a message...">
             <input type="file" name="image" id="image">
-            <button type="submit" id="send-message">Send</button>
+            <button type="submit" id="send-message">@lang('index_chat.send')</button>
         </form>
     </div>
     {{-- Error Message --}}

@@ -4,6 +4,7 @@
         'forum' => 'Forum',
         'diary' => 'Diari',
         'podcast' => 'Siniar',
-        'article' => 'Artikel'
+        'article' => 'Artikel',
+        'video' => 'Vidio'
     ];
 ?>
