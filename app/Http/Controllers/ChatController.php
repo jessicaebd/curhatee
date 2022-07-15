@@ -13,8 +13,17 @@ use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
+    private function setLang() {
+        if(session()->has('locale')) {
+            app()->setLocale(session()->get('locale'));
+        } else {
+            app()->setLocale('en');
+        }
+    }
+
     public function index($transactionId)
     {
+        $this->setLang();
         $transaction = Transaction::find($transactionId);
 
         if (Auth::guard('webpsychologist')->user()) {

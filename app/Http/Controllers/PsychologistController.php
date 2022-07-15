@@ -18,8 +18,18 @@ class PsychologistController extends Controller
     //     return view('psychologist.dashboard');
     // }
 
+
+    private function setLang() {
+        if(session()->has('locale')) {
+            app()->setLocale(session()->get('locale'));
+        } else {
+            app()->setLocale('en');
+        }
+    }
+
     public function login()
     {
+
         return view('psychologist.login');
     }
 
@@ -46,6 +56,7 @@ class PsychologistController extends Controller
 
     public function psychologist_index()
     {
+        $this->setLang();
         $psychologist = Auth::guard('webpsychologist')->user();
         $transactions = Transaction::where('psychologist_id', $psychologist->id)->get();
         $online_consultation_id = ConsultationType::where('name', 'Online Consultation')->first()->id;
@@ -55,6 +66,7 @@ class PsychologistController extends Controller
 
     public function psychologist_show(Transaction $transaction)
     {
+        $this->setLang();
         $psychologist = Auth::guard('webpsychologist')->user();
         return view('psychologist.show', compact('psychologist', 'transaction'));
     }
@@ -72,11 +84,13 @@ class PsychologistController extends Controller
     // controller admin
     public function index()
     {
+        $this->setLang();
         return view('admin.psychologist.index');
     }
 
     public function create()
     {
+        $this->setLang();
         $hospitals = Hospital::all();
         return view('admin.psychologist.add', compact('hospitals'));
     }
@@ -120,6 +134,7 @@ class PsychologistController extends Controller
 
     public function edit($id)
     {
+        $this->setLang();
         $hospitals = Hospital::all();
         return view(
             'admin.psychologist.edit',

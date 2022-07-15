@@ -23,6 +23,12 @@ use App\Http\Controllers\ChatController;
 |
 */
 
+// languange
+Route::get('/lang/{locale}', function($locale) {
+    session()->put('locale', $locale);
+    return redirect()->back();
+});
+
 // auth
 Auth::routes();
 
@@ -46,7 +52,7 @@ Route::controller(PsychologistController::class)
 // home
 Route::controller(HomeController::class)
     ->group(function () {
-        Route::get('/{locale?}', 'index')->name('home');
+        Route::get('/', 'index')->name('home');
         // Route::get('/home', 'index')->name('home');
         Route::get('/article', 'article')->name('article');
         Route::get('/video', 'video')->name('video');

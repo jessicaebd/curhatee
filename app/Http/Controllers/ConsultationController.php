@@ -12,14 +12,25 @@ use Illuminate\Http\Request;
 
 class ConsultationController extends Controller
 {
+
+    private function setLang() {
+        if(session()->has('locale')) {
+            app()->setLocale(session()->get('locale'));
+        } else {
+            app()->setLocale('en');
+        }
+    }
+
     public function index()
     {
+        $this->setLang();
         $psychologists = Psychologist::all();
         return view('consultation.index', compact('psychologists'));
     }
 
     public function show(Psychologist $psychologist)
     {
+        $this->setLang();
         // generate schedule baru untuk yg sdh lewat
         $today = Carbon::today('Asia/Bangkok')->addDays(1);
         Schedule::where('dateBook', '<', $today)->update(['status' => 'Open', 'dateBook' => null]);
@@ -104,6 +115,7 @@ class ConsultationController extends Controller
     // buat konsultasi yg udh dipesan
     public function my_index()
     {
+        $this->setLang();
         $transactions = Transaction::where('user_id', auth()->user()->id)->get();
         $online_consultation_id = ConsultationType::where('name', 'Online Consultation')->first()->id;
         $offline_consultation_id = ConsultationType::where('name', 'Offline Consultation')->first()->id;
@@ -112,6 +124,7 @@ class ConsultationController extends Controller
 
     public function my_show(Transaction $transaction)
     {
+        $this->setLang();
         return view('consultation.my_show', compact('transaction'));
     }
 }
