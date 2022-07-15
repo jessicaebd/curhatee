@@ -16,6 +16,8 @@
     {{-- Custom CSS --}}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
+    @yield('css')
+
     {{-- Font Awesome --}}
 
     <title>Curhatee | @yield('title')</title>

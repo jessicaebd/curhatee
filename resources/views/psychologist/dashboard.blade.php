@@ -83,7 +83,7 @@
                                             </td>
                                             <td class="action">
                                                 @if ($transaction->consultation_type_id == $online_consultation_id)
-                                                    <a href="{{ route('chat_page', $transaction->id) }}"
+                                                    <a href="{{ route('chat_page_psychologist', $transaction->id) }}"
                                                         class="btn-transaction mx-auto">Chat</a>
                                                 @elseif($transaction->consultation_type_id == $offline_consultation_id)
                                                     <a href="/psychologist/transactions/{{ $transaction->id }}"
@@ -115,9 +115,7 @@
                                         </td>
                                         <td class="action"><button class="btn-transaction mx-auto">Details</button></td>
                                     </tr>
-
                                 </tbody>
-
                             </table>
                         </div>
                     </div>

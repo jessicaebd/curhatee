@@ -67,12 +67,20 @@ Route::prefix('/consultation')
     });
 
 // chat
-Route::prefix('/chat')
+Route::prefix('/chat-psychologist')
     ->controller(ChatController::class)
     ->middleware('auth')
     ->group(function () {
-        Route::get('/{transaction}', 'index')->name('chat_page');
-        Route::post('/{transaction}', 'store')->name('store_chat');
+        Route::get('/{transaction}', 'index')->name('chat_page_user');
+        Route::post('/{transaction}', 'store')->name('store_chat_user');
+    });
+
+Route::prefix('/chat-user')
+    ->controller(ChatController::class)
+    ->middleware('auth:webpsychologist')
+    ->group(function () {
+        Route::get('/{transaction}', 'index')->name('chat_page_psychologist');
+        Route::post('/{transaction}', 'store')->name('store_chat_psychologist');
     });
 
 // profiles

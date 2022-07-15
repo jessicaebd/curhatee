@@ -15,8 +15,8 @@ class CreateChatsTable extends Migration
     {
         Schema::create('chats', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('user_id')->references('id')->on('users')->constrained()->nullable();
-            $table->foreignUuid('psychologist_id')->references('id')->on('psychologists')->constrained();
+            $table->foreignUuid('user_id')->nullable()->references('id')->on('users')->constrained();
+            $table->foreignUuid('psychologist_id')->nullable()->references('id')->on('psychologists')->constrained();
             $table->foreignUuid('transaction_id')->references('id')->on('transactions')->constrained();
             $table->string('message')->nullable();
             $table->string('image')->nullable();

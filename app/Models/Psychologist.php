@@ -22,6 +22,11 @@ class Psychologist extends Authenticatable
         'id' => 'string'
     ];
 
+    public function isAdmin()
+    {
+        return $this->role === 'Admin';
+    }
+
     public function podcast()
     {
         return $this->hasMany(Podcast::class);

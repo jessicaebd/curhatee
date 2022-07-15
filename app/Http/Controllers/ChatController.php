@@ -15,14 +15,23 @@ class ChatController extends Controller
 {
     public function index($transactionId)
     {
-        // dd($transactionId);
         $transaction = Transaction::find($transactionId);
-// dd($transaction);
-        $data = [
-            'transaction' => $transaction,
-            'chats' => Chat::where('transaction_id', $transaction->id)->where('psychologist_id', $transaction->psychologist->id)->where('user_id', $transaction->user->id)->get(),
-        ];
 
+        if (Auth::guard('webpsychologist')->user()) {
+            $data = [
+                'transaction' => $transaction,
+                'chats' => Chat::where('transaction_id', $transaction->id)->get(),
+                'psychologist' => Psychologist::find($transaction->psychologist_id),
+                'view' => 'Psychologist',
+            ];
+        } else if (auth()->user()) {
+            $data = [
+                'transaction' => $transaction,
+                'chats' => Chat::where('transaction_id', $transaction->id)->get(),
+                'view' => 'User',
+            ];
+        }
+        
         return view('chat.index', $data);
     }
 
@@ -38,12 +47,15 @@ class ChatController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg|max:10240',
         ]);
 
-        $transaction = Transaction::find($transactionId);
-
         $chat = new Chat();
-        $chat->transaction_id = $transaction->id;
-        $chat->psychologist_id = $transaction->psychologist->id;
-        $chat->user_id = $transaction->user->id;
+        $chat->transaction_id = $transactionId;
+
+        if (Auth::guard('webpsychologist')->user()) {
+            $chat->psychologist_id = Auth::guard('webpsychologist')->user()->id;
+        } else if (auth()->user()) {
+            $chat->user_id = auth()->user()->id;
+        }
+
         $chat->message = $request->message;
         if ($request->hasFile('image')) {
             $extImage = $request->image->getClientOriginalExtension();
@@ -54,12 +66,10 @@ class ChatController extends Controller
         $chat->sent_at = Carbon::now();
         $chat->save();
 
-        $data = [
-            'transaction' => $transaction,
-            'user' => $transaction->user->id,
-            'psychologist' => $transaction->psychologist->id,
-            'chats' => Chat::where('transaction_id', $transaction->id)->where('psychologist_id', $transaction->psychologist->id)->where('user_id', $transaction->user->id)->get(),
-        ];
-        return view('chat.index', $data);
+        if (Auth::guard('webpsychologist')->user()) {
+            return redirect()->back();
+        } else if (auth()->user()) {
+            return redirect()->back();
+        }
     }
 }

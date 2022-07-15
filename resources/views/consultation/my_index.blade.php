@@ -20,7 +20,7 @@
                                     <p class="card-text">Status: {{ $transaction->status }}</p>
 
                                     @if ($transaction->consultation_type_id == $online_consultation_id)
-                                        <a href="{{ route('chat_page', $transaction->id) }}">
+                                        <a href="{{ route('chat_page_user', $transaction->id) }}">
                                             <button type="button" class="btn btn-primary">Chat Online</button>
                                         </a>
                                     @elseif($transaction->consultation_type_id == $offline_consultation_id)

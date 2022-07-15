@@ -12,6 +12,8 @@
 
     <link rel="stylesheet" href="{{ asset('css/psychologist/dashboard.css') }}">
 
+    @yield('css')
+
     <title>Psychologist Dashboard</title>
 </head>
 
@@ -153,7 +155,8 @@
                     <div class="d-flex justify-content-between align-items-center w-100">
                         <h2 class="nav-title">My Transactions</h2>
                         <button id="toggle-navbar" onclick="toggleNavbar()">
-                            <img src="{{ asset('storage/images/psychologists/' . $psychologist->image) }}" alt="">
+                            <img src="{{ asset('storage/images/psychologists/' . $psychologist->image) }}"
+                                alt="">
                         </button>
                     </div>
                 </div>

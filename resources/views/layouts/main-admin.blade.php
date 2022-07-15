@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin/dashboard.css') }}">
 
+    @yield('css')
+
     <title>Curhatee | @yield('title')</title>
 </head>
 

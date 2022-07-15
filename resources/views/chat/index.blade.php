@@ -1,6 +1,18 @@
-@extends('layouts.main')
+@extends($view == 'User' ? 'layouts.main' : 'layouts.main-psychologist')
 
-@section('title', 'Consultation')
+@section('title', 'Chat Consultation')
+
+@section('css')
+    <style>
+        .message-container {
+            float: left;
+            width: 1000px;
+            overflow-y: auto;
+            height: 500px;
+            background-color: yellow;
+        }
+    </style>
+@endsection
 
 @section('content')
     <h1>Chat</h1>
@@ -15,8 +27,13 @@
             <div class="message">
                 <div class="message-header">
                     <div class="message-header-left">
-                        <p>{{ $chat->psychologist->name }} --
-                            {{ \Carbon\Carbon::parse($chat->time)->format('l, d F Y @ H:i') }}</p>
+                        @if ($chat->user_id != null)
+                            {{ $chat->user->name }}
+                        @elseif($chat->psychologist_id != null)
+                            {{ $chat->psychologist->name }}
+                        @endif
+                        --
+                        {{ \Carbon\Carbon::parse($chat->time)->format('l, d F Y @ H:i') }}
                     </div>
                 </div>
                 <div class="message-body">
@@ -31,8 +48,7 @@
         @endforeach
     </div>
     <div class="input-container">
-        <form action="{{ route('store_chat', $transaction->id) }}" method="post" enctype="multipart/form-data">
-            {{-- <input type="hidden" name="transactionId" value="{{ $transaction->id }}"> --}}
+        <form action="{{ route('store_chat_user', $transaction->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             <input type="text" name="message" id="message" placeholder="Type a message...">
             <input type="file" name="image" id="image">
