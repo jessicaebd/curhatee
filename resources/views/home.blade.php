@@ -17,7 +17,7 @@
                     <div class="card home-menu" style="width: 18rem;">
                         <img src="{{ asset('storage/images/menu/consultation.png') }}" class="card-img-top">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Consultation</h5>
+                            <h5 class="card-title text-center">@lang('home.consultation')</h5>
                         </div>
                     </div>
                 </a>
