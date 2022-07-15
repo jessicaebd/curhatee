@@ -8,13 +8,24 @@ use Illuminate\Http\Request;
 
 class HospitalController extends Controller
 {
+
+    private function setLang() {
+        if(session()->has('locale')) {
+            app()->setLocale(session()->get('locale'));
+        } else {
+            app()->setLocale('en');
+        }
+    }
+
     public function index()
     {
+        $this->setLang();
         return view('admin.hospital.index');
     }
 
     public function create()
     {
+        $this->setLang();
         $hospitals = Hospital::all();
         return view('admin.hospital.add', compact('hospitals'));
     }
@@ -62,6 +73,7 @@ class HospitalController extends Controller
 
     public function edit($id)
     {
+        $this->setLang();
         return view('admin.hospital.edit', ['hospital' => Hospital::findOrFail($id)]);
     }
 

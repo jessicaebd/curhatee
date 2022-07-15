@@ -24,7 +24,7 @@
             </div>
 
             <div class="col-md-3">
-                <a href="/consultation">
+                <a href="/forum">
                     <div class="card home-menu" style="width: 18rem;">
                         <img src="{{ asset('storage/images/menu/forum.png') }}" class="card-img-top">
                         <div class="card-body">
@@ -35,7 +35,7 @@
             </div>
 
             <div class="col-md-3">
-                <a href="/consultation">
+                <a href="/diary">
                     <div class="card home-menu" style="width: 18rem;">
                         <img src="{{ asset('storage/images/menu/diary.png') }}" class="card-img-top">
                         <div class="card-body">
@@ -46,7 +46,7 @@
             </div>
 
             <div class="col-md-3">
-                <a href="/consultation">
+                <a href="/podcast">
                     <div class="card home-menu" style="width: 18rem;">
                         <img src="{{ asset('storage/images/menu/podcast.png') }}" class="card-img-top">
                         <div class="card-body">
