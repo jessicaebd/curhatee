@@ -6,7 +6,7 @@
             <div class="col-12 col-lg-9 col-xl-7">
                 <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                     <div class="card-body p-4 p-md-5">
-                        <h3 class="fw-bolder">Psychologist Registration Form</h3>
+                        <h3 class="fw-bolder">@lang('add_psychologist.psychologist_registration_form')</h3>
 
                         <hr class="mb-4 pb-2 pb-md-0 mb-md-5" style="color: #2934d0;">
 
@@ -26,7 +26,7 @@
 
                             <div class="col-md-12 mb-4">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label for="name">@lang('add_psychologist.name')</label>
                                     <input type="text" class="form-control form-control-lg" id="name" name="name"
                                         value="{{ old('name') }}">
                                 </div>
@@ -60,7 +60,7 @@
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label for="email">Email</label>
+                                        <label for="email">@lang('add_psychologist.email')</label>
                                         <input type="email" class="form-control form-control-lg" id="email"
                                             name="email" value="{{ old('email') }}">
                                     </div>
@@ -68,7 +68,7 @@
 
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label for="phone">Phone</label>
+                                        <label for="phone">@lang('add_psychologist.Phone')</label>
                                         <input type="text" class="form-control form-control-lg" id="phone"
                                             name="phone" value="{{ old('phone') }}">
                                     </div>
@@ -77,9 +77,9 @@
 
                             <div class="col-md-12 mb-4">
                                 <div class="form-group">
-                                    <label for="hospital_id">Hospital</label>
+                                    <label for="hospital_id">@lang('add_psychologist.hospital')</label>
                                     <select class="form-control form-control-lg col-10" id="hospital_id" name="hospital_id">
-                                        <option value="">-- Select Hospital --</option>
+                                        <option value="">@lang('add_psychologist.select_hospital')</option>
                                         @foreach ($hospitals as $hospital)
                                             <option value="{{ $hospital->id }}">{{ $hospital->name }}</option>
                                         @endforeach
@@ -90,7 +90,7 @@
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label for="fee">Fee (IDR)</label>
+                                        <label for="fee">@lang('add_psychologist.fee') (IDR)</label>
                                         <input type="number" class="form-control form-control-lg" id="fee"
                                             name="fee" placeholder="0" value="{{ old('fee') }}">
                                     </div>
@@ -98,7 +98,7 @@
 
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label for="rating">Rating</label>
+                                        <label for="rating">@lang('add_psychologist.rating')</label>
                                         <input type="number" class="form-control form-control-lg" id="rating"
                                             name="rating" placeholder="1" min="1" max="5"
                                             value="{{ old('rating') }}">
@@ -108,7 +108,7 @@
 
                             <div class="col-md-12 mb-4">
                                 <div class="form-group">
-                                    <label for="image">Profile Picture</label>
+                                    <label for="image">@lang('add_psychologist.profile_picture')</label>
                                     <input type="file" class="form-control" id="image" name="image">
                                 </div>
                             </div>

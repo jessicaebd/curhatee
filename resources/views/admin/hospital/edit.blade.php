@@ -6,7 +6,7 @@
             <div class="col-12 col-lg-9 col-xl-7">
                 <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                     <div class="card-body p-4 p-md-5">
-                        <h3 class="fw-bolder">Edit Hospital Information</h3>
+                        <h3 class="fw-bolder">@lang('edit_hospital.edit_hospital_information')</h3>
 
                         <hr class="mb-4 pb-2 pb-md-0 mb-md-5" style="color: #2934d0;">
 
@@ -27,7 +27,7 @@
 
                             <div class="col-md-12 mb-4">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label for="name">@lang('edit_hospital.name')</label>
                                     <input type="text" class="form-control form-control-lg" id="name" name="name"
                                         value="{{ old('name') ? old('name') : $hospital->name }}" disabled>
                                 </div>
@@ -36,7 +36,7 @@
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label for="address">Address</label>
+                                        <label for="address">@lang('edit_hospital.address')</label>
                                         <input type="text" class="form-control form-control-lg" id="address"
                                             name="address"
                                             value="{{ old('address') ? old('address') : $hospital->address }}">
@@ -45,7 +45,7 @@
 
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label for="contact">Contact</label>
+                                        <label for="contact">@lang('edit_hospital.contact')</label>
                                         <input type="text" class="form-control form-control-lg" id="contact"
                                             name="contact"
                                             value="{{ old('contact') ? old('contact') : $hospital->contact }}">
@@ -55,14 +55,14 @@
 
                             <div class="col-md-12 mb-4">
                                 <div class="form-group">
-                                    <label for="image">Image</label>
+                                    <label for="image">@lang('edit_hospital.image')</label>
                                     <input type="file" class="form-control" id="image" name="image">
                                 </div>
                             </div>
 
                             <div class="col-md-12 mb-4">
                                 <div class="form-group">
-                                    <label for="description">Description</label>
+                                    <label for="description">@lang('edit_hospital.description')</label>
                                     <textarea class="form-control form-control-lg" id="description" name="description" rows="3">{{ old('description') ? old('description') : $hospital->description }}</textarea>
                                 </div>
                             </div>

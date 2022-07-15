@@ -14,7 +14,7 @@
 
     @yield('css')
 
-    <title>Psychologist Dashboard</title>
+    <title>@lang('main_psychologist.psychologist_dashboard')</title>
 </head>
 
 <body>
@@ -56,7 +56,7 @@
                                 stroke-linejoin="round" />
                         </svg>
 
-                        <span>Overview</span>
+                        <span>@lang('main_psychologist.overview')</span>
                     </a>
 
                     <a href="#" class="sidebar-item" onclick="toggleActive(this)">
@@ -72,7 +72,7 @@
                                 stroke-linejoin="round" />
                         </svg>
 
-                        <span>Transactions</span>
+                        <span>@lang('main_psychologist.transaction')</span>
                     </a>
 
                     <a href="#" class="sidebar-item" onclick="toggleActive(this)">
@@ -83,7 +83,7 @@
                                 stroke="#7E8CAC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
 
-                        <span>Messages</span>
+                        <span>@lang('main_psychologist.messages')</span>
                     </a>
 
                     <a href="#" class="sidebar-item" onclick="toggleActive(this)">
@@ -96,7 +96,7 @@
                                 stroke-linejoin="round" />
                         </svg>
 
-                        <span>Card</span>
+                        <span>@lang('main_psychologist.card')</span>
                     </a>
 
                     <a href="#" class="sidebar-item" onclick="toggleActive(this)">
@@ -109,7 +109,7 @@
                                 stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
 
-                        <span>Rewards</span>
+                        <span>@lang('main_psychologist.rewards')</span>
                     </a>
 
                     <a href="#" class="sidebar-item" onclick="toggleActive(this)">
@@ -123,7 +123,7 @@
                                 stroke="#7E8CAC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
 
-                        <span>Settings</span>
+                        <span>@lang('main_psychologist.settings')</span>
                     </a>
 
 
@@ -138,7 +138,7 @@
                                 stroke-linejoin="round" />
                         </svg>
 
-                        <span>Log Out</span>
+                        <span>@lang('main_psychologist.logout')</span>
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

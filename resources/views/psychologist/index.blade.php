@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h3 class="text-center mb-3">My Consultation</h3>
+        <h3 class="text-center mb-3">@lang('index_psychologist.my_consultation')</h3>
 
         <div class="d-flex justify-content-center">
             <div class="row px-0 py-2 d-flex justify-content-between shadow-sm rounded-pill"
@@ -13,14 +13,14 @@
                     <button class="btn btn-light text-primary shadow-sm btn-block rounded-pill" type="button"
                         data-bs-toggle="collapse" data-bs-target="#filter-article" aria-expanded="false"
                         aria-controls="filter-article" style="width: 100%">
-                        <b>Incoming Request</b>
+                        <b>@lang('index_psychologist.incoming_request')</b>
                     </button>
                 </div>
                 <div class="" style="width: 20rem;">
                     <button class="btn text-secondary btn-block rounded-pill" type="button" data-bs-toggle="collapse"
                         data-bs-target="#filter-video" aria-expanded="false" aria-controls="filter-video"
                         style="width: 100%">
-                        All Consultation
+                        @lang('index_psychologist.all_consultation')
                     </button>
                 </div>
             </div>
@@ -47,10 +47,8 @@
                                                 <input type="hidden" name="transaction_id"
                                                     value="{{ $transaction->id }}">
 
-                                                <button type="submit" class="btn btn-primary btn-sm">Accept
-                                                    Request</button>
-                                                <button type="submit" class="btn btn-primary btn-sm">Decline
-                                                    Request</button>
+                                                <button type="submit" class="btn btn-primary btn-sm">@lang('index_psychologist.accept_request')</button>
+                                                <button type="submit" class="btn btn-primary btn-sm">@lang('index_psychologist.decline_request')</button>
                                             </form>
                                         @endif
 

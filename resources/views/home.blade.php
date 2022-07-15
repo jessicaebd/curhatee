@@ -73,7 +73,7 @@
                     <button class="btn text-secondary btn-block rounded-pill" type="button" data-bs-toggle="collapse"
                         data-bs-target="#filter-video" aria-expanded="false" aria-controls="filter-video"
                         style="width: 100%">
-                        Video
+                        @lang('home.video')
                     </button>
                 </div>
             </div>

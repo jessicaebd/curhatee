@@ -11,9 +11,9 @@
         @endif
 
         <div class="d-flex justify-content-between mb-3">
-            <h3 class=" fw-bold">Articles</h3>
+            <h3 class=" fw-bold">@lang('index_article.articles')</h3>
             <a href="{{ route('add_article') }}" class="btn btn-primary my-auto">
-                <i class="bi bi-plus-circle me-2"></i>Add Article
+                <i class="bi bi-plus-circle me-2"></i>@lang('index_article.add_article')
             </a>
         </div>
 

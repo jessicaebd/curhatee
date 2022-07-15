@@ -4,37 +4,37 @@
 
 @section('content')
     <div class="container">
-        <h3 class="text-center my-3">My Consultation</h3>
+        <h3 class="text-center my-3">@lang('my_show.my_consultation')</h3>
         <div class="row d-flex justify-content-center">
             <div class="col-md-6">
                 <table>
                     <tr>
-                        <td>Transaction ID</td>
+                        <td>@lang('my_show.transaction_id')</td>
                         <td>: {{ $transaction->id }}</td>
                     </tr>
                     <tr>
-                        <td>Psychologist</td>
+                        <td>@lang('my_show.psychologist')</td>
                         <td>: {{ $transaction->schedule->psychologist->name }}</td>
                     </tr>
                     <tr>
-                        <td>Date</td>
+                        <td>@lang('my_show.date')</td>
                         <td>: {{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y @ H:i') }}</td>
                     </tr>
                     <tr>
-                        <td>Status</td>
+                        <td>@lang('my_show.status')</td>
                         <td>: {{ $transaction->status }}</td>
                     </tr>
                     <tr>
-                        <td>Fee</td>
+                        <td>@lang('my_show.fee')</td>
                         <td>: Rp. {{ number_format($transaction->price, 0, ',', '.') }}</td>
                     </tr>
 
                     <tr>
-                        <td>Paid with</td>
+                        <td>@lang('my_show.paid_with')</td>
                         <td>: {{ $transaction->paymentType->type_name }}</td>
                     </tr>
                     <tr>
-                        <td>Description:</td>
+                        <td>@lang('my_show.description')</td>
                         <td>: {{ $transaction->detail }}</td>
                     </tr>
                 </table>

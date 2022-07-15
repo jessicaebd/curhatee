@@ -34,53 +34,53 @@
                             <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" aria-current="page"
                                 href="#">
                                 <span data-feather="home"></span>
-                                Dashboard
+                                @lang('main_admin.dashboard')
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('manage_article') ? 'active' : '' }}"
                                 href="{{ route('manage_article') }}">
                                 <span data-feather="file"></span>
-                                Articles
+                                @lang('main_admin.articles')
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('manage_hospital') ? 'active' : '' }}"
                                 href="{{ route('manage_hospital') }}">
                                 <span data-feather="file"></span>
-                                Hospitals
+                                @lang('main_admin.hospitals')
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="file"></span>
-                                Podcast
+                                @lang('main_admin.podcast')
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('manage_psychologist') ? 'active' : '' }}"
                                 href="{{ route('manage_psychologist') }}">
                                 <span data-feather="users"></span>
-                                Psychologist
+                                @lang('main_admin.psychologist')
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="file"></span>
-                                Schedules
+                                @lang('main_admin.schedules')
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="bar-chart-2"></span>
-                                Users
+                                @lang('main_admin.users')
                             </a>
                         </li>
                     </ul>
 
                     <h6
                         class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>Saved reports</span>
+                        <span>@lang('main_admin.saved_reports')</span>
                         <a class="link-secondary" href="#" aria-label="Add a new report">
                             <span data-feather="plus-circle"></span>
                         </a>
@@ -89,25 +89,25 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="file-text"></span>
-                                Current month
+                                @lang('main_admin.current_month')
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="file-text"></span>
-                                Last quarter
+                                @lang('main_admin.last_quarter')
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="file-text"></span>
-                                Social engagement
+                                @lang('main_admin.social_engagement')
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="file-text"></span>
-                                Year-end sale
+                                @lang('main_admin.year-end_sale')
                             </a>
                         </li>
                     </ul>
