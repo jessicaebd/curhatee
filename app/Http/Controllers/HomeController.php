@@ -17,8 +17,9 @@ class HomeController extends Controller
         // $this->middleware('auth');
     }
 
-    public function index()
+    public function index($locale='en')
     {
+        app()->setLocale($locale);
         if (Auth::check()) {
             if (Auth::user()->role == 'Admin') {
                 return view('admin.dashboard');
