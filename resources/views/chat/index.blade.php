@@ -31,7 +31,13 @@
         <form action="{{ route('store_chat_user', $transaction->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             <input type="text" name="message" id="message" placeholder="Type a message...">
-            <input type="file" name="image" id="image">
+            <div class="row mb-3">
+                <label for="image" class="col-md-4 col-form-label text-md-end">Add Picture (Optional)</label>
+                <div class="col-md-6">
+                    <input type="file" class="form-control" id="image" name="image"
+                        placeholder="Choose your profile image">
+                </div>
+            </div>
             <button type="submit" id="send-message">@lang('index_chat.send')</button>
         </form>
     </div>

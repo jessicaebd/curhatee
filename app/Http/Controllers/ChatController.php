@@ -13,18 +13,20 @@ use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
-    private function setLang() {
-        if(session()->has('locale')) {
+    private function setLang()
+    {
+        if (session()->has('locale')) {
             app()->setLocale(session()->get('locale'));
         } else {
             app()->setLocale('en');
         }
     }
 
-    public function index($transactionId)
+    public function index($id)
     {
         $this->setLang();
-        $transaction = Transaction::find($transactionId);
+
+        $transaction = Transaction::find($id);  
 
         if (Auth::guard('webpsychologist')->user()) {
             $data = [
@@ -44,8 +46,10 @@ class ChatController extends Controller
         return view('chat.index', $data);
     }
 
-    public function store(Request $request, $transactionId)
+    public function store(Request $request, $id)
     {
+        $transaction_id = $id;
+
         if (!$request->hasFile('image')) {
             if ($request->message == '') {
                 return redirect()->back()->with('status', 'Please type message or upload image before sending');
@@ -57,7 +61,7 @@ class ChatController extends Controller
         ]);
 
         $chat = new Chat();
-        $chat->transaction_id = $transactionId;
+        $chat->transaction_id = $transaction_id;
 
         if (Auth::guard('webpsychologist')->user()) {
             $chat->psychologist_id = Auth::guard('webpsychologist')->user()->id;
@@ -67,24 +71,22 @@ class ChatController extends Controller
 
         $chat->message = $request->message;
         if ($request->hasFile('image')) {
-            $extImage = $request->image->getClientOriginalExtension();
-            $nameImage = "realEstate" . time() . "." . $extImage;
-            $request->image->storeAs('public/images/chat', $nameImage);
-            $chat->image = $nameImage;
+            $ext_image = $request->image->getClientOriginalExtension();
+            $name_image = "chat" . time() . "." . $ext_image;
+            $request->image->storeAs('public/images/chat', $name_image);
+            $chat->image = $name_image;
         }
         $chat->sent_at = Carbon::now();
         $chat->save();
 
-        if (Auth::guard('webpsychologist')->user()) {
-            return redirect()->back();
-        } else if (auth()->user()) {
-            return redirect()->back();
-        }
+        return redirect()->back();
     }
 
-    public function showMessage($transactionId)
+    public function showMessage($id)
     {
-        $transaction = Transaction::find($transactionId);
+        $this->setLang();
+        
+        $transaction = Transaction::find($id);
 
         if (Auth::guard('webpsychologist')->user()) {
             $data = [

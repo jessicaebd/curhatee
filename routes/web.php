@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\PsychologistController;
+use App\Http\Controllers\ForumController;
 use App\Http\Controllers\ChatController;
 
 /*
@@ -24,7 +25,7 @@ use App\Http\Controllers\ChatController;
 */
 
 // languange
-Route::get('/lang/{locale}', function($locale) {
+Route::get('/lang/{locale}', function ($locale) {
     session()->put('locale', $locale);
     return redirect()->back();
 });
@@ -53,7 +54,6 @@ Route::controller(PsychologistController::class)
 Route::controller(HomeController::class)
     ->group(function () {
         Route::get('/', 'index')->name('home');
-        // Route::get('/home', 'index')->name('home');
         Route::get('/article', 'article')->name('article');
         Route::get('/video', 'video')->name('video');
     });
@@ -91,7 +91,17 @@ Route::prefix('/chat-user')
         Route::get('/{transaction}/message', 'showMessage')->name('show_message');
     });
 
-//MASI GA AMAN. USER BISA GANTI KE -PSYCHO. DOKTER BISA LGS GATI CHAT-USER  
+//forum
+Route::prefix('/forum')
+    ->controller(ForumController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('forum_page');
+        Route::get('/add', 'create')->name('create_forum')->middleware('auth');
+        Route::post('/add', 'store')->name('store_forum')->middleware('auth');
+        Route::get('/{forum}', 'show')->name('show_detail_forum');
+        Route::post('/{forum}', 'storeReply')->name('store_reply_forum')->middleware('auth');
+    });
+
 
 // profiles
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');

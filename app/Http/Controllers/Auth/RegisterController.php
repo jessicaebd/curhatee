@@ -68,9 +68,9 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         if(!empty($data['image'])){
-            $moveImage = $data['image']->storeAs('public/users', $nameImage);
             $extImage = $data['image']->getClientOriginalExtension();
             $nameImage = "user-profile" . time() . "." . $extImage;
+            $moveImage = $data['image']->storeAs('public/users', $nameImage);
         }else{
             $nameImage = 'user-profile.jpg';
         }
