@@ -33,7 +33,7 @@
                             {{ $chat->psychologist->name }}
                         @endif
                         --
-                        {{ \Carbon\Carbon::parse($chat->time)->format('l, d F Y @ H:i') }}
+                        {{ \Carbon\Carbon::parse($chat->sent_at)->format('l, d F Y @ H:i') }}
                     </div>
                 </div>
                 <div class="message-body">
