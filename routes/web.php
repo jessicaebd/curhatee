@@ -73,6 +73,7 @@ Route::prefix('/chat-psychologist')
     ->group(function () {
         Route::get('/{transaction}', 'index')->name('chat_page_user');
         Route::post('/{transaction}', 'store')->name('store_chat_user');
+        Route::get('/{transaction}/message', 'showMessage')->name('show_message');
     });
 
 Route::prefix('/chat-user')
@@ -81,7 +82,10 @@ Route::prefix('/chat-user')
     ->group(function () {
         Route::get('/{transaction}', 'index')->name('chat_page_psychologist');
         Route::post('/{transaction}', 'store')->name('store_chat_psychologist');
+        Route::get('/{transaction}/message', 'showMessage')->name('show_message');
     });
+
+//MASI GA AMAN. USER BISA GANTI KE -PSYCHO. DOKTER BISA LGS GATI CHAT-USER  
 
 // profiles
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');

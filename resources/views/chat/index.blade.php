@@ -7,8 +7,8 @@
         .message-container {
             float: left;
             width: 1000px;
-            overflow-y: auto;
-            height: 500px;
+            overflow-y: scroll;
+            height: 700px;
             background-color: yellow;
         }
     </style>
@@ -22,31 +22,11 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-    <div class="message-container">
-        @foreach ($chats as $chat)
-            <div class="message">
-                <div class="message-header">
-                    <div class="message-header-left">
-                        @if ($chat->user_id != null)
-                            {{ $chat->user->name }}
-                        @elseif($chat->psychologist_id != null)
-                            {{ $chat->psychologist->name }}
-                        @endif
-                        --
-                        {{ \Carbon\Carbon::parse($chat->sent_at)->format('l, d F Y @ H:i') }}
-                    </div>
-                </div>
-                <div class="message-body">
-                    <p>{{ $chat->message }}</p>
-                </div>
-                @if ($chat->image != null)
-                    {{ $chat->image }}
-                    <img src="{{ asset('storage/images/chat/' . $chat->image) }}" alt="image">
-                @endif
-                <hr class="mt-3 mb-3" />
-            </div>
-        @endforeach
+
+    <div class="message-container" id="message-container">
+        @include('chat.message')
     </div>
+
     <div class="input-container">
         <form action="{{ route('store_chat_user', $transaction->id) }}" method="post" enctype="multipart/form-data">
             @csrf
@@ -61,4 +41,20 @@
             {{ $errors->first() }}
         </div>
     @endif
+@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function() {
+            setInterval(function() {
+                var page = window.location.href;
+                $.ajax({
+                    url: page + '/message',
+                    success: function(data) {
+                        $('#message-container').html(data);
+                    }
+                });
+            }, 500);
+        });
+    </script>
 @endsection

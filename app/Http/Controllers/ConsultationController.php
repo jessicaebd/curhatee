@@ -58,7 +58,7 @@ class ConsultationController extends Controller
             'payment_type' => 'required|exists:payment_types,id',
         ]);
 
- 
+
         // buat transaksi baru
         $transaction = new \App\Models\Transaction;
         $transaction->user_id = auth()->user()->id;
@@ -69,9 +69,9 @@ class ConsultationController extends Controller
         $psychologist = Psychologist::find($request->psychologist);
         $transaction->price = $psychologist->fee;
 
-        if($request->submit == 'online-consultation'){
+        if ($request->submit == 'online-consultation') {
             $transaction->consultation_type_id = ConsultationType::where('name', 'Online Consultation')->first()->id;
-        }else if($request->submit == 'offline-consultation'){
+        } else if ($request->submit == 'offline-consultation') {
             $transaction->consultation_type_id = ConsultationType::where('name', 'Offline Consultation')->first()->id;
         }
 

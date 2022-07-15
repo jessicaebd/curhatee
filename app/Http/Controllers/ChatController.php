@@ -31,7 +31,7 @@ class ChatController extends Controller
                 'view' => 'User',
             ];
         }
-        
+
         return view('chat.index', $data);
     }
 
@@ -71,5 +71,27 @@ class ChatController extends Controller
         } else if (auth()->user()) {
             return redirect()->back();
         }
+    }
+
+    public function showMessage($transactionId)
+    {
+        $transaction = Transaction::find($transactionId);
+
+        if (Auth::guard('webpsychologist')->user()) {
+            $data = [
+                'transaction' => $transaction,
+                'chats' => Chat::where('transaction_id', $transaction->id)->get(),
+                'psychologist' => Psychologist::find($transaction->psychologist_id),
+                'view' => 'Psychologist',
+            ];
+        } else if (auth()->user()) {
+            $data = [
+                'transaction' => $transaction,
+                'chats' => Chat::where('transaction_id', $transaction->id)->get(),
+                'view' => 'User',
+            ];
+        }
+
+        return view('chat.message', $data)->render();
     }
 }
