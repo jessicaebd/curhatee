@@ -28,7 +28,7 @@
                     <div class="card home-menu" style="width: 18rem;">
                         <img src="{{ asset('storage/images/menu/forum.png') }}" class="card-img-top">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Forum</h5>
+                            <h5 class="card-title text-center">@lang('home.forum')</h5>
                         </div>
                     </div>
                 </a>
@@ -39,7 +39,7 @@
                     <div class="card home-menu" style="width: 18rem;">
                         <img src="{{ asset('storage/images/menu/diary.png') }}" class="card-img-top">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Diary</h5>
+                            <h5 class="card-title text-center">@lang('home.diary')</h5>
                         </div>
                     </div>
                 </a>
@@ -50,7 +50,7 @@
                     <div class="card home-menu" style="width: 18rem;">
                         <img src="{{ asset('storage/images/menu/podcast.png') }}" class="card-img-top">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Podcast</h5>
+                            <h5 class="card-title text-center">@lang('home.podcast')</h5>
                         </div>
                     </div>
                 </a>
@@ -66,7 +66,7 @@
                     <button class="btn btn-light text-primary shadow-sm btn-block rounded-pill" type="button"
                         data-bs-toggle="collapse" data-bs-target="#filter-article" aria-expanded="false"
                         aria-controls="filter-article" style="width: 100%">
-                        <b>Article</b>
+                        <b>@lang('home.article')</b>
                     </button>
                 </div>
                 <div class="" style="width: 20rem;">
