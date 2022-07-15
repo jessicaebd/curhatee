@@ -104,8 +104,8 @@
                             <div class="dropdown ms-4 my-auto">
                                 <a class="dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    <img src="{{ asset('storage/users/' . Auth::user()->image) }}" alt="Profile Picture"
-                                        class="rounded-circle" style="height: 2.3rem; width: 2.3rem;">
+                                    <img src="{{ asset('storage/images/users/' . Auth::user()->image) }}"
+                                        alt="Profile Picture" class="rounded-circle" style="height: 2.3rem; width: 2.3rem;">
                                     {{-- <span class="fw-bold" style="color: #2934D0;">{{ Auth::user()->name }}</span> --}}
                                 </a>
 

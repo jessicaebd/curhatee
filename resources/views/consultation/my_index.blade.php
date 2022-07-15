@@ -10,30 +10,28 @@
                 <div class="row">
                     @foreach ($transactions as $transaction)
                         <div class="col-md-6">
-                            <a href="/consultation/{{ $transaction->id }}">
-                                <div class="card mb-3">
-                                    <div class="card-body">
-                                        <p class="card-text">{{ $transaction->schedule->psychologist->name }}</p>
-                                        <p class="card-text">
-                                            {{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y @ H:i') }}
-                                        </p>
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <p class="card-text">{{ $transaction->schedule->psychologist->name }}</p>
+                                    <p class="card-text">
+                                        {{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y @ H:i') }}
+                                    </p>
 
-                                        <p class="card-text">Status: {{ $transaction->status }}</p>
+                                    <p class="card-text">Status: {{ $transaction->status }}</p>
 
-                                        @if ($transaction->consultation_type_id == $online_consultation_id)
-                                            <a href="">
-                                                <button type="button" class="btn btn-primary">Chat Online</button>
-                                            </a>
-                                        @elseif($transaction->consultation_type_id == $offline_consultation_id)
-                                            <a href="">
-                                                <button type="button" class="btn btn-info">Book Appointment</button>
-                                            </a>
-                                        @endif
+                                    @if ($transaction->consultation_type_id == $online_consultation_id)
+                                        <a href="{{ route('chat_page_user', $transaction->id) }}">
+                                            <button type="button" class="btn btn-primary">Chat Online</button>
+                                        </a>
+                                    @elseif($transaction->consultation_type_id == $offline_consultation_id)
+                                        <a href="/consultation/{{ $transaction->id }}">
+                                            <button type="button" class="btn btn-info">See Appointment</button>
+                                        </a>
+                                    @endif
 
 
-                                    </div>
                                 </div>
-                            </a>
+                            </div>
                         </div>
                     @endforeach
                 </div>

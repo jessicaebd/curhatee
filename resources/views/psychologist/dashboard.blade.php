@@ -39,6 +39,7 @@
                                     <tr>
                                         <th>Consultation</th>
                                         <th>Patient</th>
+                                        <th class="action-header">Consultation Type</th>
                                         <th>Price</th>
                                         <th class="status-header">Status</th>
                                         <th class="action-header">Action</th>
@@ -51,7 +52,8 @@
                                             <td>
                                                 <div
                                                     class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
-                                                    <img class="transaction-img" src="./assets/img/home/cover.png"
+                                                    <img class="transaction-img"
+                                                        src="{{ asset('storage/images/users/' . $transaction->user->image) }}"
                                                         alt="">
                                                     <div
                                                         class="d-flex flex-column justify-content-center align-items-start mt-2">
@@ -68,6 +70,9 @@
                                                 {{ $transaction->user->name }}
                                             </td>
                                             <td>
+                                                {{ $transaction->consultationType->name }}
+                                            </td>
+                                            <td>
                                                 Rp. {{ number_format($transaction->price, 0, ',', '.') }}
                                             </td>
                                             <td class="status">
@@ -77,8 +82,13 @@
                                                 </span>
                                             </td>
                                             <td class="action">
-                                                <a href="/psychologist/transactions/{{ $transaction->id }}"
-                                                    class="btn-transaction mx-auto">Details</a>
+                                                @if ($transaction->consultation_type_id == $online_consultation_id)
+                                                    <a href="{{ route('chat_page_psychologist', $transaction->id) }}"
+                                                        class="btn-transaction mx-auto">Chat</a>
+                                                @elseif($transaction->consultation_type_id == $offline_consultation_id)
+                                                    <a href="/psychologist/transactions/{{ $transaction->id }}"
+                                                        class="btn-transaction mx-auto">Details</a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
@@ -91,12 +101,13 @@
 
                                                 <div
                                                     class="d-flex flex-column justify-content-center align-items-start mt-2">
-                                                    <h5 class="transaction-game">Mobile Legen...</h5>
-                                                    <h5 class="transaction-type">Desktop</h5>
+                                                    <h5 class="transaction-game">Hari Tanggal</h5>
+                                                    <h5 class="transaction-type">Jam</h5>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>200 Gold</td>
+                                        <td>NANTI HAPUS</td>
+                                        <td>Offline Consultation</td>
                                         <td>Rp 290.000</td>
                                         <td class="status">
                                             <span
@@ -104,9 +115,7 @@
                                         </td>
                                         <td class="action"><button class="btn-transaction mx-auto">Details</button></td>
                                     </tr>
-
                                 </tbody>
-
                             </table>
                         </div>
                     </div>

@@ -9,7 +9,8 @@
         <div class="row d-flex justify-content-center">
             {{-- psychologist details --}}
             <div class="col-md-4">
-                <img src="{{ asset('storage/psychologists/' . $psychologist->image) }}" style="width: 90%; height: 250px">
+                <img src="{{ asset('storage/images/psychologists/' . $psychologist->image) }}"
+                    style="width: 90%; height: 250px">
 
                 <h5 class="card-title mt-3 fw-bold">{{ $psychologist->name }}</h5>
                 <h5 class="card-title">
