@@ -88,15 +88,16 @@
 
             <div class="d-flex align-items-center">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-
-
-                        <div class="d-flex nav-link">
-                            <a href="/lang/en">EN</a>|
-                            <a href="/lang/id">ID</a>
+                    <li class="nav-item me-3">
+                        <div class="d-flex">
+                            <?php
+                            $lang = App::getLocale();
+                            ?>
+                            <a class="nav-link {{ ($lang != null) & ($lang == 'en') ? 'active' : '' }}"
+                                href="/lang/en">EN</a>
+                            <a class="nav-link  {{ ($lang != null) & ($lang == 'id') ? 'active' : '' }}"
+                                href="/lang/id">ID</a>
                         </div>
-
-
                     </li>
                     @guest
                         @if (Route::has('login'))
