@@ -74,4 +74,9 @@ class Psychologist extends Authenticatable
     {
         return $this->hasMany(LikedForum::class);
     }
+
+    public function likedReplyForum()
+    {
+        return $this->hasMany(LikedReplyForum::class);
+    }
 }

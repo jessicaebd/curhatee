@@ -8,8 +8,9 @@
 
     {{ $forum->title }} --- {{ \Carbon\Carbon::parse($forum->created_at)->format('l, d F Y @ H:i') }} ---
     <form action="{{ route('like_forum', $forum->id) }}" method="post">
-        <button type="button" class="btn btn-outline-danger"><i class="bi bi-heart"> {{ $forum->likes }}
-                likes</i></button>
+        @csrf
+        <button type="submit" class="btn btn-outline-danger"><i class="bi bi-heart"></i> {{ $forum->likes }}
+            likes</button>
     </form>
     <br>
     @if ($forum->user_id != null)
@@ -27,13 +28,15 @@
     <br>
     <hr class="mt-3 mb-3" />
 
-    <h5>Reply Forum</h5>
+    <h5>Reply Forum || TOLONG DIBUAT SCROLL CONTENT KEK DI MESSAGE CHAT. biar input form reply ny ga jauh bgt scroll ke
+        bawah</h5>
     <hr class="mt-3 mb-3" />
     @foreach ($reply_forums as $reply_forum)
         {{ \Carbon\Carbon::parse($reply_forum->created_at)->format('l, d F Y @ H:i') }} ---
-        <form action="{{ route('like_forum', $forum->id) }}" method="post">
-            <button type="button" class="btn btn-outline-danger"><i class="bi bi-heart"> {{ $reply_forum->likes }}
-                    likes</i></button>
+        <form action="{{ route('like_reply_forum', $reply_forum->id) }}" method="post">
+            @csrf
+            <button type="submit" class="btn btn-outline-danger"><i class="bi bi-heart"></i> {{ $reply_forum->likes }}
+                likes</button>
         </form>
         <br>
         @if ($reply_forum->user_id != null)
@@ -54,7 +57,7 @@
 
     <form action="{{ route('store_reply_forum', $forum->id) }}" method="post" enctype="multipart/form-data">
         @csrf
-        <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3"
+        <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3"
             placeholder="Type a message..."></textarea>
         <div class="row mb-3">
             <label for="image" class="col-md-4 col-form-label text-md-end">Add Picture (Optional)</label>
