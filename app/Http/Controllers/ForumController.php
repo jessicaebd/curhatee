@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use App\Models\User;
 use App\Models\Chat;
+use App\Models\User;
 use App\Models\Forum;
-use App\Models\ReplyForum;
+use App\Models\Review;
 use App\Models\LikedForum;
-use App\Models\LikedReplyForum;
+use App\Models\ReplyForum;
 use App\Models\Psychologist;
 use Illuminate\Http\Request;
+use App\Models\LikedReplyForum;
 use Illuminate\Support\Facades\Auth;
 
 class ForumController extends Controller
@@ -35,6 +36,21 @@ class ForumController extends Controller
             $view = 'Psychologist';
         }
 
+        foreach ($forums as $forum) {
+            $forum->is_forum_liked = false;
+            if (Auth::guard('webpsychologist')->user()) {
+                $forum->is_forum_liked = LikedForum::where('forum_id', $forum->id)->where('psychologist_id', Auth::guard('webpsychologist')->user()->id)->first();
+            } else if (auth()->user()) {
+            $forum->is_forum_liked = LikedForum::where('forum_id', $forum->id)->where('user_id', auth()->user()->id)->first();
+            }
+            
+            if($forum->is_forum_liked) {
+                $forum->is_forum_liked = true;
+            } else {
+                $forum->is_forum_liked = false;
+            }
+        }
+        
         $data = [
             'forums' => $forums,
             'view' => $view,

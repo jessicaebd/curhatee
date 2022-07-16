@@ -26,7 +26,14 @@
 
     @foreach ($forums as $forum)
         {{ $forum->title }} --- {{ \Carbon\Carbon::parse($forum->created_at)->format('l, d F Y @ H:i') }} ---
-        <i class="bi bi-heart"> {{ $forum->likes }}likes</i>
+        {{-- like forum button --}}
+        <form action="{{ route('like_forum', $forum->id) }}" method="post">
+            @csrf
+            <button type="submit" class="btn {{ $forum->is_forum_liked ? 'btn-danger' : 'btn-outline-danger' }}"><i
+                    class="bi bi-heart"></i>
+                {{ $forum->likes }}
+                likes</button>
+        </form>
 
         <br>
         @if ($forum->user_id != null)

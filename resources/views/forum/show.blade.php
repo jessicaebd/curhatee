@@ -7,13 +7,13 @@
     <br>
 
     {{ $forum->title }} --- {{ \Carbon\Carbon::parse($forum->created_at)->format('l, d F Y @ H:i') }} ---
+    {{-- like forum button --}}
     <form action="{{ route('like_forum', $forum->id) }}" method="post">
         @csrf
         <button type="submit" class="btn {{ $is_forum_liked ? 'btn-danger' : 'btn-outline-danger' }}"><i
                 class="bi bi-heart"></i>
             {{ $forum->likes }}
             likes</button>
-
     </form>
     <br>
     @if ($forum->user_id != null)
@@ -31,14 +31,16 @@
     <br>
     <hr class="mt-3 mb-3" />
 
+
+
     <h5>Reply Forum || TOLONG DIBUAT SCROLL CONTENT KEK DI MESSAGE CHAT. biar input form reply ny ga jauh bgt scroll ke
         bawah</h5>
     <hr class="mt-3 mb-3" />
     @foreach ($reply_forums as $reply_forum)
         {{ \Carbon\Carbon::parse($reply_forum->created_at)->format('l, d F Y @ H:i') }} ---
+        {{-- like reply forum button --}}
         <form action="{{ route('like_reply_forum', $reply_forum->id) }}" method="post">
             @csrf
-            {{-- @dd($reply_forum->is_reply_forum_liked) --}}
             <button type="submit"
                 class="btn {{ $reply_forum->is_reply_forum_liked ? 'btn-danger' : 'btn-outline-danger' }}"><i
                     class="bi bi-heart"></i> {{ $reply_forum->likes }}
@@ -61,6 +63,7 @@
         <hr class="mt-3 mb-3" />
     @endforeach
 
+    {{-- input reply forum form --}}
     <form action="{{ route('store_reply_forum', $forum->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3"

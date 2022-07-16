@@ -71,7 +71,7 @@ Route::prefix('/consultation')
         Route::put('/{transaction}', 'update')->middleware('auth');
     });
 
-// chat
+// chat for user
 Route::prefix('/chat-psychologist')
     ->controller(ChatController::class)
     ->middleware('auth')
@@ -81,6 +81,7 @@ Route::prefix('/chat-psychologist')
         Route::get('/{transaction}/message', 'showMessage')->name('show_message');
     });
 
+// chat for psychologist
 Route::prefix('/chat-user')
     ->controller(ChatController::class)
     ->middleware('auth:webpsychologist')
@@ -90,7 +91,7 @@ Route::prefix('/chat-user')
         Route::get('/{transaction}/message', 'showMessage')->name('show_message');
     });
 
-//forum
+// forum
 Route::prefix('/forum')
     ->controller(ForumController::class)
     ->group(function () {
@@ -103,6 +104,13 @@ Route::prefix('/forum')
         Route::post('/{forum}', 'storeReply')->name('store_reply_forum')->middleware('auth');
     });
 
+// review
+Route::prefix('/review')
+    ->controller(ReviewController::class)
+    ->group(function () {
+        Route::get('/{psychologist}', 'show')->name('show_review');
+        Route::post('/{psychologist}', 'store')->name('store_review')->middleware('auth');
+    });
 
 // profiles
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
