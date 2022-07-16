@@ -106,14 +106,25 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary" name="submit" value="online-consultation">@lang('show_consultation.chat_now')</button>
-                        <button type="submit" class="btn btn-primary" name="submit" value="offline-consultation">@lang('show_consultation.book_appoinment')</button>
+                        <button type="submit" class="btn btn-primary" name="submit"
+                            value="online-consultation">@lang('show_consultation.chat_now')</button>
+                        <button type="submit" class="btn btn-primary" name="submit"
+                            value="offline-consultation">@lang('show_consultation.book_appoinment')</button>
                     </form>
                 @else
                     {{-- CHOOSE DAY --}}
                     <label for="schedule" class="form-label">@lang('show_consultation.choose_a_day')</label>
 
-                    @for ($i = 0; $i < 7; $i++)
+                    <div class="mb-2">
+                        <a
+                            href="{{ route('psychologist_detail', ['psychologist' => $psychologist->id, 'date' => $today->toDateString()]) }}">
+                            <div class="card p-2">
+                                {{ $today->format('l, d F Y') }}
+                            </div>
+                        </a>
+                    </div>
+
+                    @for ($i = 0; $i < 6; $i++)
                         <div class="mb-2">
                             <a
                                 href="{{ route('psychologist_detail', ['psychologist' => $psychologist->id, 'date' => $today->addDays(1)->toDateString()]) }}">
