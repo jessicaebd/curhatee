@@ -26,6 +26,35 @@
             </div>
         </div>
     </header>
+@elseif (!Auth::check())
+    <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+        <div class="container d-flex align-items-center justify-content-between">
+            <div class="logo">
+                <a href="{{ url('/') }}">
+                    <img src="{{ asset('storage/images/logo-only.png') }}" alt="" class="img-fluid">
+                    <span class="fw-bold fs-5 ms-2 text-white">Curhatee</span>
+                </a>
+            </div>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                    <li><a class="nav-link scrollto" href="#about">About</a></li>
+                    <li class="dropdown"><a href="#features"><span>Features</span> <i
+                                class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="/consultation/psychologists">Consultation</a></li>
+                            <li><a href="/forum">Forum</a></li>
+                            <li><a href="/article">Article</a></li>
+
+                        </ul>
+                    </li>
+                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+        </div>
+    </header>
 @else
     <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex align-items-center">
         <div class="container-fluid">
@@ -60,6 +89,8 @@
             <div class="d-flex align-items-center">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
+
+
                         <div class="d-flex nav-link">
                             <a href="/lang/en">EN</a>|
                             <a href="/lang/id">ID</a>
@@ -113,7 +144,8 @@
                                 <a class="dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     <img src="{{ asset('storage/images/users/' . Auth::user()->image) }}"
-                                        alt="Profile Picture" class="rounded-circle" style="height: 2.3rem; width: 2.3rem;">
+                                        alt="Profile Picture" class="rounded-circle"
+                                        style="height: 2.3rem; width: 2.3rem;">
                                     {{-- <span class="fw-bold" style="color: #2934D0;">{{ Auth::user()->name }}</span> --}}
                                 </a>
 
