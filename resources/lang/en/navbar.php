@@ -1,6 +1,6 @@
 <?php
     return [
-        'consultation' => 'Dashboard',
+        'consultation' => 'Consultation',
         'forum' => 'Forum',
         'article' => 'Article',
         'my_profile' => 'Profil Saya',
