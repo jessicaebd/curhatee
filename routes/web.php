@@ -98,6 +98,7 @@ Route::prefix('/forum')
         Route::get('/', 'index')->name('forum_page');
         Route::get('/add', 'create')->name('create_forum')->middleware('auth');
         Route::post('/add', 'store')->name('store_forum')->middleware('auth');
+        Route::post('/like/{forum}', 'like')->name('like_forum')->middleware('auth');
         Route::get('/{forum}', 'show')->name('show_detail_forum');
         Route::post('/{forum}', 'storeReply')->name('store_reply_forum')->middleware('auth');
     });

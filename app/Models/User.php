@@ -7,6 +7,7 @@ use App\Models\Diary;
 use App\Models\Forum;
 use App\Models\Chat;
 use App\Models\ReplyForum;
+use App\Models\LikedForum;
 use App\Models\Transaction;
 use App\Models\Subscription;
 use App\Models\SubscriptionType;
@@ -87,5 +88,10 @@ class User extends Authenticatable
     public function chat()
     {
         return $this->hasMany(Chat::class);
+    }
+
+    public function likedForum()
+    {
+        return $this->hasMany(LikedForum::class);
     }
 }

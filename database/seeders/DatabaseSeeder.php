@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             PodcastSeeder::class,
             ReviewSeeder::class,
             ChatSeeder::class,  
+            LikedForumSeeder::class,  
         ]);
     }
 }

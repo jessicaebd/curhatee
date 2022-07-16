@@ -7,7 +7,10 @@
     <br>
 
     {{ $forum->title }} --- {{ \Carbon\Carbon::parse($forum->created_at)->format('l, d F Y @ H:i') }} ---
-    {{ $forum->likes }} likes
+    <form action="{{ route('like_forum', $forum->id) }}" method="post">
+        <button type="button" class="btn btn-outline-danger"><i class="bi bi-heart"> {{ $forum->likes }}
+                likes</i></button>
+    </form>
     <br>
     @if ($forum->user_id != null)
         {{ $forum->user->name }}
@@ -28,7 +31,10 @@
     <hr class="mt-3 mb-3" />
     @foreach ($reply_forums as $reply_forum)
         {{ \Carbon\Carbon::parse($reply_forum->created_at)->format('l, d F Y @ H:i') }} ---
-        {{ $reply_forum->likes }} likes
+        <form action="{{ route('like_forum', $forum->id) }}" method="post">
+            <button type="button" class="btn btn-outline-danger"><i class="bi bi-heart"> {{ $reply_forum->likes }}
+                    likes</i></button>
+        </form>
         <br>
         @if ($reply_forum->user_id != null)
             {{ $reply_forum->user->name }}

@@ -10,6 +10,7 @@ use App\Models\Transaction;
 use App\Models\Chat;
 use App\Models\Schedule;
 use App\Models\Forum;
+use App\Models\LikedForum;
 use App\Models\ReplyForum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -67,5 +68,10 @@ class Psychologist extends Authenticatable
     public function hospital()
     {
         return $this->belongsTo(Hospital::class, 'hospital_id');
+    }
+
+    public function likedForum()
+    {
+        return $this->hasMany(LikedForum::class);
     }
 }

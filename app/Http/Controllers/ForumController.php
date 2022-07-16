@@ -108,7 +108,7 @@ class ForumController extends Controller
         return view('forum.show', $data);
     }
 
-    public function storeReply($id){
+    public function storeReply(Request $request, $id){
         $forum_id = $id;
 
         $request->validate([
@@ -136,5 +136,9 @@ class ForumController extends Controller
         $reply_forum->save();
 
         return redirect()->back();
+    }
+    
+    public function like($id){
+        
     }
 }
