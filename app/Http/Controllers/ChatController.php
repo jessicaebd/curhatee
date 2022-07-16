@@ -76,7 +76,7 @@ class ChatController extends Controller
             $request->image->storeAs('public/images/chat', $name_image);
             $chat->image = $name_image;
         }
-        $chat->sent_at = Carbon::now();
+        $chat->sent_at = Carbon::now('Asia/Bangkok');
         $chat->save();
 
         return redirect()->back();

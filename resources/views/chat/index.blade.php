@@ -28,7 +28,11 @@
     </div>
 
     <div class="input-container">
-        <form action="{{ route('store_chat_user', $transaction->id) }}" method="post" enctype="multipart/form-data">
+        <form
+            action="{{ Auth::guard('webpsychologist')->user() != null
+                ? route('store_chat_psychologist', $transaction->id)
+                : route('store_chat_user', $transaction->id) }}"
+            method="post" enctype="multipart/form-data">
             @csrf
             <input type="text" name="message" id="message" placeholder="Type a message...">
             <div class="row mb-3">
