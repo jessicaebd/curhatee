@@ -53,7 +53,7 @@ Route::controller(PsychologistController::class)
 Route::controller(HomeController::class)
     ->group(function () {
         Route::get('/', 'index')->name('home');
-        // Route::get('/home', 'index')->name('home');
+        Route::get('/home', 'index')->name('home');
         Route::get('/article', 'article')->name('article');
         Route::get('/video', 'video')->name('video');
     });
