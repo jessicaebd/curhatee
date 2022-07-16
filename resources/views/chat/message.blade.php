@@ -1,5 +1,5 @@
 @foreach ($chats as $chat)
-    <div class="message">
+    <div class="message px-3 pt-3">
         <div class="message-header">
             <div class="message-header-left">
                 @if ($chat->user_id != null)
