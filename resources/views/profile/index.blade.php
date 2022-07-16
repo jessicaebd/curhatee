@@ -27,7 +27,9 @@
 
                             <div class="d-flex justify-content-center mb-2">
                                 @if ($user->subscription_status == 'valid')
-                                    <p class="text-muted mb-4">@lang('index_profile.expiry_date'){{ $user->expiry_date }}</p>
+                                    <p class="text-muted mb-4">
+                                        @lang('index_profile.expiry_date'){{ \Carbon\Carbon::parse($user->expiry_date)->format('d F Y') }}
+                                    </p>
                                 @endif
                             </div>
                         </div>
@@ -103,7 +105,8 @@
                                     <p class="mb-0">@lang('index_profile.exp_date')</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">{{ $user->expiry_date }}</p>
+                                    <p class="text-muted mb-0">
+                                        {{ \Carbon\Carbon::parse($user->expiry_date)->format('d F Y') }}</p>
                                 </div>
                             </div>
                         </div>

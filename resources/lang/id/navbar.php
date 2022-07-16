@@ -1,8 +1,8 @@
 <?php
     return [
-        'dashboard' => 'Dasbor',
-        'team' => 'Tim',
-        'projects' => 'Projek',
+        'consultation' => 'Konsultasi',
+        'forum' => 'Forum',
+        'article' => 'Artikel',
         'my_profile' => 'Profil Saya',
         'my_consultation' => 'Konsultasi Saya',
         'settings' => 'Pengaturan',

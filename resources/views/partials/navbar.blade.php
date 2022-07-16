@@ -73,13 +73,13 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">@lang('navbar.dashboard')</a>
+                        <a class="nav-link" href="/consultation/psychologists">@lang('navbar.consultation')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">@lang('navbar.team')</a>
+                        <a class="nav-link" href="/forum">@lang('navbar.forum')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">@lang('navbar.projects')</a>
+                        <a class="nav-link" href="/article">@lang('navbar.article')</a>
                     </li>
                 </ul>
             </div>
