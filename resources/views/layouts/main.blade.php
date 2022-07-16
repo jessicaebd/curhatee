@@ -18,7 +18,8 @@
 
     @yield('css')
 
-    {{-- Font Awesome --}}
+    {{-- jQuery --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <title>Curhatee | @yield('title')</title>
 </head>
@@ -37,6 +38,8 @@
 
     {{-- Custom JS --}}
     <script src="{{ asset('js/script.js') }}"></script>
+
+    @yield('js')
 </body>
 
 </html>

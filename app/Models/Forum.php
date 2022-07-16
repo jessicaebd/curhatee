@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\User;
 use App\Traits\Uuid;
 use App\Models\ReplyForum;
+use App\Models\Psychologist;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -27,5 +28,8 @@ class Forum extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-   
+    public function psychologist()
+    {
+        return $this->belongsTo(Psychologist::class, 'user_id');
+    }
 }

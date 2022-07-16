@@ -130,6 +130,8 @@
     {{-- Custom JS --}}
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/admin/dashboard.js') }}"></script>
+
+    @yield('js')
 </body>
 
 </html>

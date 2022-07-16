@@ -15,9 +15,12 @@ class CreateForumsTable extends Migration
     {
         Schema::create('forums', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('user_id')->references('id')->on('users')->constrained();
+            $table->foreignUuid('user_id')->nullable()->references('id')->on('users')->constrained();
+            $table->foreignUuid('psychologist_id')->nullable()->references('id')->on('psychologists')->constrained();
+            $table->text('title');
             $table->text('content');
-            $table->integer('like');
+            $table->string('image')->nullable();
+            $table->integer('likes')->default(0);
             $table->timestamps();
         });
     }
