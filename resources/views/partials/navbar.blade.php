@@ -196,13 +196,13 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">@lang('navbar.dashboard')</a>
+                        <a class="nav-link" href="/consultation/psychologists">@lang('navbar.consultation')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">@lang('navbar.team')</a>
+                        <a class="nav-link" href="/forum">@lang('navbar.forum')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">@lang('navbar.projects')</a>
+                        <a class="nav-link" href="/article">@lang('navbar.article')</a>
                     </li>
                 </ul>
             </div>
@@ -211,15 +211,16 @@
 
             <div class="d-flex align-items-center">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-
-
-                        <div class="d-flex nav-link">
-                            <a href="/lang/en">EN</a>|
-                            <a href="/lang/id">ID</a>
+                    <li class="nav-item me-3">
+                        <div class="d-flex">
+                            <?php
+                            $lang = App::getLocale();
+                            ?>
+                            <a class="nav-link {{ ($lang != null) & ($lang == 'en') ? 'active' : '' }}"
+                                href="/lang/en">EN</a>
+                            <a class="nav-link  {{ ($lang != null) & ($lang == 'id') ? 'active' : '' }}"
+                                href="/lang/id">ID</a>
                         </div>
-
-
                     </li>
                     @guest
                         @if (Route::has('login'))

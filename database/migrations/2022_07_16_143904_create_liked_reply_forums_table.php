@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLikedForumsTable extends Migration
+class CreateLikedReplyForumsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateLikedForumsTable extends Migration
      */
     public function up()
     {
-        Schema::create('liked_forums', function (Blueprint $table) {
+        Schema::create('liked_reply_forums', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('forum_id')->nullable()->references('id')->on('forums')->constrained();
+            $table->foreignUuid('reply_forum_id')->nullable()->references('id')->on('reply_forums')->constrained();
             $table->foreignUuid('user_id')->nullable()->references('id')->on('users')->constrained();
             $table->foreignUuid('psychologist_id')->nullable()->references('id')->on('psychologists')->constrained();
             $table->timestamps();
@@ -29,6 +29,6 @@ class CreateLikedForumsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('liked_forums');
+        Schema::dropIfExists('like_reply_forums');
     }
 }

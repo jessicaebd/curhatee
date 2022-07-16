@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Traits\Uuid;
 use App\Models\Forum;
 use App\Models\ReplyForum;
-use App\Models\LikedForum;
+use App\Models\LikedReplyForum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -34,8 +34,8 @@ class ReplyForum extends Model
         return $this->belongsTo(Forum::class, 'forum_id');
     }
 
-    public function likedForum()
+    public function likedReplyForum()
     {
-        return $this->hasMany(LikedForum::class);
+        return $this->hasMany(LikedReplyForum::class);
     }
 }

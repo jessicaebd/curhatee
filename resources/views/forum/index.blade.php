@@ -2,6 +2,18 @@
 
 @section('title', 'Forum')
 
+@section('css')
+    <style>
+        .message-container {
+            float: left;
+            width: 1000px;
+            overflow-y: scroll;
+            height: 700px;
+            background-color: yellow;
+        }
+    </style>
+@endsection
+
 @section('content')
     <h1>Forum</h1>
     <br>
@@ -16,23 +28,23 @@
         {{ $forum->title }} --- {{ \Carbon\Carbon::parse($forum->created_at)->format('l, d F Y @ H:i') }} ---
         <i class="bi bi-heart"> {{ $forum->likes }}likes</i>
 
-            <br>
-            @if ($forum->user_id != null)
-                {{ $forum->user->name }}
-            @elseif($forum->psychologist_id != null)
-                {{ $forum->psychologist->name }}
-            @endif
-            <br>
-            @if ($forum->image != null)
-                <img src="{{ asset('storage/images/forum/' . $forum->image) }}" alt="image"
-                    style="width: 80px; height: 80px; overflow: hidden;">
-            @endif
-            <br>
-            {{ Str::limit($forum->content, 200, $end = '...') }}
-            <br>
-            <a href="{{ route('show_detail_forum', $forum->id) }}"><button type="submit"
-                    class="btn btn-primary ms-3 mt-4 shadow mb-1">See Details</button></a>
-            <hr class="mt-3 mb-3" />
+        <br>
+        @if ($forum->user_id != null)
+            {{ $forum->user->name }}
+        @elseif($forum->psychologist_id != null)
+            {{ $forum->psychologist->name }}
+        @endif
+        <br>
+        @if ($forum->image != null)
+            <img src="{{ asset('storage/images/forum/' . $forum->image) }}" alt="image"
+                style="width: 80px; height: 80px; overflow: hidden;">
+        @endif
+        <br>
+        {{ Str::limit($forum->content, 200, $end = '...') }}
+        <br>
+        <a href="{{ route('show_detail_forum', $forum->id) }}"><button type="submit"
+                class="btn btn-primary ms-3 mt-4 shadow mb-1">See Details</button></a>
+        <hr class="mt-3 mb-3" />
     @endforeach
 
     {{-- Error Message --}}

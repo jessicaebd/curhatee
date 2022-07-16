@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Chat;
 use App\Models\Forum;
 use App\Models\ReplyForum;
+use App\Models\LikedForum;
+use App\Models\LikedReplyForum;
 use App\Models\Psychologist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,7 +43,8 @@ class ForumController extends Controller
         return view('forum.index', $data);
     }
 
-    public function create(){
+    public function create()
+    {
         $this->setLang();
 
         $view = 'User';
@@ -82,9 +85,11 @@ class ForumController extends Controller
             $forum->image = $name_image;
         }
 
+        $forum->created_at = Carbon::now('Asia/Bangkok');
+
         $forum->save();
 
-        return redirect()->back();
+        return redirect()->route('forum_page');
     }
 
     public function show($id)
@@ -108,7 +113,8 @@ class ForumController extends Controller
         return view('forum.show', $data);
     }
 
-    public function storeReply(Request $request, $id){
+    public function storeReply(Request $request, $id)
+    {
         $forum_id = $id;
 
         $request->validate([
@@ -133,12 +139,80 @@ class ForumController extends Controller
             $reply_forum->image = $name_image;
         }
 
+        $reply_forum->created_at = Carbon::now('Asia/Bangkok');
+
         $reply_forum->save();
 
         return redirect()->back();
     }
+
+    public function likeForum($id)
+    {
+        if (Auth::guard('webpsychologist')->user()) {
+            $person = Auth::guard('webpsychologist')->user();
+            $person_type = 'psychologist';
+        } else if (auth()->user()) {
+            $person = auth()->user();
+            $person_type = 'user';
+        }
+
+        $forum = Forum::find($id);
     
-    public function like($id){
-        
+        $is_liked = LikedForum::where('forum_id', $forum->id)->where($person_type . '_id', $person->id)->first();
+
+        if ($is_liked == null) {
+            $like = new LikedForum();
+            $like->forum_id = $id;
+            if ($person_type == 'psychologist') {
+                $like->psychologist_id = $person->id;
+            } else if ($person_type == 'user') {
+                $like->user_id = $person->id;
+            }
+            $like->save();
+
+            $forum->likes = $forum->likes + 1;
+            $forum->save();
+        } else {
+            $forum->likes = $forum->likes - 1;
+            $forum->save();
+            $is_liked->delete();
+        }
+
+        return redirect()->back();
+    }
+
+    public function likeReplyForum($id)
+    {
+        if (Auth::guard('webpsychologist')->user()) {
+            $person = Auth::guard('webpsychologist')->user();
+            $person_type = 'psychologist';
+        } else if (auth()->user()) {
+            $person = auth()->user();
+            $person_type = 'user';
+        }
+
+        $reply_forum = ReplyForum::find($id);
+    
+        $is_liked = LikedReplyForum::where('reply_forum_id', $reply_forum->id)->where($person_type . '_id', $person->id)->first();
+
+        if ($is_liked == null) {
+            $like = new LikedReplyForum();
+            $like->reply_forum_id = $id;
+            if ($person_type == 'psychologist') {
+                $like->psychologist_id = $person->id;
+            } else if ($person_type == 'user') {
+                $like->user_id = $person->id;
+            }
+            $like->save();
+
+            $reply_forum->likes = $reply_forum->likes + 1;
+            $reply_forum->save();
+        } else {
+            $reply_forum->likes = $reply_forum->likes - 1;
+            $reply_forum->save();
+            $is_liked->delete();
+        }
+
+        return redirect()->back();
     }
 }
