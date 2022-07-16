@@ -61,15 +61,14 @@ Route::controller(HomeController::class)
 // consultation
 Route::prefix('/consultation')
     ->controller(ConsultationController::class)
-    ->middleware('auth')
     ->group(function () {
         Route::get('/psychologists', 'index');
         Route::get('/psychologists/{psychologist}', 'show')->name('psychologist_detail');
-        Route::post('/psychologists/{psychologist}', 'store');
-        Route::get('/', 'my_index');
-        Route::get('/{transaction}', 'my_show');
-        Route::post('/{transaction}', 'my_store');
-        Route::put('/{transaction}', 'update');
+        Route::post('/psychologists/{psychologist}', 'store')->middleware('auth');
+        Route::get('/', 'my_index')->middleware('auth');
+        Route::get('/{transaction}', 'my_show')->middleware('auth');
+        Route::post('/{transaction}', 'my_store')->middleware('auth');
+        Route::put('/{transaction}', 'update')->middleware('auth');
     });
 
 // chat

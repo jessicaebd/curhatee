@@ -99,15 +99,42 @@ class ForumController extends Controller
         $view = 'User';
         $forum = Forum::find($id);
         $reply_forums = ReplyForum::where('forum_id', $id)->get();
+        $is_forum_liked = false;
 
         if (Auth::guard('webpsychologist')->user()) {
             $view = 'Psychologist';
+            $is_forum_liked = LikedForum::where('forum_id', $id)->where('psychologist_id', Auth::guard('webpsychologist')->user()->id)->first();
+        } else if (auth()->user()) {
+            $view = 'User';
+            $is_forum_liked = LikedForum::where('forum_id', $id)->where('user_id', auth()->user()->id)->first();
+        }
+
+        if($is_forum_liked) {
+            $is_forum_liked = true;
+        } else {
+            $is_forum_liked = false;
+        }
+
+        foreach($reply_forums as $reply_forum) {
+            $reply_forum->is_reply_forum_liked = false;
+            if (Auth::guard('webpsychologist')->user()) {
+                $reply_forum->is_reply_forum_liked = LikedReplyForum::where('reply_forum_id', $reply_forum->id)->where('psychologist_id', Auth::guard('webpsychologist')->user()->id)->first();
+            } else if (auth()->user()) {
+                $reply_forum->is_reply_forum_liked = LikedReplyForum::where('reply_forum_id', $reply_forum->id)->where('user_id', auth()->user()->id)->first();
+            }
+            
+            if($reply_forum->is_reply_forum_liked) {
+                $reply_forum->is_reply_forum_liked = true;
+            } else {
+                $reply_forum->is_reply_forum_liked = false;
+            }
         }
 
         $data = [
             'forum' => $forum,
             'reply_forums' => $reply_forums,
             'view' => $view,
+            'is_forum_liked' => $is_forum_liked,
         ];
 
         return view('forum.show', $data);
@@ -192,7 +219,7 @@ class ForumController extends Controller
         }
 
         $reply_forum = ReplyForum::find($id);
-    
+
         $is_liked = LikedReplyForum::where('reply_forum_id', $reply_forum->id)->where($person_type . '_id', $person->id)->first();
 
         if ($is_liked == null) {

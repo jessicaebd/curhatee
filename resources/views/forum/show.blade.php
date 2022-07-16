@@ -9,8 +9,11 @@
     {{ $forum->title }} --- {{ \Carbon\Carbon::parse($forum->created_at)->format('l, d F Y @ H:i') }} ---
     <form action="{{ route('like_forum', $forum->id) }}" method="post">
         @csrf
-        <button type="submit" class="btn btn-outline-danger"><i class="bi bi-heart"></i> {{ $forum->likes }}
+        <button type="submit" class="btn {{ $is_forum_liked ? 'btn-danger' : 'btn-outline-danger' }}"><i
+                class="bi bi-heart"></i>
+            {{ $forum->likes }}
             likes</button>
+
     </form>
     <br>
     @if ($forum->user_id != null)
@@ -35,7 +38,10 @@
         {{ \Carbon\Carbon::parse($reply_forum->created_at)->format('l, d F Y @ H:i') }} ---
         <form action="{{ route('like_reply_forum', $reply_forum->id) }}" method="post">
             @csrf
-            <button type="submit" class="btn btn-outline-danger"><i class="bi bi-heart"></i> {{ $reply_forum->likes }}
+            {{-- @dd($reply_forum->is_reply_forum_liked) --}}
+            <button type="submit"
+                class="btn {{ $reply_forum->is_reply_forum_liked ? 'btn-danger' : 'btn-outline-danger' }}"><i
+                    class="bi bi-heart"></i> {{ $reply_forum->likes }}
                 likes</button>
         </form>
         <br>
