@@ -13,7 +13,6 @@
             </div>
         @endif
     </div>
-
     {{-- Hero --}}
     <section id="hero">
         <div class="container z-999">

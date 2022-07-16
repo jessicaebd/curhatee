@@ -4,8 +4,6 @@
     --main-blue: #2934d0;
 }
 
-
-
 body {
     font-family: "Nunito Sans", sans-serif;
     letter-spacing: 0.5px;
@@ -89,7 +87,7 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 9999;
+    z-index: 999;
     overflow: hidden;
     background: #fff;
 }
@@ -134,13 +132,14 @@ a {
 #header {
     height: 80px;
     transition: all 0.5s;
-    z-index: 997;
+    z-index: 100000;
     transition: all 0.5s;
     background: rgba(1, 4, 136, 0.9);
 }
 
 #header.header-transparent {
-    background: transparent;
+    background-color: rgba(1, 4, 136, 0.9);
+    /* background: transparent; */
 }
 
 #header.header-scrolled {

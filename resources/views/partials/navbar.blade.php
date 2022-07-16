@@ -50,17 +50,140 @@
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
+
+
+            <div class="d-flex">
+                <ul class="d-flex navbar">
+                    <li class="nav-link">
+                        <div class="d-flex">
+                            <a href="/lang/en" class="mx-0">EN</a>|<a href="/lang/id" class="mx-0">ID</a>
+                        </div>
+                    </li>
+                    @if (Route::has('login'))
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#loginModal">
+                            Login
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade z-99" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog mt-5 pt-5 mx-auto">
+                                <div class="modal-content ">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-12">
+                                            <div class="card">
+                                                <h4 class="text-center fw-bold py-2">{{ __('Login') }}</h4>
+
+                                                <div class="card-body">
+                                                    <form method="POST" action="{{ route('login') }}">
+                                                        @csrf
+
+                                                        <div class="row mb-3">
+                                                            <label for="email"
+                                                                class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+
+                                                            <div class="col-md-6">
+                                                                <input id="email" type="email"
+                                                                    class="form-control @error('email') is-invalid @enderror"
+                                                                    name="email" value="{{ old('email') }}"
+                                                                    required autocomplete="email" autofocus>
+
+                                                                @error('email')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mb-0">
+                                                            <label for="password"
+                                                                class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+
+                                                            <div class="col-md-6">
+                                                                <input id="password" type="password"
+                                                                    class="form-control @error('password') is-invalid @enderror"
+                                                                    name="password" required
+                                                                    autocomplete="current-password">
+
+                                                                @error('password')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mb-0">
+                                                            <div class="col-md-6 offset-md-4">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox"
+                                                                        name="remember" id="remember"
+                                                                        {{ old('remember') ? 'checked' : '' }}>
+
+                                                                    <label class="form-check-label" for="remember">
+                                                                        {{ __('Remember Me') }}
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mb-0">
+                                                            <div class="col-md-8 offset-md-4">
+                                                                <button type="submit" class="btn btn-primary">
+                                                                    {{ __('Login') }}
+                                                                </button>
+
+                                                                @if (Route::has('password.request'))
+                                                                    <a class="btn btn-link text-dark"
+                                                                        href="{{ route('password.request') }}">
+                                                                        {{ __('Forgot Your Password?') }}
+                                                                    </a>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mb-0">
+                                                            <div class="col-md-8 offset-md-4">
+                                                                <a class="btn btn-link text-dark"
+                                                                    href="{{ route('psychologist_login') }}">
+                                                                    {{ __('Login as a Psychologist') }}
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+                    @if (Route::has('register'))
+                        <li class="nav-link">
+                            <a class="" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                    @endif
+                </ul>
+            </div>
+
+
         </div>
     </header>
 @else
     <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex align-items-center">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
-                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
 
