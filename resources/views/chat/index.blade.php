@@ -50,13 +50,11 @@
                     </div>
 
                 </div>
-                {{-- <div class="row"> --}}
                 <div class="d-flex justify-content-between align-items-center mt-2">
                     <label for="image">Upload Picture (Optional)</label>
                     <input style="width: 70%" type="file" class="form-control" id="image" name="image"
                         placeholder="Choose your profile image">
                 </div>
-                {{-- </div> --}}
             </form>
         </div>
         {{-- Error Message --}}
