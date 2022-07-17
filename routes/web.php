@@ -54,8 +54,6 @@ Route::controller(PsychologistController::class)
 Route::controller(HomeController::class)
     ->group(function () {
         Route::get('/', 'index')->name('home');
-        Route::get('/article', 'article')->name('article');
-        Route::get('/video', 'video')->name('video');
     });
 
 // consultation
@@ -110,6 +108,17 @@ Route::prefix('/review')
     ->group(function () {
         Route::get('/{psychologist}', 'show')->name('show_review');
         Route::post('/{psychologist}', 'store')->name('store_review')->middleware('auth');
+    });
+
+// article
+Route::prefix('/article')
+    ->controller(ArticleController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('article_page');
+        Route::get('/add', 'create')->name('create_article')->middleware('auth');
+        Route::post('/add', 'store')->name('store_article')->middleware('auth');
+        Route::get('/{article}', 'show')->name('show_detail_article');
+        Route::post('/{article}', 'storeReply')->name('store_reply_article')->middleware('auth');
     });
 
 // profiles

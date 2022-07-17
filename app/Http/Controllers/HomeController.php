@@ -17,8 +17,9 @@ class HomeController extends Controller
         // $this->middleware('auth');
     }
 
-    private function setLang() {
-        if(session()->has('locale')) {
+    private function setLang()
+    {
+        if (session()->has('locale')) {
             app()->setLocale(session()->get('locale'));
         } else {
             app()->setLocale('en');
@@ -37,15 +38,5 @@ class HomeController extends Controller
             // }
         }
         return view('home');
-    }
-
-    public function article()
-    {
-        return view('article');
-    }
-
-    public function video()
-    {
-        return view('video');
     }
 }

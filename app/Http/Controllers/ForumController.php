@@ -29,7 +29,7 @@ class ForumController extends Controller
     {
         $this->setLang();
 
-        $forums = Forum::all();
+        $forums = Forum::orderBy('likes', 'desc')->get();
         $view = 'User';
 
         if (Auth::guard('webpsychologist')->user()) {
@@ -41,16 +41,16 @@ class ForumController extends Controller
             if (Auth::guard('webpsychologist')->user()) {
                 $forum->is_forum_liked = LikedForum::where('forum_id', $forum->id)->where('psychologist_id', Auth::guard('webpsychologist')->user()->id)->first();
             } else if (auth()->user()) {
-            $forum->is_forum_liked = LikedForum::where('forum_id', $forum->id)->where('user_id', auth()->user()->id)->first();
+                $forum->is_forum_liked = LikedForum::where('forum_id', $forum->id)->where('user_id', auth()->user()->id)->first();
             }
-            
-            if($forum->is_forum_liked) {
+
+            if ($forum->is_forum_liked) {
                 $forum->is_forum_liked = true;
             } else {
                 $forum->is_forum_liked = false;
             }
         }
-        
+
         $data = [
             'forums' => $forums,
             'view' => $view,
@@ -114,7 +114,7 @@ class ForumController extends Controller
 
         $view = 'User';
         $forum = Forum::find($id);
-        $reply_forums = ReplyForum::where('forum_id', $id)->get();
+        $reply_forums = ReplyForum::where('forum_id', $id)->orderBy('likes', 'desc')->get();
         $is_forum_liked = false;
 
         if (Auth::guard('webpsychologist')->user()) {
@@ -125,21 +125,21 @@ class ForumController extends Controller
             $is_forum_liked = LikedForum::where('forum_id', $id)->where('user_id', auth()->user()->id)->first();
         }
 
-        if($is_forum_liked) {
+        if ($is_forum_liked) {
             $is_forum_liked = true;
         } else {
             $is_forum_liked = false;
         }
 
-        foreach($reply_forums as $reply_forum) {
+        foreach ($reply_forums as $reply_forum) {
             $reply_forum->is_reply_forum_liked = false;
             if (Auth::guard('webpsychologist')->user()) {
                 $reply_forum->is_reply_forum_liked = LikedReplyForum::where('reply_forum_id', $reply_forum->id)->where('psychologist_id', Auth::guard('webpsychologist')->user()->id)->first();
             } else if (auth()->user()) {
                 $reply_forum->is_reply_forum_liked = LikedReplyForum::where('reply_forum_id', $reply_forum->id)->where('user_id', auth()->user()->id)->first();
             }
-            
-            if($reply_forum->is_reply_forum_liked) {
+
+            if ($reply_forum->is_reply_forum_liked) {
                 $reply_forum->is_reply_forum_liked = true;
             } else {
                 $reply_forum->is_reply_forum_liked = false;
@@ -200,7 +200,7 @@ class ForumController extends Controller
         }
 
         $forum = Forum::find($id);
-    
+
         $is_liked = LikedForum::where('forum_id', $forum->id)->where($person_type . '_id', $person->id)->first();
 
         if ($is_liked == null) {

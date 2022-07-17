@@ -41,10 +41,10 @@ class ArticleSeeder extends Seeder
             - Rawatlah diri secara berkala. Anda dapat melakukan teknik self care, yakni serangkaian tindakan untuk fisik, emosi, dan spiritual  yang mencerminkan cara kita menjaga diri kita sendiri. Self-care bukanlah sebuah keegoisan, melainkan bentuk kepedulian terhadap kesehatan dan kesejahteraan fisik serta mental kita.<br>
             - Meluangkan waktu untuk melakukan self-care dapat membantu kita dalam  mengatasi stres, kecemasan, bahkan mengontrol kemarahan.  Melakukan aktivitas sederhana dan yang disukai secara rutin dapat meningkatkan kesejahteraan psikologis kita. Berikut beberapa contoh yang dapat kita lakukan sebagai bentuk dari self care.
             Bekali diri dengan kemampuan problem solving yang optimal. Sadari bahwa masalah hadir untuk diselesaikan, bukan untuk dihindari (flight response). Pahami pula penyelesaian masalah tidak bersifat instan, melainkan butuh proses dan konsistensi dalam mengupayakannya. Belajar tentang manajemen stres dan ketrampilan mengelola emosi, dapat kita gunakan sebagai “amunisi” manakala tengah dihadapkan pada situasi yang tidak nyaman.<br>
-            - Jangan melabel atau mendiagnosa diri. Memberikan cap bahwa “aku ini payah”, “aku memang pantas mengalami ini”, dsb hanya akan menimbulkan ketidaknyamaan dalam diri karena adanya rasa tidak berharga. Atau, “dari artikel ini, sepertinya aku depresi” atau “aku sering alami swing mood, berarti aku mengalami bipolar”. Diagnosa adalah bagian dari proses pemeriksaan yang dilakukan profesional untuk membantu pemberian penanganan (medis maupun psikologis) yang tepat terhadap pasien. Jika memang merasakan ada yang tidak nyaman dan dinilai menurunkan kualitas kesehatan, segera akses layanan kesehatan untuk melakukan konsultasi dengan tenaga medis dan psikolog.
+            - Jangan melabel atau mendiagnosa diri. Memberikan cap bahwa “aku ini payah”, “aku memang pantas mengalami ini”, dsb hanya akan menimbulkan ketidaknyamaan dalam diri karena adanya rasa tidak berharga. Atau, “dari articleini, sepertinya aku depresi” atau “aku sering alami swing mood, berarti aku mengalami bipolar”. Diagnosa adalah bagian dari proses pemeriksaan yang dilakukan profesional untuk membantu pemberian penanganan (medis maupun psikologis) yang tepat terhadap pasien. Jika memang merasakan ada yang tidak nyaman dan dinilai menurunkan kualitas kesehatan, segera akses layanan kesehatan untuk melakukan konsultasi dengan tenaga medis dan psikolog.
 
             <p>Sama halnya dengan kesehatan fisik, kesehatan mental juga merupakan sebuah kebutuhan dasar yang akan mempengaruhi kualitas hidup seseorang. Pahami kondisi diri, kenali situasi dan efeknya, upayakan optimalisasi penyelesaian masalah, serta hubungi profesional jika memang sangat dibutuhkan. Selamat berproses dalam perjalanan kehidupan. Salam sehat jiwa.</p>',
-            'image' => 'artikel1.jpg',
+            'image' => 'article.jpg',
         ]);
 
         Article::create([
@@ -133,7 +133,7 @@ class ArticleSeeder extends Seeder
 
             <br><br>Kapan Harus ke Dokter?<br>
             <p>Jika diri sendiri atau kerabat menunjukkan gejala-gejala yang telah disebutkan di atas secara terus-menerus dan tidak membaik, sebaiknya segera memeriksakan diri ke dokter spesialis jiwa atau psikiater untuk mendapatkan pemeriksaan dan penanganan lebih lanjut. Untuk melakukan pemeriksaan, kamu bisa langsung membuat janji dengan dokter di rumah sakit pilihan kamu.</p>',
-            'image' => 'artikel2.jpg',
+            'image' => 'article.jpg',
         ]);
 
         Article::create([
@@ -181,7 +181,7 @@ class ArticleSeeder extends Seeder
 
             10. Istirahat yang cukup<br>
             Untuk mewujudkan kesehatan mental yang optimal, dibutuhkan istirahat yang cukup setelah melakukan aktifitas di siang hari.',
-            'image' => 'artikel3.jpg',
+            'image' => 'article.jpg',
         ]);
 
         Article::create([
@@ -232,7 +232,7 @@ class ArticleSeeder extends Seeder
             <p>Mulailah terapkan beragam cara menjaga kesehatan mental di atas ke dalam kehidupanmu sehari-hari. Namun, jika kamu merasa kesulitan melakukan hal-hal tersebut atau telah mengalami berbagai gejala gangguan mental yang sulit untuk kamu hadapi sendiri, jangan malu untuk berkonsultasi dengan psikolog atau psikiater, ya.</p><br>
 
             Dengan begitu, kamu bisa mendapat penanganan yang sesuai dengan kondisi kesehatan mentalmu.',
-            'image' => 'artikel4.jpg',
+            'image' => 'article.jpg',
         ]);
 
         Article::create([
@@ -255,7 +255,7 @@ class ArticleSeeder extends Seeder
             <p>Jika masih ragu dan merasa takut untuk curhat secara langsung, kamu bisa menyiapkan beberapa hal sebelum melakukannya. Selain berbicara langsung, kamu tetap bisa mencurahkan isi hati melalui telepon, mengirim pesan singkat atau chat, hingga menulis surat. Pilihlah cara yang paling membuat nyaman dan tidak membuat perasaan semakin tertekan.</p><br>
 
             <p>Selain itu, pastikan untuk mencari waktu yang tepat untuk bercerita pada teman. Dengan begitu, kamu tidak merasa mengganggu dan bisa mendapat perhatian penuh dari teman. Sama-sama merasa nyaman. Sebagai persiapan, kamu juga bisa melatih apa saja yang ingin diceritakan. Tapi perlu diingat, tidak masalah jika kamu hanya sanggup menceritakan beberapa bagian saja. Jangan memaksakan diri.</p>',
-            'image' => 'artikel5.jpg',
+            'image' => 'article.jpg',
         ]);
 
         Article::create([
@@ -306,7 +306,7 @@ class ArticleSeeder extends Seeder
             Nantinya, Anda dapat kembali mendiskusikan masalah dengan orang yang sebelumnya mendengarkan curhat sebagai bahan introspeksi diri tanpa harus tenggelam dalam masa lalu.<br>
 
             <p>Bila ingin bantuan yang lebih profesional dan bersifat netral, berkonsultasi kepada psikolog atau psikiater dapat menjadi pilihan bijak. Namun, kalau merasa curhat dengan teman dekat atau keluarga sudah cukup, tidak masalah. Dukungan dari orang terdekat dan tepercaya akan membuat Anda lebih kuat menghadapi tantangan hidup.</p>',
-            'image' => 'artikel6.jpg',
+            'image' => 'article.jpg',
         ]);
 
         Article::create([
@@ -343,7 +343,7 @@ class ArticleSeeder extends Seeder
             <p>PTSD membuat pengidapnya tak bisa melupakan pengalaman traumatis. Dalam kebanyakan kasus, PTSD lebih sering memengaruhi wanita ketimbang pria. Alasannya wanita lebih sensitif terhadap perubahan daripada pria.</p><br><br>
 
             <p>Hal yang perlu digarisbawahi, masih banyak gangguan mental lainnya yang dapat membahayakan psikis dan fisik, bila tak ditangani dengan tepat. Oleh sebab itu, seseorang yang mengalami gangguan mental perlu mendapatkan pertolongan profesional untuk mengatasi masalah yang dihadapinya.</p>',
-            'image' => 'artikel7.jpg',
+            'image' => 'article.jpg',
         ]);
 
         Article::create([
@@ -376,7 +376,7 @@ class ArticleSeeder extends Seeder
             <p>Ketiga, konsultasi ke psikolog atau psikiater. Kiat ini merupakan opsi yang paling aman dalam mengatasi gangguan mental, terutama apabila seseorang sudah merasakan gejala-gejala yang mengganggu aktivitas sehari-hari dan orang tersebut memiliki akses untuk bertemu dengan tenaga medis profesional.</p><br>
 
             <p>Terakhir, berusahalah untuk mengontrol diri. Dengan kondisi Indonesia yang sangat minim psikiater dan psikolog, maka kontrol diri menjadi opsi yang dapat dilakukan sedini mungkin. Intinya, tidak hanya berusaha untuk mengobati saja ketika sudah mengalami gangguan mental, tetapi juga melakukan tindakan preventif selama kondisi kesehatan mental masih baik.</p>',
-            'image' => 'artikel8.png',
+            'image' => 'article.jpg',
         ]);
 
         Article::create([
@@ -459,7 +459,7 @@ class ArticleSeeder extends Seeder
             Konsumsi obat : obat tidak menyembuhkan penyakit mental. Namun, ini dapat mengurangi frekuensi atau keparahan gejala, yang memungkinkan peningkatan kualitas hidup dan pemulihan.<br>
             - Pengobatan komplementer dan alternatif (CAM): mengacu pada pengobatan dan praktik yang biasanya tidak terkait dengan perawatan standar. CAM dapat digunakan sebagai pengganti atau sebagai tambahan dari praktik kesehatan standar. Contohnya termasuk yoga, meditasi, tai chi, latihan relaksasi, dan teknik pengobatan pikiran-tubuh lainnya.<br>
             - Terapi stimulasi otak : melibatkan stimulasi atau menyentuh otak secara langsung dengan listrik, magnet, atau implan. Pilihan ini sering dipertimbangkan ketika pengobatan dan terapi tidak dapat meredakan gejala kondisi kesehatan mental. Contohnya adalah terapi elektrokonvulsif (ECT) dan stimulasi magnetik transkranial (TMS).',
-            'image' => 'artikel9.png',
+            'image' => 'article.jpg',
         ]);
 
         Article::create([
@@ -511,7 +511,7 @@ class ArticleSeeder extends Seeder
             <p>Seiring bertambahnya usia, meningkat pula risiko terjadinya demensia dan penurunan fungsi kognitif pada usia lanjut. Berbagai penelitian telah menunjukkan, aktivitas fisik dapat menurunkan risiko demensia dan penurunan kognitif.
 
             Jadi, untuk menghindari penurunan kognitif dan demensia di masa tua Anda nanti, mulai sekarang rajinlah berolahraga.</p>',
-            'image' => 'artikel10.jpg',
+            'image' => 'article.jpg',
         ]);
     }
 }

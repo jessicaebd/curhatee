@@ -11,6 +11,39 @@
             height: 700px;
             background-color: yellow;
         }
+
+        .btn {
+            background-color: #dbdbdb;
+            border-color: #bbb;
+            color: #666;
+        }
+
+        .btn:hover,
+        .btn.active {
+            text-shadow: 0 1px 0 #b12f27;
+            background-color: #f64136;
+            border-color: #b12f27;
+        }
+
+        .btn:active {
+            box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2) inset;
+        }
+
+        .btn span {
+            color: #f64136;
+        }
+
+        .btn:hover,
+        .btn:hover span,
+        .btn.active,
+        .btn.active span {
+            color: #eeeeee;
+        }
+
+        .btn:active span {
+            color: #b12f27;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
     </style>
 @endsection
 
@@ -33,6 +66,9 @@
                     class="bi bi-heart"></i>
                 {{ $forum->likes }}
                 likes</button>
+            <button type="submit" class="btn {{ $forum->is_forum_liked ? 'btn-danger' : 'btn-outline-danger' }}">
+                <a href="#" title="Love it" class="btn btn-counter" data-count="0"><span>&#x2764;</span> Love it</a>
+            </button>
         </form>
 
         <br>

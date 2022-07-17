@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Article;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -10,7 +11,14 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        //
+        $articles = Article::orderBy('created_at', 'desc')->get();
+        
+
+        $data = [
+            'articles' => $articles,
+        ];
+        
+        return view('article.index', $data);
     }
 
     public function create()
@@ -47,6 +55,8 @@ class ArticleController extends Controller
         } else {
             $article->image = 'article.jpg';
         }
+
+        $article->created_at = Carbon::now('Asia/Bangkok');
 
         $article->save();
         return redirect()->route('manage_article')->withSuccess('New article added!');
