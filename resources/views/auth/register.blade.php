@@ -1,120 +1,86 @@
-@extends('layouts.app')
+<div class="d-flex justify-content-between  px-1">
+    <div class=""></div>
+    <h4 class="fw-bolder py-4" id="loginModalLabel">{{ __('Register') }}</h4>
+    <button type="button" class="btn-close p-2" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
 
-@section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
+<div class="modal-body mt-2 d-flex justify-content-center">
+    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+        @csrf
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10 mb-2">
+                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                    name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
+                    placeholder="Name">
 
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
-                            @csrf
+                @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
 
-                            <div class="row mb-3">
-                                <label for="name"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+            <div class="col-md-10 mb-2">
+                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                    name="email" value="{{ old('email') }}" required autocomplete="email"
+                    placeholder="Email Address">
 
-                                <div class="col-md-6">
-                                    <input id="name" type="text"
-                                        class="form-control @error('name') is-invalid @enderror" name="name"
-                                        value="{{ old('name') }}" required autocomplete="name" autofocus>
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
 
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
+            <div class="col-md-10 mb-2">
+                <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror"
+                    name="phone" required placeholder="Phone">
 
-                            <div class="row mb-3">
-                                <label for="email"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                @error('phone')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
 
-                                <div class="col-md-6">
-                                    <input id="email" type="email"
-                                        class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email">
+            <div class="col-md-10 mb-2">
+                <input type="file" class="form-control" id="image" name="image"
+                    placeholder="Choose your profile image">
 
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
+                @error('image')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
 
-                            <div class="row mb-3">
-                                <label for="phone"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Phone') }}</label>
+            <div class="col-md-10 mb-2">
+                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                    name="password" required autocomplete="new-password" placeholder="Password">
 
-                                <div class="col-md-6">
-                                    <input id="phone" type="tel"
-                                        class="form-control @error('phone') is-invalid @enderror" name="phone" required>
+                @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
 
-                                    @error('phone')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
+            <div class="col-md-10 mb-2">
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
+                    autocomplete="new-password" placeholder="Confirm Password">
+            </div>
 
-                            <div class="row mb-3">
-                                <label for="image"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Profile Picture (Optional)') }}</label>
-
-                                <div class="col-md-6">
-                                    <input type="file" class="form-control" id="image" name="image"
-                                        placeholder="Choose your profile image">
-
-                                    @error('image')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="password"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="new-password">
-
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control"
-                                        name="password_confirmation" required autocomplete="new-password">
-                                </div>
-                            </div>
-
-                            <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+            <div class="col-md-10 mb-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary px-4">
+                    {{ __('Register') }}
+                </button>
             </div>
         </div>
-    </div>
-@endsection
+    </form>
+</div>
+
+<div class="modal-footer">
+    <a class="btn btn-link text-dark" href="{{ route('psychologist_login') }}">
+        {{ __('or Login as a Psychologist') }}
+    </a>
+</div>
