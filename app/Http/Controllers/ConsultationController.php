@@ -32,8 +32,9 @@ class ConsultationController extends Controller
     {
         $this->setLang();
         // generate schedule baru untuk yg sdh lewat
-        $today = Carbon::today('Asia/Bangkok')->addDays(1);
+        $today = Carbon::today('Asia/Bangkok');
         Schedule::where('dateBook', '<', $today)->update(['status' => 'Open', 'dateBook' => null]);
+
 
         if (request('date')) {
             // ambil string
