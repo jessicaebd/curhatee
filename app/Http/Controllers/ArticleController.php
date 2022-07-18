@@ -9,8 +9,18 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    private function setLang() {
+        if(session()->has('locale')) {
+            app()->setLocale(session()->get('locale'));
+        } else {
+            app()->setLocale('en');
+        }
+    }
+
     public function index()
     {
+        $this->setLang();
+
         $articles = Article::orderBy('created_at', 'desc')->get();
         
         $data = [
@@ -22,6 +32,8 @@ class ArticleController extends Controller
 
     public function create()
     {
+        $this->setLang();
+        
         return view('admin.article.add');
     }
 
@@ -64,6 +76,8 @@ class ArticleController extends Controller
 
     public function show($id)
     {
+        $this->setLang();
+
         $article = Article::find($id);
         
         $data = [
@@ -75,6 +89,8 @@ class ArticleController extends Controller
 
     public function edit($id)
     {
+        $this->setLang();
+
         return view('admin.article.edit', ['article' => Article::findOrFail($id)]);
     }
 
