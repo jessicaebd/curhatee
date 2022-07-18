@@ -115,10 +115,7 @@ Route::prefix('/article')
     ->controller(ArticleController::class)
     ->group(function () {
         Route::get('/', 'index')->name('article_page');
-        Route::get('/add', 'create')->name('create_article')->middleware('auth');
-        Route::post('/add', 'store')->name('store_article')->middleware('auth');
         Route::get('/{article}', 'show')->name('show_detail_article');
-        Route::post('/{article}', 'storeReply')->name('store_reply_article')->middleware('auth');
     });
 
 // profiles

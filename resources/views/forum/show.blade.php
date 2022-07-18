@@ -22,7 +22,7 @@
         <h1>Detail Forum</h1>
         <br>
 
-        {{ $forum->title }} --- {{ \Carbon\Carbon::parse($forum->created_at)->format('l, d F Y @ H:i') }} ---
+        {{ $forum->title }} --- {{ \Carbon\Carbon::parse($forum->created_at)->format('l, d F Y - H:i') }} ---
         <form action="{{ route('like_forum', $forum->id) }}" method="post">
             @csrf
             <button type="submit" class="btn {{ $is_forum_liked ? 'btn-danger' : 'btn-outline-danger' }}"><i
@@ -51,7 +51,7 @@
 
         <div class="forum-container" id="forum-container">
             @foreach ($reply_forums as $reply_forum)
-                {{ \Carbon\Carbon::parse($reply_forum->created_at)->format('l, d F Y @ H:i') }} ---
+                {{ \Carbon\Carbon::parse($reply_forum->created_at)->format('l, d F Y - H:i') }} ---
                 <form action="{{ route('like_reply_forum', $reply_forum->id) }}" method="post">
                     @csrf
                     {{-- @dd($reply_forum->is_reply_forum_liked) --}}

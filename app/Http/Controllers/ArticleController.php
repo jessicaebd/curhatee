@@ -13,7 +13,6 @@ class ArticleController extends Controller
     {
         $articles = Article::orderBy('created_at', 'desc')->get();
         
-
         $data = [
             'articles' => $articles,
         ];
@@ -57,6 +56,7 @@ class ArticleController extends Controller
         }
 
         $article->created_at = Carbon::now('Asia/Bangkok');
+        $article->updated_at = Carbon::now('Asia/Bangkok');
 
         $article->save();
         return redirect()->route('manage_article')->withSuccess('New article added!');
@@ -64,7 +64,13 @@ class ArticleController extends Controller
 
     public function show($id)
     {
-        //
+        $article = Article::find($id);
+        
+        $data = [
+            'article' => $article,
+        ];
+        
+        return view('article.show', $data);
     }
 
     public function edit($id)
@@ -98,6 +104,8 @@ class ArticleController extends Controller
 
             $article->image = $image_name;
         }
+
+        $article->updated_at = Carbon::now('Asia/Bangkok');
 
         $article->save();
         return redirect()->route('manage_article')->withSuccess('Article succesfully updated!');
