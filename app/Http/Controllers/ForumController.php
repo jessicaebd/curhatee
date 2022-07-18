@@ -56,12 +56,18 @@ class ForumController extends Controller
             'view' => $view,
         ];
 
+        if (Auth::guard('webpsychologist')->user()) {
+            $data['psychologist'] = Psychologist::find(Auth::guard('webpsychologist')->user()->id);
+        };
+
         return view('forum.index', $data);
     }
 
     public function create()
     {
         $this->setLang();
+
+        // dd('create');
 
         $view = 'User';
 
@@ -72,6 +78,10 @@ class ForumController extends Controller
         $data = [
             'view' => $view,
         ];
+
+        if (Auth::guard('webpsychologist')->user()) {
+            $data['psychologist'] = Psychologist::find(Auth::guard('webpsychologist')->user()->id);
+        };
 
         return view('forum.add', $data);
     }
@@ -112,6 +122,7 @@ class ForumController extends Controller
     {
         $this->setLang();
 
+        // dd('show');
         $view = 'User';
         $forum = Forum::find($id);
         $reply_forums = ReplyForum::where('forum_id', $id)->orderBy('likes', 'desc')->get();
@@ -152,6 +163,10 @@ class ForumController extends Controller
             'view' => $view,
             'is_forum_liked' => $is_forum_liked,
         ];
+
+        if (Auth::guard('webpsychologist')->user()) {
+            $data['psychologist'] = Psychologist::find(Auth::guard('webpsychologist')->user()->id);
+        };
 
         return view('forum.show', $data);
     }

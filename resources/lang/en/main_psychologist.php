@@ -4,9 +4,8 @@
         'overview' => 'Overview',
         'transaction' => 'Transaction',
         'messages' => 'Messages',
-        'card' => 'Card',
+        'forum' => 'Forum',
         'rewards' => 'Rewards',
         'settings' => 'Settings',
         'logout' => 'Logout'
     ];
-?>

@@ -4,9 +4,8 @@
         'overview' => 'Tinjauan',
         'transaction' => 'Transaksi',
         'messages' => 'Pesan',
-        'card' => 'Kartu',
+        'forum' => 'Diskusi',
         'rewards' => 'Hadiah',
         'settings' => 'Pengaturan',
         'logout' => 'Logout'
     ];
-?>

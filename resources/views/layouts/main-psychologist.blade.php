@@ -46,7 +46,7 @@
 
                 <div class="sidebar-item-container">
 
-                    <a href="#" class="sidebar-item active" onclick="toggleActive(this)">
+                    <a href="/psychologist" class="sidebar-item active" onclick="toggleActive(this)">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M21 14H14V21H21V14Z" stroke="white" stroke-width="2" stroke-linecap="round"
@@ -89,7 +89,7 @@
                         <span>@lang('main_psychologist.messages')</span>
                     </a>
 
-                    <a href="#" class="sidebar-item" onclick="toggleActive(this)">
+                    <a href="{{ route('forum_page') }}" class="sidebar-item" onclick="toggleActive(this)">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -99,7 +99,7 @@
                                 stroke-linejoin="round" />
                         </svg>
 
-                        <span>@lang('main_psychologist.card')</span>
+                        <span>@lang('main_psychologist.forum')</span>
                     </a>
 
                     <a href="#" class="sidebar-item" onclick="toggleActive(this)">
@@ -156,7 +156,7 @@
             <div class="nav">
                 <div class="d-flex justify-content-between align-items-center w-100 mb-3 mb-md-0">
                     <div class="d-flex justify-content-between align-items-center w-100">
-                        <h2 class="nav-title">My Transactions</h2>
+                        <h2 class="nav-title">My Consultation</h2>
                         <button id="toggle-navbar" onclick="toggleNavbar()">
                             <img src="{{ asset('storage/images/psychologists/' . $psychologist->image) }}"
                                 alt="">

@@ -89,17 +89,36 @@ Route::prefix('/chat-user')
         Route::get('/{transaction}/message', 'showMessage')->name('show_message');
     });
 
-// forum
+// forum without middleware
 Route::prefix('/forum')
     ->controller(ForumController::class)
     ->group(function () {
         Route::get('/', 'index')->name('forum_page');
-        Route::get('/add', 'create')->name('create_forum')->middleware('auth');
-        Route::post('/add', 'store')->name('store_forum')->middleware('auth');
-        Route::post('/like/forum/{forum}', 'likeForum')->name('like_forum')->middleware('auth');
-        Route::post('/like/reply-forum/{reply_forum}', 'likeReplyForum')->name('like_reply_forum')->middleware('auth');
         Route::get('/{forum}', 'show')->name('show_detail_forum');
-        Route::post('/{forum}', 'storeReply')->name('store_reply_forum')->middleware('auth');
+    });
+
+// forum for user
+Route::prefix('/forum')
+    ->controller(ForumController::class)
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/add', 'create')->name('create_forum');
+        Route::post('/add', 'store')->name('store_forum');
+        Route::post('/like/forum/{forum}', 'likeForum')->name('like_forum');
+        Route::post('/like/reply-forum/{reply_forum}', 'likeReplyForum')->name('like_reply_forum');
+        Route::post('/{forum}', 'storeReply')->name('store_reply_forum');
+    });
+
+// forum for psychologist
+Route::prefix('/forum-psychologist')
+    ->controller(ForumController::class)
+    ->middleware('webpsychologist')
+    ->group(function () {
+        Route::get('/add', 'create')->name('create_forum_psychologist');
+        Route::post('/add', 'store')->name('store_forum_psychologist');
+        Route::post('/like/forum/{forum}', 'likeForum')->name('like_forum_psychologist');
+        Route::post('/like/reply-forum/{reply_forum_psychologist}', 'likeReplyForum')->name('like_reply_forum_psychologist');
+        Route::post('/{forum}', 'storeReply')->name('store_reply_forum_psychologist');
     });
 
 // review

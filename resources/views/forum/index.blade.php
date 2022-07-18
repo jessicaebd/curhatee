@@ -27,15 +27,19 @@
         <h1>Forum</h1>
         <br>
 
-        <a href="{{ route('create_forum') }}"><button type="submit" class="btn btn-primary ms-3 mt-4 shadow mb-1">+
+        <form action="{{ route('create_forum') }}" method="get">
+            @csrf
+            <button type="submit" class="btn btn-primary ms-3 mt-4 shadow mb-1">+
                 Create
-                new topic</button></a>
+                new topic</button>
+        </form>
 
         <hr class="mt-3 mb-3" />
 
         @foreach ($forums as $forum)
             {{ $forum->title }} --- <i
-                class="bi bi-clock me-2"></i>{{ \Carbon\Carbon::parse($forum->created_at)->format('l, d F Y - H:i') }} ---
+                class="bi bi-clock me-2"></i>{{ \Carbon\Carbon::parse($forum->created_at)->format('l, d F Y - H:i') }}
+            ---
 
 
             {{-- like button --}}
