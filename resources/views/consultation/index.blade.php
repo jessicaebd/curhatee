@@ -3,7 +3,7 @@
 @section('title', 'Consultation')
 
 @section('content')
-    <div class="container mt-3">
+    <div class="container mt-5 pt-5">
         <h2 class="text-center mb-4">@lang('psychologist_index.choose_your_psychologist')</h2>
 
         <div class="row">
@@ -44,8 +44,17 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="go-corner" href="#">
+                            <div class="go-arrow">
+                                →
+                            </div>
+                        </div>
                     </a>
                 </div>
             @endforeach
         </div>
-    @endsection
+    </div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+    <div id="preloader"></div>
+@endsection
