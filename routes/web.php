@@ -98,21 +98,21 @@ Route::prefix('/forum')
     });
 
 // forum for user
-Route::prefix('/forum')
+Route::prefix('/forum-user')
     ->controller(ForumController::class)
     ->middleware('auth')
     ->group(function () {
-        Route::get('/add', 'create')->name('create_forum');
-        Route::post('/add', 'store')->name('store_forum');
-        Route::post('/like/forum/{forum}', 'likeForum')->name('like_forum');
-        Route::post('/like/reply-forum/{reply_forum}', 'likeReplyForum')->name('like_reply_forum');
-        Route::post('/{forum}', 'storeReply')->name('store_reply_forum');
+        Route::get('/add', 'create')->name('create_forum_user');
+        Route::post('/add', 'store')->name('store_forum_user');
+        Route::post('/like/forum/{forum}', 'likeForum')->name('like_forum_user');
+        Route::post('/like/reply-forum/{reply_forum_user}', 'likeReplyForum')->name('like_reply_forum_user');
+        Route::post('/{forum}', 'storeReply')->name('store_reply_forum_user');
     });
 
 // forum for psychologist
 Route::prefix('/forum-psychologist')
     ->controller(ForumController::class)
-    ->middleware('webpsychologist')
+    ->middleware('auth:webpsychologist')
     ->group(function () {
         Route::get('/add', 'create')->name('create_forum_psychologist');
         Route::post('/add', 'store')->name('store_forum_psychologist');

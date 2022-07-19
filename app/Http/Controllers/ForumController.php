@@ -67,8 +67,6 @@ class ForumController extends Controller
     {
         $this->setLang();
 
-        // dd('create');
-
         $view = 'User';
 
         if (Auth::guard('webpsychologist')->user()) {
@@ -122,7 +120,6 @@ class ForumController extends Controller
     {
         $this->setLang();
 
-        // dd('show');
         $view = 'User';
         $forum = Forum::find($id);
         $reply_forums = ReplyForum::where('forum_id', $id)->orderBy('likes', 'desc')->get();

@@ -23,7 +23,9 @@
         <br>
 
         {{ $forum->title }} --- {{ \Carbon\Carbon::parse($forum->created_at)->format('l, d F Y - H:i') }} ---
-        <form action="{{ route('like_forum', $forum->id) }}" method="post">
+        <form
+            action="{{ Auth::guard('webpsychologist')->user() != null ? route('like_forum_psychologist', $forum->id) : route('like_forum_user', $forum->id) }}"
+            method="post">
             @csrf
             <button type="submit" class="btn {{ $is_forum_liked ? 'btn-danger' : 'btn-outline-danger' }}"><i
                     class="bi bi-heart"></i>
@@ -52,7 +54,9 @@
         <div class="forum-container" id="forum-container">
             @foreach ($reply_forums as $reply_forum)
                 {{ \Carbon\Carbon::parse($reply_forum->created_at)->format('l, d F Y - H:i') }} ---
-                <form action="{{ route('like_reply_forum', $reply_forum->id) }}" method="post">
+                <form
+                    action="{{ Auth::guard('webpsychologist')->user() != null ? route('like_reply_forum_psychologist', $reply_forum->id) : route('like_reply_forum_user', $reply_forum->id) }}"
+                    method="post">
                     @csrf
                     {{-- @dd($reply_forum->is_reply_forum_liked) --}}
                     <button type="submit"
@@ -79,7 +83,9 @@
 
         </div>
 
-        <form action="{{ route('store_reply_forum', $forum->id) }}" method="post" enctype="multipart/form-data">
+        <form
+            action="{{ Auth::guard('webpsychologist')->user() != null ? route('store_reply_forum_psychologist', $forum->id) : route('store_reply_forum_user', $forum->id) }}"
+            method="post" enctype="multipart/form-data">
             @csrf
             <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="2"
                 placeholder="Type a message..."></textarea>

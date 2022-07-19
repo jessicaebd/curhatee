@@ -27,8 +27,11 @@
         <h1>Forum</h1>
         <br>
 
-        <form action="{{ route('create_forum') }}" method="get">
-            @csrf
+        <form
+            action="{{ Auth::guard('webpsychologist')->user() != null
+                ? route('create_forum_psychologist')
+                : route('create_forum_user') }}"
+            method="get">
             <button type="submit" class="btn btn-primary ms-3 mt-4 shadow mb-1">+
                 Create
                 new topic</button>
@@ -44,7 +47,9 @@
 
             {{-- like button --}}
             {{-- BOLEH LIAT REFERENSI INI STYLING LIKE BUTTONNY: https://codepen.io/Idered/pen/ALYLaM --}}
-            <form action="{{ route('like_forum', $forum->id) }}" method="post">
+            <form
+                action="{{ Auth::guard('webpsychologist')->user() != null ? route('like_forum_psychologist', $forum->id) : route('like_forum_user', $forum->id) }}"
+                method="post">
                 @csrf
                 <button type="submit"
                     class="btn-like {{ $forum->is_forum_liked ? 'btn-danger' : 'btn-outline-danger' }}"><i

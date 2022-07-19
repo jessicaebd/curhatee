@@ -6,7 +6,11 @@
     <h1>Add Forum</h1>
     <br>
 
-    <form action="{{ route('create_forum') }}" method="post" enctype="multipart/form-data">
+    <form
+        action="{{ Auth::guard('webpsychologist')->user() != null
+            ? route('create_forum_psychologist')
+            : route('create_forum_user') }}"
+        method="post" enctype="multipart/form-data">
         @csrf
         <div class="row mb-3">
             <label for="title" class="col-md-4 col-form-label text-md-end">Title Topic</label>

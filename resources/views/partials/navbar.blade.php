@@ -9,16 +9,17 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                <li><a class="nav-link scrollto" href="#about">About</a></li>
-                <li class="dropdown"><a href="#features"><span>Features</span> <i class="bi bi-chevron-down"></i></a>
+                <li><a class="nav-link scrollto active" href="#hero">@lang('navbar.home')</a></li>
+                <li><a class="nav-link scrollto" href="#about">@lang('navbar.about')</a></li>
+                <li class="dropdown"><a href="#features"><span>@lang('navbar.features')</span> <i
+                            class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="/consultation/psychologists">Consultation</a></li>
-                        <li><a href="/forum">Forum</a></li>
-                        <li><a href="/article">Article</a></li>
+                        <li><a href="/consultation/psychologists">@lang('navbar.consultation')</a></li>
+                        <li><a href="/forum">@lang('navbar.forum')</a></li>
+                        <li><a href="/article">@lang('navbar.article')</a></li>
                     </ul>
                 </li>
-                <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                <li><a class="nav-link scrollto" href="#contact">@lang('navbar.contact')</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
@@ -86,7 +87,7 @@
                             <li>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    @lang('navbar.logout')
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

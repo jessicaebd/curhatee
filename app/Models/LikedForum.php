@@ -31,6 +31,6 @@ class LikedForum extends Model
 
     public function forum()
     {
-        return $this->belongsTo(Forum::class, 'psychologist_id');
+        return $this->belongsTo(Forum::class, 'forum_id');
     }
 }
