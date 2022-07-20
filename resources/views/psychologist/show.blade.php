@@ -68,6 +68,23 @@
                                                 class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
                                                 <div
                                                     class="d-flex flex-column justify-content-center align-items-start mt-2">
+                                                    <h5 class="transaction-game">@lang('show_psychologist.consultation_type')</h5>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex justify-content-start">
+                                                <b>{{ $transaction->consultationType->name }}</b>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <div
+                                                class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
+                                                <div
+                                                    class="d-flex flex-column justify-content-center align-items-start mt-2">
                                                     <h5 class="transaction-game">@lang('show_psychologist.fee')</h5>
                                                 </div>
                                             </div>
@@ -102,23 +119,6 @@
                                                 class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
                                                 <div
                                                     class="d-flex flex-column justify-content-center align-items-start mt-2">
-                                                    <h5 class="transaction-game">@lang('show_psychologist.description')</h5>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex justify-content-start">
-                                                {{ $transaction->detail }}
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <div
-                                                class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
-                                                <div
-                                                    class="d-flex flex-column justify-content-center align-items-start mt-2">
                                                     <h5 class="transaction-game">@lang('show_psychologist.status')</h5>
                                                 </div>
                                             </div>
@@ -132,6 +132,24 @@
                                 </tbody>
                             </table>
 
+                            @if ($transaction->note != null)
+                                <tr>
+                                    <td>
+                                        <div
+                                            class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
+                                            <div class="d-flex flex-column justify-content-center align-items-start mt-2">
+                                                <h5 class="transaction-game">@lang('show_psychologist.note_from_psychologist'):</h5>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex justify-content-start">
+                                            {{ $transaction->note }}
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endif
+
                             @if ($transaction->status == 'Pending')
                                 <div class="d-flex justify-content-center">
                                     <form action="/psychologist/transactions/{{ $transaction->id }}" method="post">
@@ -141,6 +159,31 @@
                                         <button type="submit" class="btn btn-primary">@lang('show_psychologist.accept_consultation')</button>
                                     </form>
                                 </div>
+                            @elseif($transaction->status == 'Confirmed')
+                                @if ($transaction->consultationType->name == 'Online Consultation')
+                                    <a href="{{ route('chat_page_psychologist', $transaction->id) }}">
+                                        <button type="button" class="btn btn-primary">@lang('show_psychologist.chat_now')</button>
+                                    </a>
+                                @elseif($transaction->consultationType->name == 'Offline Consultation')
+                                    {{-- add note and end consultation button for psychologist --}}
+                                    <form action="{{ route('psychologist_end', $transaction) }}" method="post">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <textarea class="form-control" name="note" id="note" rows="3" placeholder="Type a note..."></textarea>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="submit" class="btn btn-danger">End Consultation</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                @endif
+                            @elseif($transaction->status == 'Finished')
+                                @if ($transaction->consultationType->name == 'Online Consultation')
+                                    <a href="{{ route('chat_page_psychologist', $transaction->id) }}">
+                                        <button type="button" class="btn btn-primary">@lang('show_psychologist.see_chat_history')</button>
+                                    </a>
+                                @endif
                             @endif
 
                         </div>

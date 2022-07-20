@@ -94,11 +94,10 @@ class ConsultationController extends Controller
         $startTime = Carbon::createFromFormat('Y-m-d H:i:s', $schedule->startTime)->format('H:i:s');
         $transaction->time = Carbon::createFromFormat('Y-m-d H:i:s', $request->date . ' ' . $startTime);
 
-        $transaction->detail = 'tes aja dulu';
         $transaction->save();
 
         // ubah status schedule
-        $schedule->status = 'Booked';
+        $schedule->status = 'Confirmed';
         $schedule->dateBook = $request->date;
         $schedule->save();
 
@@ -118,7 +117,7 @@ class ConsultationController extends Controller
     public function my_index()
     {
         $this->setLang();
-        $transactions = Transaction::where('user_id', auth()->user()->id)->where('status', 'Pending')->orWhere('status', 'Booked')->get();
+        $transactions = Transaction::where('user_id', auth()->user()->id)->where('status', 'Pending')->orWhere('status', 'Confirmed')->get();
         $transaction_histories = Transaction::where('user_id', auth()->user()->id)->where('status', 'Finished')->get();
         $online_consultation_id = ConsultationType::where('name', 'Online Consultation')->first()->id;
         $offline_consultation_id = ConsultationType::where('name', 'Offline Consultation')->first()->id;
@@ -129,5 +128,9 @@ class ConsultationController extends Controller
     {
         $this->setLang();
         return view('consultation.my_show', compact('transaction'));
+    }
+
+    public function review(Request $request)
+    {
     }
 }

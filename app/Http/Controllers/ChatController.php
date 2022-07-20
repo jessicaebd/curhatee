@@ -26,7 +26,7 @@ class ChatController extends Controller
     {
         $this->setLang();
 
-        $transaction = Transaction::find($id);  
+        $transaction = Transaction::find($id);
 
         if (Auth::guard('webpsychologist')->user()) {
             $data = [
@@ -85,7 +85,7 @@ class ChatController extends Controller
     public function showMessage($id)
     {
         $this->setLang();
-        
+
         $transaction = Transaction::find($id);
 
         if (Auth::guard('webpsychologist')->user()) {

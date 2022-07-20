@@ -64,12 +64,13 @@
                                 @foreach ($schedules as $schedule)
                                     <div class="col-md-4">
                                         <div class="mb-3">
+                                            {{ $schedule->status }}
                                             <input type="radio" class="btn-check" name="schedule"
                                                 value="{{ $schedule->id }}" id="{{ $schedule->id }}"
-                                                {{ $schedule->status == 'Booked' ? 'disabled' : '' }}
+                                                {{ $schedule->status != 'Open' ? 'disabled' : '' }}
                                                 {{ old('schedule') == $schedule->id ? 'checked' : '' }}>
                                             <label
-                                                class="btn {{ $schedule->status == 'Booked' || ($date->toDateString() == \Carbon\Carbon::today('Asia/Bangkok')->toDateString() && \Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $schedule->startTime)->format('H:i:s'))->lte(\Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::now('Asia/Bangkok')->format('H:i:s')))) ? 'btn-secondary' : 'btn-outline-primary' }}"
+                                                class="btn {{ $schedule->status != 'Open' || ($date->toDateString() == \Carbon\Carbon::today('Asia/Bangkok')->toDateString() && \Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $schedule->startTime)->format('H:i:s'))->lte(\Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::now('Asia/Bangkok')->format('H:i:s')))) ? 'btn-secondary' : 'btn-outline-primary' }}"
                                                 for="{{ $schedule->id }}">{{ \Carbon\Carbon::parse($schedule->startTime)->format('H:i') }}
                                                 -
                                                 {{ \Carbon\Carbon::parse($schedule->endTime)->format('H:i') }}</label>

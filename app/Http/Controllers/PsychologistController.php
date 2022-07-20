@@ -79,6 +79,15 @@ class PsychologistController extends Controller
         return view('psychologist.show', compact('psychologist', 'transaction'))->with('status', 'Transaction confirmed');
     }
 
+    public function psychologist_end(Request $request, Transaction $transaction)
+    {
+        $transaction->status = 'Finished';
+        if($request->has('note')) {
+            $transaction->note = $request->note;
+        }
+        $transaction->save();
+        return redirect()->route('psychologist_dashboard');
+    }
 
 
     // controller admin

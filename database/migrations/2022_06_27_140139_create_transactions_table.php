@@ -21,10 +21,9 @@ class CreateTransactionsTable extends Migration
             $table->foreignUuid('schedule_id')->references('id')->on('schedules')->constrained();
             $table->foreignUuid('payment_type_id')->references('id')->on('payment_types')->constrained();
             $table->integer('price');
-            $table->string('detail');
+            $table->text('note')->nullable();
             $table->string('status');
             $table->dateTime('time');
-            $table->string('isReviewed')->default('false');
             $table->timestamps();
         });
     }

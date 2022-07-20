@@ -3,22 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-    public function show($id)
+
+    public function store(Request $request, $id)
     {
-        $reviews = Review::where('psychologist_id', $id)->get();
+        $request->validate([
+            'rating' => 'required|in:1,2,3,4,5',
+            'comment' => 'required',
+        ]);
 
-        $data = [
-            'reviews' => $reviews,
-        ];
+        $transaction = Transaction::find($id);
 
-        // return view('review.show', $data);
-    }
+        $review = new Review();
+        $review->transaction_id = $transaction->id;
+        $review->user_id = $transaction->user_id;
+        $review->psychologist_id = $transaction->psychologist_id;
+        $review->rating = $request->rating;
+        $review->comment = $request->comment;
+        $review->save();
 
-    public function store($id)
-    {
+        return redirect()->route('my_consultation', $id);
     }
 }

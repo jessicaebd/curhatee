@@ -6,7 +6,7 @@
         'date' => 'Date',
         'status' => 'Status',
         'fee' => 'Fee',
-        'Paid with' => 'Paid with',
-        'description' => 'Description:'
+        'paid_with' => 'Paid with',
+        'note_from_psychologist' => 'Note from psychologist',
     ];
 ?>

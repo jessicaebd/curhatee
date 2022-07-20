@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\Uuid;
 use App\Models\Diary;
 use App\Models\Forum;
+use App\Models\Review;
 use App\Models\Chat;
 use App\Models\ReplyForum;
 use App\Models\LikedForum;
@@ -98,5 +99,10 @@ class User extends Authenticatable
     public function likedReplyForum()
     {
         return $this->hasMany(LikedReplyForum::class);
+    }
+
+    public function review()
+    {
+        return $this->hasMany(Review::class);
     }
 }

@@ -11,6 +11,7 @@ use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\PsychologistController;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ChatController;
 
 /*
@@ -45,9 +46,10 @@ Route::controller(PsychologistController::class)
     ->middleware('auth:webpsychologist')
     ->group(function () {
         Route::get('/logout', 'logout');
-        Route::get('/', 'psychologist_index');
+        Route::get('/', 'psychologist_index')->name('psychologist_dashboard');
         Route::get('/transactions/{transaction}', 'psychologist_show');
         Route::put('/transactions/{transaction}', 'psychologist_update');
+        Route::post('/transactions/end/{transaction}', 'psychologist_end')->name('psychologist_end');
     });
 
 // home
@@ -67,6 +69,7 @@ Route::prefix('/consultation')
         Route::get('/{transaction}', 'my_show')->middleware('auth');
         Route::post('/{transaction}', 'my_store')->middleware('auth');
         Route::put('/{transaction}', 'update')->middleware('auth');
+        Route::post('/review/{transaction}', 'review')->middleware('auth');
     });
 
 // chat for user
@@ -126,7 +129,7 @@ Route::prefix('/forum-psychologist')
 Route::prefix('/review')
     ->controller(ReviewController::class)
     ->group(function () {
-        Route::get('/{psychologist}', 'show')->name('show_review');
+        // Route::get('/{psychologist}', 'show')->name('show_review');
         Route::post('/{psychologist}', 'store')->name('store_review')->middleware('auth');
     });
 

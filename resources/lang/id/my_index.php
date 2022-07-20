@@ -4,6 +4,9 @@
         'my_consultation_history' => 'Riwayat Konsultasi Saya',
         'status' => 'Status',
         'chat_online' => 'Chat Online',
-        'see_appointment' => 'Lihat Janji'
+        'see_detail' => 'Lihat Detail',
+        'review' => 'Ulas',
+        'detail' => 'Detail',
+        'there_is_no_consultation' => 'Tidak ada konsultasi',
+        'your_review' => 'Ulasan Anda',
     ];
-?>

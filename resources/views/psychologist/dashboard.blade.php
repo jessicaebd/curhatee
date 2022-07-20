@@ -16,19 +16,23 @@
                 <ul class="nav nav-tabs d-flex justify-content-start align-items-center" id="tableTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all"
-                            type="button" role="tab" aria-controls="all" aria-selected="true">@lang('dashboard_psychologist.all_trx')</button>
+                            type="button" role="tab" aria-controls="all"
+                            aria-selected="true">@lang('dashboard_psychologist.all_trx')</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="success-tab" data-bs-toggle="tab" data-bs-target="#success"
-                            type="button" role="tab" aria-controls="success" aria-selected="false">@lang('dashboard_psychologist.success')</button>
+                            type="button" role="tab" aria-controls="success"
+                            aria-selected="false">@lang('dashboard_psychologist.success')</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending"
-                            type="button" role="tab" aria-controls="pending" aria-selected="false">@lang('dashboard_psychologist.pending')</button>
+                            type="button" role="tab" aria-controls="pending"
+                            aria-selected="false">@lang('dashboard_psychologist.pending')</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="failed-tab" data-bs-toggle="tab" data-bs-target="#failed"
-                            type="button" role="tab" aria-controls="failed" aria-selected="false">@lang('dashboard_psychologist.failed')</button>
+                            type="button" role="tab" aria-controls="failed"
+                            aria-selected="false">@lang('dashboard_psychologist.failed')</button>
                     </li>
                 </ul>
                 <div class="tab-content" id="tableTabContent">
@@ -82,39 +86,11 @@
                                                 </span>
                                             </td>
                                             <td class="action">
-                                                @if ($transaction->consultation_type_id == $online_consultation_id)
-                                                    <a href="{{ route('chat_page_psychologist', $transaction->id) }}"
-                                                        class="btn-transaction mx-auto">@lang('dashboard_psychologist.chat')</a>
-                                                @elseif($transaction->consultation_type_id == $offline_consultation_id)
-                                                    <a href="/psychologist/transactions/{{ $transaction->id }}"
-                                                        class="btn-transaction mx-auto">@lang('dashboard_psychologist.details')</a>
-                                                @endif
+                                                <a href="/psychologist/transactions/{{ $transaction->id }}"
+                                                    class="btn-transaction mx-auto">@lang('dashboard_psychologist.details')</a>
                                             </td>
                                         </tr>
                                     @endforeach
-                                    <tr>
-                                        <td>
-                                            <div
-                                                class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
-                                                <img class="transaction-img" src="./assets/img/home/cover.png"
-                                                    alt="">
-
-                                                <div
-                                                    class="d-flex flex-column justify-content-center align-items-start mt-2">
-                                                    <h5 class="transaction-game">@lang('dashboard_psychologist.hari_tanggal')</h5>
-                                                    <h5 class="transaction-type">@lang('dashboard_psychologist.jam')</h5>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>NANTI HAPUS</td>
-                                        <td>@lang('dashboard_psychologist.offline_consultation')</td>
-                                        <td>Rp 290.000</td>
-                                        <td class="status">
-                                            <span
-                                                class="pending w-auto d-flex  justify-content-center align-self-center">@lang('dashboard_psychologist.pending')</span>
-                                        </td>
-                                        <td class="action"><button class="btn-transaction mx-auto">@lang('dashboard_psychologist.details')</button></td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
