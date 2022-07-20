@@ -1,4 +1,4 @@
-@extends($view == 'Psychologist' ? 'layouts.main-psychologist' : 'layouts.main')
+@extends('layouts.main-admin')
 
 @section('title', 'Detail Forum')
 
@@ -37,7 +37,7 @@
 @endsection
 
 @section('content')
-    <div class="container container-margin">
+    <div class="container">
         <h3 class="fw-bold mb-3">{{ $forum->title }}</h3>
 
         <div class="row border">
@@ -85,9 +85,7 @@
 
                         <div class="d-flex align-items-end align-content-end justify-content-between">
                             <div class="d-flex align-items-end align-content-end">
-                                <form
-                                    action="{{ Auth::guard('webpsychologist')->user() != null ? route('like_forum_psychologist', $forum->id) : route('like_forum_user', $forum->id) }}"
-                                    method="post">
+                                <form action="{{ route('like_forum_user', $forum->id) }}" method="post">
                                     @csrf
                                     <button type="submit p-1"
                                         class="btn-like {{ $forum->is_forum_liked ? 'btn-danger' : 'btn-outline-danger' }}"><i
@@ -149,12 +147,13 @@
 
                                         <div class="d-flex align-items-end align-content-end justify-content-between">
                                             <div class="d-flex align-items-end align-content-end">
-                                                <form
-                                                    action="{{ Auth::guard('webpsychologist')->user() != null ? route('like_reply_forum_psychologist', $reply_forum->id) : route('like_reply_forum_user', $reply_forum->id) }}"
-                                                    @csrf <button type="submit p-1"
-                                                    class="btn-like {{ $reply_forum->is_forum_liked ? 'btn-danger' : 'btn-outline-danger' }}">
-                                                    <i class="bi bi-heart"></i>
-                                                    {{ $reply_forum->likes }}</button>
+                                                <form action="{{ route('like_forum_user', $reply_forum->id) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    <button type="submit p-1"
+                                                        class="btn-like {{ $reply_forum->is_forum_liked ? 'btn-danger' : 'btn-outline-danger' }}"><i
+                                                            class="bi bi-heart"></i>
+                                                        {{ $reply_forum->likes }}</button>
                                                 </form>
                                             </div>
 
@@ -174,9 +173,8 @@
                     @endif
 
                     <div class="col-11" id="reply">
-                        <form
-                            action="{{ Auth::guard('webpsychologist')->user() != null ? route('store_reply_forum_psychologist', $forum->id) : route('store_reply_forum_user', $forum->id) }}"
-                            method="post" enctype="multipart/form-data">
+                        <form action="{{ route('store_reply_forum_user', $forum->id) }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
                             <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="2"
                                 placeholder="Type a message..."></textarea>
