@@ -141,9 +141,9 @@ class ForumController extends Controller
         }
 
         if ($is_forum_liked) {
-            $is_forum_liked = true;
+            $forum->is_forum_liked = true;
         } else {
-            $is_forum_liked = false;
+            $forum->is_forum_liked = false;
         }
 
         foreach ($reply_forums as $reply_forum) {
@@ -165,7 +165,6 @@ class ForumController extends Controller
             'forum' => $forum,
             'reply_forums' => $reply_forums,
             'view' => $view,
-            'is_forum_liked' => $is_forum_liked,
         ];
 
         if (Auth::guard('webpsychologist')->user()) {
@@ -280,6 +279,26 @@ class ForumController extends Controller
             $reply_forum->save();
             $is_liked->delete();
         }
+
+        return redirect()->back();
+    }
+
+    public function deleteForum($id)
+    {
+        $forum = Forum::find($id);
+        $reply_forums = ReplyForum::where('forum_id', $id)->get();
+        foreach ($reply_forums as $reply_forum) {
+            $reply_forum->delete();
+        }
+        $forum->delete();
+
+        return redirect()->back();
+    }
+
+    public function deleteReplyForum($id)
+    {
+        $reply_forum = ReplyForum::find($id);
+        $reply_forum->delete();
 
         return redirect()->back();
     }

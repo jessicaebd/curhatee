@@ -124,6 +124,14 @@ Route::prefix('/forum-psychologist')
         Route::post('/{forum}', 'storeReply')->name('store_reply_forum_psychologist');
     });
 
+// forum for admin
+Route::prefix('/forum-admin')
+    ->controller(ForumController::class)
+    ->middleware('auth:webpsychologist')
+    ->group(function () {
+        //delete forum
+        //delete reply forum
+    });
 
 // review
 Route::prefix('/review')

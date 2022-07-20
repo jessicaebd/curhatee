@@ -151,10 +151,13 @@
                                             <div class="d-flex align-items-end align-content-end">
                                                 <form
                                                     action="{{ Auth::guard('webpsychologist')->user() != null ? route('like_reply_forum_psychologist', $reply_forum->id) : route('like_reply_forum_user', $reply_forum->id) }}"
-                                                    @csrf <button type="submit p-1"
-                                                    class="btn-like {{ $reply_forum->is_forum_liked ? 'btn-danger' : 'btn-outline-danger' }}">
-                                                    <i class="bi bi-heart"></i>
-                                                    {{ $reply_forum->likes }}</button>
+                                                    method="post">
+                                                    @csrf
+                                                    <button type="submit p-1"
+                                                        class="btn-like {{ $reply_forum->is_reply_forum_liked ? 'btn-danger' : 'btn-outline-danger' }}">
+                                                        <i class="bi bi-heart"></i>
+                                                        {{ $reply_forum->likes }}
+                                                    </button>
                                                 </form>
                                             </div>
 
