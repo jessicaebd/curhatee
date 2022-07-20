@@ -63,7 +63,7 @@ Route::prefix('/consultation')
         Route::get('/psychologists', 'index');
         Route::get('/psychologists/{psychologist}', 'show')->name('psychologist_detail');
         Route::post('/psychologists/{psychologist}', 'store')->middleware('auth');
-        Route::get('/', 'my_index')->middleware('auth');
+        Route::get('/', 'my_index')->name('my_consultation')->middleware('auth');
         Route::get('/{transaction}', 'my_show')->middleware('auth');
         Route::post('/{transaction}', 'my_store')->middleware('auth');
         Route::put('/{transaction}', 'update')->middleware('auth');
@@ -120,6 +120,7 @@ Route::prefix('/forum-psychologist')
         Route::post('/like/reply-forum/{reply_forum_psychologist}', 'likeReplyForum')->name('like_reply_forum_psychologist');
         Route::post('/{forum}', 'storeReply')->name('store_reply_forum_psychologist');
     });
+
 
 // review
 Route::prefix('/review')
