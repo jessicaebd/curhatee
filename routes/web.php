@@ -67,7 +67,6 @@ Route::prefix('/consultation')
         Route::get('/{transaction}', 'my_show')->middleware('auth');
         Route::post('/{transaction}', 'my_store')->middleware('auth');
         Route::put('/{transaction}', 'update')->middleware('auth');
-        Route::get('/review/{transaction}', 'review')->name()->middleware('auth');
     });
 
 // chat for user
