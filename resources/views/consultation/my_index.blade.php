@@ -49,16 +49,9 @@
                                 </div>
                             </div>
                         @endforeach
-                        <<<<<<< HEAD </div>
-                @endif
-
-
-                =======
-            @else
-                <h3 class="text-center mb-3">There is no consultation yet</h3>
+                    </div>
                 @endif
             </div>
-            >>>>>>> a9c5ee0099c5777c0e2e1c3aeeeaf9867b7e3554
         </div>
     </div>
 

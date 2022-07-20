@@ -1,7 +1,7 @@
 <?php
     return [
         'book_a_psychologist' => 'Book a Psychologist',
-        'working_at' => 'Workin at',
+        'working_at' => 'Working at',
         'consultation_for' => 'Consultation for ',
         'choose_hours' => 'Choose hours:',
         'total_price' => 'Total price:',
