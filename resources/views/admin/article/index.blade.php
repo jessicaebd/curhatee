@@ -22,7 +22,7 @@
                 <div class="col-md-4 ">
                     <div class="card mb-3" style="height: 26rem;">
                         <img class="card-img-top"
-                            src="{{ file_exists(public_path() . "storage/images/articles/$article->image") ? asset("storage/images/articles/$article->image") : asset('storage/images/articles/default-article.jpg') }}"
+                            src="{{ file_exists(public_path() . "storage/images/articles/$article->image") ? asset("storage/images/articles/$article->image") : asset('storage/images/articles/article.jpg') }}"
                             alt="Article image" style="height: 15rem">
 
                         <div class="card-body">

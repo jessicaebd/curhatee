@@ -12,6 +12,7 @@ use App\Models\ReplyForum;
 use App\Models\Psychologist;
 use Illuminate\Http\Request;
 use App\Models\LikedReplyForum;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class ForumController extends Controller
@@ -59,6 +60,12 @@ class ForumController extends Controller
         if (Auth::guard('webpsychologist')->user()) {
             $data['psychologist'] = Psychologist::find(Auth::guard('webpsychologist')->user()->id);
         };
+
+        if (Auth::check()) {
+            if (Auth::user()->role == 'Admin') {
+                return view('admin.forum.index', $data);
+            }
+        }
 
         return view('forum.index', $data);
     }
