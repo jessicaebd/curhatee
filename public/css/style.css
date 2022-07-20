@@ -9,6 +9,11 @@
     transition: all 0.3s ease-out;
 }
 
+.container-margin {
+    margin-top: 20vh;
+    margin-bottom: 20vh;
+}
+
 body {
     font-family: "Nunito Sans", sans-serif;
     letter-spacing: 0.5px;
@@ -17,6 +22,10 @@ body {
 a {
     text-decoration: none;
     color: black;
+}
+
+.bg-blue {
+    background-color: var(--main-blue);
 }
 
 .l-font {

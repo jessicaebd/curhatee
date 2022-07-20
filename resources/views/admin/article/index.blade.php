@@ -21,9 +21,8 @@
             @foreach ($articles as $article)
                 <div class="col-md-4 ">
                     <div class="card mb-3" style="height: 26rem;">
-                        <img class="card-img-top"
-                            src="{{ file_exists(public_path() . "storage/images/articles/$article->image") ? asset("storage/images/articles/$article->image") : asset('storage/images/articles/article.jpg') }}"
-                            alt="Article image" style="height: 15rem">
+                        <img src="{{ asset('storage/images/articles/' . $article->image) }}" alt="Article picture"
+                            style="height: 15rem">
 
                         <div class="card-body">
                             <h5 class="card-title fw-bold m-font">{{ $article->title }}</h5>

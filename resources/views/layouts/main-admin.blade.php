@@ -17,6 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="{{ asset('css/psychologist/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     @yield('css')
 

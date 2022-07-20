@@ -14,11 +14,16 @@
     @endif
 
     <div class="container">
-        <h3 class="text-center mb-3">@lang('my_index.my_consultation')</h3>
+
         <div class="row d-flex justify-content-center">
             <div class="col-md-10">
-                <div class="row">
-                    @if (count($transactions) > 0)
+                @if ($transactions->isEmpty())
+                    <div class="d-flex align-items-center justify-content-center" style="height: 60vh">
+                        <h6 class="text-center">You have no consultation at the moment.</h6>
+                    </div>
+                @else
+                    <h3 class="text-center mb-3">@lang('my_index.my_consultation')</h3>
+                    <div class="row">
                         @foreach ($transactions as $transaction)
                             <div class="col-md-6">
                                 <div class="card mb-3">
@@ -42,59 +47,57 @@
                                 </div>
                             </div>
                         @endforeach
-                    @else
-                        <h3 class="text-center mb-3">@lang('my_index.there_is_no_consultation')</h3>
-                    @endif
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
+
+    @if (count($transaction_histories) > 0)
+        <h3 class="text-center mb-3">@lang('my_index.my_consultation_history')</h3>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10">
+                <div class="row">
+                    @foreach ($transaction_histories as $transaction_history)
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <p class="card-text">{{ $transaction_history->schedule->psychologist->name }}</p>
+                                    <p class="card-text">
+                                        {{ \Carbon\Carbon::parse($transaction_history->time)->format('l, d F Y @ H:i') }}
+                                    </p>
+
+                                    <p class="card-text">@lang('my_index.status'): {{ $transaction_history->status }}</p>
+
+                                    {{-- ini mau badge tdny jg css gabisa. putih smua --}}
+                                    <span class="btn btn-primary">{{ $transaction_history->consultationType->name }}
+                                    </span>
+
+                                    @if ($transaction_history->review != null)
+                                        <h5>@lang('my_index.your_review')</h5>
+                                        <div class="pe-2">
+                                            @for ($i = 0; $i < 5; $i++)
+                                                @if ($i < $transaction_history->review->rating)
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                @else
+                                                    <i class="bi bi-star text-warning"></i>
+                                                @endif
+                                            @endfor
+                                        </div>
+                                    @endif
+
+                                    <a href="/consultation/{{ $transaction_history->id }}">
+                                        <button type="button" class="btn btn-secondary">
+                                            @lang('my_index.see_detail')
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
-
-        @if (count($transaction_histories) > 0)
-            <h3 class="text-center mb-3">@lang('my_index.my_consultation_history')</h3>
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-10">
-                    <div class="row">
-                        @foreach ($transaction_histories as $transaction_history)
-                            <div class="col-md-6">
-                                <div class="card mb-3">
-                                    <div class="card-body">
-                                        <p class="card-text">{{ $transaction_history->schedule->psychologist->name }}</p>
-                                        <p class="card-text">
-                                            {{ \Carbon\Carbon::parse($transaction_history->time)->format('l, d F Y @ H:i') }}
-                                        </p>
-
-                                        <p class="card-text">@lang('my_index.status'): {{ $transaction_history->status }}</p>
-
-                                        {{-- ini mau badge tdny jg css gabisa. putih smua --}}
-                                        <span class="btn btn-primary">{{ $transaction_history->consultationType->name }}
-                                        </span>
-
-                                        @if ($transaction_history->review != null)
-                                            <h5>@lang('my_index.your_review')</h5>
-                                            <div class="pe-2">
-                                                @for ($i = 0; $i < 5; $i++)
-                                                    @if ($i < $transaction_history->review->rating)
-                                                        <i class="bi bi-star-fill text-warning"></i>
-                                                    @else
-                                                        <i class="bi bi-star text-warning"></i>
-                                                    @endif
-                                                @endfor
-                                            </div>
-                                        @endif
-
-                                        <a href="/consultation/{{ $transaction_history->id }}">
-                                            <button type="button" class="btn btn-secondary">
-                                                @lang('my_index.see_detail')
-                                            </button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        @endif
-    </div>
+    @endif
 
 @endsection

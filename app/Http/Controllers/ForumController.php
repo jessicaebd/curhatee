@@ -172,6 +172,12 @@ class ForumController extends Controller
             $data['psychologist'] = Psychologist::find(Auth::guard('webpsychologist')->user()->id);
         };
 
+        if (Auth::check()) {
+            if (Auth::user()->role == 'Admin') {
+                return view('admin.forum.show', $data);
+            }
+        }
+
         return view('forum.show', $data);
     }
 
