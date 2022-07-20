@@ -17,7 +17,7 @@ class CreateReviewsTable extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('transaction_id')->references('id')->on('transactions')->constrained();
             $table->text('content');
-            $table->integer('rating')->default(0);
+            $table->integer('rating')->default(1);
             $table->timestamps();
         });
     }

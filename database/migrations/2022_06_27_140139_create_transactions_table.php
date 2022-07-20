@@ -24,6 +24,7 @@ class CreateTransactionsTable extends Migration
             $table->string('detail');
             $table->string('status');
             $table->dateTime('time');
+            $table->string('isReviewed')->default('false');
             $table->timestamps();
         });
     }

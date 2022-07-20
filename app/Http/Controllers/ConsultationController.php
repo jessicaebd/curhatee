@@ -102,7 +102,7 @@ class ConsultationController extends Controller
         $schedule->dateBook = $request->date;
         $schedule->save();
 
-        return redirect('/')->with('status', 'Booking request success! Waiting for psychologist to confirm.');
+        return redirect()->route('my_consultation')->with('status', 'Booking request success! Waiting for psychologist to confirm.');
     }
 
     public function update(Request $request)
@@ -118,10 +118,11 @@ class ConsultationController extends Controller
     public function my_index()
     {
         $this->setLang();
-        $transactions = Transaction::where('user_id', auth()->user()->id)->get();
+        $transactions = Transaction::where('user_id', auth()->user()->id)->where('status', 'Pending')->orWhere('status', 'Booked')->get();
+        $transaction_histories = Transaction::where('user_id', auth()->user()->id)->where('status', 'Finished')->get();
         $online_consultation_id = ConsultationType::where('name', 'Online Consultation')->first()->id;
         $offline_consultation_id = ConsultationType::where('name', 'Offline Consultation')->first()->id;
-        return view('consultation.my_index', compact('transactions', 'online_consultation_id', 'offline_consultation_id'));
+        return view('consultation.my_index', compact('transactions', 'online_consultation_id', 'offline_consultation_id', 'transaction_histories'));
     }
 
     public function my_show(Transaction $transaction)

@@ -63,7 +63,7 @@ Route::prefix('/consultation')
         Route::get('/psychologists', 'index');
         Route::get('/psychologists/{psychologist}', 'show')->name('psychologist_detail');
         Route::post('/psychologists/{psychologist}', 'store')->middleware('auth');
-        Route::get('/', 'my_index')->middleware('auth');
+        Route::get('/', 'my_index')->name('my_consultation')->middleware('auth');
         Route::get('/{transaction}', 'my_show')->middleware('auth');
         Route::post('/{transaction}', 'my_store')->middleware('auth');
         Route::put('/{transaction}', 'update')->middleware('auth');
