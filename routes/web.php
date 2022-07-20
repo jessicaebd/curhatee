@@ -121,6 +121,7 @@ Route::prefix('/forum-psychologist')
         Route::post('/{forum}', 'storeReply')->name('store_reply_forum_psychologist');
     });
 
+
 // review
 Route::prefix('/review')
     ->controller(ReviewController::class)
