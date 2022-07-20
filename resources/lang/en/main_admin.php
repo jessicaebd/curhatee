@@ -3,6 +3,7 @@
         'dashboard' => 'Dashboard',
         'articles' => 'Articles',
         'hospitals' => 'Hospitals',
+        'forum' => 'Forum',
         'podcast' => 'Podcasts',
         'psychologist' => 'Psychologist',
         'schedules' => 'Schedules',

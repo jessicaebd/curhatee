@@ -11,7 +11,7 @@
         @endif
 
         <div class="d-flex justify-content-between mb-3">
-            <h3 class=" fw-bold">@lang('index_admin_psychologist.psychologist')</h3>
+            <h3 class=" fw-bold">@lang('index_admin_psychologist.psychologists')</h3>
             <a href="{{ route('add_psychologist') }}" class="btn btn-primary my-auto">
                 <i class="bi bi-plus-circle me-2"></i>@lang('index_admin_psychologist.register_psychologist')
             </a>

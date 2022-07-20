@@ -3,7 +3,7 @@
         'edit_psychologist_information' => 'Edit Psychologist Information',
         'name' => 'Name',
         'email' => 'Email',
-        'Phone' => 'Phone',
+        'phone' => 'Phone',
         'hospital' => 'Hospital',
         'fee' => 'Fee',
         'rating' => 'Rating',

@@ -27,9 +27,7 @@
 <body>
     @include('partials.navbar')
 
-    <div style="margin-top: 120px">
-        @yield('content')
-    </div>
+    @yield('content')
 
 
     @include('partials.footer')
