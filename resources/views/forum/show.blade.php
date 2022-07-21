@@ -99,8 +99,10 @@
                                             class="bi bi-heart"></i>
                                         {{ $forum->likes }}</button>
                                 </form>
-                                <span class="mx-3">|</span>
-                                <a href="#reply" class="link-dark fw-bolder s-font">Reply</a>
+                                @if ($view != 'Admin')
+                                    <span class="mx-3">|</span>
+                                    <a href="#reply" class="link-dark fw-bolder s-font">Reply</a>
+                                @endif
                             </div>
 
                             <small class="text-secondary xs-font">{{ $forum->created_at->diffForHumans() }}</small>
@@ -185,29 +187,31 @@
                         </div>
                     @endif
 
-                    <div class="col-11" id="reply">
-                        <form
-                            action="{{ Auth::guard('webpsychologist')->user() != null ? route('store_reply_forum_psychologist', $forum->id) : route('store_reply_forum_user', $forum->id) }}"
-                            method="post" enctype="multipart/form-data">
-                            @csrf
-                            <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="2"
-                                placeholder="Type a message..."></textarea>
+                    @if ($view != 'Admin')
+                        <div class="col-11" id="reply">
+                            <form
+                                action="{{ Auth::guard('webpsychologist')->user() != null ? route('store_reply_forum_psychologist', $forum->id) : route('store_reply_forum_user', $forum->id) }}"
+                                method="post" enctype="multipart/form-data">
+                                @csrf
+                                <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="2"
+                                    placeholder="Type a message..."></textarea>
 
-                            <div class="d-flex align-items-end justify-content-between mb-3">
-                                <div class="col-4">
-                                    <input type="file" class="form-control" id="image" name="image">
+                                <div class="d-flex align-items-end justify-content-between mb-3">
+                                    <div class="col-4">
+                                        <input type="file" class="form-control" id="image" name="image">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary ms-3 mt-4 shadow mb-1">Reply</button>
                                 </div>
-                                <button type="submit" class="btn btn-primary ms-3 mt-4 shadow mb-1">Reply</button>
-                            </div>
-                        </form>
+                            </form>
 
-                        {{-- Error Message --}}
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                {{ $errors->first() }}
-                            </div>
-                        @endif
-                    </div>
+                            {{-- Error Message --}}
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    {{ $errors->first() }}
+                                </div>
+                            @endif
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

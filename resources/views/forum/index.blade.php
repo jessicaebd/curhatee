@@ -31,15 +31,17 @@
         <div class="d-flex justify-content-between align-items-end mb-4">
             <h3 class=" fw-bold">Forum</h3>
 
-            <form
-                action="{{ Auth::guard('webpsychologist')->user() != null
-                    ? route('create_forum_psychologist')
-                    : route('create_forum_user') }}"
-                method="get">
-                <button type="submit" class="btn btn-outline-blue shadow-sm">+
-                    Create
-                    new topic</button>
-            </form>
+            @if ($view != 'Admin')
+                <form
+                    action="{{ Auth::guard('webpsychologist')->user() != null
+                        ? route('create_forum_psychologist')
+                        : route('create_forum_user') }}"
+                    method="get">
+                    <button type="submit" class="btn btn-outline-blue shadow-sm">+
+                        Create
+                        new topic</button>
+                </form>
+            @endif
         </div>
         <div class="row">
             @foreach ($forums as $forum)
