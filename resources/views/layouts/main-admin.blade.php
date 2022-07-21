@@ -107,7 +107,9 @@
                     </a>
 
                     {{-- User --}}
-                    <a href="#" class="sidebar-item" onclick="toggleActive(this)">
+                    <a href="{{ route('manage_user') }}"
+                        class="sidebar-item {{ request()->routeIs('manage_user') ? 'active' : '' }}"
+                        onclick="toggleActive(this)">
                         <i class="bi bi-person text-secondary me-4 fw-bolder"></i>
 
                         <span>@lang('main_admin.users')</span>
@@ -154,7 +156,7 @@
             <div class="nav">
                 <div class="d-flex justify-content-between align-items-center w-100 mb-3 mb-md-0">
                     <div class="d-flex justify-content-between align-items-center w-100">
-                        <h2 class="nav-title">My Consultation</h2>
+                        <h2 class="nav-title">Admin Dashboard</h2>
                         <button id="toggle-navbar" onclick="toggleNavbar()">
                             {{-- <img src="{{ asset('storage/images/psychologists/' . $psychologist->image) }}"
                                 alt=""> --}}

@@ -9,4 +9,5 @@
         'detail' => 'Detail',
         'there_is_no_consultation' => 'Tidak ada konsultasi',
         'your_review' => 'Ulasan Anda',
+        'give_review' => 'Beri ulasan',
     ];

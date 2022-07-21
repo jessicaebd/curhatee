@@ -9,4 +9,5 @@
         'detail' => 'Detail',
         'there_is_no_consultation' => 'There is no consultation',
         'your_review' => 'Your Review',
+        'give_review' => 'Give Review',
     ];

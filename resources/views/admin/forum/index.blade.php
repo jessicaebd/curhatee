@@ -58,7 +58,7 @@
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                             <form action="{{ route('delete_forum', $forum->id) }}" method="post">
                                                 @csrf
-                                                <li><a class="btn">Delete</a></li>
+                                                <li><a class="btn text-danger"><i class="bi bi-trash3"></i>Delete</a></li>
                                             </form>
                                         </ul>
                                     </div>

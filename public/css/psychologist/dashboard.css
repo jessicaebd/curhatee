@@ -21,6 +21,26 @@ body {
     text-decoration: none;
 }
 
+.bg-blue {
+    background-color: blue;
+}
+
+.l-font {
+    font-size: 1.2rem;
+}
+
+.m-font {
+    font-size: 1rem;
+}
+
+.s-font {
+    font-size: 0.8rem;
+}
+
+.xs-font {
+    font-size: 0.7rem;
+}
+
 .screen-cover {
     position: fixed;
     top: 0;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Article;
 use App\Models\Hospital;
 use App\Models\Psychologist;
@@ -41,5 +42,11 @@ class AdminController extends Controller
         $this->setLang();
         $hospitals = Hospital::all();
         return view('admin.hospital.index', compact('hospitals'));
+    }
+
+    public function user(){
+        $this->setLang();
+        $users = User::all();
+        return view('admin.user.index', compact('users'));
     }
 }

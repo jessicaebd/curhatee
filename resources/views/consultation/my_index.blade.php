@@ -88,7 +88,11 @@
 
                                     <a href="/consultation/{{ $transaction_history->id }}">
                                         <button type="button" class="btn btn-secondary">
-                                            @lang('my_index.see_detail')
+                                            @if ($transaction_history->review != null)
+                                                @lang('my_index.see_detail')
+                                            @else
+                                                @lang('my_index.give_review')
+                                            @endif
                                         </button>
                                     </a>
                                 </div>

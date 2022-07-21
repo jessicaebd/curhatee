@@ -81,7 +81,7 @@ class PsychologistController extends Controller
 
     public function psychologist_update_reject(Transaction $transaction)
     {
-        $transaction->status = 'Open';
+        $transaction->status = 'Rejected';
         $transaction->note = 'Consultation rejected by psychologist';
         $transaction->save();
         $psychologist = Auth::guard('webpsychologist')->user();
