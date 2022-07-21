@@ -48,7 +48,8 @@ Route::controller(PsychologistController::class)
         Route::get('/logout', 'logout');
         Route::get('/', 'psychologist_index')->name('psychologist_dashboard');
         Route::get('/transactions/{transaction}', 'psychologist_show')->name('psychologist_show');
-        Route::put('/transactions/{transaction}', 'psychologist_update');
+        Route::put('/transactions/accept/{transaction}', 'psychologist_update_accept');
+        Route::put('/transactions/reject/{transaction}', 'psychologist_update_reject');
         Route::post('/transactions/end/{transaction}', 'psychologist_end')->name('psychologist_end');
     });
 
@@ -129,8 +130,8 @@ Route::prefix('/forum-admin')
     ->controller(ForumController::class)
     ->middleware('auth:webpsychologist')
     ->group(function () {
-        //delete forum
-        //delete reply forum
+        Route::delete('/delete/{forum}', 'deletForum')->name('delete_forum');
+        Route::delete('/delete/{reply_forum}', 'deleteReplyForum')->name('delete_reply_forum');
     });
 
 // review

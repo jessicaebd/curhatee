@@ -151,12 +151,24 @@
                             @endif
 
                             @if ($transaction->status == 'Pending')
+                                {{-- accept consultation --}}
                                 <div class="d-flex justify-content-center">
-                                    <form action="/psychologist/transactions/{{ $transaction->id }}" method="post">
+                                    <form action="/psychologist/transactions/accept/{{ $transaction->id }}"
+                                        method="post">
                                         @csrf
                                         @method('put')
                                         <input type="hidden" name="transaction_id" value="{{ $transaction->id }}">
                                         <button type="submit" class="btn btn-primary">@lang('show_psychologist.accept_consultation')</button>
+                                    </form>
+                                </div>
+                                {{-- reject consultation --}}
+                                <div class="d-flex justify-content-center">
+                                    <form action="/psychologist/transactions/reject/{{ $transaction->id }}"
+                                        method="post">
+                                        @csrf
+                                        @method('put')
+                                        <input type="hidden" name="transaction_id" value="{{ $transaction->id }}">
+                                        <button type="submit" class="btn btn-secondary">@lang('show_psychologist.reject_consultation')</button>
                                     </form>
                                 </div>
                             @elseif($transaction->status == 'Confirmed')
@@ -173,7 +185,7 @@
                                             <textarea class="form-control" name="note" id="note" rows="3" placeholder="Type a note..."></textarea>
                                         </div>
                                         <div class="col-md-2">
-                                            <button type="submit" class="btn btn-danger">End Consultation</button>
+                                            <button type="submit" class="btn btn-danger">@lang('show_psychologist.end_consultation')</button>
                                         </div>
                                     </div>
                                 </form>

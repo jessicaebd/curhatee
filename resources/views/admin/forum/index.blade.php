@@ -41,7 +41,7 @@
                             <div class="user-header d-flex justify-content-between ">
                                 <div class="d-flex align-items-center">
                                     <div class="user-header-avatar">
-                                        <img src="{{ asset('storage/images/users/' . $forum->user->image) }}"
+                                        <img src="{{ $forum->psychologist_id != null ? asset('storage/images/psychologists/' . $forum->psychologist->image) : asset('storage/images/users/' . $forum->user->image) }}"
                                             alt="user" class="img-fluid rounded rounded-circle me-2" width="30px"
                                             height="30px">
                                     </div>
@@ -56,8 +56,10 @@
                                         </a>
 
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <li><a class="dropdown-item" href="#">Edit</a></li>
-                                            <li><a class="dropdown-item" href="#">Delete</a></li>
+                                            <form action="{{ route('delete_forum', $forum->id) }}" method="post">
+                                                @csrf
+                                                <li><a class="btn">Delete</a></li>
+                                            </form>
                                         </ul>
                                     </div>
                                 </div>
@@ -90,45 +92,6 @@
             @endforeach
 
         </div>
-
-
-        @foreach ($forums as $forum)
-            {{ $forum->title }} --- <i
-                class="bi bi-clock me-2"></i>{{ \Carbon\Carbon::parse($forum->created_at)->format('l, d F Y - H:i') }}
-            ---
-
-
-            {{-- like button --}}
-            {{-- BOLEH LIAT REFERENSI INI STYLING LIKE BUTTONNY: https://codepen.io/Idered/pen/ALYLaM --}}
-            <form
-                action="{{ Auth::guard('webpsychologist')->user() != null ? route('like_forum_psychologist', $forum->id) : route('like_forum_user', $forum->id) }}"
-                method="post">
-                @csrf
-                <button type="submit"
-                    class="btn-like {{ $forum->is_forum_liked ? 'btn-danger' : 'btn-outline-danger' }}"><i
-                        class="bi bi-heart"></i>
-                    {{ $forum->likes }}
-                    likes</button>
-            </form>
-
-            <br>
-            @if ($forum->user_id != null)
-                {{ $forum->user->name }}
-            @elseif($forum->psychologist_id != null)
-                {{ $forum->psychologist->name }}
-            @endif
-            <br>
-            @if ($forum->image != null)
-                <img src="{{ asset('storage/images/forum/' . $forum->image) }}" alt="image"
-                    style="width: 80px; height: 80px; overflow: hidden;">
-            @endif
-            <br>
-            {{ Str::limit($forum->content, 200, $end = '...') }}
-            <br>
-            <a href="{{ route('show_detail_forum', $forum->id) }}"><button type="submit"
-                    class="btn btn-primary ms-3 mt-4 shadow mb-1">See Details</button></a>
-            <hr class="mt-3 mb-3" />
-        @endforeach
 
         {{-- Error Message --}}
         @if ($errors->any())

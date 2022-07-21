@@ -71,12 +71,21 @@ class PsychologistController extends Controller
         return view('psychologist.show', compact('psychologist', 'transaction'));
     }
 
-    public function psychologist_update(Transaction $transaction)
+    public function psychologist_update_accept(Transaction $transaction)
     {
         $transaction->status = 'Confirmed';
         $transaction->save();
         $psychologist = Auth::guard('webpsychologist')->user();
-        return view('psychologist.show', compact('psychologist', 'transaction'))->with('status', 'Transaction confirmed');
+        return view('psychologist.show', compact('psychologist', 'transaction'))->with('status', 'Consultation confirmed');
+    }
+
+    public function psychologist_update_reject(Transaction $transaction)
+    {
+        $transaction->status = 'Open';
+        $transaction->note = 'Consultation rejected by psychologist';
+        $transaction->save();
+        $psychologist = Auth::guard('webpsychologist')->user();
+        return view('psychologist.show', compact('psychologist', 'transaction'))->with('status', 'Consultation rejected');
     }
 
     public function psychologist_end(Request $request, Transaction $transaction)

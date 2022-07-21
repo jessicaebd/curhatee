@@ -53,7 +53,7 @@
                             <div class="user-header d-flex justify-content-between ">
                                 <div class="d-flex align-items-center">
                                     <div class="user-header-avatar">
-                                        <img src="{{ asset('storage/images/users/' . $forum->user->image) }}"
+                                        <img src="{{ $forum->psychologist_id != null ? asset('storage/images/psychologists/' . $forum->psychologist->image) : asset('storage/images/users/' . $forum->user->image) }}"
                                             alt="user" class="img-fluid rounded rounded-circle me-2" width="30px"
                                             height="30px">
                                     </div>

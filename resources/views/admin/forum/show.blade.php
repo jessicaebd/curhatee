@@ -47,8 +47,9 @@
                         <div class="user-header d-flex justify-content-between ">
                             <div class="d-flex align-items-center">
                                 <div class="user-header-avatar">
-                                    <img src="{{ asset('storage/images/users/' . $forum->user->image) }}" alt="user"
-                                        class="img-fluid rounded rounded-circle me-2" width="30px" height="30px">
+                                    <img src="{{ $forum->psychologist_id != null ? asset('storage/images/psychologists/' . $forum->psychologist->image) : asset('storage/images/users/' . $forum->user->image) }}"
+                                        alt="user profile" class="img-fluid rounded rounded-circle me-2" width="30px"
+                                        height="30px">
                                 </div>
                                 <h6 class="user-header-name fw-bolder">
                                     @if ($forum->user_id != null)
@@ -112,8 +113,8 @@
                                         <div class="user-header d-flex justify-content-between ">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-header-avatar">
-                                                    <img src="{{ asset('storage/images/users/' . $reply_forum->user->image) }}"
-                                                        alt="user" class="img-fluid rounded rounded-circle me-2"
+                                                    <img src="{{ $reply_forum->psychologist_id != null ? asset('storage/images/psychologists/' . $reply_forum->psychologist->image) : asset('storage/images/users/' . $reply_forum->user->image) }}"
+                                                        alt="user profile" class="img-fluid rounded rounded-circle me-2"
                                                         width="30px" height="30px">
                                                 </div>
                                                 <h6 class="user-header-name fw-bolder">
