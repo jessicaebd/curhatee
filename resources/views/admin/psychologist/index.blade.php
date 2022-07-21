@@ -40,7 +40,7 @@
                                         <div class="ps-2">
                                             <p class="small text-center text-muted mb-1">@lang('index_admin_psychologist.transaction')</p>
                                             <p class="mb-0 text-center">
-                                                {{ $psychologist->schedule->count() }}
+                                                {{ $psychologist->transaction->count() }}
                                             </p>
                                         </div>
                                         <div class="px-2">
@@ -59,8 +59,7 @@
                                             <i class="bi bi-pencil-square me-2"></i> @lang('index_admin_psychologist.edit')
                                         </a>
 
-                                        <form action="{{ route('delete_psychologist', $psychologist->id) }}"
-                                            method="POST">
+                                        <form action="{{ route('delete_psychologist', $psychologist->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger flex-grow-1">
