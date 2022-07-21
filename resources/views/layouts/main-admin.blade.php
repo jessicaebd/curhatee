@@ -35,7 +35,7 @@
                 <div class="d-flex flex-column justify-content-center align-items-center">
 
                     <button id="toggle-navbar" onclick="toggleNavbar()">
-                        <i class="bi bi-list"></i>
+                        <i class="bi bi-x"></i>
                     </button>
 
                     <div class="profile-img">
@@ -158,12 +158,11 @@
                     <div class="d-flex justify-content-between align-items-center w-100">
                         <h2 class="nav-title">Admin Dashboard</h2>
                         <button id="toggle-navbar" onclick="toggleNavbar()">
-                            {{-- <img src="{{ asset('storage/images/psychologists/' . $psychologist->image) }}"
-                                alt=""> --}}
+                            <img src="{{ asset('storage/images/users/' . Auth::user()->image) }}" alt="profile image"
+                                style="object-fit: contain">
                         </button>
                     </div>
                 </div>
-
             </div>
 
             @yield('content')

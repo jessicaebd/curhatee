@@ -61,7 +61,7 @@ class ConsultationController extends Controller
         // ambil  hari ini
         $today = Carbon::today('Asia/Bangkok');
 
-        return view('consultation.show', compact('psychologist', 'review', 'today'));
+        return view('consultation.show', compact('psychologist', 'reviews', 'today'));
     }
 
     public function store(Request $request)
