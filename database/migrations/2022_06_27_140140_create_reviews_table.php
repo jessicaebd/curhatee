@@ -16,8 +16,10 @@ class CreateReviewsTable extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('transaction_id')->references('id')->on('transactions')->constrained();
-            $table->text('content');
-            $table->integer('rating')->default(0);
+            $table->foreignUuid('user_id')->references('id')->on('users')->constrained();
+            $table->foreignUuid('psychologist_id')->references('id')->on('psychologists')->constrained();
+            $table->text('comment');
+            $table->integer('rating')->default(1);
             $table->timestamps();
         });
     }

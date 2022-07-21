@@ -11,6 +11,7 @@ use App\Models\Chat;
 use App\Models\Schedule;
 use App\Models\Forum;
 use App\Models\LikedForum;
+use App\Models\Review;
 use App\Models\ReplyForum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -78,5 +79,10 @@ class Psychologist extends Authenticatable
     public function likedReplyForum()
     {
         return $this->hasMany(LikedReplyForum::class);
+    }
+
+    public function review()
+    {
+        return $this->hasMany(Review::class);
     }
 }

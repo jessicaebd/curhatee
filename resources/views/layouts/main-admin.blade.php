@@ -1,135 +1,218 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{-- Bootstrap CSS --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    {{-- Bootstrap Icon --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    {{-- Bootstrap Icons --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
-    {{-- Custom CSS --}}
+    {{-- jQuery --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="{{ asset('css/psychologist/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/admin/dashboard.css') }}">
 
     @yield('css')
 
-    <title>Curhatee | @yield('title')</title>
+    <title>@lang('main_psychologist.psychologist_dashboard')</title>
 </head>
 
 <body>
-    @include('partials.navbar')
 
-    <div class="container-fluid">
-        <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" aria-current="page"
-                                href="#">
-                                <span data-feather="home"></span>
-                                @lang('main_admin.dashboard')
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('manage_article') ? 'active' : '' }}"
-                                href="{{ route('manage_article') }}">
-                                <span data-feather="file"></span>
-                                @lang('main_admin.articles')
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('manage_hospital') ? 'active' : '' }}"
-                                href="{{ route('manage_hospital') }}">
-                                <span data-feather="file"></span>
-                                @lang('main_admin.hospitals')
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file"></span>
-                                @lang('main_admin.podcast')
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('manage_psychologist') ? 'active' : '' }}"
-                                href="{{ route('manage_psychologist') }}">
-                                <span data-feather="users"></span>
-                                @lang('main_admin.psychologist')
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file"></span>
-                                @lang('main_admin.schedules')
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="bar-chart-2"></span>
-                                @lang('main_admin.users')
-                            </a>
-                        </li>
-                    </ul>
+    <div class="screen-cover d-none d-xl-none"></div>
 
-                    <h6
-                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>@lang('main_admin.saved_reports')</span>
-                        <a class="link-secondary" href="#" aria-label="Add a new report">
-                            <span data-feather="plus-circle"></span>
-                        </a>
-                    </h6>
-                    <ul class="nav flex-column mb-2">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                @lang('main_admin.current_month')
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                @lang('main_admin.last_quarter')
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                @lang('main_admin.social_engagement')
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                @lang('main_admin.year-end_sale')
-                            </a>
-                        </li>
-                    </ul>
+    <div class="row">
+        <div class="col-12 col-lg-3 col-navbar d-block">
+
+            <aside class="sidebar">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+
+                    <button id="toggle-navbar" onclick="toggleNavbar()">
+                        <i class="bi bi-list"></i>
+                    </button>
+
+                    <div class="profile-img">
+                        <img src="{{ asset('storage/images/users/' . Auth::user()->image) }}" alt=""
+                            class="rounded-circle" style="height: 100px; width: 100px;">
+                    </div>
+
+                    <h4 class="profile-name">{{ Auth::user()->name }}</h4>
+                    <p class="profile-email">{{ Auth::user()->email }}</p>
                 </div>
-            </nav>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                @yield('content')
-            </main>
+                {{-- Home --}}
+                <div class="sidebar-item-container">
+                    <a href="/" class="sidebar-item {{ request()->routeIs('home') ? 'active' : '' }}"
+                        onclick="toggleActive(this)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 14H14V21H21V14Z" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M10 14H3V21H10V14Z" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M21 3H14V10H21V3Z" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M10 3H3V10H10V3Z" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+
+                        <span>@lang('main_admin.dashboard')</span>
+                    </a>
+
+                    {{-- Article --}}
+                    <a href="{{ route('manage_article') }}"
+                        class="sidebar-item {{ request()->routeIs('manage_article') ? 'active' : '' }}"
+                        onclick="toggleActive(this)">
+                        <i class="bi bi-clipboard text-secondary me-4 fw-bolder"></i>
+                        <span>@lang('main_admin.articles')</span>
+                    </a>
+
+                    {{-- Hospital --}}
+                    <a href="{{ route('manage_hospital') }}"
+                        class="sidebar-item {{ request()->routeIs('manage_hospital') ? 'active' : '' }}"
+                        onclick="toggleActive(this)">
+                        <i class="bi bi-hospital text-secondary me-4 fw-bolder"></i>
+
+                        <span>@lang('main_admin.hospitals')</span>
+                    </a>
+
+                    {{-- Forum --}}
+                    <a href="{{ route('forum_page') }}" class="sidebar-item" onclick="toggleActive(this)">
+                        <i class="bi bi-chat-right-text text-secondary me-4 fw-bolder"></i>
+
+                        <span>@lang('main_admin.forum')</span>
+                    </a>
+
+                    {{-- Psychologist --}}
+                    <a href="{{ route('manage_psychologist') }}"
+                        class="sidebar-item {{ request()->routeIs('manage_psychologist') ? 'active' : '' }}"
+                        onclick="toggleActive(this)">
+                        <i class="bi bi-people text-secondary me-4 fw-bolder"></i>
+
+                        <span>@lang('main_admin.psychologist')</span>
+                    </a>
+
+                    {{-- Schedules --}}
+                    <a href="#" class="sidebar-item" onclick="toggleActive(this)">
+                        <i class="bi bi-calendar2-day text-secondary me-4 fw-bolder"></i>
+
+                        <span>@lang('main_admin.schedules')</span>
+                    </a>
+
+                    {{-- User --}}
+                    <a href="{{ route('manage_user') }}"
+                        class="sidebar-item {{ request()->routeIs('manage_user') ? 'active' : '' }}"
+                        onclick="toggleActive(this)">
+                        <i class="bi bi-person text-secondary me-4 fw-bolder"></i>
+
+                        <span>@lang('main_admin.users')</span>
+                    </a>
+
+                    <a href="#" class="sidebar-item" onclick="toggleActive(this)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
+                                stroke="#7E8CAC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M19.4 15C19.2669 15.3016 19.2272 15.6362 19.286 15.9606C19.3448 16.285 19.4995 16.5843 19.73 16.82L19.79 16.88C19.976 17.0657 20.1235 17.2863 20.2241 17.5291C20.3248 17.7719 20.3766 18.0322 20.3766 18.295C20.3766 18.5578 20.3248 18.8181 20.2241 19.0609C20.1235 19.3037 19.976 19.5243 19.79 19.71C19.6043 19.896 19.3837 20.0435 19.1409 20.1441C18.8981 20.2448 18.6378 20.2966 18.375 20.2966C18.1122 20.2966 17.8519 20.2448 17.6091 20.1441C17.3663 20.0435 17.1457 19.896 16.96 19.71L16.9 19.65C16.6643 19.4195 16.365 19.2648 16.0406 19.206C15.7162 19.1472 15.3816 19.1869 15.08 19.32C14.7842 19.4468 14.532 19.6572 14.3543 19.9255C14.1766 20.1938 14.0813 20.5082 14.08 20.83V21C14.08 21.5304 13.8693 22.0391 13.4942 22.4142C13.1191 22.7893 12.6104 23 12.08 23C11.5496 23 11.0409 22.7893 10.6658 22.4142C10.2907 22.0391 10.08 21.5304 10.08 21V20.91C10.0723 20.579 9.96512 20.258 9.77251 19.9887C9.5799 19.7194 9.31074 19.5143 9 19.4C8.69838 19.2669 8.36381 19.2272 8.03941 19.286C7.71502 19.3448 7.41568 19.4995 7.18 19.73L7.12 19.79C6.93425 19.976 6.71368 20.1235 6.47088 20.2241C6.22808 20.3248 5.96783 20.3766 5.705 20.3766C5.44217 20.3766 5.18192 20.3248 4.93912 20.2241C4.69632 20.1235 4.47575 19.976 4.29 19.79C4.10405 19.6043 3.95653 19.3837 3.85588 19.1409C3.75523 18.8981 3.70343 18.6378 3.70343 18.375C3.70343 18.1122 3.75523 17.8519 3.85588 17.6091C3.95653 17.3663 4.10405 17.1457 4.29 16.96L4.35 16.9C4.58054 16.6643 4.73519 16.365 4.794 16.0406C4.85282 15.7162 4.81312 15.3816 4.68 15.08C4.55324 14.7842 4.34276 14.532 4.07447 14.3543C3.80618 14.1766 3.49179 14.0813 3.17 14.08H3C2.46957 14.08 1.96086 13.8693 1.58579 13.4942C1.21071 13.1191 1 12.6104 1 12.08C1 11.5496 1.21071 11.0409 1.58579 10.6658C1.96086 10.2907 2.46957 10.08 3 10.08H3.09C3.42099 10.0723 3.742 9.96512 4.0113 9.77251C4.28059 9.5799 4.48572 9.31074 4.6 9C4.73312 8.69838 4.77282 8.36381 4.714 8.03941C4.65519 7.71502 4.50054 7.41568 4.27 7.18L4.21 7.12C4.02405 6.93425 3.87653 6.71368 3.77588 6.47088C3.67523 6.22808 3.62343 5.96783 3.62343 5.705C3.62343 5.44217 3.67523 5.18192 3.77588 4.93912C3.87653 4.69632 4.02405 4.47575 4.21 4.29C4.39575 4.10405 4.61632 3.95653 4.85912 3.85588C5.10192 3.75523 5.36217 3.70343 5.625 3.70343C5.88783 3.70343 6.14808 3.75523 6.39088 3.85588C6.63368 3.95653 6.85425 4.10405 7.04 4.29L7.1 4.35C7.33568 4.58054 7.63502 4.73519 7.95941 4.794C8.28381 4.85282 8.61838 4.81312 8.92 4.68H9C9.29577 4.55324 9.54802 4.34276 9.72569 4.07447C9.90337 3.80618 9.99872 3.49179 10 3.17V3C10 2.46957 10.2107 1.96086 10.5858 1.58579C10.9609 1.21071 11.4696 1 12 1C12.5304 1 13.0391 1.21071 13.4142 1.58579C13.7893 1.96086 14 2.46957 14 3V3.09C14.0013 3.41179 14.0966 3.72618 14.2743 3.99447C14.452 4.26276 14.7042 4.47324 15 4.6C15.3016 4.73312 15.6362 4.77282 15.9606 4.714C16.285 4.65519 16.5843 4.50054 16.82 4.27L16.88 4.21C17.0657 4.02405 17.2863 3.87653 17.5291 3.77588C17.7719 3.67523 18.0322 3.62343 18.295 3.62343C18.5578 3.62343 18.8181 3.67523 19.0609 3.77588C19.3037 3.87653 19.5243 4.02405 19.71 4.21C19.896 4.39575 20.0435 4.61632 20.1441 4.85912C20.2448 5.10192 20.2966 5.36217 20.2966 5.625C20.2966 5.88783 20.2448 6.14808 20.1441 6.39088C20.0435 6.63368 19.896 6.85425 19.71 7.04L19.65 7.1C19.4195 7.33568 19.2648 7.63502 19.206 7.95941C19.1472 8.28381 19.1869 8.61838 19.32 8.92V9C19.4468 9.29577 19.6572 9.54802 19.9255 9.72569C20.1938 9.90337 20.5082 9.99872 20.83 10H21C21.5304 10 22.0391 10.2107 22.4142 10.5858C22.7893 10.9609 23 11.4696 23 12C23 12.5304 22.7893 13.0391 22.4142 13.4142C22.0391 13.7893 21.5304 14 21 14H20.91C20.5882 14.0013 20.2738 14.0966 20.0055 14.2743C19.7372 14.452 19.5268 14.7042 19.4 15V15Z"
+                                stroke="#7E8CAC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                        <span>@lang('main_psychologist.settings')</span>
+                    </a>
+
+
+                    <a class="sidebar-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M18.36 6.64C19.6184 7.89879 20.4753 9.50244 20.8223 11.2482C21.1693 12.9939 20.9909 14.8034 20.3096 16.4478C19.6284 18.0921 18.4748 19.4976 16.9948 20.4864C15.5148 21.4752 13.7749 22.0029 11.995 22.0029C10.2151 22.0029 8.47515 21.4752 6.99517 20.4864C5.51519 19.4976 4.36164 18.0921 3.68036 16.4478C2.99909 14.8034 2.82069 12.9939 3.16772 11.2482C3.51475 9.50244 4.37162 7.89879 5.63 6.64"
+                                stroke="#7E8CAC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M12 2V12" stroke="#7E8CAC" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+
+                        <span>@lang('main_psychologist.logout')</span>
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+            </aside>
+
+        </div>
+
+        <div class="col-12 col-xl-9">
+            <div class="nav">
+                <div class="d-flex justify-content-between align-items-center w-100 mb-3 mb-md-0">
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <h2 class="nav-title">Admin Dashboard</h2>
+                        <button id="toggle-navbar" onclick="toggleNavbar()">
+                            {{-- <img src="{{ asset('storage/images/psychologists/' . $psychologist->image) }}"
+                                alt=""> --}}
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            @yield('content')
         </div>
     </div>
 
-    @include('partials.footer')
 
-    {{-- Bootstrap JS --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
 
-    {{-- Custom JS --}}
-    <script src="{{ asset('js/script.js') }}"></script>
-    <script src="{{ asset('js/admin/dashboard.js') }}"></script>
+    <script>
+        const navbar = document.querySelector('.col-navbar')
+        const cover = document.querySelector('.screen-cover')
+
+        const sidebar_items = document.querySelectorAll('.sidebar-item')
+
+        function toggleNavbar() {
+            navbar.classList.toggle('appear')
+            cover.classList.toggle('d-none')
+        }
+
+        function toggleActive(e) {
+            sidebar_items.forEach(function(v, k) {
+                v.classList.remove('active')
+            })
+            e.closest('.sidebar-item').classList.add('active')
+
+        }
+
+        // Table List
+        // const buttons = document.querySelectorAll('.btn-transaction')
+        // const tables = document.querySelectorAll('.transaction-table')
+
+        // const resetButtons = () => buttons.forEach((v,k) => v.classList.remove('active'))
+        // const resetTables = () => tables.forEach((v,k) => v.classList.remove('active'))
+
+        // buttons.forEach(function(v, k) {
+        //     v.addEventListener('click', function(e) {
+        //         let id = v.getAttribute('id')
+        //         resetButtons()
+        //         resetTables()
+
+        //         v.classList.add('active')
+
+        //         document.getElementById(`table-${id}`).classList.add('active')
+        //     })
+        // })
+    </script>
 
     @yield('js')
 </body>

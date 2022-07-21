@@ -12,6 +12,7 @@ use App\Models\ReplyForum;
 use App\Models\Psychologist;
 use Illuminate\Http\Request;
 use App\Models\LikedReplyForum;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class ForumController extends Controller
@@ -34,6 +35,12 @@ class ForumController extends Controller
 
         if (Auth::guard('webpsychologist')->user()) {
             $view = 'Psychologist';
+        }
+
+        if (Auth::check()) {
+            if (Auth::user()->role == 'Admin') {
+                $view = 'Admin';
+            }
         }
 
         foreach ($forums as $forum) {
@@ -125,6 +132,8 @@ class ForumController extends Controller
         $reply_forums = ReplyForum::where('forum_id', $id)->orderBy('likes', 'desc')->get();
         $is_forum_liked = false;
 
+
+
         if (Auth::guard('webpsychologist')->user()) {
             $view = 'Psychologist';
             $is_forum_liked = LikedForum::where('forum_id', $id)->where('psychologist_id', Auth::guard('webpsychologist')->user()->id)->first();
@@ -133,10 +142,16 @@ class ForumController extends Controller
             $is_forum_liked = LikedForum::where('forum_id', $id)->where('user_id', auth()->user()->id)->first();
         }
 
+        if (Auth::check()) {
+            if (Auth::user()->role == 'Admin') {
+                $view = 'Admin';
+            }
+        }
+
         if ($is_forum_liked) {
-            $is_forum_liked = true;
+            $forum->is_forum_liked = true;
         } else {
-            $is_forum_liked = false;
+            $forum->is_forum_liked = false;
         }
 
         foreach ($reply_forums as $reply_forum) {
@@ -158,12 +173,17 @@ class ForumController extends Controller
             'forum' => $forum,
             'reply_forums' => $reply_forums,
             'view' => $view,
-            'is_forum_liked' => $is_forum_liked,
         ];
 
         if (Auth::guard('webpsychologist')->user()) {
             $data['psychologist'] = Psychologist::find(Auth::guard('webpsychologist')->user()->id);
         };
+
+        // if (Auth::check()) {
+        //     if (Auth::user()->role == 'Admin') {
+        //         return view('admin.forum.show', $data);
+        //     }
+        // }
 
         return view('forum.show', $data);
     }
@@ -267,6 +287,26 @@ class ForumController extends Controller
             $reply_forum->save();
             $is_liked->delete();
         }
+
+        return redirect()->back();
+    }
+
+    public function deleteForum($id)
+    {
+        $forum = Forum::find($id);
+        $reply_forums = ReplyForum::where('forum_id', $id)->get();
+        foreach ($reply_forums as $reply_forum) {
+            $reply_forum->delete();
+        }
+        $forum->delete();
+
+        return redirect()->back();
+    }
+
+    public function deleteReplyForum($id)
+    {
+        $reply_forum = ReplyForum::find($id);
+        $reply_forum->delete();
 
         return redirect()->back();
     }

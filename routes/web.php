@@ -11,6 +11,7 @@ use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\PsychologistController;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ChatController;
 
 /*
@@ -45,9 +46,11 @@ Route::controller(PsychologistController::class)
     ->middleware('auth:webpsychologist')
     ->group(function () {
         Route::get('/logout', 'logout');
-        Route::get('/', 'psychologist_index');
-        Route::get('/transactions/{transaction}', 'psychologist_show');
-        Route::put('/transactions/{transaction}', 'psychologist_update');
+        Route::get('/', 'psychologist_index')->name('psychologist_dashboard');
+        Route::get('/transactions/{transaction}', 'psychologist_show')->name('psychologist_show');
+        Route::put('/transactions/accept/{transaction}', 'psychologist_update_accept');
+        Route::put('/transactions/reject/{transaction}', 'psychologist_update_reject');
+        Route::post('/transactions/end/{transaction}', 'psychologist_end')->name('psychologist_end');
     });
 
 // home
@@ -63,10 +66,11 @@ Route::prefix('/consultation')
         Route::get('/psychologists', 'index');
         Route::get('/psychologists/{psychologist}', 'show')->name('psychologist_detail');
         Route::post('/psychologists/{psychologist}', 'store')->middleware('auth');
-        Route::get('/', 'my_index')->middleware('auth');
+        Route::get('/', 'my_index')->name('my_consultation')->middleware('auth');
         Route::get('/{transaction}', 'my_show')->middleware('auth');
         Route::post('/{transaction}', 'my_store')->middleware('auth');
         Route::put('/{transaction}', 'update')->middleware('auth');
+        Route::post('/review/{transaction}', 'review')->middleware('auth');
     });
 
 // chat for user
@@ -121,11 +125,20 @@ Route::prefix('/forum-psychologist')
         Route::post('/{forum}', 'storeReply')->name('store_reply_forum_psychologist');
     });
 
+// forum for admin
+Route::prefix('/forum-admin')
+    ->controller(ForumController::class)
+    ->middleware('auth:webpsychologist')
+    ->group(function () {
+        Route::delete('/delete/{forum}', 'deletForum')->name('delete_forum');
+        Route::delete('/delete/{reply_forum}', 'deleteReplyForum')->name('delete_reply_forum');
+    });
+
 // review
 Route::prefix('/review')
     ->controller(ReviewController::class)
     ->group(function () {
-        Route::get('/{psychologist}', 'show')->name('show_review');
+        // Route::get('/{psychologist}', 'show')->name('show_review');
         Route::post('/{psychologist}', 'store')->name('store_review')->middleware('auth');
     });
 
@@ -150,6 +163,7 @@ Route::prefix('/admin')
                 Route::get('/article', 'article')->name('manage_article');
                 Route::get('/psychologist', 'psychologist')->name('manage_psychologist');
                 Route::get('/hospital', 'hospital')->name('manage_hospital');
+                Route::get('/user', 'user')->name('manage_user');
             });
 
         Route::prefix('/article')

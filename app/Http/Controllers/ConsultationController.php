@@ -94,15 +94,14 @@ class ConsultationController extends Controller
         $startTime = Carbon::createFromFormat('Y-m-d H:i:s', $schedule->startTime)->format('H:i:s');
         $transaction->time = Carbon::createFromFormat('Y-m-d H:i:s', $request->date . ' ' . $startTime);
 
-        $transaction->detail = 'tes aja dulu';
         $transaction->save();
 
         // ubah status schedule
-        $schedule->status = 'Booked';
+        $schedule->status = 'Confirmed';
         $schedule->dateBook = $request->date;
         $schedule->save();
 
-        return redirect('/')->with('status', 'Booking request success! Waiting for psychologist to confirm.');
+        return redirect()->route('my_consultation')->with('status', 'Booking request success! Waiting for psychologist to confirm.');
     }
 
     public function update(Request $request)
@@ -118,15 +117,20 @@ class ConsultationController extends Controller
     public function my_index()
     {
         $this->setLang();
-        $transactions = Transaction::where('user_id', auth()->user()->id)->get();
+        $transactions = Transaction::where('user_id', auth()->user()->id)->where('status', 'Pending')->orWhere('status', 'Confirmed')->get();
+        $transaction_histories = Transaction::where('user_id', auth()->user()->id)->where('status', 'Finished')->orWhere('status', 'Rejected')->get();
         $online_consultation_id = ConsultationType::where('name', 'Online Consultation')->first()->id;
         $offline_consultation_id = ConsultationType::where('name', 'Offline Consultation')->first()->id;
-        return view('consultation.my_index', compact('transactions', 'online_consultation_id', 'offline_consultation_id'));
+        return view('consultation.my_index', compact('transactions', 'online_consultation_id', 'offline_consultation_id', 'transaction_histories'));
     }
 
     public function my_show(Transaction $transaction)
     {
         $this->setLang();
         return view('consultation.my_show', compact('transaction'));
+    }
+
+    public function review(Request $request)
+    {
     }
 }

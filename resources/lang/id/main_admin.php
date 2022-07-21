@@ -3,6 +3,7 @@
         'dashboard' => 'Dasbor',
         'articles' => 'Artikel',
         'hospitals' => 'Rumah Sakit',
+        'forum' => 'Forum',
         'podcast' => 'Siniar',
         'psychologist' => 'Psikolog',
         'schedules' => 'Jadwal',

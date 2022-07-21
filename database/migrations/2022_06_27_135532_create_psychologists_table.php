@@ -19,7 +19,7 @@ class CreatePsychologistsTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('phone');
-            $table->integer('rating');
+            $table->float('rating', 2, 1);
             $table->integer('fee');
             $table->string('image');
             $table->string('description');

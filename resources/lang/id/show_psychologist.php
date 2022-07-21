@@ -5,8 +5,12 @@
         'date' => 'Tanggal',
         'fee' => 'Biaya',
         'paid_with' => 'Dibayar dengan',
-        'description' => 'Deskripsi',
+        'note_from_psychologist' => 'Catatan dari Psikolog',
         'status' => 'Status',
-        'accept_consultation' => 'Terima Konsultasi'
+        'accept_consultation' => 'Terima Konsultasi',
+        'consultation_type' => 'Tipe Konsultasi',
+        'chat_now' => 'Kirim Pesan Sekarang',
+        'see_chat_history' => 'Lihat Riwayat Pesan',
+        'reject_consultation' => 'Tolak Konsultasi',
+        'end_consultation' => 'Akhiri Konsultasi'
     ];
-?>

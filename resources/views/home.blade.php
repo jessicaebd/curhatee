@@ -68,7 +68,7 @@
 
                     <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
                         <div class="icon"><i class="bi bi-balloon-heart"></i></div>
-                        <h4 class="title"><a href="">Booking for consultation</a></h4>
+                        <h4 class="title"><a href="/consultation/psychologists">Booking for consultation</a></h4>
                         <p class="description text-muted">Offers a wide list of psychologists with various price ranges
                             according to
                             your needs</p>
@@ -76,7 +76,7 @@
 
                     <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
                         <div class="icon"><i class="bi bi-chat-left-text"></i></div>
-                        <h4 class="title"><a href="">Discuss on the forum</a></h4>
+                        <h4 class="title"><a href="/forum">Discuss on the forum</a></h4>
                         <p class="description text-muted">Discuss and share stories about mental health with each other in
                             the forum
                         </p>
@@ -84,16 +84,16 @@
 
                     <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
                         <div class="icon"><i class="bi bi-chat-heart"></i></div>
-                        <h4 class="title"><a href="">Consultation by live chat</a></h4>
+                        <h4 class="title"><a href="/consultation/psychologists">Consultation by live chat</a></h4>
                         <p class="description text-muted">Don't have time to go to a psychologist? You can easily consult
                             online</p>
                     </div>
 
                 </div>
             </div>
-
         </div>
-    </section><!-- End About Section -->
+    </section>
+    <!-- End About Section -->
 
     {{-- Features --}}
     <section id="features" class="features">
