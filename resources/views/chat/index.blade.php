@@ -22,24 +22,16 @@ use App\Models\Transaction;
 
 @section('content')
 
-    <div class="pt-3 d-flex flex-column align-items-center">
+    <br>
+    <br>
+    <div class="pt-5 d-flex flex-column align-items-center">
         {{-- title --}}
         <h3>Chat</h3>
 
-        {{-- add note and end consultation button for psychologist --}}
-        @if ($view == 'Psychologist' && $transaction->status != 'Finished')
-            <form action="{{ route('psychologist_end', $transaction) }}" method="post">
-                @csrf
-                <div class="row">
-                    <div class="col-md-10">
-                        <textarea class="form-control" name="note" id="note" rows="3" placeholder="Type a note..."></textarea>
-                    </div>
-                    <div class="col-md-2">
-                        <button type="submit" class="btn btn-danger">End Consultation</button>
-                    </div>
-                </div>
-            </form>
-        @endif
+        {{-- back to psycho.show --}}
+        <a href="{{ url()->previous() }}"><button type="button" class="btn btn-secondary"
+                aria-label="Close">Back</button></a>
+        <br>
 
         {{-- status --}}
         @if (session('status'))

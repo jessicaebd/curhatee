@@ -47,7 +47,7 @@ Route::controller(PsychologistController::class)
     ->group(function () {
         Route::get('/logout', 'logout');
         Route::get('/', 'psychologist_index')->name('psychologist_dashboard');
-        Route::get('/transactions/{transaction}', 'psychologist_show');
+        Route::get('/transactions/{transaction}', 'psychologist_show')->name('psychologist_show');
         Route::put('/transactions/{transaction}', 'psychologist_update');
         Route::post('/transactions/end/{transaction}', 'psychologist_end')->name('psychologist_end');
     });

@@ -164,20 +164,19 @@
                                     <a href="{{ route('chat_page_psychologist', $transaction->id) }}">
                                         <button type="button" class="btn btn-primary">@lang('show_psychologist.chat_now')</button>
                                     </a>
-                                @elseif($transaction->consultationType->name == 'Offline Consultation')
-                                    {{-- add note and end consultation button for psychologist --}}
-                                    <form action="{{ route('psychologist_end', $transaction) }}" method="post">
-                                        @csrf
-                                        <div class="row">
-                                            <div class="col-md-10">
-                                                <textarea class="form-control" name="note" id="note" rows="3" placeholder="Type a note..."></textarea>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <button type="submit" class="btn btn-danger">End Consultation</button>
-                                            </div>
-                                        </div>
-                                    </form>
                                 @endif
+                                {{-- add note and end consultation button for psychologist --}}
+                                <form action="{{ route('psychologist_end', $transaction) }}" method="post">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="note" id="note" rows="3" placeholder="Type a note..."></textarea>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="submit" class="btn btn-danger">End Consultation</button>
+                                        </div>
+                                    </div>
+                                </form>
                             @elseif($transaction->status == 'Finished')
                                 @if ($transaction->consultationType->name == 'Online Consultation')
                                     <a href="{{ route('chat_page_psychologist', $transaction->id) }}">

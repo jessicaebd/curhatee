@@ -9,9 +9,9 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto active" href="#hero">@lang('navbar.home')</a></li>
-                <li><a class="nav-link scrollto" href="#about">@lang('navbar.about')</a></li>
-                <li class="dropdown"><a href="#features"><span>@lang('navbar.features')</span> <i
+                <li><a class="nav-link scrollto active" href="/#hero">@lang('navbar.home')</a></li>
+                <li><a class="nav-link scrollto" href="/#about">@lang('navbar.about')</a></li>
+                <li class="dropdown"><a href="/#features"><span>@lang('navbar.features')</span> <i
                             class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/consultation/psychologists">@lang('navbar.consultation')</a></li>
@@ -19,7 +19,7 @@
                         <li><a href="/article">@lang('navbar.article')</a></li>
                     </ul>
                 </li>
-                <li><a class="nav-link scrollto" href="#contact">@lang('navbar.contact')</a></li>
+                <li><a class="nav-link scrollto" href="/#contact">@lang('navbar.contact')</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
