@@ -91,9 +91,9 @@
 
                 </div>
             </div>
-
         </div>
-    </section><!-- End About Section -->
+    </section>
+    <!-- End About Section -->
 
     {{-- Features --}}
     <section id="features" class="features">
