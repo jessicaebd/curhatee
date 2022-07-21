@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Models\User;
 use App\Traits\Uuid;
 use App\Models\Forum;
-use App\Models\ReplyForum;
+// use App\Models\ReplyForum;
 use App\Models\LikedReplyForum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
