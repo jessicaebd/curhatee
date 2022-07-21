@@ -1,4 +1,4 @@
-@extends($view == 'Psychologist' ? 'layouts.main-psychologist' : 'layouts.main')
+@extends($view == 'Psychologist' ? 'layouts.main-psychologist' : ($view == 'Admin' ? 'layouts.main-admin' : 'layouts.main'))
 
 @section('title', 'Forum')
 
@@ -47,7 +47,7 @@
                     <div class="forum-card">
                         <div class="forum-user p-3">
                             <h3 class="fw-bold m-font mb-2"><span
-                                    class="text-light xs-font badge rounded-pill bg-blue ">#{{ Str::limit($forum->id, 5, '') }}</span>
+                                    class="text-light xs-font badge rounded-pill bg-blue ">#{{ Str::limit(Str::substr($forum->id, -5), 5, '') }}</span>
                                 {{ $forum->title }}</h3>
 
                             <div class="user-header d-flex justify-content-between ">
@@ -68,8 +68,12 @@
                                         </a>
 
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <li><a class="dropdown-item" href="#">Edit</a></li>
-                                            <li><a class="dropdown-item" href="#">Delete</a></li>
+                                            <form action="{{ route('delete_forum', $forum->id) }}" method="post">
+                                                @csrf
+                                                <li><a class="dropdown-item btn text-danger"><i
+                                                            class="bi bi-trash3 me-2"></i>Delete</a>
+                                                </li>
+                                            </form>
                                         </ul>
                                     </div>
                                 </div>

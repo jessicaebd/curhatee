@@ -1,4 +1,4 @@
-@extends($view == 'Psychologist' ? 'layouts.main-psychologist' : 'layouts.main')
+@extends($view == 'Psychologist' ? 'layouts.main-psychologist' : ($view == 'Admin' ? 'layouts.main-admin' : 'layouts.main'))
 
 @section('title', 'Detail Forum')
 
@@ -69,9 +69,12 @@
                                     </a>
 
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item text-danger s-font" href="#"><i
-                                                    class="bi bi-trash3"></i> Delete</a>
-                                        </li>
+                                        <form action="{{ route('delete_forum', $forum->id) }}" method="post">
+                                            @csrf
+                                            <li><a class="dropdown-item btn text-danger"><i
+                                                        class="bi bi-trash3 me-2"></i>Delete</a>
+                                            </li>
+                                        </form>
                                     </ul>
                                 </div>
                             </div>
@@ -146,6 +149,10 @@
                                         </div>
 
                                         <div class="user-forum mt-2 text-secondary">
+                                            @if ($forum->image != null)
+                                                <img src="{{ asset('storage/images/forum/' . $forum->image) }}"
+                                                    alt="image" style="width: 50px; height: 50px; overflow: hidden;">
+                                            @endif
                                             <p class="">{{ $reply_forum->content }}</p>
                                         </div>
 

@@ -37,6 +37,12 @@ class ForumController extends Controller
             $view = 'Psychologist';
         }
 
+        if (Auth::check()) {
+            if (Auth::user()->role == 'Admin') {
+                $view = 'Admin';
+            }
+        }
+
         foreach ($forums as $forum) {
             $forum->is_forum_liked = false;
             if (Auth::guard('webpsychologist')->user()) {
@@ -60,12 +66,6 @@ class ForumController extends Controller
         if (Auth::guard('webpsychologist')->user()) {
             $data['psychologist'] = Psychologist::find(Auth::guard('webpsychologist')->user()->id);
         };
-
-        if (Auth::check()) {
-            if (Auth::user()->role == 'Admin') {
-                return view('admin.forum.index', $data);
-            }
-        }
 
         return view('forum.index', $data);
     }
@@ -132,12 +132,20 @@ class ForumController extends Controller
         $reply_forums = ReplyForum::where('forum_id', $id)->orderBy('likes', 'desc')->get();
         $is_forum_liked = false;
 
+
+
         if (Auth::guard('webpsychologist')->user()) {
             $view = 'Psychologist';
             $is_forum_liked = LikedForum::where('forum_id', $id)->where('psychologist_id', Auth::guard('webpsychologist')->user()->id)->first();
         } else if (auth()->user()) {
             $view = 'User';
             $is_forum_liked = LikedForum::where('forum_id', $id)->where('user_id', auth()->user()->id)->first();
+        }
+
+        if (Auth::check()) {
+            if (Auth::user()->role == 'Admin') {
+                $view = 'Admin';
+            }
         }
 
         if ($is_forum_liked) {
@@ -171,11 +179,11 @@ class ForumController extends Controller
             $data['psychologist'] = Psychologist::find(Auth::guard('webpsychologist')->user()->id);
         };
 
-        if (Auth::check()) {
-            if (Auth::user()->role == 'Admin') {
-                return view('admin.forum.show', $data);
-            }
-        }
+        // if (Auth::check()) {
+        //     if (Auth::user()->role == 'Admin') {
+        //         return view('admin.forum.show', $data);
+        //     }
+        // }
 
         return view('forum.show', $data);
     }
