@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="d-flex justify-content-center  px-1 pt-5 mt-5">
-        <h4 class="fw-bolder py-4" id="loginModalLabel">{{ __('Login') }}</h4>
+        <h4 class="fw-bolder py-4" id="loginModalLabel">{{ __('Login As Psychologist') }}</h4>
     </div>
 
     <div class="modal-body d-flex justify-content-center mt-2">
@@ -66,4 +66,3 @@
         </a>
     </div>
 @endsection
-
