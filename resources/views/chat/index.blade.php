@@ -30,7 +30,7 @@ use App\Models\Transaction;
 
         {{-- back to psycho.show --}}
         <a href="{{ url()->previous() }}"><button type="button" class="btn btn-secondary"
-                aria-label="Close">Back</button></a>
+                aria-label="Close"><i class="bi bi-arrow-left-circle"></i> Back</button></a>
         <br>
 
         {{-- status --}}

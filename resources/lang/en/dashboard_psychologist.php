@@ -3,7 +3,9 @@
         'all_trx' => 'All transaction', //Asumsi
         'success' => 'Success',
         'pending' => 'Pending',
-        'failed' => 'Failed',
+        'rejected' => 'Rejected',
+        'finished' => 'Finished',
+        'confirmed' => 'Confirmed',
         'consultation' => 'Consultation',
         'patient' => 'Patient',
         'consultation_type' => 'Consultation Type',
@@ -14,6 +16,7 @@
         'details' => 'Details',
         'hari_tanggal' => 'Day Date',
         'jam' => 'Hour(s)',
-        'offline_consultation' => 'Offline Consultation'
+        'offline_consultation' => 'Offline Consultation',
+        'all_consultation' => 'All Consultation',
     ];
 ?>
