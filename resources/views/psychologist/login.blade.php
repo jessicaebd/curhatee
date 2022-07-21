@@ -1,13 +1,11 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="d-flex justify-content-between  px-1">
-        <div class=""></div>
+    <div class="d-flex justify-content-center  px-1 pt-5 mt-5">
         <h4 class="fw-bolder py-4" id="loginModalLabel">{{ __('Login') }}</h4>
-        <button type="button" class="btn-close p-2" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
 
-    <div class="modal-body mt-2 d-flex justify-content-center">
+    <div class="modal-body d-flex justify-content-center mt-2">
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="row d-flex justify-content-center">
@@ -63,7 +61,7 @@
     </div>
 
     <div class="modal-footer">
-        <a class="btn btn-link text-dark" href="{{ route('psychologist_login') }}">
+        <a class="btn btn-link text-dark" href="{{ route('home') }}">
             {{ __('or Login as a User') }}
         </a>
     </div>
