@@ -11,6 +11,6 @@ return [
     'consultation_type' => 'Consultation Type',
     'chat_now' => 'Chat Now',
     'see_chat_history' => 'See Chat History',
-    'rejecect_consultation' => 'Reject Consultation',
+    'reject_consultation' => 'Reject Consultation',
     'end_consultation' => 'End Consultation',
 ];

@@ -11,6 +11,6 @@
         'consultation_type' => 'Tipe Konsultasi',
         'chat_now' => 'Kirim Pesan Sekarang',
         'see_chat_history' => 'Lihat Riwayat Pesan',
-        'rejecect_consultation' => 'Tolak Konsultasi',
+        'reject_consultation' => 'Tolak Konsultasi',
         'end_consultation' => 'Akhiri Konsultasi'
     ];

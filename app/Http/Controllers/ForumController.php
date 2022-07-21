@@ -205,7 +205,6 @@ class ForumController extends Controller
             $reply_forum->psychologist_id = Auth::guard('webpsychologist')->user()->id;
         } else if (auth()->user()) {
             $reply_forum->user_id = auth()->user()->id;
-            dd("AAAA");
         }
 
         if ($request->hasFile('image')) {

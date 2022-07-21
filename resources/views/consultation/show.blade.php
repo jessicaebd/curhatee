@@ -21,6 +21,7 @@
                             <i class="bi bi-star text-warning"></i>
                         @endif
                     @endfor
+                    {{ $psychologist->rating }}
                     </p>
                 </h5>
                 <p class="card-text text-justify">{{ $psychologist->description }}</p>

@@ -59,7 +59,7 @@
             @elseif($transaction->consultationType->name == 'Offline Consultation')
                 <h2>Dont forget to go on time</h2>
             @endif
-        @elseif ($transaction->status == 'Finished' && $transaction->review == null)
+        @elseif (($transaction->status == 'Finished' || $transaction->status == 'Rejected') && $transaction->review == null)
             {{-- review input form for user who not yet review --}}
             <h1>Give Your Review</h1>
             <div class="input-container mt-3">

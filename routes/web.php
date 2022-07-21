@@ -163,6 +163,7 @@ Route::prefix('/admin')
                 Route::get('/article', 'article')->name('manage_article');
                 Route::get('/psychologist', 'psychologist')->name('manage_psychologist');
                 Route::get('/hospital', 'hospital')->name('manage_hospital');
+                Route::get('/user', 'user')->name('manage_user');
             });
 
         Route::prefix('/article')
