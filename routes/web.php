@@ -128,17 +128,17 @@ Route::prefix('/forum-psychologist')
 // forum for admin
 Route::prefix('/forum-admin')
     ->controller(ForumController::class)
-    ->middleware('auth:webpsychologist')
+    ->middleware('admin')
     ->group(function () {
-        Route::delete('/delete/{forum}', 'deletForum')->name('delete_forum');
-        Route::delete('/delete/{reply_forum}', 'deleteReplyForum')->name('delete_reply_forum');
+        Route::delete('/delete-forum/{forum}', 'deleteForum')->name('delete_forum');
+        Route::delete('/delete-reply-forum/{reply_forum}', 'deleteReplyForum')->name('delete_reply_forum');
     });
 
 // review
 Route::prefix('/review')
     ->controller(ReviewController::class)
     ->group(function () {
-        // Route::get('/{psychologist}', 'show')->name('show_review');
+        Route::get('/{psychologist}', 'index')->name('psychologist_review');
         Route::post('/{psychologist}', 'store')->name('store_review')->middleware('auth');
     });
 

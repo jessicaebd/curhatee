@@ -31,6 +31,22 @@
                 </a>
             </div>
 
+            {{-- psychologist some reviews --}}
+            <div class="user-header d-flex justify-content-between ">
+                @foreach ($reviews as $review)
+                    <div class="d-flex align-items-center">
+                        <div class="user-header-avatar">
+                            <img src="{{ asset('storage/images/users/' . $review->user->image) }}" alt="user"
+                                class="img-fluid rounded rounded-circle me-2" width="30px" height="30px">
+                        </div>
+                        <h6 class="user-header-name fw-bolder">{{ $review->user->name }}</h6>
+                    </div>
+                    {{ $review->comment }}
+                    {{ $review->created_at }}
+                @endforeach
+                <a href="{{ route('pyschologist_review', $psychologist->id) }}">See more reviews</a>
+            </div>
+
             <div class="col-md-5">
                 {{-- CHOOSE HOURS --}}
                 @if (request('date'))

@@ -60,23 +60,27 @@
                                     <h6 class="user-header-name fw-bolder">{{ $forum->user->name }}</h6>
                                 </div>
 
-                                <div class="">
-                                    <div class="dropdown">
-                                        <a class="link-dark" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown"
-                                            aria-expanded="false">
-                                            <i class="bi bi-three-dots"></i>
-                                        </a>
+                                @if ($view == 'Admin')
+                                    <div class="">
+                                        <div class="dropdown">
+                                            <a class="link-dark" href="#" id="dropdownMenuLink"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="bi bi-three-dots"></i>
+                                            </a>
 
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <form action="{{ route('delete_forum', $forum->id) }}" method="post">
-                                                @csrf
-                                                <li><a class="dropdown-item btn text-danger"><i
-                                                            class="bi bi-trash3 me-2"></i>Delete</a>
-                                                </li>
-                                            </form>
-                                        </ul>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <form action="{{ route('delete_forum', $forum->id) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn text-danger">
+                                                        <i class="bi bi-trash3 me-2"></i>Delete
+                                                    </button>
+                                                </form>
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
+
                             </div>
 
                             <div class="user-forum mt-2 text-secondary">

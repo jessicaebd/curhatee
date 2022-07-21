@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\PaymentType;
 use App\Models\Psychologist;
 use App\Models\Schedule;
+use App\Models\Review;
 use App\Models\Transaction;
 use App\Models\ConsultationType;
 use Illuminate\Http\Request;
@@ -36,6 +37,7 @@ class ConsultationController extends Controller
         $today = Carbon::today('Asia/Bangkok');
         Schedule::where('dateBook', '<', $today)->update(['status' => 'Open', 'dateBook' => null]);
 
+        $reviews = Review::where('psychologist_id', $psychologist->id)->orderBy('created_at', 'desc')->take(3)->get();
 
         if (request('date')) {
             // ambil string
@@ -52,14 +54,14 @@ class ConsultationController extends Controller
 
             $payment_types = PaymentType::all();
 
-            return view('consultation.show', compact('psychologist', 'date', 'schedules', 'payment_types'));
+            return view('consultation.show', compact('psychologist', 'reviews', 'date', 'schedules', 'payment_types'));
         }
 
 
         // ambil  hari ini
         $today = Carbon::today('Asia/Bangkok');
 
-        return view('consultation.show', compact('psychologist', 'today'));
+        return view('consultation.show', compact('psychologist', 'review', 'today'));
     }
 
     public function store(Request $request)
@@ -130,7 +132,4 @@ class ConsultationController extends Controller
         return view('consultation.my_show', compact('transaction'));
     }
 
-    public function review(Request $request)
-    {
-    }
 }
