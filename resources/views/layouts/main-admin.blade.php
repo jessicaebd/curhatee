@@ -100,7 +100,9 @@
                     </a>
 
                     {{-- Schedules --}}
-                    <a href="#" class="sidebar-item" onclick="toggleActive(this)">
+                    <a href="{{ route('manage_schedule') }}"
+                        class="sidebar-item {{ request()->routeIs('manage_schedule') ? 'active' : '' }}"
+                        onclick="toggleActive(this)">
                         <i class="bi bi-calendar2-day text-secondary me-4 fw-bolder"></i>
 
                         <span>@lang('main_admin.schedules')</span>
