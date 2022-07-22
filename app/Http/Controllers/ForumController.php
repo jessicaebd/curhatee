@@ -117,6 +117,7 @@ class ForumController extends Controller
         }
 
         $forum->created_at = Carbon::now('Asia/Bangkok');
+        $forum->updated_at = Carbon::now('Asia/Bangkok');
 
         $forum->save();
 
