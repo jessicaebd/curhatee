@@ -21,6 +21,15 @@
     {{-- jQuery --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    {{-- Trix Editor --}}
+    <link rel="stylesheet" type="text/css" href="/css/trix.css">
+    <script type="text/javascript" src="/js/trix.js"></script>
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+    </style>
+
     <title>Curhatee | @yield('title')</title>
 </head>
 
@@ -43,6 +52,11 @@
 
     {{-- Custom JS --}}
     <script src="{{ asset('js/script.js') }}"></script>
+    <script>
+        document.addEventListener('trix-file-accept', function(event) {
+            event.preventDefault();
+        });
+    </script>
 
     @yield('js')
 </body>

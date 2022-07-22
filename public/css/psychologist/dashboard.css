@@ -566,10 +566,16 @@ aside #toggle-navbar {
     text-align: center;
     margin: 0 auto;
 }
+.transaction-table td span.online-consultation::before {
+    color: #57fe57;
+}
+.transaction-table td span.offline-consultation::before {
+    color: #fe57e8;
+}
 .transaction-table td span.pending::before {
     color: #febd57;
 }
-.transaction-table td span.pending::before {
+.transaction-table td span.confirmed::before {
     color: #575afe;
 }
 .transaction-table td span.finished::before {

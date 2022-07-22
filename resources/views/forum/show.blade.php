@@ -104,7 +104,7 @@
                                 <img src="{{ asset('storage/images/forum/' . $forum->image) }}" alt="image"
                                     style="height: 200px; overflow: hidden;">
                             @endif
-                            <p class="">{{ $forum->content }}</p>
+                            <p class="">{!! $forum->content !!}</p>
                         </div>
 
                         <div class="d-flex align-items-end align-content-end justify-content-between">
@@ -190,7 +190,7 @@
                                                 <img src="{{ asset('storage/images/reply-forum/' . $reply_forum->image) }}"
                                                     alt="image" style="height: 150px; overflow: hidden;">
                                             @endif
-                                            <p class="">{{ $reply_forum->content }}</p>
+                                            <p class="">{!! $reply_forum->content !!}</p>
                                         </div>
 
                                         <div class="d-flex align-items-end align-content-end justify-content-between">
@@ -230,8 +230,10 @@
                                 action="{{ Auth::guard('webpsychologist')->user() != null ? route('store_reply_forum_psychologist', $forum->id) : route('store_reply_forum_user', $forum->id) }}"
                                 method="post" enctype="multipart/form-data">
                                 @csrf
-                                <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="2"
-                                    placeholder="Type a message..."></textarea>
+                                {{-- <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="2"
+                                    placeholder="Type a message..."></textarea> --}}
+                                <input id="content" type="hidden" name="content">
+                                <trix-editor input="content"></trix-editor>
 
                                 <div class="d-flex align-items-end justify-content-between mb-3">
                                     <div class="col-4">

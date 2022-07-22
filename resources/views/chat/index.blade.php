@@ -1,4 +1,3 @@
-use App\Models\Transaction;
 @extends($view == 'User' ? 'layouts.main' : 'layouts.main-psychologist')
 
 @section('title', 'Chat Consultation')
@@ -57,8 +56,10 @@ use App\Models\Transaction;
                     @csrf
                     <div class="row">
                         <div class="col-md-10">
-                            <input class="form-control" type="text" name="message" id="message"
-                                placeholder="Type a message...">
+                            {{-- <input class="form-control" type="text" name="message" id="message"
+                                placeholder="Type a message..."> --}}
+                            <input id="message" type="hidden" name="message">
+                            <trix-editor input="message">{!! old('message') !!}</trix-editor>
                         </div>
                         <div class="col-md-2">
                             <button class="btn btn-primary" type="submit" id="send-message">@lang('index_chat.send')</button>

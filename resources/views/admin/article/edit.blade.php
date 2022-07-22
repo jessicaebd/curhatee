@@ -54,7 +54,10 @@
 
                             <div class="form-group mb-3">
                                 <label for="content">@lang('edit_article.content')</label>
-                                <textarea class="form-control" id="content" name="content" cols="30" rows="10">{{ old('content') ? old('content') : $article->content }}</textarea>
+                                {{-- <textarea class="form-control" id="content" name="content" cols="30" rows="10">{{ old('content') ? old('content') : $article->content }}</textarea> --}}
+                                <input id="content" type="hidden" name="content">
+                                <trix-editor input="content">{!! old('content') ? old('content') : $article->content !!}
+                                </trix-editor>
                                 {{-- @error('content')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror --}}

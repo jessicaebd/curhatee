@@ -95,7 +95,7 @@
                             </div>
 
                             <div class="user-forum mt-2 text-secondary">
-                                <p class="">{{ Str::limit($forum->content, 200, '...') }}</p>
+                                <p class="">{!! Str::limit($forum->content, 200, '...') !!}</p>
                             </div>
 
                             <div class="d-flex align-items-end align-content-end justify-content-between">

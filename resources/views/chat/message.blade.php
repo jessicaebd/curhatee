@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="message-body">
-            <p class="mb-0">{{ $chat->message }}</p>
+            <p class="mb-0">{!! $chat->message !!}</p>
         </div>
         @if ($chat->image != null)
             {{ $chat->image }}
