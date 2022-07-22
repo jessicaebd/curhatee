@@ -1,3 +1,4 @@
+use App\Models\Transaction;
 @extends($view == 'User' ? 'layouts.main' : 'layouts.main-psychologist')
 
 @section('title', 'Chat Consultation')
@@ -20,8 +21,19 @@
 @endsection
 
 @section('content')
-    <div class="pt-3 d-flex flex-column align-items-center">
+
+    <br>
+    <br>
+    <div class="pt-5 d-flex flex-column align-items-center">
+        {{-- title --}}
         <h3>Chat</h3>
+
+        {{-- back to psycho.show --}}
+        <a href="{{ url()->previous() }}"><button type="button" class="btn btn-secondary" aria-label="Close"><i
+                    class="bi bi-arrow-left-circle"></i> Back</button></a>
+        <br>
+
+        {{-- status --}}
         @if (session('status'))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 {{ session('status') }}
@@ -29,44 +41,39 @@
             </div>
         @endif
 
+        {{-- chat message --}}
         <div class="message-container" id="message-container">
             @include('chat.message')
         </div>
 
-        <div class="input-container mt-3">
-            <form
-                action="{{ Auth::guard('webpsychologist')->user() != null
-                    ? route('store_chat_psychologist', $transaction->id)
-                    : route('store_chat_user', $transaction->id) }}"
-                method="post" enctype="multipart/form-data">
-                @csrf
-                {{-- <div class="row">
-                    <div class="col-md-10"> --}}
-                <input class="form-control" type="text" name="message" id="message" placeholder="Type a message...">
-                {{-- </div>
-                    <div class="col-md-2"> --}}
-                {{-- <button class="btn btn-primary" type="submit" id="send-message">@lang('index_chat.send')</button> --}}
-                {{-- </div> --}}
+        @if ($transaction->status != 'Finished')
+            {{-- input message form --}}
+            <div class="input-container mt-3">
+                <form
+                    action="{{ Auth::guard('webpsychologist')->user() != null
+                        ? route('store_chat_psychologist', $transaction->id)
+                        : route('store_chat_user', $transaction->id) }}"
+                    method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="message" id="message"
+                                placeholder="Type a message...">
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary" type="submit" id="send-message">@lang('index_chat.send')</button>
+                        </div>
 
-                {{-- </div> --}}
-                <div class="d-flex align-items-end justify-content-between mb-3">
-                    <div class="col-4">
-                        <input type="file" class="form-control" id="image" name="image">
                     </div>
-                    <button type="submit" class="btn btn-primary ms-3 mt-4 shadow mb-1">@lang('index_chat.send')</button>
-                </div>
-                {{-- <div class="d-flex justify-content-between align-items-center mt-2">
-                    <label for="image">Upload Picture (Optional)</label>
-                    <input style="width: 70%" type="file" class="form-control" id="image" name="image"
-                        placeholder="Choose your profile image">
-                </div> --}}
-            </form>
-        </div>
-        {{-- Error Message --}}
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                {{ $errors->first() }}
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <label for="image">Upload Picture (Optional)</label>
+                        <input style="width: 70%" type="file" class="form-control" id="image" name="image"
+                            placeholder="Choose your profile image">
+                    </div>
+                </form>
             </div>
+        @else
+            <h1>@lang('index_chat.consultation_is_finished')</h1>
         @endif
     </div>
 @endsection

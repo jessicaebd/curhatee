@@ -29,6 +29,7 @@ class PsychologistController extends Controller
 
     public function login()
     {
+        $this->setLang();
 
         return view('psychologist.login');
     }
@@ -58,10 +59,14 @@ class PsychologistController extends Controller
     {
         $this->setLang();
         $psychologist = Auth::guard('webpsychologist')->user();
-        $transactions = Transaction::where('psychologist_id', $psychologist->id)->get();
+        $transactions_all = Transaction::where('psychologist_id', $psychologist->id)->orderBy('created_at', 'desc')->get();
+        $transactions_pending = Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Pending')->orderBy('created_at', 'desc')->get();
+        $transactions_confirmed = Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Confirmed')->orderBy('created_at', 'desc')->get();
+        $transactions_finished = Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Finished')->orderBy('created_at', 'desc')->get();
+        $transactions_rejected = Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Rejected')->orderBy('created_at', 'desc')->get();
         $online_consultation_id = ConsultationType::where('name', 'Online Consultation')->first()->id;
         $offline_consultation_id = ConsultationType::where('name', 'Offline Consultation')->first()->id;
-        return view('psychologist.dashboard', compact('psychologist', 'transactions', 'online_consultation_id', 'offline_consultation_id'));
+        return view('psychologist.dashboard', compact('psychologist', 'transactions_all', 'transactions_pending', 'transactions_confirmed', 'transactions_pending', 'transactions_finished', 'transactions_rejected', 'online_consultation_id', 'offline_consultation_id'));
     }
 
     public function psychologist_show(Transaction $transaction)
@@ -71,14 +76,32 @@ class PsychologistController extends Controller
         return view('psychologist.show', compact('psychologist', 'transaction'));
     }
 
-    public function psychologist_update(Transaction $transaction)
+    public function psychologist_update_accept(Transaction $transaction)
     {
         $transaction->status = 'Confirmed';
         $transaction->save();
         $psychologist = Auth::guard('webpsychologist')->user();
-        return view('psychologist.show', compact('psychologist', 'transaction'))->with('status', 'Transaction confirmed');
+        return view('psychologist.show', compact('psychologist', 'transaction'))->with('status', 'Consultation confirmed');
     }
 
+    public function psychologist_update_reject(Transaction $transaction)
+    {
+        $transaction->status = 'Rejected';
+        $transaction->note = 'Consultation rejected by psychologist';
+        $transaction->save();
+        $psychologist = Auth::guard('webpsychologist')->user();
+        return view('psychologist.show', compact('psychologist', 'transaction'))->with('status', 'Consultation rejected');
+    }
+
+    public function psychologist_end(Request $request, Transaction $transaction)
+    {
+        $transaction->status = 'Finished';
+        if($request->has('note')) {
+            $transaction->note = $request->note;
+        }
+        $transaction->save();
+        return redirect()->route('psychologist_dashboard');
+    }
 
 
     // controller admin

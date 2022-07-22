@@ -21,8 +21,7 @@
         </div>
         <div class="row mb-3">
             <label for="content" class="col-md-4 col-form-label text-md-end">Isi Content</label>
-            <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3"
-                placeholder="Type a content..."></textarea>
+            <textarea class="form-control" name="content" id="content" rows="3" placeholder="Type a content..."></textarea>
         </div>
 
         <div class="row mb-3">

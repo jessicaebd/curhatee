@@ -3,7 +3,9 @@
         'all_trx' => 'Semua Transaksi ', //Asumsi
         'success' => 'Sukses',
         'pending' => 'Tertunda',
-        'failed' => 'Gagal',
+        'rejected' => 'Ditolak',
+        'confirmed' => 'Dikonfirmasi',
+        'finished' => 'Selesai',
         'consultation' => 'Konsultasi',
         'patient' => 'Korban',
         'consultation_type' => 'Tipe Konsultasi',
@@ -14,6 +16,7 @@
         'details' => 'Detail',
         'hari_tanggal' => 'Hari Tanggal',
         'jam' => 'Jam',
-        'offline_consultation' => 'Konsultasi Offline'
+        'offline_consultation' => 'Konsultasi Offline',
+        'all_consultation' => 'Semua Konsultasi',
     ];
 ?>

@@ -35,16 +35,14 @@
 
                                         <p class="card-text">@lang('my_index.status'): {{ $transaction->status }}</p>
 
-                                        @if ($transaction->consultation_type_id == $online_consultation_id)
-                                            <a href="{{ route('chat_page_user', $transaction->id) }}">
-                                                <button type="button" class="btn btn-primary">@lang('my_index.chat_online')</button>
-                                            </a>
-                                        @elseif($transaction->consultation_type_id == $offline_consultation_id)
-                                            <a href="/consultation/{{ $transaction->id }}">
-                                                <button type="button" class="btn btn-info">@lang('my_index.see_appointment')</button>
-                                            </a>
-                                        @endif
+                                        {{-- ini harusny ga button si, badge. tp gamau cssny jdny putih kalo pake badge --}}
+                                        <span
+                                            class="{{ $transaction->consultation_type_id == $online_consultation_id ? 'btn btn-secondary' : 'btn btn-primary' }}">{{ $transaction->consultationType->name }}
+                                        </span>
 
+                                        <a href="/consultation/{{ $transaction->id }}">
+                                            <button type="button" class="btn btn-info">@lang('my_index.see_detail')</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -71,27 +69,32 @@
 
                                     <p class="card-text">@lang('my_index.status'): {{ $transaction_history->status }}</p>
 
-                                    <span class="badge badge-primary">{{ $transaction_history->consultationType->name }}
+                                    {{-- ini mau badge tdny jg css gabisa. putih smua --}}
+                                    <span class="btn btn-primary">{{ $transaction_history->consultationType->name }}
                                     </span>
 
-                                    @if ($transaction_history->isReviewed == 'true')
-                                        <span class="badge badge-success">@lang('my_index.reviewed')</span>
-                                    @elseif($transaction_history->isReviewed == 'false')
-                                        <a href="{{ route('chat_page_user', $transaction_history->id) }}">
-                                            <button type="button" class="btn btn-primary">Review Now</button>
-                                        </a>
+                                    @if ($transaction_history->review != null)
+                                        <h5>@lang('my_index.your_review')</h5>
+                                        <div class="pe-2">
+                                            @for ($i = 0; $i < 5; $i++)
+                                                @if ($i < $transaction_history->review->rating)
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                @else
+                                                    <i class="bi bi-star text-warning"></i>
+                                                @endif
+                                            @endfor
+                                        </div>
                                     @endif
 
-                                    @if ($transaction_history->consultation_type_id == $online_consultation_id)
-                                        <a href="{{ route('chat_page_user', $transaction_history->id) }}">
-                                            <button type="button" class="btn btn-primary">@lang('my_index.chat_online')</button>
-                                        </a>
-                                    @elseif($transaction_history->consultation_type_id == $offline_consultation_id)
-                                        <a href="/consultation/{{ $transaction_history->id }}">
-                                            <button type="button" class="btn btn-info">@lang('my_index.see_appointment')</button>
-                                        </a>
-                                    @endif
-
+                                    <a href="/consultation/{{ $transaction_history->id }}">
+                                        <button type="button" class="btn btn-secondary">
+                                            @if ($transaction_history->review != null)
+                                                @lang('my_index.see_detail')
+                                            @else
+                                                @lang('my_index.give_review')
+                                            @endif
+                                        </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -100,6 +103,5 @@
             </div>
         </div>
     @endif
-    </div>
 
 @endsection

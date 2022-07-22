@@ -1,4 +1,4 @@
-@extends($view == 'Psychologist' ? 'layouts.main-psychologist' : 'layouts.main')
+@extends($view == 'Psychologist' ? 'layouts.main-psychologist' : ($view == 'Admin' ? 'layouts.main-admin' : 'layouts.main'))
 
 @section('title', 'Detail Forum')
 
@@ -47,8 +47,9 @@
                         <div class="user-header d-flex justify-content-between ">
                             <div class="d-flex align-items-center">
                                 <div class="user-header-avatar">
-                                    <img src="{{ asset('storage/images/users/' . $forum->user->image) }}" alt="user"
-                                        class="img-fluid rounded rounded-circle me-2" width="30px" height="30px">
+                                    <img src="{{ $forum->psychologist_id != null ? asset('storage/images/psychologists/' . $forum->psychologist->image) : asset('storage/images/users/' . $forum->user->image) }}"
+                                        alt="user" class="img-fluid rounded rounded-circle me-2" width="30px"
+                                        height="30px">
                                 </div>
                                 <h6 class="user-header-name fw-bolder">
                                     @if ($forum->user_id != null)
@@ -59,6 +60,7 @@
                                 </h6>
                             </div>
 
+                            {{-- delete forum button --}}
                             <div class="">
                                 <div class="dropdown">
                                     <a class="link-dark" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown"
@@ -67,9 +69,13 @@
                                     </a>
 
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item text-danger s-font" href="#"><i
-                                                    class="bi bi-trash3"></i> Delete</a>
-                                        </li>
+                                        <form action="{{ route('delete_forum', $forum->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn text-danger">
+                                                <i class="bi bi-trash3 me-2"></i>Delete
+                                            </button>
+                                        </form>
                                     </ul>
                                 </div>
                             </div>
@@ -78,7 +84,7 @@
                         <div class="user-forum mt-2 text-secondary">
                             @if ($forum->image != null)
                                 <img src="{{ asset('storage/images/forum/' . $forum->image) }}" alt="image"
-                                    style="width: 50px; height: 50px; overflow: hidden;">
+                                    style="height: 200px; overflow: hidden;">
                             @endif
                             <p class="">{{ $forum->content }}</p>
                         </div>
@@ -114,7 +120,7 @@
                                         <div class="user-header d-flex justify-content-between ">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-header-avatar">
-                                                    <img src="{{ asset('storage/images/users/' . $reply_forum->user->image) }}"
+                                                    <img src="{{ $reply_forum->psychologist_id != null ? asset('storage/images/psychologists/' . $reply_forum->psychologist->image) : asset('storage/images/users/' . $reply_forum->user->image) }}"
                                                         alt="user" class="img-fluid rounded rounded-circle me-2"
                                                         width="30px" height="30px">
                                                 </div>
@@ -127,6 +133,7 @@
                                                 </h6>
                                             </div>
 
+                                            {{-- delete reply forum button --}}
                                             <div class="">
                                                 <div class="dropdown">
                                                     <a class="link-dark" href="#" id="dropdownMenuLink"
@@ -135,15 +142,24 @@
                                                     </a>
 
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                        <li><a class="dropdown-item text-danger s-font" href="#"><i
-                                                                    class="bi bi-trash3"></i> Delete</a>
-                                                        </li>
+                                                        <form action="{{ route('delete_reply_forum', $reply_forum->id) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn text-danger">
+                                                                <i class="bi bi-trash3 me-2"></i>Delete
+                                                            </button>
+                                                        </form>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="user-forum mt-2 text-secondary">
+                                            @if ($reply_forum->image != null)
+                                                <img src="{{ asset('storage/images/reply-forum/' . $reply_forum->image) }}"
+                                                    alt="image" style="height: 150px; overflow: hidden;">
+                                            @endif
                                             <p class="">{{ $reply_forum->content }}</p>
                                         </div>
 
@@ -151,10 +167,13 @@
                                             <div class="d-flex align-items-end align-content-end">
                                                 <form
                                                     action="{{ Auth::guard('webpsychologist')->user() != null ? route('like_reply_forum_psychologist', $reply_forum->id) : route('like_reply_forum_user', $reply_forum->id) }}"
-                                                    @csrf <button type="submit p-1"
-                                                    class="btn-like {{ $reply_forum->is_forum_liked ? 'btn-danger' : 'btn-outline-danger' }}">
-                                                    <i class="bi bi-heart"></i>
-                                                    {{ $reply_forum->likes }}</button>
+                                                    method="post">
+                                                    @csrf
+                                                    <button type="submit p-1"
+                                                        class="btn-like {{ $reply_forum->is_reply_forum_liked ? 'btn-danger' : 'btn-outline-danger' }}">
+                                                        <i class="bi bi-heart"></i>
+                                                        {{ $reply_forum->likes }}
+                                                    </button>
                                                 </form>
                                             </div>
 

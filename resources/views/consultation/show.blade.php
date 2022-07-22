@@ -21,6 +21,8 @@
                             <i class="bi bi-star text-warning"></i>
                         @endif
                     @endfor
+                    {{-- sengaja tambah angka rating. karna rata" rating bisa koma --}}
+                    {{ $psychologist->rating }}
                     </p>
                 </h5>
                 <p class="card-text text-justify">{{ $psychologist->description }}</p>
@@ -28,7 +30,26 @@
                 <a href="/hospitals/{{ $psychologist->hospital->id }}" class="card-link text-decoration-underline">
                     {{ $psychologist->hospital->name }}
                 </a>
+
+                {{-- psychologist some reviews --}}
+                <div class="user-header d-flex justify-content-between ">
+                    @foreach ($reviews as $review)
+                        <div class="d-flex align-items-center">
+                            <div class="user-header-avatar">
+                                <img src="{{ asset('storage/images/users/' . $review->user->image) }}" alt="user"
+                                    class="img-fluid rounded rounded-circle me-2" width="30px" height="30px">
+                            </div>
+                            <h6 class="user-header-name fw-bolder">{{ $review->user->name }}</h6>
+                        </div>
+                        {{ $review->comment }}
+                        <br>
+                        {{ $review->created_at }}
+                    @endforeach
+                    <a href="">see more</a>
+                    {{-- <a href="{{ route('pyschologist_review', $psychologist->id) }}">See more reviews</a> --}}
+                </div>
             </div>
+
 
             <div class="col-md-5">
                 {{-- CHOOSE HOURS --}}
@@ -64,12 +85,13 @@
                                 @foreach ($schedules as $schedule)
                                     <div class="col-md-4">
                                         <div class="mb-3">
+                                            {{ $schedule->status }}
                                             <input type="radio" class="btn-check" name="schedule"
                                                 value="{{ $schedule->id }}" id="{{ $schedule->id }}"
-                                                {{ $schedule->status == 'Booked' ? 'disabled' : '' }}
+                                                {{ $schedule->status != 'Open' ? 'disabled' : '' }}
                                                 {{ old('schedule') == $schedule->id ? 'checked' : '' }}>
                                             <label
-                                                class="btn {{ $schedule->status == 'Booked' || ($date->toDateString() == \Carbon\Carbon::today('Asia/Bangkok')->toDateString() && \Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $schedule->startTime)->format('H:i:s'))->lte(\Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::now('Asia/Bangkok')->format('H:i:s')))) ? 'btn-secondary' : 'btn-outline-primary' }}"
+                                                class="btn {{ $schedule->status != 'Open' || ($date->toDateString() == \Carbon\Carbon::today('Asia/Bangkok')->toDateString() && \Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $schedule->startTime)->format('H:i:s'))->lte(\Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::now('Asia/Bangkok')->format('H:i:s')))) ? 'btn-secondary' : 'btn-outline-primary' }}"
                                                 for="{{ $schedule->id }}">{{ \Carbon\Carbon::parse($schedule->startTime)->format('H:i') }}
                                                 -
                                                 {{ \Carbon\Carbon::parse($schedule->endTime)->format('H:i') }}</label>

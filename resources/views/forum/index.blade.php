@@ -1,4 +1,4 @@
-@extends($view == 'Psychologist' ? 'layouts.main-psychologist' : 'layouts.main')
+@extends($view == 'Psychologist' ? 'layouts.main-psychologist' : ($view == 'Admin' ? 'layouts.main-admin' : 'layouts.main'))
 
 @section('title', 'Forum')
 
@@ -47,32 +47,40 @@
                     <div class="forum-card">
                         <div class="forum-user p-3">
                             <h3 class="fw-bold m-font mb-2"><span
-                                    class="text-light xs-font badge rounded-pill bg-blue ">#{{ Str::limit($forum->id, 5, '') }}</span>
+                                    class="text-light xs-font badge rounded-pill bg-blue ">#{{ Str::limit(Str::substr($forum->id, -5), 5, '') }}</span>
                                 {{ $forum->title }}</h3>
 
                             <div class="user-header d-flex justify-content-between ">
                                 <div class="d-flex align-items-center">
                                     <div class="user-header-avatar">
-                                        <img src="{{ asset('storage/images/users/' . $forum->user->image) }}"
+                                        <img src="{{ $forum->psychologist_id != null ? asset('storage/images/psychologists/' . $forum->psychologist->image) : asset('storage/images/users/' . $forum->user->image) }}"
                                             alt="user" class="img-fluid rounded rounded-circle me-2" width="30px"
                                             height="30px">
                                     </div>
                                     <h6 class="user-header-name fw-bolder">{{ $forum->user->name }}</h6>
                                 </div>
 
-                                <div class="">
-                                    <div class="dropdown">
-                                        <a class="link-dark" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown"
-                                            aria-expanded="false">
-                                            <i class="bi bi-three-dots"></i>
-                                        </a>
+                                @if ($view == 'Admin')
+                                    <div class="">
+                                        <div class="dropdown">
+                                            <a class="link-dark" href="#" id="dropdownMenuLink"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="bi bi-three-dots"></i>
+                                            </a>
 
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <li><a class="dropdown-item" href="#">Edit</a></li>
-                                            <li><a class="dropdown-item" href="#">Delete</a></li>
-                                        </ul>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <form action="{{ route('delete_forum', $forum->id) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn text-danger">
+                                                        <i class="bi bi-trash3 me-2"></i>Delete
+                                                    </button>
+                                                </form>
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
+
                             </div>
 
                             <div class="user-forum mt-2 text-secondary">
