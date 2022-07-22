@@ -49,7 +49,7 @@
                     <div class="forum-card">
                         <div class="forum-user p-3">
                             <h3 class="fw-bold m-font mb-2"><span
-                                    class="text-light xs-font badge rounded-pill bg-blue ">#{{ Str::limit(Str::substr($forum->id, -5), 5, '') }}</span>
+                                    class="text-light xs-font badge rounded-pill bg-green ">#{{ Str::limit(Str::substr($forum->id, -5), 5, '') }}</span>
                                 {{ $forum->title }}</h3>
 
                             <div class="user-header d-flex justify-content-between ">
