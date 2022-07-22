@@ -6,7 +6,7 @@
     </div>
 
     <div class="modal-body d-flex justify-content-center mt-2">
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('psychologist_login') }}">
             @csrf
             <div class="row d-flex justify-content-center">
                 <div class="col-md-10 mb-2">

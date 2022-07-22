@@ -123,16 +123,16 @@ class ConsultationController extends Controller
         $transactions = Transaction::where('user_id', auth()->user()->id)->where('status', 'Pending')->orWhere('status', 'Confirmed')->get();
 
         foreach($transactions as $transaction){
+
             // if transaction schedule is over than today
-            if(\Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $transaction->time)->format('H:i:s'))->lte(\Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::now('Asia/Bangkok')->format('H:i:s'))) ){
-                // code for check if transaction is over than specified time
-                // \Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $transaction->time)->format('H:i:s'))->lte(\Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', '2022-07-25 20:00:00')->format('H:i:s')))
+            if(\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $transaction->time)->lte(\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', \Carbon\Carbon::now('Asia/Bangkok')))){
                 $transaction->status = 'Rejected';
                 $transaction->note = 'Consultation ended because schedule time is missed or psychologist not confirmed the consultation';
                 $transaction->save();
             }
         }
 
+        $transactions = Transaction::where('user_id', auth()->user()->id)->where('status', 'Pending')->orWhere('status', 'Confirmed')->get();
         $transaction_histories = Transaction::where('user_id', auth()->user()->id)->where('status', 'Finished')->orWhere('status', 'Rejected')->get();
         $online_consultation_id = ConsultationType::where('name', 'Online Consultation')->first()->id;
         $offline_consultation_id = ConsultationType::where('name', 'Offline Consultation')->first()->id;
