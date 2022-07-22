@@ -28,6 +28,10 @@ a {
     background-color: var(--main-blue);
 }
 
+.bg-green {
+    background-color: var(--main-green);
+}
+
 .l-font {
     font-size: 1.2rem;
 }
@@ -658,7 +662,16 @@ a {
     font-family: courier, sans;
 }
 
-
+.article-card{
+    display: block;
+    top: 0px;
+    position: relative;
+    /* background-color: #f2f8f9; */
+    text-decoration: none;
+    z-index: 0;
+    overflow: hidden;
+    /* border: 1px solid #f2f8f9; */
+}
 .psychologist-card {
     display: block;
     top: 0px;
@@ -670,6 +683,7 @@ a {
     border: 1px solid #f2f8f9;
 }
 
+.article-card:hover,
 .psychologist-card:hover {
     transition: all 0.2s ease-out;
     box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
@@ -678,6 +692,7 @@ a {
     background-color: white;
 }
 
+.article-card:before,
 .psychologist-card:before {
     content: "";
     position: absolute;
@@ -689,6 +704,7 @@ a {
     transform-origin: 50% 50%;
     transition: transform 0.15s ease-out;
 }
+.article-card:hover:before,
 .psychologist-card:hover:before {
     transform: scale(2.15);
 }

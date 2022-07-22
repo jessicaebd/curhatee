@@ -51,12 +51,14 @@ section {
 /*--------------------------------------------------------------
   # Hero Section
   --------------------------------------------------------------*/
+  .hero,
 #hero {
     width: 100%;
     position: relative;
     padding: 120px 0 0 0;
 }
 
+.hero:before,
 #hero:before {
     content: "";
     background: rgba(2, 5, 161, 0.91);
@@ -68,6 +70,7 @@ section {
     right: 0;
 }
 
+.hero h1,
 #hero h1 {
     margin: 0 0 20px 0;
     font-size: 48px;
@@ -75,12 +78,12 @@ section {
     line-height: 56px;
     color: rgba(255, 255, 255, 0.8);
 }
-
+.hero h1 span,
 #hero h1 span {
     color: #fff;
     border-bottom: 4px solid var(--main-green);
 }
-
+.hero h2,
 #hero h2 {
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 40px;
@@ -103,40 +106,48 @@ section {
     background: #17b57d;
 }
 
+.hero .animated,
 #hero .animated {
     animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
 
 @media (min-width: 1024px) {
+    .hero,
     #hero {
         background-attachment: fixed;
     }
 }
 
 @media (max-width: 991px) {
+    .hero,
     #hero {
         padding-top: 80px;
     }
 
+    .hero .animated,
     #hero .animated {
         -webkit-animation: none;
         animation: none;
     }
 
+    .hero .hero-img,
     #hero .hero-img {
         text-align: center;
     }
 
+    .hero .hero-img img,
     #hero .hero-img img {
         max-width: 50%;
     }
 
+    .hero h1,
     #hero h1 {
         font-size: 28px;
         line-height: 32px;
         margin-bottom: 10px;
     }
 
+    .hero h2,
     #hero h2 {
         font-size: 18px;
         line-height: 24px;
@@ -145,6 +156,7 @@ section {
 }
 
 @media (max-width: 575px) {
+    .hero .hero-img img,
     #hero .hero-img img {
         width: 80%;
     }

@@ -149,6 +149,7 @@ Route::prefix('/article')
     ->group(function () {
         Route::get('/', 'index')->name('article_page');
         Route::get('/{article}', 'show')->name('show_detail_article');
+        Route::get('/search', 'search')->name('search_article'); //! Masih Error
     });
 
 // profiles
