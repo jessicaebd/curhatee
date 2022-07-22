@@ -4,7 +4,6 @@
 
 @section('content')
     <div class="container mt-5 pt-5">
-
         <div class="col-md-9">
             <div class="text-center mb-4">
                 <h2 class="fw-bold">{{ $article->title }}</h2>
