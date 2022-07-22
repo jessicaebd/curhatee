@@ -59,7 +59,9 @@
                                             alt="user" class="img-fluid rounded rounded-circle me-2" width="30px"
                                             height="30px">
                                     </div>
-                                    <h6 class="user-header-name fw-bolder">{{ $forum->user->name }}</h6>
+                                    <h6 class="user-header-name fw-bolder">
+                                        {{ $forum->psychologist_id != null ? $forum->psychologist->name : $forum->user->name }}
+                                    </h6>
                                 </div>
 
                                 @if ($view == 'Admin' ||

@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap");
+
+:root {
+    --main-blue: #2934d0;
+    --main-green: #1acc8d;
+}
+
 html,
 body {
     font-family: "Nunito Sans", sans-serif;
@@ -22,7 +28,10 @@ body {
 }
 
 .bg-blue {
-    background-color: blue;
+    background-color:var(--main-blue);
+}
+.bg-green {
+    background-color: var(--main-green);
 }
 
 .l-font {
