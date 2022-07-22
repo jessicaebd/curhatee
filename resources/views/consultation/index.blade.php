@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container mt-5 pt-5">
-        <h2 class="text-center mb-4">@lang('psychologist_index.choose_your_psychologist')</h2>
+        <h3 class="text-center fw-bold mb-4">@lang('psychologist_index.choose_your_psychologist')</h3>
 
         <div class="row">
             @foreach ($psychologists as $psychologist)
