@@ -10,6 +10,11 @@
                     <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
                         <div class="table-responsive">
                             <table class="table table-bordered transaction-table w-100 active" id="table-all">
+                                {{-- back to psycho.dashboard --}}
+                                <a href="{{ route('psychologist_dashboard') }}"><button type="button"
+                                        class="btn btn-secondary" aria-label="Close"><i class="bi bi-arrow-left-circle"></i>
+                                        Back</button></a>
+                                <br>
                                 <tbody>
                                     <tr>
                                         <td>
@@ -153,8 +158,7 @@
                             @if ($transaction->status == 'Pending')
                                 {{-- accept consultation --}}
                                 <div class="d-flex justify-content-center">
-                                    <form action="/psychologist/transactions/accept/{{ $transaction->id }}"
-                                        method="post">
+                                    <form action="/psychologist/transactions/accept/{{ $transaction->id }}" method="post">
                                         @csrf
                                         @method('put')
                                         <input type="hidden" name="transaction_id" value="{{ $transaction->id }}">
@@ -163,8 +167,7 @@
                                 </div>
                                 {{-- reject consultation --}}
                                 <div class="d-flex justify-content-center">
-                                    <form action="/psychologist/transactions/reject/{{ $transaction->id }}"
-                                        method="post">
+                                    <form action="/psychologist/transactions/reject/{{ $transaction->id }}" method="post">
                                         @csrf
                                         @method('put')
                                         <input type="hidden" name="transaction_id" value="{{ $transaction->id }}">

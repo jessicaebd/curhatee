@@ -32,7 +32,7 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="failed-tab" data-bs-toggle="tab" data-bs-target="#failed"
                             type="button" role="tab" aria-controls="failed"
-                            aria-selected="false">@lang('dashboard_psychologist.failed')</button>
+                            aria-selected="false">@lang('dashboard_psychologist.rejected')</button>
                     </li>
                 </ul>
                 {{-- <div class="tab-content" id="tableTabContent">

@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\PaymentType;
 use App\Models\Psychologist;
 use App\Models\Schedule;
+use App\Models\Review;
 use App\Models\Transaction;
 use App\Models\ConsultationType;
 use Illuminate\Http\Request;
@@ -36,6 +37,7 @@ class ConsultationController extends Controller
         $today = Carbon::today('Asia/Bangkok');
         Schedule::where('dateBook', '<', $today)->update(['status' => 'Open', 'dateBook' => null]);
 
+        $reviews = Review::where('psychologist_id', $psychologist->id)->orderBy('created_at', 'desc')->take(3)->get();
 
         if (request('date')) {
             // ambil string
@@ -52,14 +54,14 @@ class ConsultationController extends Controller
 
             $payment_types = PaymentType::all();
 
-            return view('consultation.show', compact('psychologist', 'date', 'schedules', 'payment_types'));
+            return view('consultation.show', compact('psychologist', 'reviews', 'date', 'schedules', 'payment_types'));
         }
 
 
         // ambil  hari ini
         $today = Carbon::today('Asia/Bangkok');
 
-        return view('consultation.show', compact('psychologist', 'today'));
+        return view('consultation.show', compact('psychologist', 'reviews', 'today'));
     }
 
     public function store(Request $request)
@@ -117,7 +119,20 @@ class ConsultationController extends Controller
     public function my_index()
     {
         $this->setLang();
+
         $transactions = Transaction::where('user_id', auth()->user()->id)->where('status', 'Pending')->orWhere('status', 'Confirmed')->get();
+
+        foreach($transactions as $transaction){
+            // if transaction schedule is over than today
+            if(\Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $transaction->time)->format('H:i:s'))->lte(\Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::now('Asia/Bangkok')->format('H:i:s'))) ){
+                // code for check if transaction is over than specified time
+                // \Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $transaction->time)->format('H:i:s'))->lte(\Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', '2022-07-25 20:00:00')->format('H:i:s')))
+                $transaction->status = 'Rejected';
+                $transaction->note = 'Consultation ended because schedule time is missed or psychologist not confirmed the consultation';
+                $transaction->save();
+            }
+        }
+
         $transaction_histories = Transaction::where('user_id', auth()->user()->id)->where('status', 'Finished')->orWhere('status', 'Rejected')->get();
         $online_consultation_id = ConsultationType::where('name', 'Online Consultation')->first()->id;
         $offline_consultation_id = ConsultationType::where('name', 'Offline Consultation')->first()->id;
@@ -130,7 +145,4 @@ class ConsultationController extends Controller
         return view('consultation.my_show', compact('transaction'));
     }
 
-    public function review(Request $request)
-    {
-    }
 }

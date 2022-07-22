@@ -44,11 +44,12 @@
                                             <form action="/consultation/{{ $transaction->id }}" method="post">
                                                 @csrf
                                                 @method('PUT')
-                                                <input type="hidden" name="transaction_id"
-                                                    value="{{ $transaction->id }}">
+                                                <input type="hidden" name="transaction_id" value="{{ $transaction->id }}">
 
-                                                <button type="submit" class="btn btn-primary btn-sm">@lang('index_psychologist.accept_request')</button>
-                                                <button type="submit" class="btn btn-primary btn-sm">@lang('index_psychologist.decline_request')</button>
+                                                <button type="submit"
+                                                    class="btn btn-primary btn-sm">@lang('index_psychologist.accept_request')</button>
+                                                <button type="submit"
+                                                    class="btn btn-primary btn-sm">@lang('index_psychologist.decline_request')</button>
                                             </form>
                                         @endif
 
@@ -60,9 +61,6 @@
                 </div>
             </div>
         </div>
-
-
-
     </div>
 
 @endsection

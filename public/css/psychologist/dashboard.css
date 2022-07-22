@@ -234,9 +234,10 @@ aside #toggle-navbar {
 .nav #toggle-navbar {
     border-radius: 50%;
     overflow: hidden;
-    padding: 4px;
+    padding: 0px;
     border: 2px solid #4d17e2;
 }
+
 .nav #toggle-navbar img {
     width: 40px;
     height: 40px;
@@ -559,10 +560,13 @@ aside #toggle-navbar {
 .transaction-table td span.pending::before {
     color: #febd57;
 }
-.transaction-table td span.success::before {
+.transaction-table td span.pending::before {
+    color: #575afe;
+}
+.transaction-table td span.finished::before {
     color: #1abc9c;
 }
-.transaction-table td span.failed::before {
+.transaction-table td span.rejected::before {
     color: #fe5761;
 }
 .transaction-table td span::before {

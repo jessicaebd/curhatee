@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Article;
 use App\Models\Hospital;
 use App\Models\Psychologist;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -14,7 +15,7 @@ class AdminController extends Controller
     {
         $this->middleware('admin');
     }
-    
+
     private function setLang() {
         if(session()->has('locale')) {
             app()->setLocale(session()->get('locale'));
@@ -48,5 +49,13 @@ class AdminController extends Controller
         $this->setLang();
         $users = User::all();
         return view('admin.user.index', compact('users'));
+    }
+
+    public function schedule()
+    {
+        $this->setLang();
+        $schedules = Schedule::all();
+        $psychologists = Psychologist::all();
+        return view('admin.schedule.index', compact('schedules', 'psychologists'));
     }
 }

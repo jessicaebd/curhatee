@@ -117,6 +117,7 @@ class ForumController extends Controller
         }
 
         $forum->created_at = Carbon::now('Asia/Bangkok');
+        $forum->updated_at = Carbon::now('Asia/Bangkok');
 
         $forum->save();
 
@@ -294,20 +295,37 @@ class ForumController extends Controller
     public function deleteForum($id)
     {
         $forum = Forum::find($id);
+
+        $like_forums = LikedForum::where('forum_id', $id)->get();
+        foreach ($like_forums as $like_forum) {
+            $like_forum->delete();
+        }
+
         $reply_forums = ReplyForum::where('forum_id', $id)->get();
         foreach ($reply_forums as $reply_forum) {
+            $like_reply_forums = LikedReplyForum::where('reply_forum_id', $reply_forum->id)->get();
+            foreach ($like_reply_forums as $like_reply_forum) {
+                $like_reply_forum->delete();
+            }
             $reply_forum->delete();
         }
+
         $forum->delete();
 
-        return redirect()->back();
+        return redirect()->route('forum_page');
     }
 
     public function deleteReplyForum($id)
     {
         $reply_forum = ReplyForum::find($id);
+
+        $like_reply_forums = LikedReplyForum::where('reply_forum_id', $id)->get();
+        foreach ($like_reply_forums as $like_reply_forum) {
+            $like_reply_forum->delete();
+        }
+
         $reply_forum->delete();
 
-        return redirect()->back();
+        return redirect()->route('show_detail_forum', $id);
     }
 }

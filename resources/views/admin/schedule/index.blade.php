@@ -1,6 +1,6 @@
 @extends('layouts.main-admin')
 
-@section('title', 'Manage Psychologists')
+@section('title', 'Manage Schedule')
 
 @section('content')
     <div class="container mt-5">
@@ -11,10 +11,10 @@
         @endif
 
         <div class="d-flex justify-content-between mb-3">
-            <h3 class=" fw-bold">@lang('index_admin_psychologist.psychologists')</h3>
-            <a href="{{ route('add_psychologist') }}" class="btn btn-primary my-auto">
+            <h3 class=" fw-bold">Pyschologist</h3>
+            {{-- <a href="{{ route('add_psychologist') }}" class="btn btn-primary my-auto">
                 <i class="bi bi-plus-circle me-2"></i>@lang('index_admin_psychologist.register_psychologist')
-            </a>
+            </a> --}}
         </div>
 
         <div class="row">
@@ -35,12 +35,12 @@
                                     <p class="mb-2 pb-1 xs-font text-muted" style="color: #2b2a2a;">
                                         {{ $psychologist->hospital->name }}</p>
 
-                                    <div class="d-flex justify-content-between rounded-3 p-2 mb-2"
+                                    {{-- <div class="d-flex justify-content-between rounded-3 p-2 mb-2"
                                         style="background-color: #efefef;">
                                         <div class="ps-2">
                                             <p class="small text-center text-muted mb-1">@lang('index_admin_psychologist.transaction')</p>
                                             <p class="mb-0 text-center">
-                                                {{ $psychologist->transaction->count() }}
+                                                {{ $psychologist->schedule->count() }}
                                             </p>
                                         </div>
                                         <div class="px-2">
@@ -51,21 +51,22 @@
                                             <p class="small text-center text-muted mb-1">@lang('index_admin_psychologist.rating')</p>
                                             <p class="mb-0 text-center">{{ $psychologist->rating }}</p>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
-                                    <div class="d-flex justify-content-end">
-                                        <a href="{{ route('edit_psychologist', $psychologist->id) }}"
+                                    <div class="d-flex justify-content-end mt-4">
+                                        <a href="{{ route('view_psychologist_schedule', $psychologist->id) }}"
                                             class="btn btn-outline-primary me-1 flex-grow-1">
-                                            <i class="bi bi-pencil-square me-2"></i> @lang('index_admin_psychologist.edit')
+                                            <i class="bi bi-pencil-square me-2"></i>View Schedule
                                         </a>
 
-                                        <form action="{{ route('delete_psychologist', $psychologist->id) }}" method="POST">
+                                        {{-- <form action="{{ route('delete_psychologist', $psychologist->id) }}"
+                                            method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger flex-grow-1">
                                                 <i class="bi bi-trash"></i>
                                             </button>
-                                        </form>
+                                        </form> --}}
                                     </div>
                                 </div>
                             </div>
@@ -74,4 +75,5 @@
                 </div>
             @endforeach
         </div>
-    @endsection
+    </div>
+@endsection

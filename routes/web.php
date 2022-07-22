@@ -13,6 +13,7 @@ use App\Http\Controllers\PsychologistController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\ScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -128,17 +129,17 @@ Route::prefix('/forum-psychologist')
 // forum for admin
 Route::prefix('/forum-admin')
     ->controller(ForumController::class)
-    ->middleware('auth:webpsychologist')
+    ->middleware('admin')
     ->group(function () {
-        Route::delete('/delete/{forum}', 'deletForum')->name('delete_forum');
-        Route::delete('/delete/{reply_forum}', 'deleteReplyForum')->name('delete_reply_forum');
+        Route::delete('/delete-forum/{forum}', 'deleteForum')->name('delete_forum');
+        Route::delete('/delete-reply-forum/{reply_forum}', 'deleteReplyForum')->name('delete_reply_forum');
     });
 
 // review
 Route::prefix('/review')
     ->controller(ReviewController::class)
     ->group(function () {
-        // Route::get('/{psychologist}', 'show')->name('show_review');
+        Route::get('/{psychologist}', 'index')->name('psychologist_review');
         Route::post('/{psychologist}', 'store')->name('store_review')->middleware('auth');
     });
 
@@ -164,6 +165,7 @@ Route::prefix('/admin')
                 Route::get('/psychologist', 'psychologist')->name('manage_psychologist');
                 Route::get('/hospital', 'hospital')->name('manage_hospital');
                 Route::get('/user', 'user')->name('manage_user');
+                Route::get('/schedule', 'schedule')->name('manage_schedule');
             });
 
         Route::prefix('/article')
@@ -194,5 +196,16 @@ Route::prefix('/admin')
                 Route::get('/edit/{hospital}', 'edit')->name('edit_hospital');
                 Route::post('/edit/{hospital}', 'update')->name('update_hospital');
                 Route::delete('/delete/{hospital}', 'destroy')->name('delete_hospital');
+            });
+
+        Route::prefix('/schedule')
+            ->controller(ScheduleController::class)
+            ->group(function () {
+                Route::get('/add', 'create')->name('add_schedule');
+                Route::post('/add', 'store')->name('store_schedule');
+                Route::get('/view/{psychologist}', 'show')->name('view_psychologist_schedule');
+                Route::get('/edit/{schedule}', 'edit')->name('edit_schedule');
+                Route::post('/edit/{schedule}', 'update')->name('update_schedule');
+                Route::delete('/delete/{schedule}', 'destroy')->name('delete_schedule');
             });
     });

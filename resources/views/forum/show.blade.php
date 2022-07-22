@@ -60,7 +60,7 @@
                                 </h6>
                             </div>
 
-                            {{-- delete button --}}
+                            {{-- delete forum button --}}
                             <div class="">
                                 <div class="dropdown">
                                     <a class="link-dark" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown"
@@ -71,9 +71,10 @@
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         <form action="{{ route('delete_forum', $forum->id) }}" method="post">
                                             @csrf
-                                            <li><a class="dropdown-item btn text-danger"><i
-                                                        class="bi bi-trash3 me-2"></i>Delete</a>
-                                            </li>
+                                            @method('DELETE')
+                                            <button type="submit" class="btn text-danger">
+                                                <i class="bi bi-trash3 me-2"></i>Delete
+                                            </button>
                                         </form>
                                     </ul>
                                 </div>
@@ -83,7 +84,7 @@
                         <div class="user-forum mt-2 text-secondary">
                             @if ($forum->image != null)
                                 <img src="{{ asset('storage/images/forum/' . $forum->image) }}" alt="image"
-                                    style="width: 50px; height: 50px; overflow: hidden;">
+                                    style="height: 200px; overflow: hidden;">
                             @endif
                             <p class="">{{ $forum->content }}</p>
                         </div>
@@ -134,6 +135,7 @@
                                                 </h6>
                                             </div>
 
+                                            {{-- delete reply forum button --}}
                                             <div class="">
                                                 <div class="dropdown">
                                                     <a class="link-dark" href="#" id="dropdownMenuLink"
@@ -142,18 +144,23 @@
                                                     </a>
 
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                        <li><a class="dropdown-item text-danger s-font" href="#"><i
-                                                                    class="bi bi-trash3"></i> Delete</a>
-                                                        </li>
+                                                        <form action="{{ route('delete_reply_forum', $reply_forum->id) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn text-danger">
+                                                                <i class="bi bi-trash3 me-2"></i>Delete
+                                                            </button>
+                                                        </form>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="user-forum mt-2 text-secondary">
-                                            @if ($forum->image != null)
-                                                <img src="{{ asset('storage/images/forum/' . $forum->image) }}"
-                                                    alt="image" style="width: 50px; height: 50px; overflow: hidden;">
+                                            @if ($reply_forum->image != null)
+                                                <img src="{{ asset('storage/images/reply-forum/' . $reply_forum->image) }}"
+                                                    alt="image" style="height: 150px; overflow: hidden;">
                                             @endif
                                             <p class="">{{ $reply_forum->content }}</p>
                                         </div>

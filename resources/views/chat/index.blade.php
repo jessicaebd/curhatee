@@ -29,8 +29,8 @@ use App\Models\Transaction;
         <h3>Chat</h3>
 
         {{-- back to psycho.show --}}
-        <a href="{{ url()->previous() }}"><button type="button" class="btn btn-secondary"
-                aria-label="Close">Back</button></a>
+        <a href="{{ url()->previous() }}"><button type="button" class="btn btn-secondary" aria-label="Close"><i
+                    class="bi bi-arrow-left-circle"></i> Back</button></a>
         <br>
 
         {{-- status --}}
