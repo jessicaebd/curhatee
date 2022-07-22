@@ -14,9 +14,11 @@
                         <h2>Make a better world with a better mental health awareness</h2>
                         <div class="col-4 text-center text-lg-start">
                             <form class="d-flex" action="{{ route('search_article') }}">
-                                <input class="form-control me-2" type="search" name="keyword" id="keyword"
-                                    placeholder="Search article keywords" aria-label="Search">
-                                <button class="btn btn-outline-success" type="submit">Search</button>
+                                <div class="input-group">
+                                    <input class="form-control" type="text" name="keyword" id="keyword"
+                                        placeholder="Search article keywords" aria-label="Search">
+                                    <button class="btn btn-green" type="submit">Search</button>
+                                </div>
                             </form>
                         </div>
                     </div>
