@@ -63,6 +63,7 @@ Route::controller(HomeController::class)
 // consultation
 Route::prefix('/consultation')
     ->controller(ConsultationController::class)
+    ->middleware('auth')
     ->group(function () {
         Route::get('/psychologists', 'index');
         Route::get('/psychologists/{psychologist}', 'show')->name('psychologist_detail');
