@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hospital;
 use App\Models\Schedule;
 use Illuminate\Support\Str;
+use App\Models\Psychologist;
 use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
@@ -74,7 +76,8 @@ class ScheduleController extends Controller
             'admin.schedule.view',
             [
                 'psychologist' => Psychologist::findOrFail($id),
-                'schedules' => $schedules
+                'schedules' => $schedules,
+                'hospitals' => Hospital::all()
             ]
         );
     }
