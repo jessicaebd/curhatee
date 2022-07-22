@@ -105,3 +105,11 @@
         </div>
     </div>
 </header>
+
+@if (!empty(Session::get('error')) && Session::get('error') == 'unauthenticated')
+    <script>
+        $(document).ready(function() {
+            $('#loginModal').modal('show');
+        });
+    </script>
+@endif
