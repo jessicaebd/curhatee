@@ -38,7 +38,11 @@
 
 @section('content')
     <div class="container container-margin">
-        <h3 class="fw-bold mb-3">{{ $forum->title }}</h3>
+        <h3 class="fw-bold xl-font mb-2">
+            <span
+                class="text-light xs-font badge rounded-pill bg-green">#{{ Str::limit(Str::substr($forum->id, -5), 5, '') }}</span>
+            {{ $forum->title }}
+        </h3>
 
         <div class="row border">
             <div class="col-12">

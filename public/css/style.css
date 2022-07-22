@@ -95,6 +95,7 @@ a {
     border: 2px solid var(--main-green);
     color: white;
 }
+
 .btn-green:hover {
     background-color: #00838d;
     border: 2px solid var(--main-green);
@@ -651,7 +652,7 @@ a {
     overflow: hidden;
     top: 0;
     right: 0;
-    background-color: #00838d;
+    background-color: var(--main-green);
     border-radius: 0 4px 0 32px;
 }
 
@@ -662,7 +663,7 @@ a {
     font-family: courier, sans;
 }
 
-.article-card{
+.article-card {
     display: block;
     top: 0px;
     position: relative;
@@ -672,6 +673,7 @@ a {
     overflow: hidden;
     /* border: 1px solid #f2f8f9; */
 }
+
 .psychologist-card {
     display: block;
     top: 0px;
@@ -681,6 +683,10 @@ a {
     z-index: 0;
     overflow: hidden;
     border: 1px solid #f2f8f9;
+}
+
+.article-card:hover {
+    background-color: #1acc8e55;
 }
 
 .article-card:hover,
@@ -704,6 +710,7 @@ a {
     transform-origin: 50% 50%;
     transition: transform 0.15s ease-out;
 }
+
 .article-card:hover:before,
 .psychologist-card:hover:before {
     transform: scale(2.15);
