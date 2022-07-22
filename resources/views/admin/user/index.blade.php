@@ -1,6 +1,6 @@
 @extends('layouts.main-admin')
 
-@section('title', 'Manage User')
+@section('title', 'Manage Users')
 
 @section('content')
     <div class="container mt-5">
@@ -36,6 +36,7 @@
                                             <p class="mb-0 text-center">
                                                 {{ $user->transaction->count() }}
                                             </p>
+                                            <a href="{{ route('') }}" class="btn btn-primary">See transactions</a>
                                         </div>
                                     </div>
                                 </div>

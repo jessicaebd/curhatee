@@ -13,7 +13,7 @@
                         <h1>Find your best psychologist with <span>Curhatee</span></h1>
                         <h2>Make a better world with a better mental health awareness</h2>
                         <div class="col-4 text-center text-lg-start">
-                            <form class="d-flex" action="{{ route('search_article') }}">
+                            <form action="{{ route('search_article') }}" method="GET" class="d-flex">
                                 <input class="form-control me-2" type="search" name="keyword" id="keyword"
                                     placeholder="Search article keywords" aria-label="Search">
                                 <button class="btn btn-outline-success" type="submit">Search</button>

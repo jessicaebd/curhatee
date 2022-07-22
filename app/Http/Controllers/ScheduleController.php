@@ -71,21 +71,24 @@ class ScheduleController extends Controller
     public function show($id)
     {
         $this->setLang();
-        $schedules = Schedule::all();
-        return view(
-            'admin.schedule.view',
-            [
-                'psychologist' => Psychologist::findOrFail($id),
-                'schedules' => $schedules,
-                'hospitals' => Hospital::all()
-            ]
-        );
+        
+        $data = [
+            'psychologist' => Psychologist::findOrFail($id),
+            'schedules' = Schedule::where('psychologist_id', $id)->get(),
+        ];
+        
+        return view('admin.schedule.view', $data);
     }
 
     public function edit($id)
     {
         $this->setLang();
-        return view('admin.schedule.edit', ['schedule' => Schedule::findOrFail($id)]);
+
+        $data = [
+            'schedule' = Schedule::findOrFail($id),
+        ];
+
+        return view('admin.schedule.edit', $data);
     }
 
     public function update(Request $request, $id)
