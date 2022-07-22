@@ -63,6 +63,7 @@ Route::controller(HomeController::class)
 // consultation
 Route::prefix('/consultation')
     ->controller(ConsultationController::class)
+    ->middleware('auth')
     ->group(function () {
         Route::get('/psychologists', 'index');
         Route::get('/psychologists/{psychologist}', 'show')->name('psychologist_detail');
@@ -198,11 +199,7 @@ Route::prefix('/admin')
         Route::prefix('/schedule')
             ->controller(ScheduleController::class)
             ->group(function () {
-                Route::get('/add', 'create')->name('add_schedule');
-                Route::post('/add', 'store')->name('store_schedule');
                 Route::get('/view/{psychologist}', 'show')->name('view_psychologist_schedule');
-                Route::get('/edit/{schedule}', 'edit')->name('edit_schedule');
-                Route::post('/edit/{schedule}', 'update')->name('update_schedule');
-                Route::delete('/delete/{schedule}', 'destroy')->name('delete_schedule');
+                Route::put('/{schedule}', 'update')->name('update_schedule');
             });
     });

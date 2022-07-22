@@ -715,3 +715,9 @@ a {
 .psychologist-card:hover:before {
     transform: scale(2.15);
 }
+
+.consultation-card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transform: translateY(-10px);
+    color: var(--main-green);
+}
