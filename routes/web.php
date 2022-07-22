@@ -112,6 +112,9 @@ Route::prefix('/forum-user')
         Route::post('/like/forum/{forum}', 'likeForum')->name('like_forum_user');
         Route::post('/like/reply-forum/{reply_forum_user}', 'likeReplyForum')->name('like_reply_forum_user');
         Route::post('/{forum}', 'storeReply')->name('store_reply_forum_user');
+        // delete forum for admin and user
+        Route::delete('/delete-forum/{forum}', 'deleteForum')->name('delete_forum_user');
+        Route::delete('/delete-reply-forum/{reply_forum}', 'deleteReplyForum')->name('delete_reply_forum_user');
     });
 
 // forum for psychologist
@@ -124,15 +127,8 @@ Route::prefix('/forum-psychologist')
         Route::post('/like/forum/{forum}', 'likeForum')->name('like_forum_psychologist');
         Route::post('/like/reply-forum/{reply_forum_psychologist}', 'likeReplyForum')->name('like_reply_forum_psychologist');
         Route::post('/{forum}', 'storeReply')->name('store_reply_forum_psychologist');
-    });
-
-// forum for admin
-Route::prefix('/forum-admin')
-    ->controller(ForumController::class)
-    ->middleware('admin')
-    ->group(function () {
-        Route::delete('/delete-forum/{forum}', 'deleteForum')->name('delete_forum');
-        Route::delete('/delete-reply-forum/{reply_forum}', 'deleteReplyForum')->name('delete_reply_forum');
+        Route::delete('/delete-forum/{forum}', 'deleteForum')->name('delete_forum_psychologist');
+        Route::delete('/delete-reply-forum/{reply_forum}', 'deleteReplyForum')->name('delete_reply_forum_psychologist');
     });
 
 // review

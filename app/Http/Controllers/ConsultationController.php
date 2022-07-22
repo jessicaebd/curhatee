@@ -123,7 +123,6 @@ class ConsultationController extends Controller
         $transactions = Transaction::where('user_id', auth()->user()->id)->where('status', 'Pending')->orWhere('status', 'Confirmed')->get();
 
         foreach($transactions as $transaction){
-
             // if transaction schedule is over than today
             if(\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $transaction->time)->lte(\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', \Carbon\Carbon::now('Asia/Bangkok')))){
                 $transaction->status = 'Rejected';
