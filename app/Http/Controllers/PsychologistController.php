@@ -122,7 +122,7 @@ class PsychologistController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:psychologists',
             'phone' => 'required|numeric',
             'hospital_id' => 'required',
             'image' => 'required|file|image|mimes:jpg,jpeg,png|max:10240',
@@ -147,6 +147,25 @@ class PsychologistController extends Controller
         $psychologist->image = $image_name;
 
         $psychologist->save();
+
+        // Make schedules
+        $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        $psychologist = Psychologist::where('email', $request->email)->first();
+        foreach ($days as $day) {
+            for ($hour = 8; $hour < 17; $hour++) {
+                Schedule::create([
+                    'psychologist_id' => $psychologist->id,
+                    'day' => $day,
+                    'dateBook' => null,
+                    'startTime' => Carbon::parse('2022-02-02 ' .$hour . ':00:00'),
+                    'endTime' => Carbon::parse('2022-02-02 ' . $hour+1 . ':00:00'),
+                    'detail' => 'Schedule Detail',
+                    'status' => 'Open',
+                    'isActive' => true,
+                ]);
+            }
+        }
+
         return redirect()->route('manage_psychologist')->withSuccess('New psychologist added!');
     }
 
