@@ -36,12 +36,12 @@ class ProfileController extends Controller
     }
 
     public function update(Request $request, $id)
-    {        
+    {
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|'. Rule::unique('users')->ignore(auth()->user()->id, 'id') . '|string|max:255',
-            'password' => 'nullable|string|min:8|confirmed',
-            'confirm_password' => 'same:password',
+            // 'password' => 'nullable|string|min:8|confirmed',
+            // 'confirm_password' => 'same:password',
             'phone' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10240',
         ]);
@@ -49,9 +49,8 @@ class ProfileController extends Controller
         $user = auth()->user();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
+        // $user->password = bcrypt($request->password);
         $user->phone = $request->phone;
-        $user->address = $request->address;
 
         if ($request->hasFile('image')) {
             $request->validate(

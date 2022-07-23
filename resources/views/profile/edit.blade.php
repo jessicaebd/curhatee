@@ -36,49 +36,35 @@
                                             class="form-control form-control-lg @error('name') is-invalid @enderror"
                                             id="name" name="name" class="mb-0"
                                             value="{{ old('name') ? old('name') : $user->name }}">
-                                            @error('name')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6 mb-4">
-                                            <div class="form-group">
-                                                <label for="email">Email</label>
-                                                <input type="email"
-                                                class="form-control form-control-lg @error('email') is-invalid @enderror"
-                                                id="email" name="email"
-                                                value="{{ old('email') ? old('email') : $user->email }}">
-                                                @error('email')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 mb-4">
-                                            <div class="form-group">
-                                                <label for="phone">Phone</label>
-                                                <input type="tel"
-                                                class="form-control form-control-lg @error('phone') is-invalid @enderror"
-                                                id="phone" name="phone"
-                                                value="{{ old('phone') ? old('phone') : $user->phone }}">
-                                                @error('phone')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12 mb-4">
                                         <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email"
+                                            class="form-control form-control-lg @error('email') is-invalid @enderror"
+                                            id="email" name="email"
+                                            value="{{ old('email') ? old('email') : $user->email }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mb-4">
+                                        <div class="form-group">
+                                            <label for="phone">Phone</label>
+                                            <input type="tel"
+                                            class="form-control form-control-lg @error('phone') is-invalid @enderror"
+                                            id="phone" name="phone"
+                                            value="{{ old('phone') ? old('phone') : $user->phone }}">
+                                        </div>
+                                    </div>
+
+                                    {{-- <div class="col-md-12 mb-4">
+                                        <div class="form-group">
                                             <label for="password">Password</label>
                                             <input type="password"
                                             class="form-control form-control-lg @error('password') is-invalid @enderror"
                                             id="password" name="password">
-                                            @error('password')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
                                         </div>
                                     </div>
 
@@ -88,33 +74,14 @@
                                             <input type="password"
                                             class="form-control form-control-lg @error('confirm_password') is-invalid @enderror"
                                             id="confirm_password" name="confirm_password">
-                                            @error('confirm_password')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
                                         </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <label for="address">Address</label>
-                                            <input type="text"
-                                            class="form-control form-control-lg @error('address') is-invalid @enderror"
-                                            id="address" name="address"
-                                            value="{{ old('address') ? old('address') : $user->address }}">
-                                            @error('address')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-md-12 mb-4">
                                         <div class="form-group">
                                             <label for="image">Profile Picture</label>
                                             <input type="file" class="form-control @error('image') is-invalid @enderror"
                                             id="image" name="image">
-                                            @error('image')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
                                         </div>
                                     </div>
 
