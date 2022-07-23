@@ -37,7 +37,7 @@
                 word-wrap: break-word;
             }
 
-            img {
+            .message-img {
                 max-width: 30%;
                 height: auto;
                 margin-top: 10px
