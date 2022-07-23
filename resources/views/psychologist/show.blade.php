@@ -14,7 +14,7 @@
                                 <a href="{{ route('psychologist_dashboard') }}"><button type="button"
                                         class="btn btn-secondary" aria-label="Close"><i class="bi bi-arrow-left-circle"></i>
                                         Back</button></a>
-                                <br>
+                                <br><br>
                                 <tbody>
                                     <tr>
                                         <td>
@@ -162,7 +162,7 @@
                                         @csrf
                                         @method('put')
                                         <input type="hidden" name="transaction_id" value="{{ $transaction->id }}">
-                                        <button type="submit" class="btn btn-primary">@lang('show_psychologist.accept_consultation')</button>
+                                        <button type="submit" class="btn btn-primary mb-2">@lang('show_psychologist.accept_consultation')</button>
                                     </form>
                                 </div>
                                 {{-- reject consultation --}}
@@ -177,7 +177,7 @@
                             @elseif($transaction->status == 'Confirmed')
                                 @if ($transaction->consultationType->name == 'Online Consultation')
                                     <a href="{{ route('chat_page_psychologist', $transaction->id) }}">
-                                        <button type="button" class="btn btn-primary">@lang('show_psychologist.chat_now')</button>
+                                        <button type="button" class="btn btn-primary mb-3">@lang('show_psychologist.chat_now')</button>
                                     </a>
                                 @endif
                                 {{-- add note and end consultation button for psychologist --}}
