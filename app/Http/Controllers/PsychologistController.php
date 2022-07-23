@@ -62,8 +62,14 @@ class PsychologistController extends Controller
     {
         $this->setLang();
 
+        $psychologist = Psychologist::find($id);
+        $online_consultation_id = ConsultationType::where('name', 'Online Consultation')->first()->id;
+        $offline_consultation_id = ConsultationType::where('name', 'Offline Consultation')->first()->id;
+
         $data = [
             'psychologist' => Psychologist::find($id),
+            'online_consultation_id' => $online_consultation_id,
+            'offline_consultation_id' => $offline_consultation_id,
         ];
 
         return view('profile.psychologist.index', $data);
