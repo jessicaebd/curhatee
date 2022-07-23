@@ -71,7 +71,7 @@
                                                                         <span class="align-middle">Inactive</span>
                                                                     </div>
                                                                     <form
-                                                                        action="{{ route('update_schedule', $schedule->id) }}"
+                                                                        action="{{ Auth::guard('webpsychologist')->user() != null ? route('update_schedule_psychologist', $schedule->id) : route('update_schedule_admin', $schedule->id) }}"
                                                                         method="post">
                                                                         @csrf
                                                                         @method('PUT')

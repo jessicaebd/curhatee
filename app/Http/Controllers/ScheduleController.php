@@ -7,6 +7,7 @@ use App\Models\Schedule;
 use Illuminate\Support\Str;
 use App\Models\Psychologist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ScheduleController extends Controller
 {
@@ -40,7 +41,7 @@ class ScheduleController extends Controller
         return view('admin.schedule.view', $data);
     }
 
-    public function update( $id)
+    public function update($id)
     {
         $schedule = Schedule::findOrFail($id);
         $psychologist = Psychologist::findOrFail($schedule->psychologist_id);
@@ -50,7 +51,11 @@ class ScheduleController extends Controller
             $schedule->isActive = true;
         }
         $schedule->save();
-        return redirect()->route('view_psychologist_schedule', $psychologist->id)->withSuccess('schedule successfully updated!');
+        if(Auth::guard('webpsychologist')->user() != null){
+            return redirect()->route('view_psychologist_schedule_psychologist', $psychologist->id)->withSuccess('schedule successfully updated!');
+        }else{
+             return redirect()->route('view_psychologist_schedule_admin', $psychologist->id)->withSuccess('schedule successfully updated!');
+        }
     }
 
 }

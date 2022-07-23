@@ -123,7 +123,7 @@
                     </a>
 
                     {{-- Schedules --}}
-                    <a href="#" {{-- route('manage_schedule_pyschologist') --}}
+                    <a href="{{ route('view_psychologist_schedule_psychologist', $psychologist->id) }}"
                         class="sidebar-item {{ request()->routeIs('manage_schedule_psychologist') ? 'active' : '' }}"
                         onclick="toggleActive(this)">
                         <i class="bi bi-calendar2-day text-secondary me-4 fw-bolder"></i>
