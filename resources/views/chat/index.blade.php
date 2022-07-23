@@ -5,15 +5,46 @@
     @section('css')
         <style>
             .message-container {
-                width: 900px;
+                width: 800px;
                 overflow-y: scroll;
-                height: 400px;
+                height: 500px;
                 border-radius: 5px;
                 box-shadow: 0 0 10px rgb(220, 220, 220);
             }
 
             .input-container {
-                width: 900px;
+                width: 800px;
+            }
+
+            .day-label {
+                font-size: 0.9em;
+                color: #868e96;
+            }
+
+            .message-body {
+                background-color: #c5d1d9;
+                padding: 5px 20px;
+                border-radius: 20px;
+                max-width: 60%;
+                word-wrap: break-word;
+            }
+
+            .message-body-self {
+                background-color: #49a9e9;
+                padding: 5px 20px;
+                border-radius: 20px;
+                max-width: 60%;
+                word-wrap: break-word;
+            }
+
+            img {
+                max-width: 30%;
+                height: auto;
+                margin-top: 10px
+            }
+
+            .text-muted {
+                font-size: 0.8em
             }
         </style>
     @endsection
@@ -60,20 +91,20 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-10">
-                                {{-- <input class="form-control" type="text" name="message" id="message"
-                                placeholder="Type a message..."> --}}
-                                <input id="message" type="hidden" name="message">
-                                <trix-editor input="message">{!! old('message') !!}</trix-editor>
+                                <input class="form-control" type="text" name="message" id="message"
+                                    placeholder="Type a message...">
+                                {{-- <input id="message" type="hidden" name="message">
+                                <trix-editor input="message">{!! old('message') !!}</trix-editor> --}}
                             </div>
-                            <div class="col-md-2 d-flex justify-content-end">
-                                <button class="btn btn-primary" type="submit" id="send-message">@lang('index_chat.send')</button>
+                            <div class="col-md-2 d-flex align-items-center">
+                                <button class="btn btn-primary w-100" type="submit"
+                                    id="send-message">@lang('index_chat.send')</button>
                             </div>
 
                         </div>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <label for="image">Upload Picture (Optional)</label>
-                            <input style="width: 70%" type="file" class="form-control" id="image" name="image"
-                                placeholder="Choose your profile image">
+                            <input style="width: 70%" type="file" class="form-control" id="image" name="image">
                         </div>
                     </form>
                 </div>
