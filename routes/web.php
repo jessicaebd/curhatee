@@ -157,7 +157,13 @@ Route::prefix('/article')
     });
 
 // profiles
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::prefix('/profile')
+    ->controller(ProfileController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('profile');
+        Route::get('/edit/{user}', 'edit')->name('edit_profile');
+        Route::post('/edit/{user}', 'update')->name('update_profile');
+    });
 
 // admins
 Route::prefix('/admin')

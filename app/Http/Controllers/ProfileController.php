@@ -27,23 +27,20 @@ class ProfileController extends Controller
         return view('profile.index', $data);
     }
 
-    public function edit()
+    public function edit($id)
     {
         $this->setLang();
-        $data = [
-            'user' => auth()->user(),
 
-        ];
-
-        return view('profile.edit', $data);
+        return view('profile.edit', ['user' => auth()->user()]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'string|max:255',
-            'email' => 'email|unique:users',
-            'phone' => '',
+            'name' => 'string|max:255|required',
+            'email' => 'email|unique:users|string|max:255|required',
+            'password' => 'string|min:8|confirmed',
+            'phone' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10240',
         ]);
 
@@ -52,6 +49,7 @@ class ProfileController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->phone = $request->phone;
+        $user->address = $request->address;
 
         if ($request->hasFile('image')) {
             $request->validate(
@@ -65,9 +63,8 @@ class ProfileController extends Controller
             $path = $request->file('image')->storeAs($destination_path, $image_name);
             $user->image = $image_name;
         }
-
         $user->save();
 
-        return redirect()->route('profile.index');
+        return redirect()->route('profile')->withSuccess('Succesfully updated profile');
     }
 }

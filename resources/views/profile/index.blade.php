@@ -98,6 +98,11 @@
                                         {{ \Carbon\Carbon::parse($user->expiry_date)->format('d F Y') }}</p>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-sm-3 mt-4">
+                                    <a href="{{ route('edit_profile', $user->id) }}" class="btn btn-outline-primary me-1 flex-grow-1"><i class="bi bi-pencil-square me-2"></i>Edit Profile</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
