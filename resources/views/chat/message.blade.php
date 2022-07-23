@@ -1,5 +1,5 @@
 <div class="day-label d-flex justify-content-center py-2">
-    {{ \Carbon\Carbon::parse($chats->first()->sent_at)->format('l, d F Y') }}
+    {{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y') }}
 </div>
 @foreach ($chats as $chat)
 
@@ -11,11 +11,11 @@
                 <div class="message-header mb-2">
                     <div class="message-header-left">
                         @if ($chat->user_id != null)
-                            <img src="{{ asset('storage/images/users/' . $transaction->user->image) }}"
+                            <img src="{{ asset('/storage/images/users/' . $transaction->user->image) }}"
                                 alt="profile picture" style="width: 40px; height: 40px; overflow: hidden;">
                             <b>{{ $chat->user->name }}</b>
                         @elseif($chat->psychologist_id != null)
-                            <img src="{{ asset('storage/images/psychologists/' . $transaction->psychologist->image) }}"
+                            <img src="{{ asset('/storage/images/psychologists/' . $transaction->psychologist->image) }}"
                                 alt="profile picture" style="width: 40px; height: 40px; overflow: hidden;">
                             <b>{{ $chat->psychologist->name }}</b>
                         @endif
@@ -31,7 +31,7 @@
 
                 @if ($chat->image != null)
                     {{-- {{ $chat->image }} --}}
-                    <img src="{{ asset('storage/images/chat/' . $chat->image) }}" alt="image">
+                    <img src="{{ asset('/storage/images/chat/' . $chat->image) }}" alt="image">
                 @endif
             </div>
         @else
@@ -49,7 +49,7 @@
                 @endif
                 @if ($chat->image != null)
                     {{-- {{ $chat->image }} --}}
-                    <img src="{{ asset('storage/images/chat/' . $chat->image) }}" alt="image">
+                    <img src="{{ asset('/storage/images/chat/' . $chat->image) }}" alt="image">
                 @endif
             </div>
         @endif
@@ -61,11 +61,11 @@
                 <div class="message-header mb-2">
                     <div class="message-header-left">
                         @if ($chat->user_id != null)
-                            <img src="{{ asset('storage/images/users/' . $transaction->user->image) }}"
+                            <img src="{{ asset('/storage/images/users/' . $transaction->user->image) }}"
                                 alt="profile picture" style="width: 40px; height: 40px; overflow: hidden;">
                             <b>{{ $chat->user->name }}</b>
                         @elseif($chat->psychologist_id != null)
-                            <img src="{{ asset('storage/images/psychologists/' . $transaction->psychologist->image) }}"
+                            <img src="{{ asset('/storage/images/psychologists/' . $transaction->psychologist->image) }}"
                                 alt="profile picture" style="width: 40px; height: 40px; overflow: hidden;">
                             <b>{{ $chat->psychologist->name }}</b>
                         @endif
@@ -80,7 +80,7 @@
                 @endif
                 @if ($chat->image != null)
                     {{-- {{ $chat->image }} --}}
-                    <img src="{{ asset('storage/images/chat/' . $chat->image) }}" alt="image">
+                    <img src="{{ asset('/storage/images/chat/' . $chat->image) }}" alt="image">
                 @endif
             </div>
         @else
@@ -98,7 +98,7 @@
                 @endif
                 @if ($chat->image != null)
                     {{-- {{ $chat->image }} --}}
-                    <img src="{{ asset('storage/images/chat/' . $chat->image) }}" alt="image">
+                    <img src="{{ asset('/storage/images/chat/' . $chat->image) }}" alt="image">
                 @endif
             </div>
         @endif
@@ -106,11 +106,11 @@
     {{-- <div class="message-header mb-2">
             <div class="message-header-left">
                 @if ($chat->user_id != null)
-                    <img src="{{ asset('storage/images/users/' . $transaction->user->image) }}" alt="profile picture"
+                    <img src="{{ asset('/storage/images/users/' . $transaction->user->image) }}" alt="profile picture"
                         style="width: 40px; height: 40px; overflow: hidden;">
                     <b>{{ $chat->user->name }}</b>
                 @elseif($chat->psychologist_id != null)
-                    <img src="{{ asset('storage/images/psychologists/' . $transaction->psychologist->image) }}"
+                    <img src="{{ asset('/storage/images/psychologists/' . $transaction->psychologist->image) }}"
                         alt="profile picture" style="width: 40px; height: 40px; overflow: hidden;">
                     <b>{{ $chat->psychologist->name }}</b>
                 @endif
@@ -123,7 +123,7 @@
         </div> --}}
     {{-- @if ($chat->image != null)
         {{ $chat->image }}
-        <img src="{{ asset('storage/images/chat/' . $chat->image) }}" alt="image">
+        <img src="{{ asset('/storage/images/chat/' . $chat->image) }}" alt="image">
     @endif --}}
     {{-- <hr class="my-0" /> --}}
 @endforeach
