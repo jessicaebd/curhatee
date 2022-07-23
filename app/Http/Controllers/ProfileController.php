@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
+use App\Models\Psychologist;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    private function setLang() {
-        if(session()->has('locale')) {
+    private function setLang()
+    {
+        if (session()->has('locale')) {
             app()->setLocale(session()->get('locale'));
         } else {
             app()->setLocale('en');
@@ -19,7 +22,6 @@ class ProfileController extends Controller
         $this->setLang();
         $data = [
             'user' => auth()->user(),
-
         ];
 
         return view('profile.index', $data);
@@ -51,7 +53,7 @@ class ProfileController extends Controller
         $user->password = bcrypt($request->password);
         $user->phone = $request->phone;
 
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $request->validate(
                 ['image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10240'],
             );
