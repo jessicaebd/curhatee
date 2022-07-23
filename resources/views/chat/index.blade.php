@@ -23,16 +23,16 @@
 
             .message-body {
                 background-color: #c5d1d9;
-                padding: 5px 20px;
-                border-radius: 20px;
+                padding: 7px 20px;
+                border-radius: 15px;
                 max-width: 60%;
                 word-wrap: break-word;
             }
 
             .message-body-self {
                 background-color: #49a9e9;
-                padding: 5px 20px;
-                border-radius: 20px;
+                padding: 7px 20px;
+                border-radius: 15px;
                 max-width: 60%;
                 word-wrap: break-word;
             }
