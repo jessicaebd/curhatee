@@ -148,16 +148,18 @@
                         </a>
                     @else
                         <a class="btn btn-outline-blue s-font fw-bolder py-1 px-3" type="button"
-                            class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#transactionHistoryModal">
+                            class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#transactionHistoryModal-{{ $transaction->id }}">
                             See History
                         </a>
 
-                        <div class="modal fade" id="transactionHistoryModal" tabindex="-1"
-                            aria-labelledby="transactionHistoryModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="transactionHistoryModal-{{ $transaction->id }}" tabindex="-1"
+                            aria-labelledby="transactionHistoryModal-{{ $transaction->id }}Label" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title fw-bolder" id="transactionHistoryModalLabel">
+                                        <h5 class="modal-title fw-bolder"
+                                            id="transactionHistoryModal-{{ $transaction->id }}Label">
                                             Transaction History Detail</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
