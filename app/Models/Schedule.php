@@ -16,6 +16,17 @@ class Schedule extends Model
         'id' => 'string'
     ];
 
+    protected $fillable = [
+        'psychologist_id',
+        'day',
+        'startTime',
+        'endTime',
+        'status',
+        'isActive',
+        'detail',
+        'dateBook',
+    ];
+
     public function psychologist()
     {
         return $this->belongsTo(Psychologist::class, 'psychologist_id');
