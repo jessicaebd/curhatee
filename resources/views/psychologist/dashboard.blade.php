@@ -13,6 +13,9 @@
 
         <div class="row">
             <h3 class="nav-title">My Consultation</h3>
+            @if (isset($note))
+                <h3>{{ $note }}</h3>
+            @endif
             <div class="col-12">
                 <ul class="nav nav-tabs d-flex justify-content-start align-items-center" id="tableTab" role="tablist">
                     <li class="nav-item" role="presentation">

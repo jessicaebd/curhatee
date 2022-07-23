@@ -212,19 +212,21 @@
                                             </span>
                                         </div>
 
-                                        <h5 class="fw-bolder s-font">Review:</h5>
-                                        <div class="my-review s-font card px-3 py-2">
-                                            <div class="pe-2">
-                                                @for ($i = 0; $i < 5; $i++)
-                                                    @if ($i < $transaction->review->rating)
-                                                        <i class="bi bi-star-fill text-warning"></i>
-                                                    @else
-                                                        <i class="bi bi-star text-warning"></i>
-                                                    @endif
-                                                @endfor
+                                        @if ($transaction->review != null)
+                                            <h5 class="fw-bolder s-font">Review:</h5>
+                                            <div class="my-review s-font card px-3 py-2">
+                                                <div class="pe-2">
+                                                    @for ($i = 0; $i < 5; $i++)
+                                                        @if ($i < $transaction->review->rating)
+                                                            <i class="bi bi-star-fill text-warning"></i>
+                                                        @else
+                                                            <i class="bi bi-star text-warning"></i>
+                                                        @endif
+                                                    @endfor
+                                                </div>
+                                                <p class="text-muted">{{ $transaction->review->comment }}</p>
                                             </div>
-                                            <p class="text-muted">{{ $transaction->review->comment }}</p>
-                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

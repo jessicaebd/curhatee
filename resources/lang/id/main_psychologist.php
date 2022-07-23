@@ -12,4 +12,5 @@ return [
     'review' => 'Ulasan',
     'update profile' => 'Perbarui Profil',
     'schedule' => 'Jadwal',
+    'history' => 'Riwayat',
 ];
