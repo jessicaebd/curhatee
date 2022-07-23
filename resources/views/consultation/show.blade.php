@@ -208,6 +208,49 @@
             </div>
         </div>
 
-        <div class="row doctor-review"></div>
+        <div class="row doctor-review">
+            <div class="border-bottom border-1 border-dark">
+                <a class="link-dark" data-bs-toggle="collapse" href="#doctorReview" role="button"
+                    aria-expanded="false" aria-controls="doctorReview">
+                    <div class="d-flex justify-content-between">
+                        <span class="fw-bold">Doctor Review</span>
+                        <i class="bi bi-caret-down fw-bold"></i>
+                    </div>
+                </a>
+            </div>
+            <div class="collapse" id="doctorReview">
+                <div class="card-body">
+                    <div class="row">
+                        @foreach ($reviews as $review)
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                {{-- <img src="{{ asset('storage/images/users/' . $review->user->image) }}"
+                                                    alt="" style="width: 100%;height: 100px;"> --}}
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="fw-bold">{{ $review->user->name }}</span>
+                                                    <span
+                                                        class="fw-bold">{{ $review->created_at->format('d M Y') }}</span>
+                                                </div>
+                                                <div class="text-secondary mt-3 s-font text-justify">
+                                                    {{ $review->comment }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
