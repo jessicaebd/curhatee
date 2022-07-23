@@ -11,4 +11,5 @@ return [
     'psychologist' => 'Psikolog',
     'review' => 'Ulasan',
     'update profile' => 'Perbarui Profil',
+    'schedule' => 'Jadwal',
 ];

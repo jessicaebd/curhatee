@@ -51,8 +51,10 @@
         </svg>
     </section>
 
-    <div class="container">
-        <div class="row">
+    <div class="container my-3">
+
+
+        <div class="row mb-4">
             @if (request('date'))
                 {{-- Choose Hours --}}
                 <h5>@lang('show_consultation.consultation_for')<b>{{ $date->format('l, d F Y') }}</b></h5>
@@ -83,15 +85,23 @@
                         <label for="hours" class="form-label fw-bolder">@lang('show_consultation.choose_hours')</label>
                         <div class="row">
                             @foreach ($schedules as $schedule)
-                                <div class="col-md-1">
+                                <div class="col-md-2">
                                     <div class="mb-3">
                                         {{ $schedule->status }}
                                         <input type="radio" class="btn-check btn-green" name="schedule"
                                             value="{{ $schedule->id }}" id="{{ $schedule->id }}"
-                                            {{ $schedule->status == 'Open' ? '' : 'disabled' }}
+                                            {{ $schedule->status != 'Open' || $schedule->isActive == false ? 'disabled' : '' }}
                                             {{ old('schedule') == $schedule->id ? 'checked' : '' }}>
                                         <label
-                                            class="btn {{ $schedule->status != 'Open' || ($date->toDateString() == \Carbon\Carbon::today('Asia/Bangkok')->toDateString() && \Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $schedule->startTime)->format('H:i:s'))->lte(\Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::now('Asia/Bangkok')->format('H:i:s')))) ? 'btn-secondary' : 'btn-outline-primary' }}"
+                                            class="btn {{ $schedule->status != 'Open' ||
+                                            $schedule->isActive == false ||
+                                            ($date->toDateString() == \Carbon\Carbon::today('Asia/Bangkok')->toDateString() &&
+                                                \Carbon\Carbon::createFromFormat(
+                                                    'H:i:s',
+                                                    \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $schedule->startTime)->format('H:i:s'),
+                                                )->lte(\Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::now('Asia/Bangkok')->format('H:i:s'))))
+                                                ? 'btn-secondary'
+                                                : 'btn-outline-primary' }}"
                                             for="{{ $schedule->id }}">{{ \Carbon\Carbon::parse($schedule->startTime)->format('H:i') }}
                                             -
                                             {{ \Carbon\Carbon::parse($schedule->endTime)->format('H:i') }}</label>
@@ -167,5 +177,38 @@
                 @endfor
             @endif
         </div>
+
+        <div class="row about-hospital mb-4">
+            <div class="border-bottom border-1 border-dark">
+                <a class="link-dark" data-bs-toggle="collapse" href="#hospitalDescription" role="button"
+                    aria-expanded="false" aria-controls="hospitalDescription">
+                    <div class="d-flex justify-content-between">
+                        <span class="fw-bold">About Hospital</span>
+                        <i class="bi bi-caret-down fw-bold"></i>
+                    </div>
+                </a>
+            </div>
+            <div class="collapse" id="hospitalDescription">
+                <div class="card-body">
+                    <h5 class="fw-bold l-font">{{ $psychologist->hospital->name }}</h5>
+
+                    <div class="d-flex">
+                        <div class="col-md-5 me-3">
+                            <img src="{{ asset('storage/images/hospitals/' . $psychologist->hospital->image) }}"
+                                alt="" style="width: 100%;height: 250px;">
+                        </div>
+                        <div class="col-md-7 s-font text-justify pe-5 ps-3 my-auto">
+                            <span class="s-font fw-bolder">Address: <br> {{ $psychologist->hospital->address }}</span>
+                            <br><br>
+                            <span class="s-font fw-bolder">Contact: <br> {{ $psychologist->hospital->contact }}</span>
+
+                        </div>
+                    </div>
+                    <div class="text-secondary mt-3 s-font text-justify">{!! $psychologist->hospital->description !!}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row doctor-review"></div>
     </div>
 @endsection

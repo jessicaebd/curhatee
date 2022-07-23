@@ -54,7 +54,7 @@
                                     </div> --}}
 
                                     <div class="d-flex justify-content-end mt-4">
-                                        <a href="{{ route('view_psychologist_schedule', $psychologist->id) }}"
+                                        <a href="{{ Auth::guard('webpsychologist')->user() != null ? route('view_psychologist_schedule_psychologist', $psychologist->id) : route('view_psychologist_schedule_admin', $psychologist->id) }}"
                                             class="btn btn-outline-primary me-1 flex-grow-1">
                                             <i class="bi bi-pencil-square me-2"></i>View Schedule
                                         </a>

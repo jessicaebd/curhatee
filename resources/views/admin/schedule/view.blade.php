@@ -36,22 +36,29 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($schedules_time as $time)
+                                    @foreach ($schedules_time as $time)
                                         <tr>
-                                            <th>{{ \Carbon\Carbon::createFromFormat('H:i:s', $time)->format('H:i') }} - {{ \Carbon\Carbon::createFromFormat('H:i:s', $time)->addHours(1)->format('H:i') }}</th>
+                                            <th>{{ \Carbon\Carbon::createFromFormat('H:i:s', $time)->format('H:i') }} -
+                                                {{ \Carbon\Carbon::createFromFormat('H:i:s', $time)->addHours(1)->format('H:i') }}
+                                            </th>
                                             @foreach ($days as $day)
                                                 <td>
                                                     @foreach ($schedules as $schedule)
-                                                        @if ($schedule->day == $day && \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $schedule->startTime)->format('H:i:s') == $time)
+                                                        @if ($schedule->day == $day &&
+                                                            \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $schedule->startTime)->format('H:i:s') == $time)
                                                             @if ($schedule->isActive == true)
                                                                 <div class="d-flex justify-content-between">
-                                                                    <div class="text-white bg-success text-center mx-2 border" style="min-width:75px; border-radius: 8px;">
+                                                                    <div class="text-white bg-success text-center mx-2 border"
+                                                                        style="min-width:75px; border-radius: 8px;">
                                                                         <span class="align-middle">Active</span>
                                                                     </div>
-                                                                    <form action="{{ route('update_schedule', $schedule->id) }}" method="post">
+                                                                    <form
+                                                                        action="{{ Auth::guard('webpsychologist')->user() != null ? route('update_schedule_psychologist', $schedule->id) : route('update_schedule_admin', $schedule->id) }}"
+                                                                        method="post">
                                                                         @csrf
                                                                         @method('PUT')
-                                                                        <button type="submit" class="btn btn-sm btn-danger">
+                                                                        <button type="submit"
+                                                                            class="btn btn-sm btn-danger">
                                                                             <i class="bi bi-x-circle"></i>
                                                                         </button>
                                                                     </form>
@@ -59,13 +66,17 @@
                                                                 @continue
                                                             @else
                                                                 <div class="d-flex justify-content-between">
-                                                                    <div class="text-white bg-danger text-center mx-2 border" style="min-width:75px; border-radius: 8px;">
+                                                                    <div class="text-white bg-danger text-center mx-2 border"
+                                                                        style="min-width:75px; border-radius: 8px;">
                                                                         <span class="align-middle">Inactive</span>
                                                                     </div>
-                                                                    <form action="{{ route('update_schedule', $schedule->id) }}" method="post">
+                                                                    <form
+                                                                        action="{{ route('update_schedule', $schedule->id) }}"
+                                                                        method="post">
                                                                         @csrf
                                                                         @method('PUT')
-                                                                        <button type="submit" class="btn btn-sm btn-success">
+                                                                        <button type="submit"
+                                                                            class="btn btn-sm btn-success">
                                                                             <i class="bi bi-check-circle"></i>
                                                                         </button>
                                                                     </form>

@@ -54,6 +54,14 @@ Route::controller(PsychologistController::class)
         Route::post('/transactions/end/{transaction}', 'psychologist_end')->name('psychologist_end');
     });
 
+Route::prefix('/schedule-psychologist')
+    ->controller(ScheduleController::class)
+    ->middleware('auth:webpsychologist')
+    ->group(function () {
+        Route::get('/view/{psychologist}', 'show')->name('view_psychologist_schedule_psychologist');
+        Route::put('/{schedule}', 'update')->name('update_schedule_psychologist');
+    });
+
 // home
 Route::controller(HomeController::class)
     ->group(function () {
@@ -63,7 +71,6 @@ Route::controller(HomeController::class)
 // consultation
 Route::prefix('/consultation')
     ->controller(ConsultationController::class)
-    ->middleware('auth')
     ->group(function () {
         Route::get('/psychologists', 'index');
         Route::get('/psychologists/{psychologist}', 'show')->name('psychologist_detail');
@@ -199,7 +206,7 @@ Route::prefix('/admin')
         Route::prefix('/schedule')
             ->controller(ScheduleController::class)
             ->group(function () {
-                Route::get('/view/{psychologist}', 'show')->name('view_psychologist_schedule');
-                Route::put('/{schedule}', 'update')->name('update_schedule');
+                Route::get('/view/{psychologist}', 'show')->name('view_psychologist_schedule_admin');
+                Route::put('/{schedule}', 'update')->name('update_schedule_admin');
             });
     });
