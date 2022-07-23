@@ -72,7 +72,7 @@ Route::controller(HomeController::class)
 Route::prefix('/consultation')
     ->controller(ConsultationController::class)
     ->group(function () {
-        Route::get('/psychologists', 'index');
+        Route::get('/psychologists', 'index')->name('consultation_index');
         Route::get('/psychologists/{psychologist}', 'show')->name('psychologist_detail');
         Route::post('/psychologists/{psychologist}', 'store')->middleware('auth');
         Route::get('/', 'my_index')->name('my_consultation')->middleware('auth');
