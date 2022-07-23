@@ -51,8 +51,6 @@
                             href="{{ route('chat_page_user', $transaction->id) }}">
                             Chat
                         </a>
-                        {{-- transaction id hidden input --}}
-                        <input type="hidden" name="transaction_id" value="{{ $transaction->id }}">
                     @endif
                 @elseif ($transaction->status == 'Finished')
                     @if ($transaction->review == null)
@@ -137,8 +135,6 @@
                                 See Chat History
                             </a>
                         @endif
-
-
                     @endif
                 @endif
 
