@@ -6,7 +6,7 @@
                     #{{ Str::limit(Str::substr($transaction->id, -5), 5, '') }}
                 </h5>
                 <small
-                    class="text-muted s-font">{{ \Carbon\Carbon::parse($transaction->created_at)->format('d F Y, H:i') }}</small>
+                    class="text-muted xs-font">{{ \Carbon\Carbon::parse($transaction->created_at)->format('d F Y, H:i') }}</small>
             </div>
 
             <div class="transaction d-flex mb-2">
@@ -17,7 +17,7 @@
                     <small class="card-text">{{ $transaction->schedule->psychologist->name }}</small>
                     <br>
                     <small
-                        class="card-text xs-font">{{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y @ H:i') }}</small>
+                        class="card-text s-font">{{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y @ H:i') }}</small>
                 </div>
             </div>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transaction;
 use App\Models\Psychologist;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -35,11 +36,12 @@ class ProfileController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
+    {        
         $request->validate([
-            'name' => 'string|max:255|required',
-            'email' => 'email|unique:users|string|max:255|required',
-            'password' => 'string|min:8|confirmed',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|'. Rule::unique('users')->ignore(auth()->user()->id, 'id') . '|string|max:255',
+            'password' => 'nullable|string|min:8|confirmed',
+            'confirm_password' => 'same:password',
             'phone' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10240',
         ]);

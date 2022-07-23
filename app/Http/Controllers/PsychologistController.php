@@ -11,6 +11,7 @@ use App\Models\Psychologist;
 use App\Models\ConsultationType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class PsychologistController extends Controller
 {
@@ -224,7 +225,7 @@ class PsychologistController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'email' => 'required|email',
+            'email' => 'required|email|'. Rule::unique('users')->ignore(auth()->user()->id, 'id'),
             'phone' => 'required|numeric',
             'hospital_id' => 'required',
             'description' => 'required',
