@@ -46,7 +46,20 @@ class ConsultationController extends Controller
             // convert ke date lagi
             $date = Carbon::createFromFormat('Y-m-d', $date_string);
 
-            // ambil semua jam si dokter di hari yg dipilih
+            // ambil dahulu buat di update
+            $schedules = Schedule::where('psychologist_id', $psychologist->id)->Where('day', $date->format('l'))->get();
+
+            // update schedules yang sudah lewat
+            foreach($schedules as $schedule){
+                if($date->toDateString() == \Carbon\Carbon::today('Asia/Bangkok')->toDateString() && \Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $schedule->startTime)->format('H:i:s'),)->lte(\Carbon\Carbon::createFromFormat('H:i:s', \Carbon\Carbon::now('Asia/Bangkok')->format('H:i:s')))) {
+                    $schedule->status = 'Booked';
+                    $schedule->dateBook = null;
+                    $schedule->save();
+                }
+            } 
+            
+
+            // ambil semua jam si dokter di hari yg dipilih yang sudah di update
             $schedules = Schedule::where('psychologist_id', $psychologist->id)->Where('day', $date->format('l'))->get();
 
             // filter yg statusnya open
@@ -99,7 +112,7 @@ class ConsultationController extends Controller
         $transaction->save();
 
         // ubah status schedule
-        $schedule->status = 'Confirmed';
+        $schedule->status = 'Booked';
         $schedule->dateBook = $request->date;
         $schedule->save();
 
@@ -109,7 +122,7 @@ class ConsultationController extends Controller
     public function update(Request $request)
     {
         $transaction = Transaction::find($request->transaction_id);
-        $transaction->status = 'Confirmed';
+        $transaction->status = 'Booked';
         $transaction->save();
 
         return redirect('/psychologist')->with('status', 'Booking request accepted! The user will be notified');
