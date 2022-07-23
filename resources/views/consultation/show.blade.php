@@ -87,7 +87,6 @@
                             @foreach ($schedules as $schedule)
                                 <div class="col-md-2">
                                     <div class="mb-3">
-                                        {{ $schedule->status }}
                                         <input type="radio" class="btn-check btn-green" name="schedule"
                                             value="{{ $schedule->id }}" id="{{ $schedule->id }}"
                                             {{ $schedule->status != 'Open' || $schedule->isActive == false ? 'disabled' : '' }}
