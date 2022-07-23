@@ -19,7 +19,7 @@
                 <img class="rounded mt-3" src="{{ asset('storage/images/articles/' . $article->image) }}" alt=""
                     width="100%">
 
-                <div class="row d-flex justify-content-end">
+                <div class="row d-flex justify-content-end mx-3">
                     <div class="col-md-11 text-justify text-secondary">
                         <p class="text-muted">
                             {!! $article->content !!}
