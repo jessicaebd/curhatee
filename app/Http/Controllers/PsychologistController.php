@@ -58,6 +58,17 @@ class PsychologistController extends Controller
         return redirect()->route('psychologist.login');
     }
 
+    public function profile($id)
+    {
+        $this->setLang();
+
+        $data = [
+            'psychologist' => Psychologist::find($id),
+        ];
+
+        return view('profile.psychologist.index', $data);
+    }
+
     public function psychologist_index()
     {
         $this->setLang();
@@ -212,12 +223,19 @@ class PsychologistController extends Controller
     public function edit($id)
     {
         $this->setLang();
+
+        if (Auth::guard('webpsychologist')->user()) {
+            $view = 'Psychologist';
+        } else if (auth()->user()) {
+            $view = 'User';
+        }
         $hospitals = Hospital::all();
         return view(
             'admin.psychologist.edit',
             [
                 'psychologist' => Psychologist::findOrFail($id),
-                'hospitals' => $hospitals
+                'hospitals' => $hospitals,
+                'view' => $view,
             ]
         );
     }
@@ -225,6 +243,7 @@ class PsychologistController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'name' => 'required|max:255',
             'email' => 'required|email|'. Rule::unique('users')->ignore(auth()->user()->id, 'id'),
             'phone' => 'required|numeric',
             'hospital_id' => 'required',
@@ -232,9 +251,9 @@ class PsychologistController extends Controller
         ]);
 
         $psychologist = Psychologist::findOrFail($id);
+        $psychologist->name = $request->name;
         $psychologist->email = $request->email;
         $psychologist->phone = $request->phone;
-        $psychologist->rating = $request->rating;
         $psychologist->fee = $request->fee;
         $psychologist->hospital_id = $request->hospital_id;
         $psychologist->description = $request->description;
@@ -254,7 +273,11 @@ class PsychologistController extends Controller
 
         $psychologist->save();
 
-        return redirect()->route('manage_psychologist')->withSuccess('Succesfully updated psychologist data');
+        if (Auth::guard('webpsychologist')->user()) {
+            return redirect()->route('psychologist_profile', $id)->withSuccess('Succesfully updated psychologist data');
+        } else if (auth()->user()->role == 'Admin') {
+            return redirect()->route('manage_psychologist')->withSuccess('Succesfully updated psychologist data');
+        }
     }
 
     public function destroy(Psychologist $psychologist)

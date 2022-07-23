@@ -1,4 +1,4 @@
-@extends('layouts.main-admin')
+@extends($view == 'Psychologist' ? 'layouts.main-psychologist' : 'layouts.main-admin')
 
 @section('content')
     <div class="container py-5 h-100">
@@ -21,15 +21,18 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('edit_psychologist', $psychologist->id) }}" method="POST"
-                            enctype="multipart/form-data">
+                        <form
+                            action="{{ Auth::guard('webpsychologist')->user() != null
+                                ? route('psychologist_update_psychologist', $psychologist->id)
+                                : route('admin_update_psychologist', $psychologist->id) }}"
+                            method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="col-md-12 mb-4">
                                 <div class="form-group">
                                     <label for="name">@lang('edit_psychologist.name')</label>
                                     <input type="text" class="form-control form-control-lg" id="name" name="name"
-                                        value="{{ old('name') ? old('name') : $psychologist->name }}" disabled>
+                                        value="{{ old('name') ? old('name') : $psychologist->name }}">
                                 </div>
                             </div>
 
@@ -63,8 +66,7 @@
                                     <div class="form-group">
                                         <label for="email">@lang('edit_psychologist.email')</label>
                                         <input type="email" class="form-control form-control-lg" id="email"
-                                            name="email"
-                                            value="{{ old('email') ? old('email') : $psychologist->email }}">
+                                            name="email" value="{{ old('email') ? old('email') : $psychologist->email }}">
                                     </div>
                                 </div>
 
@@ -72,8 +74,7 @@
                                     <div class="form-group">
                                         <label for="phone">@lang('edit_psychologist.phone')</label>
                                         <input type="text" class="form-control form-control-lg" id="phone"
-                                            name="phone"
-                                            value="{{ old('phone') ? old('phone') : $psychologist->phone }}">
+                                            name="phone" value="{{ old('phone') ? old('phone') : $psychologist->phone }}">
                                     </div>
                                 </div>
                             </div>
@@ -104,9 +105,9 @@
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
                                         <label for="rating">@lang('edit_psychologist.rating')</label>
-                                        <input type="number" class="form-control form-control-lg" id="rating"
+                                        <input type="numeric" class="form-control form-control-lg" id="rating"
                                             name="rating" placeholder="1" min="1" max="5"
-                                            value="{{ old('rating') ? old('rating') : $psychologist->rating }}">
+                                            value="{{ old('rating') ? old('rating') : $psychologist->rating }}" disabled>
                                     </div>
                                 </div>
                             </div>

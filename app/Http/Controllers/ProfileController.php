@@ -25,14 +25,14 @@ class ProfileController extends Controller
             'user' => auth()->user(),
         ];
 
-        return view('profile.index', $data);
+        return view('profile.user.index', $data);
     }
 
     public function edit($id)
     {
         $this->setLang();
 
-        return view('profile.edit', ['user' => auth()->user()]);
+        return view('profile.user.edit', ['user' => auth()->user()]);
     }
 
     public function update(Request $request, $id)

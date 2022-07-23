@@ -50,9 +50,13 @@ Route::controller(PsychologistController::class)
         Route::get('/', 'psychologist_index')->name('psychologist_dashboard');
         Route::get('/history', 'psychologist_history')->name('psychologist_history');
         Route::get('/transactions/{transaction}', 'psychologist_show')->name('psychologist_show');
+        Route::get('/profile/{psychologist}', 'profile')->name('psychologist_profile');
         Route::put('/transactions/accept/{transaction}', 'psychologist_update_accept');
         Route::put('/transactions/reject/{transaction}', 'psychologist_update_reject');
         Route::post('/transactions/end/{transaction}', 'psychologist_end')->name('psychologist_end');
+        // Route::get('/profile/{psychologist}', 'profile')->name('psychologist_profile');
+        Route::get('/edit/{psychologist}', 'edit')->name('psychologist_edit_psychologist');
+        Route::post('/edit/{psychologist}', 'update')->name('psychologist_update_psychologist');
     });
 
 Route::prefix('/schedule-psychologist')
@@ -195,8 +199,8 @@ Route::prefix('/admin')
             ->group(function () {
                 Route::get('/add', 'create')->name('add_psychologist');
                 Route::post('/add', 'store')->name('store_psychologist');
-                Route::get('/edit/{psychologist}', 'edit')->name('edit_psychologist');
-                Route::post('/edit/{psychologist}', 'update')->name('update_psychologist');
+                Route::get('/edit/{psychologist}', 'edit')->name('admin_edit_psychologist');
+                Route::post('/edit/{psychologist}', 'update')->name('admin_update_psychologist');
                 Route::delete('/delete/{psychologist}', 'destroy')->name('delete_psychologist');
             });
 

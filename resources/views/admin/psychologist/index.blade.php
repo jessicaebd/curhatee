@@ -54,7 +54,7 @@
                                     </div>
 
                                     <div class="d-flex justify-content-end">
-                                        <a href="{{ route('edit_psychologist', $psychologist->id) }}"
+                                        <a href="{{ route('admin_edit_psychologist', $psychologist->id) }}"
                                             class="btn btn-outline-primary me-1 flex-grow-1">
                                             <i class="bi bi-pencil-square me-2"></i> @lang('index_admin_psychologist.edit')
                                         </a>
