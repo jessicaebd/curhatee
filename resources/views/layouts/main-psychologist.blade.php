@@ -79,20 +79,15 @@
                         <span>@lang('main_psychologist.overview')</span>
                     </a>
 
-                    <a href="#" class="sidebar-item" onclick="toggleActive(this)">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                    <a href="{{ route('psychologist_review', $psychologist->id) }}" class="sidebar-item"
+                        onclick="toggleActive(this)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-star" viewBox="0 0 16 16">
                             <path
-                                d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142C20.7893 21.0391 21 20.5304 21 20V6L18 2H6Z"
-                                stroke="#7E8CAC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            <path
-                                d="M16 10C16 11.0609 15.5786 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92172 13.5786 9.17157 12.8284C8.42143 12.0783 8 11.0609 8 10"
-                                stroke="#7E8CAC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M3 6H21" stroke="#7E8CAC" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
+                                d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
                         </svg>
 
-                        <span>@lang('main_psychologist.transaction')</span>
+                        <span>@lang('main_psychologist.review')</span>
                     </a>
 
                     <a href="#" class="sidebar-item" onclick="toggleActive(this)">
@@ -172,7 +167,7 @@
             <div class="nav">
                 <div class="d-flex justify-content-between align-items-center w-100 mb-md-0">
                     <div class="d-flex justify-content-between align-items-center w-100">
-                        <h6 class="nav-title">My Consultation</h6>
+                        <h2 class="nav-title">Psychologist Dashboard</h2>
                         <button id="toggle-navbar" onclick="toggleNavbar()">
                             <img src="{{ asset('storage/images/psychologists/' . $psychologist->image) }}"
                                 alt="profile image">

@@ -1,4 +1,4 @@
-@extends('layouts.main-admin')
+@extends($view == 'Psychologist' ? 'layouts.main-psychologist' : 'layouts.main-admin')
 
 @section('content')
     <div class="container py-5 h-100">

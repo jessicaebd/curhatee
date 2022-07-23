@@ -1,10 +1,12 @@
-@extends('layouts.main')
+@extends($view == 'User' ? 'layouts.main' : 'layouts.main-psychologist')
 
 @section('title', 'Review')
 
 @section('content')
 
     {{-- psychologist details --}}
+    {{-- div bar paling atas, isinya data si psychologist
+    ratingny brp. total transaksi gtu deh. --}}
     <div class="col-md-4">
         <img src="{{ asset('storage/images/psychologists/' . $psychologist->image) }}" style="width: 90%; height: 250px">
 
@@ -25,6 +27,7 @@
         <a href="/hospitals/{{ $psychologist->hospital->id }}" class="card-link text-decoration-underline">
             {{ $psychologist->hospital->name }}
         </a>
+        Total Transactions: {{ $psychologist->transaction->count() }}
     </div>
 
     {{-- psychologist some reviews --}}
@@ -36,9 +39,19 @@
                         class="img-fluid rounded rounded-circle me-2" width="30px" height="30px">
                 </div>
                 <h6 class="user-header-name fw-bolder">{{ $review->user->name }}</h6>
+                tgl konsultasi : <h5>{{ $review->transaction->time }}</h5>
+                @for ($i = 0; $i < 5; $i++)
+                    @if ($i < $review->rating)
+                        <i class="bi bi-star-fill text-warning"></i>
+                    @else
+                        <i class="bi bi-star text-warning"></i>
+                    @endif
+                @endfor
+                {{-- angka review rating bisa koma, jd dbuat tampil jg slain ikon star --}}
+                {{ $review->rating }}
             </div>
             {{ $review->comment }}
-            {{ $review->created_at }}
+            tgl review: {{ $review->created_at }}
         @endforeach
     </div>
 @endsection
