@@ -318,6 +318,7 @@ class ForumController extends Controller
     public function deleteReplyForum($id)
     {
         $reply_forum = ReplyForum::find($id);
+        $forum = $reply_forum->forum;
 
         $like_reply_forums = LikedReplyForum::where('reply_forum_id', $id)->get();
         foreach ($like_reply_forums as $like_reply_forum) {
@@ -326,6 +327,6 @@ class ForumController extends Controller
 
         $reply_forum->delete();
 
-        return redirect()->route('show_detail_forum', $id);
+        return redirect()->route('show_detail_forum', $forum->id);
     }
 }

@@ -64,8 +64,8 @@
             </div>
         </div>
         <div class="message-body">
-            <p class="mb-0">{{ $chat->message }}</p>
-        </div> --}}
+            <p class="mb-0">{!! $chat->message !!}</p>
+        </div>
         @if ($chat->image != null)
             {{ $chat->image }}
             <img src="{{ asset('storage/images/chat/' . $chat->image) }}" alt="image">

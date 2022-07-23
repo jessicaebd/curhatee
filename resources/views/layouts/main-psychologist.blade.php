@@ -13,13 +13,23 @@
     {{-- Bootstrap Icon --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
+    {{-- Custom CSS --}}
+    <link rel="stylesheet" href="{{ asset('css/psychologist/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    @yield('css')
+
     {{-- jQuery --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    {{-- Custom CSS --}}
-    <link rel="stylesheet" href="{{ asset('css/psychologist/dashboard.css') }}">
-
-    @yield('css')
+    {{-- Trix Editor --}}
+    <link rel="stylesheet" type="text/css" href="/css/trix.css">
+    <script type="text/javascript" src="/js/trix.js"></script>
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+    </style>
 
     <title>@lang('main_psychologist.psychologist_dashboard')</title>
 </head>
@@ -50,7 +60,10 @@
 
                 <div class="sidebar-item-container">
 
-                    <a href="/psychologist" class="sidebar-item active" onclick="toggleActive(this)">
+                    {{-- Overview --}}
+                    <a href="/psychologist"
+                        class="sidebar-item {{ request()->routeIs('psychologist_dashboard') ? 'active' : '' }}"
+                        onclick="toggleActive(this)">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M21 14H14V21H21V14Z" stroke="white" stroke-width="2" stroke-linecap="round"
@@ -93,7 +106,10 @@
                         <span>@lang('main_psychologist.messages')</span>
                     </a>
 
-                    <a href="{{ route('forum_page') }}" class="sidebar-item" onclick="toggleActive(this)">
+                    {{-- Forum --}}
+                    <a href="{{ route('forum_page') }}"
+                        class="sidebar-item {{ request()->routeIs('forum_page') ? 'active' : '' }}"
+                        onclick="toggleActive(this)">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -106,17 +122,13 @@
                         <span>@lang('main_psychologist.forum')</span>
                     </a>
 
-                    <a href="#" class="sidebar-item" onclick="toggleActive(this)">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M12 15C15.866 15 19 11.866 19 8C19 4.13401 15.866 1 12 1C8.13401 1 5 4.13401 5 8C5 11.866 8.13401 15 12 15Z"
-                                stroke="#7E8CAC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M8.21 13.89L7 23L12 20L17 23L15.79 13.88" stroke="#7E8CAC" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
+                    {{-- Schedules --}}
+                    <a href="#" {{-- route('manage_schedule_pyschologist') --}}
+                        class="sidebar-item {{ request()->routeIs('manage_schedule_psychologist') ? 'active' : '' }}"
+                        onclick="toggleActive(this)">
+                        <i class="bi bi-calendar2-day text-secondary me-4 fw-bolder"></i>
 
-                        <span>@lang('main_psychologist.rewards')</span>
+                        <span>@lang('main_psychologist.schedules')</span>
                     </a>
 
                     <a href="#" class="sidebar-item" onclick="toggleActive(this)">
@@ -133,7 +145,7 @@
                         <span>@lang('main_psychologist.settings')</span>
                     </a>
 
-
+                    {{-- Logout --}}
                     <a class="sidebar-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -177,6 +189,12 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+
+    <script>
+        document.addEventListener('trix-file-accept', function(event) {
+            event.preventDefault();
+        });
     </script>
 
     <script>

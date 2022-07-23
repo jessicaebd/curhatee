@@ -59,10 +59,15 @@
                                             alt="user" class="img-fluid rounded rounded-circle me-2" width="30px"
                                             height="30px">
                                     </div>
-                                    <h6 class="user-header-name fw-bolder">{{ $forum->user->name }}</h6>
+                                    <h6 class="user-header-name fw-bolder">
+                                        {{ $forum->psychologist_id != null ? $forum->psychologist->name : $forum->user->name }}
+                                    </h6>
                                 </div>
 
-                                @if ($view == 'Admin')
+                                @if ($view == 'Admin' ||
+                                    (Auth::guard('webpsychologist')->user() != null &&
+                                        $forum->psychologist_id == Auth::guard('webpsychologist')->user()->id) ||
+                                    (auth()->user() != null && auth()->user()->role != 'Admin' && $forum->user_id == auth()->user()->id))
                                     <div class="">
                                         <div class="dropdown">
                                             <a class="link-dark" href="#" id="dropdownMenuLink"
@@ -71,7 +76,11 @@
                                             </a>
 
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                <form action="{{ route('delete_forum', $forum->id) }}" method="post">
+                                                <form
+                                                    action="{{ Auth::guard('webpsychologist')->user() != null
+                                                        ? route('delete_forum_psychologist', $forum->id)
+                                                        : route('delete_forum_user', $forum->id) }}"
+                                                    method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn text-danger">
@@ -86,25 +95,27 @@
                             </div>
 
                             <div class="user-forum mt-2 text-secondary">
-                                <p class="">{{ Str::limit($forum->content, 200, '...') }}</p>
+                                <p class="">{!! Str::limit($forum->content, 200, '...') !!}</p>
                             </div>
 
                             <div class="d-flex align-items-end align-content-end justify-content-between">
-                                <div class="d-flex align-items-end align-content-end">
-                                    <form
-                                        action="{{ Auth::guard('webpsychologist')->user() != null ? route('like_forum_psychologist', $forum->id) : route('like_forum_user', $forum->id) }}"
-                                        method="post">
-                                        @csrf
-                                        <button type="submit p-1"
-                                            class="btn-like {{ $forum->is_forum_liked ? 'btn-danger' : 'btn-outline-danger' }}"><i
-                                                class="bi bi-heart"></i>
-                                            {{ $forum->likes }}</button>
-                                    </form>
-                                    <span class="mx-3 text-secondary">|</span>
-                                    <a href="{{ route('show_detail_forum', $forum->id) }}"
-                                        class="link-dark fw-bolder s-font see-details">See
-                                        Details</a>
-                                </div>
+                                @if ($view != 'Admin')
+                                    <div class="d-flex align-items-end align-content-end">
+                                        <form
+                                            action="{{ Auth::guard('webpsychologist')->user() != null ? route('like_forum_psychologist', $forum->id) : route('like_forum_user', $forum->id) }}"
+                                            method="post">
+                                            @csrf
+                                            <button type="submit p-1"
+                                                class="btn-like {{ $forum->is_forum_liked ? 'btn-danger' : 'btn-outline-danger' }}"><i
+                                                    class="bi bi-heart"></i>
+                                                {{ $forum->likes }}</button>
+                                        </form>
+                                        <span class="mx-3 text-secondary">|</span>
+                                        <a href="{{ route('show_detail_forum', $forum->id) }}"
+                                            class="link-dark fw-bolder s-font see-details">See
+                                            Details</a>
+                                    </div>
+                                @endif
 
                                 <small class="text-secondary xs-font">{{ $forum->created_at->diffForHumans() }}</small>
                             </div>

@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap");
+
+:root {
+    --main-blue: #2934d0;
+    --main-green: #1acc8d;
+}
+
 html,
 body {
     font-family: "Nunito Sans", sans-serif;
@@ -22,7 +28,10 @@ body {
 }
 
 .bg-blue {
-    background-color: blue;
+    background-color:var(--main-blue);
+}
+.bg-green {
+    background-color: var(--main-green);
 }
 
 .l-font {
@@ -557,10 +566,16 @@ aside #toggle-navbar {
     text-align: center;
     margin: 0 auto;
 }
+.transaction-table td span.online-consultation::before {
+    color: #57fe57;
+}
+.transaction-table td span.offline-consultation::before {
+    color: #fe57e8;
+}
 .transaction-table td span.pending::before {
     color: #febd57;
 }
-.transaction-table td span.pending::before {
+.transaction-table td span.confirmed::before {
     color: #575afe;
 }
 .transaction-table td span.finished::before {

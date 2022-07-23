@@ -79,7 +79,11 @@
                                                 {{ $transaction->user->name }}
                                             </td>
                                             <td>
-                                                {{ $transaction->consultationType->name }}
+                                                <span
+                                                    class="{{ strtolower(str_replace(' ', '-', $transaction->consultationType->name)) }}   w-auto d-flex justify-content-center
+                                                align-self-center">
+                                                    {{ $transaction->consultationType->name }}
+                                                </span>
                                             </td>
                                             <td>
                                                 Rp. {{ number_format($transaction->price, 0, ',', '.') }}
