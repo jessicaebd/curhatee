@@ -30,8 +30,8 @@
                             <span class="badge bg-success">Confirmed</span>
                         @elseif ($transaction->status == 'Finished')
                             <span class="badge bg-secondary">Finished</span>
-                        @elseif ($transaction->status == 'Cancelled')
-                            <span class="badge bg-danger">Cancelled</span>
+                        @elseif ($transaction->status == 'Rejected')
+                            <span class="badge bg-danger">Rejected</span>
                         @endif
                     </h6>
                 </div>
@@ -135,14 +135,12 @@
                                 See Chat History
                             </a>
                         @endif
-
-
                     @endif
                 @endif
 
                 <div class="ms-2">
                     @if ($transaction->status == 'Pending' || $transaction->status == 'Confirmed')
-                        <a class="btn btn-outline-blue s-font fw-bolder py-1 px-3"
+                        <a class="btn btn-outline-blue s-font fw-bolder py-1 px-3" id="submit"
                             href="/consultation/{{ $transaction->id }}">
                             @lang('my_index.see_detail')
                         </a>

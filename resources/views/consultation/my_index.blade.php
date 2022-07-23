@@ -28,8 +28,7 @@
                     <ul class="nav nav-tabs d-flex justify-content-start align-items-center" id="tableTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all"
-                                type="button" role="tab" aria-controls="all"
-                                aria-selected="true">@lang('dashboard_psychologist.all_consultation')</button>
+                                type="button" role="tab" aria-controls="all" aria-selected="true">All</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending"
@@ -114,57 +113,4 @@
             </div>
         </div>
     </div>
-
-    {{-- !BELUM --}}
-    {{-- @if (count($transaction_histories) > 0)
-        <h3 class="text-center mb-3">@lang('my_index.my_consultation_history')</h3>
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-10">
-                <div class="row">
-                    @foreach ($transaction_histories as $transaction_history)
-                        <div class="col-md-6">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <p class="card-text">{{ $transaction_history->schedule->psychologist->name }}</p>
-                                    <p class="card-text">
-                                        {{ \Carbon\Carbon::parse($transaction_history->time)->format('l, d F Y @ H:i') }}
-                                    </p>
-
-                                    <p class="card-text">@lang('my_index.status'): {{ $transaction_history->status }}</p>
-
-
-                                    <span class="btn btn-primary">{{ $transaction_history->consultationType->name }}
-                                    </span>
-
-                                    @if ($transaction_history->review != null)
-                                        <h5>@lang('my_index.your_review')</h5>
-                                        <div class="pe-2">
-                                            @for ($i = 0; $i < 5; $i++)
-                                                @if ($i < $transaction_history->review->rating)
-                                                    <i class="bi bi-star-fill text-warning"></i>
-                                                @else
-                                                    <i class="bi bi-star text-warning"></i>
-                                                @endif
-                                            @endfor
-                                        </div>
-                                    @endif
-
-                                    <a href="/consultation/{{ $transaction_history->id }}">
-                                        <button type="button" class="btn btn-secondary">
-                                            @if ($transaction_history->review != null)
-                                                @lang('my_index.see_detail')
-                                            @else
-                                                @lang('my_index.give_review')
-                                            @endif
-                                        </button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    @endif --}}
-
 @endsection
