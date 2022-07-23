@@ -128,7 +128,7 @@
                         onclick="toggleActive(this)">
                         <i class="bi bi-calendar2-day text-secondary me-4 fw-bolder"></i>
 
-                        <span>@lang('main_psychologist.schedules')</span>
+                        <span>@lang('main_psychologist.schedule')</span>
                     </a>
 
                     <a href="#" class="sidebar-item" onclick="toggleActive(this)">

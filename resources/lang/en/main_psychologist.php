@@ -11,4 +11,5 @@ return [
     'psychologist' => 'Psychologist',
     'review' => 'Review',
     'update profile' => 'Update Profile',
+    'schedule' => 'Schedule',
 ];
