@@ -30,8 +30,8 @@
                             <span class="badge bg-success">Confirmed</span>
                         @elseif ($transaction->status == 'Finished')
                             <span class="badge bg-secondary">Finished</span>
-                        @elseif ($transaction->status == 'Cancelled')
-                            <span class="badge bg-danger">Cancelled</span>
+                        @elseif ($transaction->status == 'Rejected')
+                            <span class="badge bg-danger">Rejected</span>
                         @endif
                     </h6>
                 </div>
@@ -51,6 +51,8 @@
                             href="{{ route('chat_page_user', $transaction->id) }}">
                             Chat
                         </a>
+                        {{-- transaction id hidden input --}}
+                        <input type="hidden" name="transaction_id" value="{{ $transaction->id }}">
                     @endif
                 @elseif ($transaction->status == 'Finished')
                     @if ($transaction->review == null)
@@ -142,7 +144,7 @@
 
                 <div class="ms-2">
                     @if ($transaction->status == 'Pending' || $transaction->status == 'Confirmed')
-                        <a class="btn btn-outline-blue s-font fw-bolder py-1 px-3"
+                        <a class="btn btn-outline-blue s-font fw-bolder py-1 px-3" id="submit"
                             href="/consultation/{{ $transaction->id }}">
                             @lang('my_index.see_detail')
                         </a>
@@ -212,19 +214,21 @@
                                             </span>
                                         </div>
 
-                                        <h5 class="fw-bolder s-font">Review:</h5>
-                                        <div class="my-review s-font card px-3 py-2">
-                                            <div class="pe-2">
-                                                @for ($i = 0; $i < 5; $i++)
-                                                    @if ($i < $transaction->review->rating)
-                                                        <i class="bi bi-star-fill text-warning"></i>
-                                                    @else
-                                                        <i class="bi bi-star text-warning"></i>
-                                                    @endif
-                                                @endfor
+                                        @if ($transaction->review != null)
+                                            <h5 class="fw-bolder s-font">Review:</h5>
+                                            <div class="my-review s-font card px-3 py-2">
+                                                <div class="pe-2">
+                                                    @for ($i = 0; $i < 5; $i++)
+                                                        @if ($i < $transaction->review->rating)
+                                                            <i class="bi bi-star-fill text-warning"></i>
+                                                        @else
+                                                            <i class="bi bi-star text-warning"></i>
+                                                        @endif
+                                                    @endfor
+                                                </div>
+                                                <p class="text-muted">{{ $transaction->review->comment }}</p>
                                             </div>
-                                            <p class="text-muted">{{ $transaction->review->comment }}</p>
-                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

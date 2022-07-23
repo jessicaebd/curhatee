@@ -28,8 +28,7 @@
                     <ul class="nav nav-tabs d-flex justify-content-start align-items-center" id="tableTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all"
-                                type="button" role="tab" aria-controls="all"
-                                aria-selected="true">@lang('dashboard_psychologist.all_consultation')</button>
+                                type="button" role="tab" aria-controls="all" aria-selected="true">All</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending"
@@ -166,5 +165,14 @@
             </div>
         </div>
     @endif --}}
-
+    <script type="text/javascript">
+        $("#submit").click(function() {
+            var id = $("#transaction_id").val();
+            var marks = $("#marks").val();
+            var str = "You Have Entered " +
+                "Name: " + name +
+                " and Marks: " + marks;
+            $("#modal_body").html(str);
+        });
+    </script>
 @endsection
