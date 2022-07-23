@@ -73,10 +73,20 @@
                                         </div>
 
                                         <div class="d-flex justify-content-end">
-                                            <a class="btn btn-outline-blue s-font fw-bolder py-1 px-3"
-                                                href="/consultation/{{ $transaction->id }}">
-                                                @lang('my_index.see_detail')
-                                            </a>
+                                            @if ($transaction->status == 'Confirmed')
+                                                @if ($transaction->consultationType->name == 'Online Consultation')
+                                                    <a class="btn btn-blue s-font fw-bolder py-1 px-3"
+                                                        href="{{ route('chat_page_user', $transaction->id) }}">
+                                                        Chat
+                                                    </a>
+                                                @endif
+                                            @endif
+                                            <div class="ms-2">
+                                                <a class="btn btn-outline-blue s-font fw-bolder py-1 px-3"
+                                                    href="/consultation/{{ $transaction->id }}">
+                                                    @lang('my_index.see_detail')
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -88,6 +98,7 @@
         </div>
     </div>
 
+    {{-- !BELUM --}}
     @if (count($transaction_histories) > 0)
         <h3 class="text-center mb-3">@lang('my_index.my_consultation_history')</h3>
         <div class="row d-flex justify-content-center">
