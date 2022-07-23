@@ -143,7 +143,7 @@ Route::prefix('/forum-psychologist')
 Route::prefix('/review')
     ->controller(ReviewController::class)
     ->group(function () {
-        Route::get('/{psychologist}', 'index')->name('psychologist_review');
+        Route::get('psychologsit/{psychologist}', 'index')->name('psychologist_review');
         Route::post('/{psychologist}', 'store')->name('store_review')->middleware('auth');
     });
 
