@@ -109,7 +109,9 @@
                     </form>
                 </div>
             @else
-                <h1>@lang('index_chat.consultation_is_finished')</h1>
+                <h3 class="fw-bold mb-3 text-danger mt-4">
+                    @lang('index_chat.consultation_is_finished')
+                </h3>
             @endif
         </div>
     @endsection

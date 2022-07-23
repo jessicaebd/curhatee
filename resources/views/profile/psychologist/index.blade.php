@@ -47,7 +47,7 @@
     <br>
     {{ $psychologist->rating }}
     <br>
-    total revenue {{ $psychologist->transaction->where('status', 'Finished')->sum('price') }}
+    total revenue {{ $psychologist->transaction->where('status', '!=', 'Rejected')->sum('price') }}
 
 
 

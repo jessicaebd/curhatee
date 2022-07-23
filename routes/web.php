@@ -59,7 +59,7 @@ Route::controller(PsychologistController::class)
         Route::post('/edit/{psychologist}', 'update')->name('psychologist_update_psychologist');
     });
 
-Route::prefix('/schedule-psychologist')
+Route::prefix('/schedule')
     ->controller(ScheduleController::class)
     ->middleware('auth:webpsychologist')
     ->group(function () {
@@ -116,7 +116,7 @@ Route::prefix('/forum')
     });
 
 // forum for user
-Route::prefix('/forum-user')
+Route::prefix('/forum/user')
     ->controller(ForumController::class)
     ->middleware('auth')
     ->group(function () {
@@ -131,7 +131,7 @@ Route::prefix('/forum-user')
     });
 
 // forum for psychologist
-Route::prefix('/forum-psychologist')
+Route::prefix('/forum/psychologist')
     ->controller(ForumController::class)
     ->middleware('auth:webpsychologist')
     ->group(function () {

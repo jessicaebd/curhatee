@@ -43,6 +43,16 @@
                             type="button" role="tab" aria-controls="rejected"
                             aria-selected="false">@lang('dashboard_psychologist.rejected')</button>
                     </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="online-tab" data-bs-toggle="tab" data-bs-target="#online"
+                            type="button" role="tab" aria-controls="online"
+                            aria-selected="false">@lang('dashboard_psychologist.online_consultation')</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="offline-tab" data-bs-toggle="tab" data-bs-target="#offline"
+                            type="button" role="tab" aria-controls="offline"
+                            aria-selected="false">@lang('dashboard_psychologist.offline_consultation')</button>
+                    </li>
                 </ul>
                 <div class="tab-content" id="tableTabContent">
                     <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
@@ -337,6 +347,138 @@
                                             <td class="status">
                                                 <span
                                                     class="rejected w-auto d-flex  justify-content-center align-self-center">
+                                                    {{ $transaction->status }}
+                                                </span>
+                                            </td>
+                                            <td class="action">
+                                                <a href="/psychologist/transactions/{{ $transaction->id }}"
+                                                    class="btn-transaction mx-auto">@lang('dashboard_psychologist.details')</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="online" role="tabpanel" aria-labelledby="online-tab">
+                        <div class="table-responsive">
+                            <table class="table table-borderless transaction-table w-100 active" id="table-online">
+                                <thead>
+                                    <tr>
+                                        <th>@lang('dashboard_psychologist.consultation')</th>
+                                        <th>@lang('dashboard_psychologist.patient')</th>
+                                        <th class="action-header">@lang('dashboard_psychologist.consultation_type')</th>
+                                        <th>@lang('dashboard_psychologist.price')</th>
+                                        <th class="status-header">@lang('dashboard_psychologist.status')</th>
+                                        <th class="action-header">@lang('dashboard_psychologist.action')</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach ($transactions_online as $transaction)
+                                        <tr>
+                                            <td>
+                                                <div
+                                                    class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
+                                                    <img class="transaction-img"
+                                                        src="{{ asset('storage/images/users/' . $transaction->user->image) }}"
+                                                        alt="">
+                                                    <div
+                                                        class="d-flex flex-column justify-content-center align-items-start mt-2">
+                                                        <h5 class="transaction-game">
+                                                            {{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y') }}
+                                                        </h5>
+                                                        <h5 class="transaction-type">
+                                                            {{ \Carbon\Carbon::parse($transaction->time)->format('@ H:i') }}
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {{ $transaction->user->name }}
+                                            </td>
+                                            <td>
+                                                <span
+                                                    class="{{ strtolower(str_replace(' ', '-', $transaction->consultationType->name)) }}   w-auto d-flex justify-content-center
+                                                align-self-center">
+                                                    {{ $transaction->consultationType->name }}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                Rp. {{ number_format($transaction->price, 0, ',', '.') }}
+                                            </td>
+                                            <td class="status">
+                                                <span
+                                                    class=" 
+                                                    {{ strtolower($transaction->status) }} w-auto d-flex justify-content-center
+                                                    align-self-center">
+                                                    {{ $transaction->status }}
+                                                </span>
+                                            </td>
+                                            <td class="action">
+                                                <a href="/psychologist/transactions/{{ $transaction->id }}"
+                                                    class="btn-transaction mx-auto">@lang('dashboard_psychologist.details')</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="offline" role="tabpanel" aria-labelledby="offline-tab">
+                        <div class="table-responsive">
+                            <table class="table table-borderless transaction-table w-100 active" id="table-offline">
+                                <thead>
+                                    <tr>
+                                        <th>@lang('dashboard_psychologist.consultation')</th>
+                                        <th>@lang('dashboard_psychologist.patient')</th>
+                                        <th class="action-header">@lang('dashboard_psychologist.consultation_type')</th>
+                                        <th>@lang('dashboard_psychologist.price')</th>
+                                        <th class="status-header">@lang('dashboard_psychologist.status')</th>
+                                        <th class="action-header">@lang('dashboard_psychologist.action')</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach ($transactions_offline as $transaction)
+                                        <tr>
+                                            <td>
+                                                <div
+                                                    class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
+                                                    <img class="transaction-img"
+                                                        src="{{ asset('storage/images/users/' . $transaction->user->image) }}"
+                                                        alt="">
+                                                    <div
+                                                        class="d-flex flex-column justify-content-center align-items-start mt-2">
+                                                        <h5 class="transaction-game">
+                                                            {{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y') }}
+                                                        </h5>
+                                                        <h5 class="transaction-type">
+                                                            {{ \Carbon\Carbon::parse($transaction->time)->format('@ H:i') }}
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {{ $transaction->user->name }}
+                                            </td>
+                                            <td>
+                                                <span
+                                                    class="{{ strtolower(str_replace(' ', '-', $transaction->consultationType->name)) }}   w-auto d-flex justify-content-center
+                                                align-self-center">
+                                                    {{ $transaction->consultationType->name }}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                Rp. {{ number_format($transaction->price, 0, ',', '.') }}
+                                            </td>
+                                            <td class="status">
+                                                <span
+                                                    class=" 
+                                                    {{ strtolower($transaction->status) }} w-auto d-flex justify-content-center
+                                                    align-self-center">
                                                     {{ $transaction->status }}
                                                 </span>
                                             </td>

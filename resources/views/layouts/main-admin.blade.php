@@ -77,7 +77,7 @@
 
                     {{-- Article --}}
                     <a href="{{ route('manage_article') }}"
-                        class="sidebar-item {{ request()->routeIs('manage_article') ? 'active' : '' }}"
+                        class="sidebar-item {{ request()->is('admin/article*') ? 'active' : '' }}"
                         onclick="toggleActive(this)">
                         <i class="bi bi-clipboard text-secondary me-4 fw-bolder"></i>
                         <span>@lang('main_admin.articles')</span>
@@ -85,7 +85,7 @@
 
                     {{-- Hospital --}}
                     <a href="{{ route('manage_hospital') }}"
-                        class="sidebar-item {{ request()->routeIs('manage_hospital') ? 'active' : '' }}"
+                        class="sidebar-item {{ request()->is('admin/hospital*') ? 'active' : '' }}"
                         onclick="toggleActive(this)">
                         <i class="bi bi-hospital text-secondary me-4 fw-bolder"></i>
 
@@ -93,7 +93,9 @@
                     </a>
 
                     {{-- Forum --}}
-                    <a href="{{ route('forum_page') }}" class="sidebar-item" onclick="toggleActive(this)">
+                    <a href="{{ route('forum_page') }}"
+                        class="sidebar-item {{ request()->is('admin/forum*') ? 'active' : '' }}"
+                        onclick="toggleActive(this)">
                         <i class="bi bi-chat-right-text text-secondary me-4 fw-bolder"></i>
 
                         <span>@lang('main_admin.forum')</span>
@@ -101,7 +103,7 @@
 
                     {{-- Psychologist --}}
                     <a href="{{ route('manage_psychologist') }}"
-                        class="sidebar-item {{ request()->routeIs('manage_psychologist') ? 'active' : '' }}"
+                        class="sidebar-item {{ request()->is('admin/psychologist*') ? 'active' : '' }}"
                         onclick="toggleActive(this)">
                         <i class="bi bi-people text-secondary me-4 fw-bolder"></i>
 
@@ -110,7 +112,7 @@
 
                     {{-- Schedules --}}
                     <a href="{{ route('manage_schedule') }}"
-                        class="sidebar-item {{ request()->routeIs('manage_schedule') ? 'active' : '' }}"
+                        class="sidebar-item {{ request()->is('admin/schedule*') ? 'active' : '' }}"
                         onclick="toggleActive(this)">
                         <i class="bi bi-calendar2-day text-secondary me-4 fw-bolder"></i>
 
@@ -119,7 +121,7 @@
 
                     {{-- User --}}
                     <a href="{{ route('manage_user') }}"
-                        class="sidebar-item {{ request()->routeIs('manage_user') ? 'active' : '' }}"
+                        class="sidebar-item {{ request()->is('admin/user*') ? 'active' : '' }}"
                         onclick="toggleActive(this)">
                         <i class="bi bi-person text-secondary me-4 fw-bolder"></i>
 

@@ -90,9 +90,9 @@ class PsychologistController extends Controller
             'transactions_finished' => Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Finished')->where('time', '>=', now()->format('Y-m-d'))->orderBy('time', 'asc')->get(),
             'transactions_rejected' => Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Rejected')->where('time', '>=', now()->format('Y-m-d'))->orderBy('time', 'asc')->get(),
             'online_consultation_id' => $online_consultation_id,
-            'transaction_online' => Transaction::where('psychologist_id', $psychologist->id)->where('consultation_type_id', $online_consultation_id)->where('time', '>=', now()->format('Y-m-d'))->orderBy('time', 'asc')->get(),
+            'transactions_online' => Transaction::where('psychologist_id', $psychologist->id)->where('consultation_type_id', $online_consultation_id)->where('time', '>=', now()->format('Y-m-d'))->orderBy('time', 'asc')->get(),
             'offline_consultation_id' => $offline_consultation_id,
-            'transaction_offline' => Transaction::where('psychologist_id', $psychologist->id)->where('consultation_type_id', $offline_consultation_id)->where('time', '>=', now()->format('Y-m-d'))->orderBy('time', 'asc')->get(),
+            'transactions_offline' => Transaction::where('psychologist_id', $psychologist->id)->where('consultation_type_id', $offline_consultation_id)->where('time', '>=', now()->format('Y-m-d'))->orderBy('time', 'asc')->get(),
         ];
 
         return view('psychologist.dashboard', $data);
@@ -114,9 +114,9 @@ class PsychologistController extends Controller
             'transactions_finished' => Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Finished')->where('time', '<', now()->format('Y-m-d'))->orderBy('time', 'desc')->get(),
             'transactions_rejected' => Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Rejected')->where('time', '<', now()->format('Y-m-d'))->orderBy('time', 'desc')->get(),
             'online_consultation_id' => $online_consultation_id,
-            'transaction_online' => Transaction::where('psychologist_id', $psychologist->id)->where('consultation_type_id', $online_consultation_id)->where('time', '<', now()->format('Y-m-d'))->orderBy('time', 'desc')->get(),
+            'transactions_online' => Transaction::where('psychologist_id', $psychologist->id)->where('consultation_type_id', $online_consultation_id)->where('time', '<', now()->format('Y-m-d'))->orderBy('time', 'desc')->get(),
             'offline_consultation_id' => $offline_consultation_id,
-            'transaction_offline' => Transaction::where('psychologist_id', $psychologist->id)->where('consultation_type_id', $offline_consultation_id)->where('time', '<', now()->format('Y-m-d'))->orderBy('time', 'desc')->get(),
+            'transactions_offline' => Transaction::where('psychologist_id', $psychologist->id)->where('consultation_type_id', $offline_consultation_id)->where('time', '<', now()->format('Y-m-d'))->orderBy('time', 'desc')->get(),
         ];
         return view('psychologist.dashboard', $data);
     }

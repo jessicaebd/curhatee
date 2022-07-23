@@ -79,7 +79,9 @@
                         <span>@lang('main_psychologist.overview')</span>
                     </a>
 
-                    <a href="{{ route('psychologist_history', $psychologist->id) }}" class="sidebar-item"
+                    {{-- history transaction --}}
+                    <a href="{{ route('psychologist_history', $psychologist->id) }}"
+                        class="sidebar-item {{ request()->routeIs('psychologist_history') ? 'active' : '' }}"
                         onclick="toggleActive(this)">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-clock-history" viewBox="0 0 16 16">
@@ -92,7 +94,9 @@
                         <span>@lang('main_psychologist.history')</span>
                     </a>
 
-                    <a href="{{ route('psychologist_review', $psychologist->id) }}" class="sidebar-item"
+                    {{-- review --}}
+                    <a href="{{ route('psychologist_review', $psychologist->id) }}"
+                        class="sidebar-item {{ request()->is('review*') ? 'active' : '' }}"
                         onclick="toggleActive(this)">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-star" viewBox="0 0 16 16">
@@ -116,7 +120,7 @@
 
                     {{-- Forum --}}
                     <a href="{{ route('forum_page') }}"
-                        class="sidebar-item {{ request()->routeIs('forum_page') ? 'active' : '' }}"
+                        class="sidebar-item {{ request()->is('forum*') ? 'active' : '' }}"
                         onclick="toggleActive(this)">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -132,14 +136,15 @@
 
                     {{-- Schedules --}}
                     <a href="{{ route('view_psychologist_schedule_psychologist', $psychologist->id) }}"
-                        class="sidebar-item {{ request()->routeIs('manage_schedule_psychologist') ? 'active' : '' }}"
+                        class="sidebar-item {{ request()->is('schedule*') ? 'active' : '' }}"
                         onclick="toggleActive(this)">
                         <i class="bi bi-calendar2-day text-secondary me-4 fw-bolder"></i>
 
                         <span>@lang('main_psychologist.schedule')</span>
                     </a>
 
-                    <a href="{{ route('psychologist_profile', $psychologist->id) }}" class="sidebar-item"
+                    <a href="{{ route('psychologist_profile', $psychologist->id) }}"
+                        class="sidebar-item {{ request()->routeIs('psychologist_profile') ? 'active' : '' }}"
                         onclick="toggleActive(this)">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">

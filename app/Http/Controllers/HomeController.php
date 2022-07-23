@@ -12,6 +12,7 @@ use App\Models\Schedule;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
+use App\Models\ConsultationType;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -41,16 +42,28 @@ class HomeController extends Controller
         if (Auth::check()) {
             if (Auth::user()->role == 'Admin') {
 
+                $online_consultation_id = ConsultationType::where('name', 'Online Consultation')->first()->id;
+                $offline_consultation_id = ConsultationType::where('name', 'Offline Consultation')->first()->id;
+        
                 $data = [
                     'users' => User::all(),
                     'payment_types' => PaymentType::all(),
                     'psychologists' => Psychologist::all(),
                     'schedules' => Schedule::all(),
-                    'transactions' => Transaction::all(),
                     'reviews' => Review::all(),
                     'articles' => Article::all(),
                     'forums' => Forum::all(),
                     'hospitals' => Hospital::all(),
+                    'transactions' => Transaction::all(),
+                    'transactions_all' => Transaction::orderBy('time', 'desc')->get(),
+                    'transactions_pending' => Transaction::where('status', 'Pending')->orderBy('time', 'desc')->get(),
+                    'transactions_confirmed' => Transaction::where('status', 'Confirmed')->orderBy('time', 'desc')->get(),
+                    'transactions_finished' => Transaction::where('status', 'Finished')->orderBy('time', 'desc')->get(),
+                    'transactions_rejected' => Transaction::where('status', 'Rejected')->orderBy('time', 'desc')->get(),
+                    'online_consultation_id' => $online_consultation_id,
+                    'transactions_online' => Transaction::where('consultation_type_id', $online_consultation_id)->orderBy('time', 'desc')->get(),
+                    'offline_consultation_id' => $offline_consultation_id,
+                    'transactions_offline' => Transaction::where('consultation_type_id', $offline_consultation_id)->orderBy('time', 'desc')->get(),
                 ];
 
                 return view('admin.dashboard', $data);

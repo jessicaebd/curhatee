@@ -14,7 +14,7 @@
                 <li><a class="nav-link scrollto {{ request()->routeIs('about') ? 'active' : '' }}"
                         href="/#about">@lang('navbar.about')</a></li>
                 <li class="dropdown"><a href="/#features"
-                        class="{{ request()->is('consultation*') || request()->is('forum*') || request()->is('forum-user*') || request()->is('chat-psychologist*') || request()->is('article*') ? 'active' : '' }}"><span>@lang('navbar.features')</span>
+                        class="{{ request()->is('consultation*') || request()->is('forum*') || request()->is('chat-psychologist*') || request()->is('article*') ? 'active' : '' }}"><span>@lang('navbar.features')</span>
                         <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/consultation/psychologists">@lang('navbar.consultation')</a></li>

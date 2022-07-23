@@ -18,5 +18,7 @@
         'jam' => 'Jam',
         'offline_consultation' => 'Konsultasi Offline',
         'all_consultation' => 'Semua Konsultasi',
+        'online_consultation' => 'Konsultasi Online',
+        'offline_consultation' => 'Konsultasi Offline',
     ];
 ?>
