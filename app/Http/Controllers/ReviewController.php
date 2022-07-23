@@ -6,12 +6,14 @@ use App\Models\Review;
 use App\Models\Transaction;
 use App\Models\Psychologist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
 
-    private function setLang() {
-        if(session()->has('locale')) {
+    private function setLang()
+    {
+        if (session()->has('locale')) {
             app()->setLocale(session()->get('locale'));
         } else {
             app()->setLocale('en');
@@ -19,13 +21,27 @@ class ReviewController extends Controller
     }
 
 
-    public function index($id){
+    public function index($id)
+    {
         $this->setLang();
 
-        $reviews = Review::where('psychologist_id', $id)->get();
         $psychologist = Psychologist::find($id);
+        $reviews = Review::where('psychologist_id', $id)->get();
 
-        return view('review.index', compact('reviews', 'psychologist'));
+
+        if (Auth::guard('webpsychologist')->user()) {
+            $view = 'Psychologist';
+        } else if (auth()->user()) {
+            $view = 'User';
+        }
+
+        $data = [
+            'psychologist' => $psychologist,
+            'reviews' => $reviews,
+            'view' => $view,
+        ];
+
+        return view('review.index', $data);
     }
 
     public function store(Request $request, $id)

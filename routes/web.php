@@ -72,7 +72,7 @@ Route::controller(HomeController::class)
 Route::prefix('/consultation')
     ->controller(ConsultationController::class)
     ->group(function () {
-        Route::get('/psychologists', 'index');
+        Route::get('/psychologists', 'index')->name('consultation_index');
         Route::get('/psychologists/{psychologist}', 'show')->name('psychologist_detail');
         Route::post('/psychologists/{psychologist}', 'store')->middleware('auth');
         Route::get('/', 'my_index')->name('my_consultation')->middleware('auth');
@@ -143,7 +143,7 @@ Route::prefix('/forum-psychologist')
 Route::prefix('/review')
     ->controller(ReviewController::class)
     ->group(function () {
-        Route::get('/{psychologist}', 'index')->name('psychologist_review');
+        Route::get('psychologsit/{psychologist}', 'index')->name('psychologist_review');
         Route::post('/{psychologist}', 'store')->name('store_review')->middleware('auth');
     });
 

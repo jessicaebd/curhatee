@@ -17,7 +17,6 @@ class ScheduleSeeder extends Seeder
     public function run()
     {
         $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
         $psychologists = Psychologist::all();
         foreach ($psychologists as $psychologist) {
             foreach ($days as $day) {
