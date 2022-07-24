@@ -58,8 +58,9 @@
         <div class="page-container py-5 d-flex flex-column align-items-center">
             <div class="container">
                 {{-- back to psycho.show --}}
-                <a href="{{ url()->previous() }}"><button type="button" class="btn btn-secondary" aria-label="Close"><i
-                            class="bi bi-arrow-left-circle"></i> @lang('index_chat.Back')</button></a>
+                <a href="{{ $view == 'User' ? route('my_consultation') : route('psychologist_show', $transaction->id) }}"><button
+                        type="button" class="btn btn-secondary" aria-label="Close"><i class="bi bi-arrow-left-circle"></i>
+                        @lang('index_chat.Back')</button></a>
             </div>
 
             {{-- title --}}
@@ -120,15 +121,16 @@
                     setInterval(function() {
                         var pos = $('#message-container').scrollTop();
                         var page = window.location.href;
+
                         $.ajax({
                             url: page + '/message',
                             success: function(data) {
                                 $('#message-container').html(data);
-
+                                $('#message-container').scrollTop(pos);
                             }
-                            $('#message-container').scrollTop(pos);
                         });
                     }, 1000);
+
                 });
             </script>
         @endif

@@ -44,50 +44,54 @@
         <div class="latest_transaction row mb-4">
             <div class="col-12">
                 <h2 class="nav-title l-font border-bottom mb-3">Latest Transaction</h2>
-
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-title border-bottom">
-                                <h5 class="m-font fw-bold mb-0">Transaction
-                                    #{{ Str::limit(Str::substr($latest_transaction->id, -5), 5, '') }}
-                                </h5>
-                                <small
-                                    class="text-muted xs-font">{{ \Carbon\Carbon::parse($latest_transaction->created_at)->format('d F Y, H:i') }}</small>
-                            </div>
-
-                            <div class="transaction fw-bolder mb-2">
-                                <small class="card-text">{{ $latest_transaction->user->name }}</small>
-                                <br>
-                                <small
-                                    class="card-text s-font">{{ \Carbon\Carbon::parse($latest_transaction->time)->format('l, d F Y @ H:i') }}</small>
-                            </div>
-
-                            <div class="transaction-status d-flex mb-2">
-                                <div class="">
-                                    <h6 class="fw-bolder mb-0">
-                                        @if ($latest_transaction->status == 'Pending')
-                                            <span class="badge bg-warning">Pending</span>
-                                        @elseif ($latest_transaction->status == 'Confirmed')
-                                            <span class="badge bg-success">Confirmed</span>
-                                        @elseif ($latest_transaction->status == 'Finished')
-                                            <span class="badge bg-secondary">Finished</span>
-                                        @elseif ($latest_transaction->status == 'Rejected')
-                                            <span class="badge bg-danger">Rejected</span>
-                                        @endif
-                                    </h6>
+                @if ($latest_transaction != null)
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title border-bottom">
+                                    <h5 class="m-font fw-bold mb-0">Transaction
+                                        #{{ Str::limit(Str::substr($latest_transaction->id, -5), 5, '') }}
+                                    </h5>
+                                    <small
+                                        class="text-muted xs-font">{{ \Carbon\Carbon::parse($latest_transaction->created_at)->format('d F Y, H:i') }}</small>
                                 </div>
-                                <div class="ms-2">
-                                    <h6>
-                                        <span
-                                            class="{{ $latest_transaction->consultationType->name == 'Online Consultation' ? 'badge bg-green' : 'badge bg-blue' }}">{{ $latest_transaction->consultationType->name }}
-                                        </span>
-                                    </h6>
+
+                                <div class="transaction fw-bolder mb-2">
+                                    <small class="card-text">{{ $latest_transaction->user->name }}</small>
+                                    <br>
+                                    <small
+                                        class="card-text s-font">{{ \Carbon\Carbon::parse($latest_transaction->time)->format('l, d F Y @ H:i') }}</small>
+                                </div>
+
+                                <div class="transaction-status d-flex mb-2">
+                                    <div class="">
+                                        <h6 class="fw-bolder mb-0">
+                                            @if ($latest_transaction->status == 'Pending')
+                                                <span class="badge bg-warning">Pending</span>
+                                            @elseif ($latest_transaction->status == 'Confirmed')
+                                                <span class="badge bg-success">Confirmed</span>
+                                            @elseif ($latest_transaction->status == 'Finished')
+                                                <span class="badge bg-secondary">Finished</span>
+                                            @elseif ($latest_transaction->status == 'Rejected')
+                                                <span class="badge bg-danger">Rejected</span>
+                                            @endif
+                                        </h6>
+                                    </div>
+                                    <div class="ms-2">
+                                        <h6>
+                                            <span
+                                                class="{{ $latest_transaction->consultationType->name == 'Online Consultation' ? 'badge bg-green' : 'badge bg-blue' }}">{{ $latest_transaction->consultationType->name }}
+                                            </span>
+                                        </h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @else
+                    You have no transaction yet.
+                @endif
+
             </div>
         </div>
 
