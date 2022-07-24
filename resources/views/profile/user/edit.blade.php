@@ -10,7 +10,7 @@
                     <div class="col-12 col-lg-9 col-xl-7">
                         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                             <div class="card-body p-4 p-md-5">
-                                <h3 class="fw-bolder">Edit Profile</h3>
+                                <h3 class="fw-bolder">@lang('profile.Edit Profile')</h3>
 
                                 <hr class="mb-4 pb-2 pb-md-0 mb-md-5" style="color: #2934d0;">
 
@@ -31,7 +31,7 @@
 
                                     <div class="col-md-12 mb-4">
                                         <div class="form-group">
-                                            <label for="name">Full Name</label>
+                                            <label for="name">@lang('profile.Full Name')</label>
                                             <input type="text"
                                             class="form-control form-control-lg @error('name') is-invalid @enderror"
                                             id="name" name="name" class="mb-0"
@@ -51,7 +51,7 @@
 
                                     <div class="col-md-12 mb-4">
                                         <div class="form-group">
-                                            <label for="phone">Phone</label>
+                                            <label for="phone">@lang('profile.Phone')</label>
                                             <input type="tel"
                                             class="form-control form-control-lg @error('phone') is-invalid @enderror"
                                             id="phone" name="phone"
@@ -79,7 +79,7 @@
 
                                     <div class="col-md-12 mb-4">
                                         <div class="form-group">
-                                            <label for="image">Profile Picture</label>
+                                            <label for="image">@lang('profile.Profile Picture')</label>
                                             <input type="file" class="form-control @error('image') is-invalid @enderror"
                                             id="image" name="image">
                                         </div>

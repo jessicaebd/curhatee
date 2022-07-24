@@ -299,7 +299,7 @@
                                                             </h5>
                                                             <h5 class="transaction-type">
                                                                 #{{ Str::limit(Str::substr($transaction->id, -5), 5, '') }}
-                                                            </h5 </div>
+                                                            </h5>
                                                         </div>
                                             </td>
                                             <td>

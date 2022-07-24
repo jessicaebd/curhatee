@@ -1,0 +1,5 @@
+<?php
+    return [
+        'Back' => 'Kembali'
+    ];
+?>

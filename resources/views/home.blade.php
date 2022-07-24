@@ -19,10 +19,10 @@
             <div class="row justify-content-between">
                 <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
                     <div data-aos="zoom-out" class="z-6">
-                        <h1>Find your best psychologist with <span>Curhatee</span></h1>
-                        <h2>Make a better world with a better mental health awareness</h2>
+                        <h1>@lang('home.Find your best psychologist with') <span>Curhatee</span></h1>
+                        <h2>@lang('home.Make a better world with a better mental health awareness')</h2>
                         <div class="text-center text-lg-start">
-                            <a href="#about" class="btn-get-started scrollto fw-bolder">Get Started</a>
+                            <a href="#about" class="btn-get-started scrollto fw-bolder">@lang('home.Get Started')</a>
                         </div>
                     </div>
                 </div>
@@ -63,30 +63,26 @@
 
                 <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5"
                     data-aos="fade-left">
-                    <h3>Services for Your Mental Health</h3>
-                    <p class="text-muted">What does Curhatee offer?</p>
+                    <h3>@lang('home.Services for Your Mental Health')</h3>
+                    <p class="text-muted">@lang('home.What does Curhatee offer')</p>
 
                     <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
                         <div class="icon"><i class="bi bi-balloon-heart"></i></div>
-                        <h4 class="title"><a href="/consultation/psychologists">Booking for consultation</a></h4>
-                        <p class="description text-muted">Offers a wide list of psychologists with various price ranges
-                            according to
-                            your needs</p>
+                        <h4 class="title"><a href="/consultation/psychologists">@lang('home.Booking for consultation')</a></h4>
+                        <p class="description text-muted">@lang('home.Offers a wide list of psychologists with various price ranges according to your needs')</p>
                     </div>
 
                     <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
                         <div class="icon"><i class="bi bi-chat-left-text"></i></div>
-                        <h4 class="title"><a href="/forum">Discuss on the forum</a></h4>
-                        <p class="description text-muted">Discuss and share stories about mental health with each other in
-                            the forum
+                        <h4 class="title"><a href="/forum">@lang('home.Discuss on the forum')</a></h4>
+                        <p class="description text-muted">@lang('home.Discuss and share stories about mental health with each other in the forum')
                         </p>
                     </div>
 
                     <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
                         <div class="icon"><i class="bi bi-chat-heart"></i></div>
-                        <h4 class="title"><a href="/consultation/psychologists">Consultation by live chat</a></h4>
-                        <p class="description text-muted">Don't have time to go to a psychologist? You can easily consult
-                            online</p>
+                        <h4 class="title"><a href="/consultation/psychologists">@lang('home.Consultation by live chat')</a></h4>
+                        <p class="description text-muted">@lang('home.Don’t have time to go to a psychologist? You can easily consult online')</p>
                     </div>
 
                 </div>
@@ -100,27 +96,27 @@
         <div class="container">
 
             <div class="section-title" data-aos="fade-up">
-                <h2>Features</h2>
-                <p>Check The Features</p>
+                <h2>@lang('home.Features')</h2>
+                <p>@lang('home.Check The Features')</p>
             </div>
 
             <div class="row" data-aos="fade-left">
                 <div class="col-md-4">
                     <div class="icon-box" data-aos="zoom-in" data-aos-delay="50">
                         <i class="bi bi-balloon-heart me-2" style="color: #ffbb2c; font-size:24px;"></i>
-                        <h3><a href="/consultation/psychologists">Consultation</a></h3>
+                        <h3><a href="/consultation/psychologists">@lang('home.consultation')</a></h3>
                     </div>
                 </div>
                 <div class="col-md-4 mt-4 mt-md-0">
                     <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
                         <i class="bi bi-chat-left-text me-2" style="color: #5578ff; font-size:22px;"></i>
-                        <h3><a href="/forum">Forum</a></h3>
+                        <h3><a href="/forum">@lang('home.forum')</a></h3>
                     </div>
                 </div>
                 <div class="col-md-4 mt-4 mt-md-0">
                     <div class="icon-box" data-aos="zoom-in" data-aos-delay="150">
                         <i class="bi bi-chat-heart me-2" style="color: #e80368; font-size:24px;"></i>
-                        <h3><a href="/article">Article</a></h3>
+                        <h3><a href="/article">@lang('home.article')</a></h3>
                     </div>
                 </div>
             </div>
@@ -140,7 +136,7 @@
                         <i class="bi bi-emoji-smile"></i>
                         <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
                             class="purecounter"></span>
-                        <p>Happy Clients</p>
+                        <p>@lang('home.Happy Clients')</p>
                     </div>
                 </div>
 
@@ -149,7 +145,7 @@
                         <i class="bi bi-people"></i>
                         <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1"
                             class="purecounter"></span>
-                        <p>Trusted Psychologist</p>
+                        <p>@lang('home.Trusted Psychologist')</p>
                     </div>
                 </div>
 
@@ -158,7 +154,7 @@
                         <i class="bi bi-headset"></i>
                         <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1"
                             class="purecounter"></span>
-                        <p>Hours Of Support</p>
+                        <p>@lang('home.Hours Of Support')</p>
                     </div>
                 </div>
 
@@ -167,7 +163,7 @@
                         <i class="bi bi-journal-richtext"></i>
                         <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
                             class="purecounter"></span>
-                        <p>Transaction History</p>
+                        <p>@lang('home.Transaction History')</p>
                     </div>
                 </div>
             </div>
@@ -180,8 +176,8 @@
         <div class="container">
 
             <div class="section-title" data-aos="fade-up">
-                <h2>Contact</h2>
-                <p>Contact Us</p>
+                <h2>@lang('home.Contact')</h2>
+                <p>@lang('home.Contact Us')</p>
             </div>
 
             <div class="row">
@@ -190,7 +186,7 @@
                     <div class="info">
                         <div class="address">
                             <i class="bi bi-geo-alt"></i>
-                            <h4>Location:</h4>
+                            <h4>@lang('home.Location')</h4>
                             <p>Jalan Suka Suka, Jakarta</p>
                         </div>
 
@@ -202,7 +198,7 @@
 
                         <div class="phone">
                             <i class="bi bi-phone"></i>
-                            <h4>Call:</h4>
+                            <h4>@lang('home.Call')</h4> 
                             <p>+62 822 02320392</p>
                         </div>
                     </div>
@@ -228,11 +224,11 @@
                             <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
                         </div>
                         <div class="my-3">
-                            <div class="loading">Loading</div>
+                            <div class="loading">@lang('home.Loading')</div>
                             <div class="error-message"></div>
-                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                            <div class="sent-message">@lang('home.Your message has been sent. Thank you')</div>
                         </div>
-                        <div class="text-center"><button type="submit">Send Message</button></div>
+                        <div class="text-center"><button type="submit">@lang('home.Send Message')</button></div>
                     </form>
 
                 </div>

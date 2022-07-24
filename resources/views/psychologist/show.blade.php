@@ -14,7 +14,7 @@
                                 <a href="{{ route('psychologist_dashboard') }}"><button type="button"
                                         class="btn btn-secondary mt-5" aria-label="Close"><i
                                             class="bi bi-arrow-left-circle"></i>
-                                        Back</button></a>
+                                            @lang('psychologist.Back')</button></a>
                                 <br><br>
                                 <tbody>
                                     <tr>
@@ -193,11 +193,28 @@
                                     </div>
                                 </form>
                             @elseif($transaction->status == 'Finished')
+                                @if ($transaction->review != null)
+                                    <h5 class="fw-bolder s-font">Review from patient:</h5>
+                                    <div class="my-review s-font card px-3 py-2">
+                                        <div class="pe-2">
+                                            @for ($i = 0; $i < 5; $i++)
+                                                @if ($i < $transaction->review->rating)
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                @else
+                                                    <i class="bi bi-star text-warning"></i>
+                                                @endif
+                                            @endfor
+                                        </div>
+                                        <p class="text-muted">{{ $transaction->review->comment }}</p>
+                                    </div>
+                                @endif
+
                                 @if ($transaction->consultationType->name == 'Online Consultation')
                                     <a href="{{ route('chat_page_psychologist', $transaction->id) }}">
                                         <button type="button" class="btn btn-primary mt-4">@lang('show_psychologist.see_chat_history')</button>
                                     </a>
                                 @endif
+
                             @endif
 
                         </div>

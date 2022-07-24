@@ -38,8 +38,8 @@
                         : route('create_forum_user') }}"
                     method="get">
                     <button type="submit" class="btn btn-outline-blue shadow-sm">+
-                        Create
-                        new topic</button>
+                        @lang('forum.Create new topic')
+                    </button>
                 </form>
             @endif
         </div>
@@ -84,7 +84,7 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn text-danger">
-                                                        <i class="bi bi-trash3 me-2"></i>Delete
+                                                        <i class="bi bi-trash3 me-2"></i>@lang('forum.Delete')
                                                     </button>
                                                 </form>
                                             </ul>
@@ -112,8 +112,7 @@
                                         </form>
                                         <span class="mx-3 text-secondary">|</span>
                                         <a href="{{ route('show_detail_forum', $forum->id) }}"
-                                            class="link-dark fw-bolder s-font see-details">See
-                                            Details</a>
+                                            class="link-dark fw-bolder s-font see-details">@lang('forum.See Details')</a>
                                     </div>
                                 @endif
 

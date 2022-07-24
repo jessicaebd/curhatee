@@ -10,14 +10,14 @@
             <div class="container z-999">
                 <div class="row">
                     <div class="order-2 order-lg-1 d-flex flex-column align-items-center justify-content-center">
-                        <h1>Find your best psychologist with <span>Curhatee</span></h1>
-                        <h2>Make a better world with a better mental health awareness</h2>
+                        <h1>@lang('index_article.Find your best psychologist with') <span>Curhatee</span></h1>
+                        <h2>@lang('index_article.Make a better world with a better mental health awareness')</h2>
                         <div class="col-4 text-center text-lg-start">
                             <form class="d-flex" action="{{ route('search_article') }}">
                                 <div class="input-group">
                                     <input class="form-control" type="text" name="keyword" id="keyword"
                                         placeholder="Search article keywords" aria-label="Search">
-                                    <button class="btn btn-green" type="submit">Search</button>
+                                    <button class="btn btn-green" type="submit">@lang('index_article.Search')</button>
                                 </div>
                             </form>
                         </div>
@@ -54,7 +54,7 @@
                                 class="mb-2 border" style="width: 36rem; height:20rem; border-radius: 15px;">
 
                             <div class="ms-4 p-3">
-                                <span class="badge rounded-pill bg-green">Popular</span>
+                                <span class="badge rounded-pill bg-green">@lang('index_article.Popular')</span>
                                 <h3 class="my-1 fw-bold">{{ $article->title }}</h3>
 
                                 <div class="s-font mt-3 text-muted text-justify">{!! Str::limit($article->content, 250, '...') !!}

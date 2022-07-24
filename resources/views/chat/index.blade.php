@@ -59,11 +59,11 @@
             <div class="container">
                 {{-- back to psycho.show --}}
                 <a href="{{ url()->previous() }}"><button type="button" class="btn btn-secondary" aria-label="Close"><i
-                            class="bi bi-arrow-left-circle"></i> Back</button></a>
+                            class="bi bi-arrow-left-circle"></i> @lang('index_chat.Back')</button></a>
             </div>
 
             {{-- title --}}
-            <h3 class="fw-bold mb-3">Chat with
+            <h3 class="fw-bold mb-3">@lang('index_chat.Chat with')
                 {{ $view == 'User' ? $transaction->psychologist->name : $transaction->user->name }}
             </h3>
 
@@ -104,7 +104,7 @@
 
                         </div>
                         <div class="d-flex justify-content-between align-items-center mt-3">
-                            <label for="image">Upload Picture (Optional)</label>
+                            <label for="image">@lang('index_chat.Upload Picture (Optional)')</label>
                             <input style="width: 70%" type="file" class="form-control" id="image" name="image">
                         </div>
                     </form>

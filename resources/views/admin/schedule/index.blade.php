@@ -11,7 +11,7 @@
         @endif
 
         <div class="d-flex justify-content-between mb-3">
-            <h3 class=" fw-bold">Pyschologist</h3>
+            <h3 class=" fw-bold">@lang('index_admin_schedule.Psychologist')</h3>
             {{-- <a href="{{ route('add_psychologist') }}" class="btn btn-primary my-auto">
                 <i class="bi bi-plus-circle me-2"></i>@lang('index_admin_psychologist.register_psychologist')
             </a> --}}
@@ -56,7 +56,7 @@
                                     <div class="d-flex justify-content-end mt-4">
                                         <a href="{{ Auth::guard('webpsychologist')->user() != null ? route('view_psychologist_schedule_psychologist', $psychologist->id) : route('view_psychologist_schedule_admin', $psychologist->id) }}"
                                             class="btn btn-outline-primary me-1 flex-grow-1">
-                                            <i class="bi bi-pencil-square me-2"></i>View Schedule
+                                            <i class="bi bi-pencil-square me-2"></i>@lang('index_admin_schedule.View Schedule')
                                         </a>
 
                                         {{-- <form action="{{ route('delete_psychologist', $psychologist->id) }}"
