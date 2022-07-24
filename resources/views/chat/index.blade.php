@@ -8,7 +8,8 @@
                 width: 800px;
                 overflow-y: scroll;
                 height: 500px;
-                border-radius: 5px;
+                border-radius: 15px;
+                padding: 10px;
                 box-shadow: 0 0 10px rgb(220, 220, 220);
             }
 
@@ -24,15 +25,16 @@
             .message-body {
                 background-color: #c5d1d9;
                 padding: 7px 20px;
-                border-radius: 15px;
+                border-radius: 0 15px 15px 15px;
                 max-width: 60%;
                 word-wrap: break-word;
             }
 
             .message-body-self {
-                background-color: #49a9e9;
+                background-color: #112aca;
+                color: white;
                 padding: 7px 20px;
-                border-radius: 15px;
+                border-radius: 15px 15px 0 15px;
                 max-width: 60%;
                 word-wrap: break-word;
             }
@@ -41,6 +43,14 @@
                 max-width: 30%;
                 height: auto;
                 margin-top: 10px
+            }
+
+            .chat-profile-img {
+                width: 35px;
+                height: 35px;
+                overflow: hidden;
+                border-radius: 50%;
+                margin-right: 10px;
             }
 
             .text-muted {
@@ -55,7 +65,7 @@
         @if ($view == 'User')
             <br><br>
         @endif
-        <div class="page-container py-5 d-flex flex-column align-items-center">
+        <div class="page-container {{ $view == 'User' ? 'py-5' : '' }} d-flex flex-column align-items-center">
             <div class="container">
                 {{-- back to psycho.show --}}
                 <a href="{{ $view == 'User' ? route('my_consultation') : route('psychologist_show', $transaction->id) }}"><button
@@ -64,9 +74,9 @@
             </div>
 
             {{-- title --}}
-            <h3 class="fw-bold mb-3">@lang('index_chat.Chat with')
+            <h5 class="fw-bold mb-3">@lang('index_chat.Chat with')
                 {{ $view == 'User' ? $transaction->psychologist->name : $transaction->user->name }}
-            </h3>
+            </h5>
 
 
             {{-- status --}}
@@ -94,18 +104,16 @@
                         <div class="row">
                             <div class="col-md-10">
                                 <input class="form-control" type="text" name="message" id="message"
-                                    placeholder="Type a message..." autocomplete="off">
-                                {{-- <input id="message" type="hidden" name="message">
-                                <trix-editor input="message">{!! old('message') !!}</trix-editor> --}}
+                                    placeholder="Type a message" autocomplete="off">
                             </div>
                             <div class="col-md-2 d-flex align-items-center">
-                                <button class="btn btn-primary w-100" type="submit"
-                                    id="send-message">@lang('index_chat.send')</button>
+                                <button class="btn btn-primary w-100" type="submit" id="send-message"><i
+                                        class="bi bi-send-fill"></i></button>
                             </div>
 
                         </div>
                         <div class="d-flex justify-content-between align-items-center mt-3">
-                            <label for="image">@lang('index_chat.Upload Picture (Optional)')</label>
+                            <label for="image">@lang('index_chat.Upload Picture')<i class="bi bi-paperclip"></i></label>
                             <input style="width: 70%" type="file" class="form-control" id="image" name="image">
                         </div>
                     </form>

@@ -11,14 +11,14 @@
                 <div class="message-header mb-2">
                     <div class="message-header-left">
                         @if ($chat->user_id != null)
-                            <img class="message-img"
+                            <img class="chat-profile-img"
                                 src="{{ asset('/storage/images/users/' . $transaction->user->image) }}"
-                                alt="profile picture" style="width: 35px; height: 35px; overflow: hidden;">
+                                alt="profile picture">
                             <b>{{ $chat->user->name }}</b>
                         @elseif($chat->psychologist_id != null)
-                            <img class="message-img"
+                            <img class="chat-profile-img"
                                 src="{{ asset('/storage/images/psychologists/' . $transaction->psychologist->image) }}"
-                                alt="profile picture" style="width: 35px; height: 35px; overflow: hidden;">
+                                alt="profile picture">
                             <b>{{ $chat->psychologist->name }}</b>
                         @endif
 
@@ -63,14 +63,14 @@
                 <div class="message-header mb-2">
                     <div class="message-header-left">
                         @if ($chat->user_id != null)
-                            <img class="message-img"
+                            <img class="chat-profile-img"
                                 src="{{ asset('/storage/images/users/' . $transaction->user->image) }}"
-                                alt="profile picture" style="width: 40px; height: 40px; overflow: hidden;">
+                                alt="profile picture">
                             <b>{{ $chat->user->name }}</b>
                         @elseif($chat->psychologist_id != null)
-                            <img class="message-img"
+                            <img class="chat-profile-img"
                                 src="{{ asset('/storage/images/psychologists/' . $transaction->psychologist->image) }}"
-                                alt="profile picture" style="width: 40px; height: 40px; overflow: hidden;">
+                                alt="profile picture">
                             <b>{{ $chat->psychologist->name }}</b>
                         @endif
 

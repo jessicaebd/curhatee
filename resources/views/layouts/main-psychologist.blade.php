@@ -53,8 +53,9 @@
                     </div>
 
                     <h4 class="profile-name">{{ $psychologist->name }}</h4>
-                    <p class="profile-email">{{ $psychologist->email }}</p>
+                    <p class="profile-email mb-2">{{ $psychologist->email }}</p>
 
+                    {{-- lang --}}
                     <?php
                     $lang = App::getLocale();
                     ?>
@@ -65,10 +66,11 @@
                         <a class="nav-link px-1  {{ ($lang != null) & ($lang == 'id') ? 'active-lang' : 'disactive-lang' }}"
                             href="/lang/id">ID</a>
                     </div>
+
                 </div>
 
 
-                <div class="sidebar-item-container">
+                <div class="sidebar-item-container mt-3">
 
                     {{-- Overview --}}
                     <a href="/psychologist"
@@ -195,7 +197,7 @@
             <div class="nav">
                 <div class="d-flex justify-content-between align-items-center w-100 mb-3 mb-md-0">
                     <div class="d-flex justify-content-between align-items-center w-100">
-                        <h2 class="nav-title">Psychologist Dashboard</h2>
+                        <h2 class="nav-title">@lang('main_psychologist.psychologist_dashboard')</h2>
                         <button id="toggle-navbar" onclick="toggleNavbar()">
                             <img src="{{ asset('storage/images/psychologists/' . $psychologist->image) }}"
                                 alt="profile image">
