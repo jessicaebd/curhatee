@@ -12,4 +12,5 @@ return [
     'review' => 'Review',
     'update profile' => 'Update Profile',
     'schedule' => 'Schedule',
+    'history' => 'History',
 ];

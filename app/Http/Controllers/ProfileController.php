@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transaction;
 use App\Models\Psychologist;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -24,33 +25,31 @@ class ProfileController extends Controller
             'user' => auth()->user(),
         ];
 
-        return view('profile.index', $data);
+        return view('profile.user.index', $data);
     }
 
-    public function edit()
+    public function edit($id)
     {
         $this->setLang();
-        $data = [
-            'user' => auth()->user(),
 
-        ];
-
-        return view('profile.edit', $data);
+        return view('profile.user.edit', ['user' => auth()->user()]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'string|max:255',
-            'email' => 'email|unique:users',
-            'phone' => '',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|'. Rule::unique('users')->ignore(auth()->user()->id, 'id') . '|string|max:255',
+            // 'password' => 'nullable|string|min:8|confirmed',
+            // 'confirm_password' => 'same:password',
+            'phone' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10240',
         ]);
 
         $user = auth()->user();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
+        // $user->password = bcrypt($request->password);
         $user->phone = $request->phone;
 
         if ($request->hasFile('image')) {
@@ -65,9 +64,8 @@ class ProfileController extends Controller
             $path = $request->file('image')->storeAs($destination_path, $image_name);
             $user->image = $image_name;
         }
-
         $user->save();
 
-        return redirect()->route('profile.index');
+        return redirect()->route('profile')->withSuccess('Succesfully updated profile');
     }
 }

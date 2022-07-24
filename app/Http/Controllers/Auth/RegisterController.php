@@ -70,7 +70,7 @@ class RegisterController extends Controller
         if(!empty($data['image'])){
             $extImage = $data['image']->getClientOriginalExtension();
             $nameImage = "user-profile" . time() . "." . $extImage;
-            $moveImage = $data['image']->storeAs('public/users', $nameImage);
+            $moveImage = $data['image']->storeAs('public/images/users', $nameImage);
         }else{
             $nameImage = 'user-profile.jpg';
         }

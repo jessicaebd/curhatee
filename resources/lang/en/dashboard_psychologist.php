@@ -18,5 +18,7 @@
         'jam' => 'Hour(s)',
         'offline_consultation' => 'Offline Consultation',
         'all_consultation' => 'All Consultation',
+        'online_consultation' => 'Online Consultation',
+        'offline_consultation' => 'Offline Consultation',
     ];
 ?>

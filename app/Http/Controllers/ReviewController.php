@@ -46,8 +46,10 @@ class ReviewController extends Controller
 
     public function store(Request $request, $id)
     {
+        // dd($request->all());
+
         $request->validate([
-            'rating' => 'required|in:1,2,3,4,5',
+            'stars' => 'required|in:1,2,3,4,5',
             'comment' => 'required',
         ]);
 
@@ -57,13 +59,13 @@ class ReviewController extends Controller
         $review->transaction_id = $transaction->id;
         $review->user_id = $transaction->user_id;
         $review->psychologist_id = $transaction->psychologist_id;
-        $review->rating = $request->rating;
+        $review->rating = $request->stars;
         $review->comment = $request->comment;
         $review->save();
 
         // update psychologist rating mean
         $psychologist = Psychologist::find($transaction->psychologist_id);
-        $psychologist->rating = ($psychologist->rating + $request->rating) / 2;
+        $psychologist->rating = ($psychologist->rating + $request->stars) / 2;
         $psychologist->save();
 
         return redirect()->route('my_consultation', $id);

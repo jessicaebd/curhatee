@@ -143,7 +143,7 @@
                                         <div
                                             class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
                                             <div class="d-flex flex-column justify-content-center align-items-start mt-2">
-                                                <h5 class="transaction-game">@lang('show_psychologist.note_from_psychologist'):</h5>
+                                                <h4 class="transaction-game"><b>@lang('show_psychologist.note_from_psychologist'):</b></h4>
                                             </div>
                                         </div>
                                     </td>
@@ -171,7 +171,7 @@
                                         @csrf
                                         @method('put')
                                         <input type="hidden" name="transaction_id" value="{{ $transaction->id }}">
-                                        <button type="submit" class="btn btn-secondary">@lang('show_psychologist.reject_consultation')</button>
+                                        <button type="submit" class="btn btn-danger">@lang('show_psychologist.reject_consultation')</button>
                                     </form>
                                 </div>
                             @elseif($transaction->status == 'Confirmed')
@@ -195,7 +195,7 @@
                             @elseif($transaction->status == 'Finished')
                                 @if ($transaction->consultationType->name == 'Online Consultation')
                                     <a href="{{ route('chat_page_psychologist', $transaction->id) }}">
-                                        <button type="button" class="btn btn-primary">@lang('show_psychologist.see_chat_history')</button>
+                                        <button type="button" class="btn btn-primary mt-4">@lang('show_psychologist.see_chat_history')</button>
                                     </a>
                                 @endif
                             @endif

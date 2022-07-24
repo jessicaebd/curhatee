@@ -82,20 +82,16 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">@lang('index_profile.address')</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
                                     <p class="mb-0">@lang('index_profile.exp_date')</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">
                                         {{ \Carbon\Carbon::parse($user->expiry_date)->format('d F Y') }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 mt-4">
+                                    <a href="{{ route('edit_profile', $user->id) }}" class="btn btn-outline-primary me-1 flex-grow-1"><i class="bi bi-pencil-square me-2"></i>Edit Profile</a>
                                 </div>
                             </div>
                         </div>

@@ -6,11 +6,13 @@ use Carbon\Carbon;
 use App\Models\Hospital;
 use App\Models\Schedule;
 use App\Models\Transaction;
+use App\Models\Schedule;
 use Illuminate\Support\Str;
 use App\Models\Psychologist;
 use Illuminate\Http\Request;
 use App\Models\ConsultationType;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class PsychologistController extends Controller
 {
@@ -57,18 +59,67 @@ class PsychologistController extends Controller
         return redirect()->route('psychologist.login');
     }
 
+    public function profile($id)
+    {
+        $this->setLang();
+
+        $psychologist = Psychologist::find($id);
+        $online_consultation_id = ConsultationType::where('name', 'Online Consultation')->first()->id;
+        $offline_consultation_id = ConsultationType::where('name', 'Offline Consultation')->first()->id;
+
+        $data = [
+            'psychologist' => Psychologist::find($id),
+            'online_consultation_id' => $online_consultation_id,
+            'offline_consultation_id' => $offline_consultation_id,
+        ];
+
+        return view('profile.psychologist.index', $data);
+    }
+
     public function psychologist_index()
     {
         $this->setLang();
         $psychologist = Auth::guard('webpsychologist')->user();
-        $transactions_all = Transaction::where('psychologist_id', $psychologist->id)->orderBy('time', 'desc')->get();
-        $transactions_pending = Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Pending')->orderBy('time', 'desc')->get();
-        $transactions_confirmed = Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Confirmed')->orderBy('time', 'desc')->get();
-        $transactions_finished = Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Finished')->orderBy('time', 'desc')->get();
-        $transactions_rejected = Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Rejected')->orderBy('time', 'desc')->get();
         $online_consultation_id = ConsultationType::where('name', 'Online Consultation')->first()->id;
         $offline_consultation_id = ConsultationType::where('name', 'Offline Consultation')->first()->id;
-        return view('psychologist.dashboard', compact('psychologist', 'transactions_all', 'transactions_pending', 'transactions_confirmed', 'transactions_pending', 'transactions_finished', 'transactions_rejected', 'online_consultation_id', 'offline_consultation_id'));
+
+        $data = [
+            'psychologist' => $psychologist,
+            'transactions_all' => Transaction::where('psychologist_id', $psychologist->id)->where('time', '>=', now()->format('Y-m-d'))->orderBy('time', 'asc')->get(),
+            'transactions_pending' => Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Pending')->where('time', '>=', now()->format('Y-m-d'))->orderBy('time', 'asc')->get(),
+            'transactions_confirmed' => Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Confirmed')->where('time', '>=', now()->format('Y-m-d'))->orderBy('time', 'asc')->get(),
+            'transactions_finished' => Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Finished')->where('time', '>=', now()->format('Y-m-d'))->orderBy('time', 'asc')->get(),
+            'transactions_rejected' => Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Rejected')->where('time', '>=', now()->format('Y-m-d'))->orderBy('time', 'asc')->get(),
+            'online_consultation_id' => $online_consultation_id,
+            'transactions_online' => Transaction::where('psychologist_id', $psychologist->id)->where('consultation_type_id', $online_consultation_id)->where('time', '>=', now()->format('Y-m-d'))->orderBy('time', 'asc')->get(),
+            'offline_consultation_id' => $offline_consultation_id,
+            'transactions_offline' => Transaction::where('psychologist_id', $psychologist->id)->where('consultation_type_id', $offline_consultation_id)->where('time', '>=', now()->format('Y-m-d'))->orderBy('time', 'asc')->get(),
+        ];
+
+        return view('psychologist.dashboard', $data);
+    }
+
+    public function psychologist_history()
+    {
+        $this->setLang();
+        $psychologist = Auth::guard('webpsychologist')->user();
+        $online_consultation_id = ConsultationType::where('name', 'Online Consultation')->first()->id;
+        $offline_consultation_id = ConsultationType::where('name', 'Offline Consultation')->first()->id;
+
+        $data =[
+            'note' => 'History of all consultations',
+            'psychologist' => $psychologist,
+            'transactions_all' => Transaction::where('psychologist_id', $psychologist->id)->where('time', '<', now()->format('Y-m-d'))->orderBy('time', 'desc')->get(),
+            'transactions_pending' => Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Pending')->where('time', '<', now()->format('Y-m-d'))->orderBy('time', 'desc')->get(),
+            'transactions_confirmed' => Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Confirmed')->where('time', '<', now()->format('Y-m-d'))->orderBy('time', 'desc')->get(),
+            'transactions_finished' => Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Finished')->where('time', '<', now()->format('Y-m-d'))->orderBy('time', 'desc')->get(),
+            'transactions_rejected' => Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Rejected')->where('time', '<', now()->format('Y-m-d'))->orderBy('time', 'desc')->get(),
+            'online_consultation_id' => $online_consultation_id,
+            'transactions_online' => Transaction::where('psychologist_id', $psychologist->id)->where('consultation_type_id', $online_consultation_id)->where('time', '<', now()->format('Y-m-d'))->orderBy('time', 'desc')->get(),
+            'offline_consultation_id' => $offline_consultation_id,
+            'transactions_offline' => Transaction::where('psychologist_id', $psychologist->id)->where('consultation_type_id', $offline_consultation_id)->where('time', '<', now()->format('Y-m-d'))->orderBy('time', 'desc')->get(),
+        ];
+        return view('psychologist.dashboard', $data);
     }
 
     public function psychologist_show(Transaction $transaction)
@@ -131,7 +182,6 @@ class PsychologistController extends Controller
         ]);
 
         $psychologist = new Psychologist();
-        $psychologist->id = Str::uuid();
         $psychologist->name = $request->name;
         $psychologist->email = $request->email;
         $psychologist->phone = $request->phone;
@@ -141,7 +191,7 @@ class PsychologistController extends Controller
         $psychologist->hospital_id = $request->hospital_id;
         $psychologist->description = 'I am a psychologist and I am available for your appointment.';
 
-        $destination_path = 'public/psychologists';
+        $destination_path = 'public/images/psychologists';
         $image = $request->file('image');
         $imageExt = $image->getClientOriginalExtension();
         $image_name = substr($psychologist->id, 0, 8) . "-" . time() . "." . $imageExt;
@@ -152,11 +202,12 @@ class PsychologistController extends Controller
 
         // Make schedules
         $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-        $psychologist = Psychologist::where('email', $request->email)->first();
+        $psychologist_id = Psychologist::where('email', $request->email)->first()->id;
         foreach ($days as $day) {
+            // dd($day);
             for ($hour = 8; $hour < 17; $hour++) {
                 Schedule::create([
-                    'psychologist_id' => $psychologist->id,
+                    'psychologist_id' => $psychologist_id,
                     'day' => $day,
                     'dateBook' => null,
                     'startTime' => Carbon::parse('2022-02-02 ' .$hour . ':00:00'),
@@ -179,12 +230,19 @@ class PsychologistController extends Controller
     public function edit($id)
     {
         $this->setLang();
+
+        if (Auth::guard('webpsychologist')->user()) {
+            $view = 'Psychologist';
+        } else if (auth()->user()) {
+            $view = 'User';
+        }
         $hospitals = Hospital::all();
         return view(
             'admin.psychologist.edit',
             [
                 'psychologist' => Psychologist::findOrFail($id),
-                'hospitals' => $hospitals
+                'hospitals' => $hospitals,
+                'view' => $view,
             ]
         );
     }
@@ -192,16 +250,17 @@ class PsychologistController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'email' => 'required|email',
+            'name' => 'required|max:255',
+            'email' => 'required|email|'. Rule::unique('users')->ignore(auth()->user()->id, 'id'),
             'phone' => 'required|numeric',
             'hospital_id' => 'required',
             'description' => 'required',
         ]);
 
         $psychologist = Psychologist::findOrFail($id);
+        $psychologist->name = $request->name;
         $psychologist->email = $request->email;
         $psychologist->phone = $request->phone;
-        $psychologist->rating = $request->rating;
         $psychologist->fee = $request->fee;
         $psychologist->hospital_id = $request->hospital_id;
         $psychologist->description = $request->description;
@@ -221,7 +280,11 @@ class PsychologistController extends Controller
 
         $psychologist->save();
 
-        return redirect()->route('manage_psychologist')->withSuccess('Succesfully updated psychologist data');
+        if (Auth::guard('webpsychologist')->user()) {
+            return redirect()->route('psychologist_profile', $id)->withSuccess('Succesfully updated psychologist data');
+        } else if (auth()->user()->role == 'Admin') {
+            return redirect()->route('manage_psychologist')->withSuccess('Succesfully updated psychologist data');
+        }
     }
 
     public function destroy(Psychologist $psychologist)
