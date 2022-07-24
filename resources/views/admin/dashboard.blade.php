@@ -6,7 +6,7 @@
     <div class="content">
         <div class="my_dashboard row mb-4">
             <div class="col-12">
-                <h5>Users</h5>
+                <h2 class="nav-title l-font border-bottom mb-3">Users</h2>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
@@ -29,7 +29,7 @@
                     </div>
                 </div>
 
-                <h5>Transaction</h5>
+                <h2 class="nav-title l-font border-bottom mb-3">Transaction</h2>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
@@ -74,7 +74,7 @@
                     </div>
                 </div>
 
-                <h5>Transaction by Status</h5>
+                <h2 class="nav-title l-font border-bottom mb-3">Transaction by Status</h2>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
@@ -119,7 +119,7 @@
                     </div>
                 </div>
 
-                <h5>Others</h5>
+                <h2 class="nav-title l-font border-bottom mb-3">Others</h2>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
