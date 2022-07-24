@@ -5,7 +5,7 @@
 @section('title', 'My Consultation')
 
 @section('content')
-    <div class="container mt-5 pt-5">
+    <div class="container mt-5 pt-5" style="min-height: 70vh">
         {{-- Success Message --}}
         @if (session('status'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">

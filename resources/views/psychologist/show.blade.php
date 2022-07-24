@@ -12,7 +12,8 @@
                             <table class="table table-bordered transaction-table w-100 active" id="table-all">
                                 {{-- back to psycho.dashboard --}}
                                 <a href="{{ route('psychologist_dashboard') }}"><button type="button"
-                                        class="btn btn-secondary" aria-label="Close"><i class="bi bi-arrow-left-circle"></i>
+                                        class="btn btn-secondary mt-5" aria-label="Close"><i
+                                            class="bi bi-arrow-left-circle"></i>
                                         Back</button></a>
                                 <br><br>
                                 <tbody>
@@ -156,17 +157,16 @@
                             @endif
 
                             @if ($transaction->status == 'Pending')
-                                {{-- accept consultation --}}
                                 <div class="d-flex justify-content-center">
-                                    <form action="/psychologist/transactions/accept/{{ $transaction->id }}" method="post">
+                                    {{-- accept consultation --}}
+                                    <form action="/psychologist/transactions/accept/{{ $transaction->id }}" method="post"
+                                        class="me-3">
                                         @csrf
                                         @method('put')
                                         <input type="hidden" name="transaction_id" value="{{ $transaction->id }}">
                                         <button type="submit" class="btn btn-primary mb-2">@lang('show_psychologist.accept_consultation')</button>
                                     </form>
-                                </div>
-                                {{-- reject consultation --}}
-                                <div class="d-flex justify-content-center">
+                                    {{-- reject consultation --}}
                                     <form action="/psychologist/transactions/reject/{{ $transaction->id }}" method="post">
                                         @csrf
                                         @method('put')

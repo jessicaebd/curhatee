@@ -55,7 +55,7 @@
         @if ($view == 'User')
             <br><br>
         @endif
-        <div class="page-container {{ $view == 'User' ? 'py-5' : '' }} d-flex flex-column align-items-center">
+        <div class="page-container py-5 d-flex flex-column align-items-center">
             <div class="container">
                 {{-- back to psycho.show --}}
                 <a href="{{ url()->previous() }}"><button type="button" class="btn btn-secondary" aria-label="Close"><i
@@ -93,7 +93,7 @@
                         <div class="row">
                             <div class="col-md-10">
                                 <input class="form-control" type="text" name="message" id="message"
-                                    placeholder="Type a message...">
+                                    placeholder="Type a message..." autocomplete="off">
                                 {{-- <input id="message" type="hidden" name="message">
                                 <trix-editor input="message">{!! old('message') !!}</trix-editor> --}}
                             </div>

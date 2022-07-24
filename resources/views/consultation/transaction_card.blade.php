@@ -196,6 +196,13 @@
                                                 </tr>
                                             </table>
                                         </div>
+                                        @if ($transaction->status == 'Confirmed' && $transaction->consultationType->name == 'Offline Consultation')
+                                            <div class="d-flex flex-column fw-bolder align-items-center mt-3">
+                                                <p class="text-muted mb-2 s-font">Show the QR Code below to the
+                                                    receptionist</p>
+                                                {{ QrCode::size(100)->generate($transaction->id) }}
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -256,6 +263,7 @@
                                                     <td>: {{ $transaction->paymentType->type_name }}</td>
                                                 </tr>
                                             </table>
+
                                         </div>
 
                                         <div class="note s-font card px-3 py-2 mb-3">
