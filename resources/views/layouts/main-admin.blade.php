@@ -54,7 +54,7 @@
 
                     <h4 class="profile-name">{{ Auth::user()->name }}</h4>
                     <p class="profile-email">{{ Auth::user()->email }}</p>
-                    
+
                     <?php
                     $lang = App::getLocale();
                     ?>
