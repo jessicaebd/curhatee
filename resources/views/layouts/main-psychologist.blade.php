@@ -95,8 +95,8 @@
                     </a>
 
                     {{-- review --}}
-                    <a href="{{ route('psychologist_review', $psychologist->id) }}"
-                        class="sidebar-item {{ request()->is('review*') ? 'active' : '' }}"
+                    <a href="{{ route('psychologist_my_review', $psychologist->id) }}"
+                        class="sidebar-item {{ request()->is('psychologist_my_review*') ? 'active' : '' }}"
                         onclick="toggleActive(this)">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-star" viewBox="0 0 16 16">

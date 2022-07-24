@@ -148,7 +148,8 @@ Route::prefix('/forum/psychologist')
 Route::prefix('/review')
     ->controller(ReviewController::class)
     ->group(function () {
-        Route::get('psychologsit/{psychologist}', 'index')->name('psychologist_review');
+        Route::get('my-review/{psychologist}', 'index')->name('psychologist_my_review');
+        Route::get('psychologist/{psychologist}', 'index')->name('psychologist_review');
         Route::post('/{psychologist}', 'store')->name('store_review')->middleware('auth');
     });
 

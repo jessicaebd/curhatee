@@ -222,14 +222,14 @@
                 <div class="card-body">
                     <div class="row">
                         @foreach ($reviews as $review)
-                            <div class="col-md-4">
-                                <div class="card">
+                            <div class="col-md-10">
+                                <div class="card shadow-sm rounded mb-3">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-2">
+                                            <div class="col-md-2 d-flex justify-content-center">
                                                 <img class="rounded rounded-pill"
                                                     src="{{ asset('storage/images/users/' . $review->user->image) }}"
-                                                    alt="" style="width: 35px;height: 35px;">
+                                                    alt="" style="width: 50px;height: 50px;">
                                             </div>
                                             <div class="col-md-10">
                                                 <div class="d-flex justify-content-between">
@@ -257,9 +257,6 @@
                                 </div>
                             </div>
                         @endforeach
-
-
-
                     </div>
                 </div>
             </div>
