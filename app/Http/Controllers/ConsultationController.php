@@ -144,8 +144,8 @@ class ConsultationController extends Controller
             }
         }
 
-        $transactions = Transaction::where('user_id', auth()->user()->id)->where('status', 'Pending')->orWhere('status', 'Confirmed')->get();
-        $transaction_histories = Transaction::where('user_id', auth()->user()->id)->where('status', 'Finished')->orWhere('status', 'Rejected')->get();
+        $transactions = Transaction::where('user_id', auth()->user()->id)->where('status', 'Pending')->orWhere('status', 'Confirmed')->orderBy('time', 'asc')->get();
+        $transaction_histories = Transaction::where('user_id', auth()->user()->id)->where('status', 'Finished')->orWhere('status', 'Rejected')->orderBy('time', 'desc')->get();
         $online_consultation_id = ConsultationType::where('name', 'Online Consultation')->first()->id;
         $offline_consultation_id = ConsultationType::where('name', 'Offline Consultation')->first()->id;
         return view('consultation.my_index', compact('transactions', 'online_consultation_id', 'offline_consultation_id', 'transaction_histories'));
