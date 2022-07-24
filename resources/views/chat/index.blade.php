@@ -67,6 +67,7 @@
                 {{ $view == 'User' ? $transaction->psychologist->name : $transaction->user->name }}
             </h3>
 
+
             {{-- status --}}
             @if (session('status'))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -108,8 +109,6 @@
                         </div>
                     </form>
                 </div>
-            @else
-                <h1>@lang('index_chat.consultation_is_finished')</h1>
             @endif
         </div>
     @endsection
