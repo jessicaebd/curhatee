@@ -192,6 +192,18 @@
         </div>
 
         <div class="col-12 col-xl-9">
+            <div class="nav">
+                <div class="d-flex justify-content-between align-items-center w-100 mb-3 mb-md-0">
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <h2 class="nav-title">Psychologist Dashboard</h2>
+                        <button id="toggle-navbar" onclick="toggleNavbar()">
+                            <img src="{{ asset('storage/images/psychologists/' . $psychologist->image) }}"
+                                alt="profile image">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             @yield('content')
         </div>
     </div>

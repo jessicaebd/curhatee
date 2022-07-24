@@ -233,7 +233,6 @@
                                                                 #{{ Str::limit(Str::substr($transaction->id, -5), 5, '') }}
                                                             </h5>
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </td>
@@ -301,6 +300,8 @@
                                                                 #{{ Str::limit(Str::substr($transaction->id, -5), 5, '') }}
                                                             </h5>
                                                         </div>
+                                                    </div>
+                                                </div>
                                             </td>
                                             <td>
                                                 {{ $transaction->user->name }}
@@ -358,8 +359,10 @@
                                                             </h5>
                                                             <h5 class="transaction-type">
                                                                 #{{ Str::limit(Str::substr($transaction->id, -5), 5, '') }}
-                                                            </h5 </div>
+                                                            </h5>
                                                         </div>
+                                                    </div>
+                                                </div>
                                             </td>
                                             <td>
                                                 {{ $transaction->user->name }}
@@ -417,8 +420,10 @@
                                                             </h5>
                                                             <h5 class="transaction-type">
                                                                 #{{ Str::limit(Str::substr($transaction->id, -5), 5, '') }}
-                                                            </h5 </div>
+                                                            </h5>
                                                         </div>
+                                                    </div>
+                                                </div>
                                             </td>
                                             <td>
                                                 {{ $transaction->user->name }}
@@ -476,8 +481,10 @@
                                                             </h5>
                                                             <h5 class="transaction-type">
                                                                 #{{ Str::limit(Str::substr($transaction->id, -5), 5, '') }}
-                                                            </h5 </div>
+                                                            </h5>
                                                         </div>
+                                                    </div>
+                                                </div>
                                             </td>
                                             <td>
                                                 {{ $transaction->user->name }}
