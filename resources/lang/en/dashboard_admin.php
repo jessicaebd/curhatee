@@ -13,6 +13,7 @@
         'confirmed' => 'Confirmed',
         'consultation' => 'Consultation',
         'patient' => 'Patient',
+        'psychologist' => 'Psychologist',
         'consultation_type' => 'Consultation Type',
         'price' => 'Price',
         'status' => 'Status',

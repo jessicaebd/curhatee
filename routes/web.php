@@ -55,6 +55,7 @@ Route::controller(PsychologistController::class)
         Route::put('/transactions/reject/{transaction}', 'psychologist_update_reject');
         Route::post('/transactions/end/{transaction}', 'psychologist_end')->name('psychologist_end');
         // Route::get('/profile/{psychologist}', 'profile')->name('psychologist_profile');
+        Route::get('/review/{psychologist}', 'review')->name('psychologist_my_review');
         Route::get('/edit/{psychologist}', 'edit')->name('psychologist_edit_psychologist');
         Route::post('/edit/{psychologist}', 'update')->name('psychologist_update_psychologist');
     });
@@ -84,7 +85,6 @@ Route::prefix('/consultation')
         Route::get('/{transaction}', 'my_show')->middleware('auth');
         Route::post('/{transaction}', 'my_store')->middleware('auth');
         Route::put('/{transaction}', 'update')->middleware('auth');
-        Route::post('/review/{transaction}', 'review')->middleware('auth');
     });
 
 // chat for user
@@ -148,9 +148,12 @@ Route::prefix('/forum/psychologist')
 Route::prefix('/review')
     ->controller(ReviewController::class)
     ->group(function () {
-        Route::get('psychologsit/{psychologist}', 'index')->name('psychologist_review');
+
+        Route::get('psychologist/{psychologist}', 'index')->name('psychologist_review');
         Route::post('/{psychologist}', 'store')->name('store_review')->middleware('auth');
     });
+
+
 
 // article
 Route::prefix('/article')

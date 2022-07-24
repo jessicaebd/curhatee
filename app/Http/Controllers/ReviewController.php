@@ -24,24 +24,15 @@ class ReviewController extends Controller
     public function index($id)
     {
         $this->setLang();
-
         $psychologist = Psychologist::find($id);
         $reviews = Review::where('psychologist_id', $id)->get();
-
-
-        if (Auth::guard('webpsychologist')->user()) {
-            $view = 'Psychologist';
-        } else if (auth()->user()) {
-            $view = 'User';
-        }
 
         $data = [
             'psychologist' => $psychologist,
             'reviews' => $reviews,
-            'view' => $view,
         ];
 
-        return view('review.index', $data);
+        return view('psychologist.review.index', $data);
     }
 
     public function store(Request $request, $id)

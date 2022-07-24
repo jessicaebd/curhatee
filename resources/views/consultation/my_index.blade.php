@@ -5,7 +5,7 @@
 @section('title', 'My Consultation')
 
 @section('content')
-    <div class="container mt-5 pt-5">
+    <div class="container mt-5 pt-5" style="min-height: 70vh">
         {{-- Success Message --}}
         @if (session('status'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -88,27 +88,28 @@
 
                         <div class="tab-pane fade" id="finished" role="tabpanel" aria-labelledby="finished-tab">
                             @if (count($transaction_histories) > 0)
-                                @foreach ($transaction_histories as $transaction)
-                                    @if ($transaction->status == 'Finished')
-                                        @include('consultation.transaction_card')
-                                    @endif
-                                @endforeach
+                                <div class="row">
+                                    @foreach ($transaction_histories as $transaction)
+                                        @if ($transaction->status == 'Finished')
+                                            @include('consultation.transaction_card')
+                                        @endif
+                                    @endforeach
+                                </div>
                             @endif
                         </div>
 
                         <div class="tab-pane fade" id="rejected" role="tabpanel" aria-labelledby="rejected-tab">
                             @if (count($transaction_histories) > 0)
-                                @foreach ($transaction_histories as $transaction)
-                                    @if ($transaction->status == 'Rejected')
-                                        @include('consultation.transaction_card')
-                                    @endif
-                                @endforeach
+                                <div class="row">
+                                    @foreach ($transaction_histories as $transaction)
+                                        @if ($transaction->status == 'Rejected')
+                                            @include('consultation.transaction_card')
+                                        @endif
+                                    @endforeach
+                                </div>
                             @endif
                         </div>
-
                     </div>
-
-
                 @endif
             </div>
         </div>

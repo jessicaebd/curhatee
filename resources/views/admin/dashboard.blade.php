@@ -4,43 +4,168 @@
 
 @section('content')
     <div class="content">
-        @lang('dashboard_admin.Total users') {{ $users->count() }}
-        <br>
-        @lang('dashboard_admin.Total psychologists') {{ $psychologists->count() }}
-        <br>
-        @lang('dashboard_admin.Total transaction') {{ $transactions->count() }}
-        <br>
-        @lang('dashboard_admin.total online consultation')
-        {{ $transactions->where('consultation_type_id', $online_consultation_id)->count() }}
-        <br>
-        @lang('dashboard_admin.total offline consultation')
-        {{ $transactions->where('consultation_type_id', $offline_consultation_id)->count() }}
-        <br>
-        @lang('dashboard_admin.total transaction pending') {{ $transactions->where('status', 'Pending')->count() }}
-        <br>
-        @lang('dashboard_admin.total transaction confirmed') {{ $transactions->where('status', 'Confirmed')->count() }}
-        <br>
-        @lang('dashboard_admin.total transaction success') {{ $transactions->where('status', 'Finished')->count() }}
-        <br>
-        @lang('dashboard_admin.total transaction rejected') {{ $transactions->where('status', 'Rejected')->count() }}
-        <br>
-        @lang('dashboard_admin.total revenue') {{ $transactions->where('status', '!=', 'Rejected')->sum('price') }}
-        <br>
-        @lang('dashboard_admin.Total review') {{ $reviews->count() }}
-        <br>
-        @lang('dashboard_admin.Total article') {{ $articles->count() }}
-        <br>
-        @lang('dashboard_admin.Total forum topic') {{ $forums->count() }}
-        <br>
-        @lang('dashboard_admin.Total payment 3rd party') {{ $payment_types->count() }}
-        <br>
-        <br><br><br>
-        <h1>NOTE:</h1>
-        <h2>dbawah kan all transaction. kolomny perlu diubah
-            DITAMBAH kolom psychologist, biar tahu siapa yg handle
-            gambar profile itu hapus aja ga? ga maut kekny?
-            palling ganti #id transaksi gitu
-        </h2>
+        <div class="my_dashboard row mb-4">
+            <div class="col-12">
+                <h5>Users</h5>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card shadow-sm mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold m-font">Total Users</h5>
+                                <p class="card-text l-font text-muted fw-bolder">
+                                    {{ $users->count() }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card shadow-sm mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold m-font">Total Psychologists</h5>
+                                <p class="card-text l-font text-muted fw-bolder">{{ $psychologists->count() }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h5>Transaction</h5>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card shadow-sm mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold m-font">Total Transactions</h5>
+                                <p class="card-text l-font text-muted fw-bolder"> {{ $transactions->count() }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card shadow-sm mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold m-font">Total Revenue</h5>
+                                <p class="card-text l-font text-muted fw-bolder">Rp.
+                                    {{ $transactions->where('status', '!=', 'Rejected')->sum('price') }} </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card shadow-sm mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold m-font">Total Online Consultation</h5>
+                                <p class="card-text l-font text-muted fw-bolder">
+                                    {{ $transactions->where('consultation_type_id', $online_consultation_id)->count() }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card shadow-sm mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold m-font">Total Offline Consultation</h5>
+                                <p class="card-text l-font text-muted fw-bolder">
+                                    {{ $transactions->where('consultation_type_id', $offline_consultation_id)->count() }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h5>Transaction by Status</h5>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card shadow-sm mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold m-font">Total Transaction Pending</h5>
+                                <p class="card-text l-font text-muted fw-bolder">
+                                    {{ $transactions->where('status', 'Pending')->count() }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card shadow-sm mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold m-font">Total Transaction Confirmed</h5>
+                                <p class="card-text l-font text-muted fw-bolder">
+                                    {{ $transactions->where('status', 'Confirmed')->count() }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card shadow-sm mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold m-font">Total Transaction Success</h5>
+                                <p class="card-text l-font text-muted fw-bolder">
+                                    {{ $transactions->where('status', 'Finished')->count() }} </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card shadow-sm mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold m-font">Total Transaction Rejected</h5>
+                                <p class="card-text l-font text-muted fw-bolder">
+                                    {{ $transactions->where('status', 'Rejected')->count() }} </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h5>Others</h5>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card shadow-sm mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold m-font">Total Review</h5>
+                                <p class="card-text l-font text-muted fw-bolder">
+                                    {{ $reviews->count() }} </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card shadow-sm mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold m-font">Total Article</h5>
+                                <p class="card-text l-font text-muted fw-bolder">
+                                    {{ $articles->count() }} </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card shadow-sm mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold m-font">Total Forum Topic</h5>
+                                <p class="card-text l-font text-muted fw-bolder">
+                                    {{ $forums->count() }} </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card shadow-sm mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold m-font">Total Forum Topic</h5>
+                                <p class="card-text l-font text-muted fw-bolder">
+                                    {{ $payment_types->count() }} </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <h3 class="nav-title">All Transactions</h3>
             @if (isset($note))
@@ -82,6 +207,7 @@
                                     <tr>
                                         <th>@lang('dashboard_admin.consultation')</th>
                                         <th>@lang('dashboard_admin.patient')</th>
+                                        <th>@lang('dashboard_admin.psychologist')</th>
                                         <th class="action-header">@lang('dashboard_admin.consultation_type')</th>
                                         <th>@lang('dashboard_admin.price')</th>
                                         <th class="status-header">@lang('dashboard_admin.status')</th>
@@ -94,22 +220,28 @@
                                             <td>
                                                 <div
                                                     class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
-                                                    <img class="transaction-img"
-                                                        src="{{ asset('storage/images/users/' . $transaction->user->image) }}"
-                                                        alt="">
                                                     <div
                                                         class="d-flex flex-column justify-content-center align-items-start mt-2">
                                                         <h5 class="transaction-game">
                                                             {{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y') }}
                                                         </h5>
-                                                        <h5 class="transaction-type">
-                                                            {{ \Carbon\Carbon::parse($transaction->time)->format('@ H:i') }}
-                                                        </h5>
+                                                        <div class="d-flex">
+                                                            <h5 class="transaction-type me-3">
+                                                                {{ \Carbon\Carbon::parse($transaction->time)->format('@ H:i') }}
+                                                            </h5>
+                                                            <h5 class="transaction-type">
+                                                                #{{ Str::limit(Str::substr($transaction->id, -5), 5, '') }}
+                                                            </h5>
+                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 {{ $transaction->user->name }}
+                                            </td>
+                                            <td>
+                                                {{ $transaction->psychologist->name }}
                                             </td>
                                             <td>
                                                 <span
@@ -143,6 +275,7 @@
                                     <tr>
                                         <th>@lang('dashboard_admin.consultation')</th>
                                         <th>@lang('dashboard_admin.patient')</th>
+                                        <th>@lang('dashboard_admin.psychologist')</th>
                                         <th class="action-header">@lang('dashboard_admin.consultation_type')</th>
                                         <th>@lang('dashboard_admin.price')</th>
                                         <th class="status-header">@lang('dashboard_admin.status')</th>
@@ -155,22 +288,25 @@
                                             <td>
                                                 <div
                                                     class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
-                                                    <img class="transaction-img"
-                                                        src="{{ asset('storage/images/users/' . $transaction->user->image) }}"
-                                                        alt="">
                                                     <div
                                                         class="d-flex flex-column justify-content-center align-items-start mt-2">
                                                         <h5 class="transaction-game">
                                                             {{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y') }}
                                                         </h5>
-                                                        <h5 class="transaction-type">
-                                                            {{ \Carbon\Carbon::parse($transaction->time)->format('@ H:i') }}
-                                                        </h5>
-                                                    </div>
-                                                </div>
+                                                        <div class="d-flex">
+                                                            <h5 class="transaction-type me-3">
+                                                                {{ \Carbon\Carbon::parse($transaction->time)->format('@ H:i') }}
+                                                            </h5>
+                                                            <h5 class="transaction-type">
+                                                                #{{ Str::limit(Str::substr($transaction->id, -5), 5, '') }}
+                                                            </h5>
+                                                        </div>
                                             </td>
                                             <td>
                                                 {{ $transaction->user->name }}
+                                            </td>
+                                            <td>
+                                                {{ $transaction->psychologist->name }}
                                             </td>
                                             <td>
                                                 {{ $transaction->consultationType->name }}
@@ -198,6 +334,7 @@
                                     <tr>
                                         <th>@lang('dashboard_admin.consultation')</th>
                                         <th>@lang('dashboard_admin.patient')</th>
+                                        <th>@lang('dashboard_admin.psychologist')</th>
                                         <th class="action-header">@lang('dashboard_admin.consultation_type')</th>
                                         <th>@lang('dashboard_admin.price')</th>
                                         <th class="status-header">@lang('dashboard_admin.status')</th>
@@ -210,22 +347,25 @@
                                             <td>
                                                 <div
                                                     class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
-                                                    <img class="transaction-img"
-                                                        src="{{ asset('storage/images/users/' . $transaction->user->image) }}"
-                                                        alt="">
                                                     <div
                                                         class="d-flex flex-column justify-content-center align-items-start mt-2">
                                                         <h5 class="transaction-game">
                                                             {{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y') }}
                                                         </h5>
-                                                        <h5 class="transaction-type">
-                                                            {{ \Carbon\Carbon::parse($transaction->time)->format('@ H:i') }}
-                                                        </h5>
-                                                    </div>
-                                                </div>
+                                                        <div class="d-flex">
+                                                            <h5 class="transaction-type me-3">
+                                                                {{ \Carbon\Carbon::parse($transaction->time)->format('@ H:i') }}
+                                                            </h5>
+                                                            <h5 class="transaction-type">
+                                                                #{{ Str::limit(Str::substr($transaction->id, -5), 5, '') }}
+                                                            </h5 </div>
+                                                        </div>
                                             </td>
                                             <td>
                                                 {{ $transaction->user->name }}
+                                            </td>
+                                            <td>
+                                                {{ $transaction->psychologist->name }}
                                             </td>
                                             <td>
                                                 {{ $transaction->consultationType->name }}
@@ -253,6 +393,7 @@
                                     <tr>
                                         <th>@lang('dashboard_admin.consultation')</th>
                                         <th>@lang('dashboard_admin.patient')</th>
+                                        <th>@lang('dashboard_admin.psychologist')</th>
                                         <th class="action-header">@lang('dashboard_admin.consultation_type')</th>
                                         <th>@lang('dashboard_admin.price')</th>
                                         <th class="status-header">@lang('dashboard_admin.status')</th>
@@ -265,22 +406,25 @@
                                             <td>
                                                 <div
                                                     class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
-                                                    <img class="transaction-img"
-                                                        src="{{ asset('storage/images/users/' . $transaction->user->image) }}"
-                                                        alt="">
                                                     <div
                                                         class="d-flex flex-column justify-content-center align-items-start mt-2">
                                                         <h5 class="transaction-game">
                                                             {{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y') }}
                                                         </h5>
-                                                        <h5 class="transaction-type">
-                                                            {{ \Carbon\Carbon::parse($transaction->time)->format('@ H:i') }}
-                                                        </h5>
-                                                    </div>
-                                                </div>
+                                                        <div class="d-flex">
+                                                            <h5 class="transaction-type me-3">
+                                                                {{ \Carbon\Carbon::parse($transaction->time)->format('@ H:i') }}
+                                                            </h5>
+                                                            <h5 class="transaction-type">
+                                                                #{{ Str::limit(Str::substr($transaction->id, -5), 5, '') }}
+                                                            </h5 </div>
+                                                        </div>
                                             </td>
                                             <td>
                                                 {{ $transaction->user->name }}
+                                            </td>
+                                            <td>
+                                                {{ $transaction->psychologist->name }}
                                             </td>
                                             <td>
                                                 {{ $transaction->consultationType->name }}
@@ -308,6 +452,7 @@
                                     <tr>
                                         <th>@lang('dashboard_admin.consultation')</th>
                                         <th>@lang('dashboard_admin.patient')</th>
+                                        <th>@lang('dashboard_admin.psychologist')</th>
                                         <th class="action-header">@lang('dashboard_admin.consultation_type')</th>
                                         <th>@lang('dashboard_admin.price')</th>
                                         <th class="status-header">@lang('dashboard_admin.status')</th>
@@ -320,22 +465,25 @@
                                             <td>
                                                 <div
                                                     class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
-                                                    <img class="transaction-img"
-                                                        src="{{ asset('storage/images/users/' . $transaction->user->image) }}"
-                                                        alt="">
                                                     <div
                                                         class="d-flex flex-column justify-content-center align-items-start mt-2">
                                                         <h5 class="transaction-game">
                                                             {{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y') }}
                                                         </h5>
-                                                        <h5 class="transaction-type">
-                                                            {{ \Carbon\Carbon::parse($transaction->time)->format('@ H:i') }}
-                                                        </h5>
-                                                    </div>
-                                                </div>
+                                                        <div class="d-flex">
+                                                            <h5 class="transaction-type me-3">
+                                                                {{ \Carbon\Carbon::parse($transaction->time)->format('@ H:i') }}
+                                                            </h5>
+                                                            <h5 class="transaction-type">
+                                                                #{{ Str::limit(Str::substr($transaction->id, -5), 5, '') }}
+                                                            </h5 </div>
+                                                        </div>
                                             </td>
                                             <td>
                                                 {{ $transaction->user->name }}
+                                            </td>
+                                            <td>
+                                                {{ $transaction->psychologist->name }}
                                             </td>
                                             <td>
                                                 {{ $transaction->consultationType->name }}

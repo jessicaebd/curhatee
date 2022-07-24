@@ -28,7 +28,7 @@ body {
 }
 
 .bg-blue {
-    background-color:var(--main-blue);
+    background-color: var(--main-blue);
 }
 .bg-green {
     background-color: var(--main-green);
@@ -254,7 +254,7 @@ aside #toggle-navbar {
 
 .nav-title {
     font-weight: 700;
-    font-size: 32px;
+    font-size: 28px;
     line-height: 48px;
     color: #0c145a;
 }

@@ -12,8 +12,9 @@
                             <table class="table table-bordered transaction-table w-100 active" id="table-all">
                                 {{-- back to psycho.dashboard --}}
                                 <a href="{{ route('psychologist_dashboard') }}"><button type="button"
-                                        class="btn btn-secondary" aria-label="Close"><i class="bi bi-arrow-left-circle"></i>
-                                        @lang('psychologist.Back')</button></a>
+                                        class="btn btn-secondary mt-5" aria-label="Close"><i
+                                            class="bi bi-arrow-left-circle"></i>
+                                            @lang('psychologist.Back')</button></a>
                                 <br><br>
                                 <tbody>
                                     <tr>
@@ -156,17 +157,16 @@
                             @endif
 
                             @if ($transaction->status == 'Pending')
-                                {{-- accept consultation --}}
                                 <div class="d-flex justify-content-center">
-                                    <form action="/psychologist/transactions/accept/{{ $transaction->id }}" method="post">
+                                    {{-- accept consultation --}}
+                                    <form action="/psychologist/transactions/accept/{{ $transaction->id }}" method="post"
+                                        class="me-3">
                                         @csrf
                                         @method('put')
                                         <input type="hidden" name="transaction_id" value="{{ $transaction->id }}">
                                         <button type="submit" class="btn btn-primary mb-2">@lang('show_psychologist.accept_consultation')</button>
                                     </form>
-                                </div>
-                                {{-- reject consultation --}}
-                                <div class="d-flex justify-content-center">
+                                    {{-- reject consultation --}}
                                     <form action="/psychologist/transactions/reject/{{ $transaction->id }}" method="post">
                                         @csrf
                                         @method('put')
@@ -193,11 +193,28 @@
                                     </div>
                                 </form>
                             @elseif($transaction->status == 'Finished')
+                                @if ($transaction->review != null)
+                                    <h5 class="fw-bolder s-font">Review from patient:</h5>
+                                    <div class="my-review s-font card px-3 py-2">
+                                        <div class="pe-2">
+                                            @for ($i = 0; $i < 5; $i++)
+                                                @if ($i < $transaction->review->rating)
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                @else
+                                                    <i class="bi bi-star text-warning"></i>
+                                                @endif
+                                            @endfor
+                                        </div>
+                                        <p class="text-muted">{{ $transaction->review->comment }}</p>
+                                    </div>
+                                @endif
+
                                 @if ($transaction->consultationType->name == 'Online Consultation')
                                     <a href="{{ route('chat_page_psychologist', $transaction->id) }}">
                                         <button type="button" class="btn btn-primary mt-4">@lang('show_psychologist.see_chat_history')</button>
                                     </a>
                                 @endif
+
                             @endif
 
                         </div>
