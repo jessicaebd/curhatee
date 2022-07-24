@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Review;
 use App\Models\Hospital;
 use App\Models\Schedule;
 use App\Models\Transaction;
 use Illuminate\Support\Str;
 use App\Models\Psychologist;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Models\ConsultationType;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 
 class PsychologistController extends Controller
 {
@@ -22,8 +23,9 @@ class PsychologistController extends Controller
     // }
 
 
-    private function setLang() {
-        if(session()->has('locale')) {
+    private function setLang()
+    {
+        if (session()->has('locale')) {
             app()->setLocale(session()->get('locale'));
         } else {
             app()->setLocale('en');
@@ -75,6 +77,22 @@ class PsychologistController extends Controller
         return view('profile.psychologist.index', $data);
     }
 
+    public function review($id)
+    {
+        $this->setLang();
+        $psychologist = Psychologist::find($id);
+        $reviews = Review::where('psychologist_id', $id)->get();
+        $latest_transaction = Transaction::where('psychologist_id', $psychologist->id)->orderBy('created_at', 'desc')->first();
+
+        $data = [
+            'psychologist' => $psychologist,
+            'latest_transaction' => $latest_transaction,
+            'reviews' => $reviews,
+        ];
+
+        return view('psychologist.review.index', $data);
+    }
+
     public function psychologist_index()
     {
         $this->setLang();
@@ -82,8 +100,11 @@ class PsychologistController extends Controller
         $online_consultation_id = ConsultationType::where('name', 'Online Consultation')->first()->id;
         $offline_consultation_id = ConsultationType::where('name', 'Offline Consultation')->first()->id;
 
+        $latest_transaction = Transaction::where('psychologist_id', $psychologist->id)->orderBy('created_at', 'desc')->first();
+
         $data = [
             'psychologist' => $psychologist,
+            'latest_transaction' => $latest_transaction,
             'transactions_all' => Transaction::where('psychologist_id', $psychologist->id)->where('time', '>=', now()->format('Y-m-d'))->orderBy('time', 'asc')->get(),
             'transactions_pending' => Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Pending')->where('time', '>=', now()->format('Y-m-d'))->orderBy('time', 'asc')->get(),
             'transactions_confirmed' => Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Confirmed')->where('time', '>=', now()->format('Y-m-d'))->orderBy('time', 'asc')->get(),
@@ -105,9 +126,13 @@ class PsychologistController extends Controller
         $online_consultation_id = ConsultationType::where('name', 'Online Consultation')->first()->id;
         $offline_consultation_id = ConsultationType::where('name', 'Offline Consultation')->first()->id;
 
-        $data =[
+        $latest_transaction = Transaction::where('psychologist_id', $psychologist->id)->orderBy('created_at', 'desc')->first();
+
+
+        $data = [
             'note' => 'History of all consultations',
             'psychologist' => $psychologist,
+            'latest_transaction' => $latest_transaction,
             'transactions_all' => Transaction::where('psychologist_id', $psychologist->id)->where('time', '<', now()->format('Y-m-d'))->orderBy('time', 'desc')->get(),
             'transactions_pending' => Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Pending')->where('time', '<', now()->format('Y-m-d'))->orderBy('time', 'desc')->get(),
             'transactions_confirmed' => Transaction::where('psychologist_id', $psychologist->id)->where('status', 'Confirmed')->where('time', '<', now()->format('Y-m-d'))->orderBy('time', 'desc')->get(),
@@ -148,7 +173,7 @@ class PsychologistController extends Controller
     public function psychologist_end(Request $request, Transaction $transaction)
     {
         $transaction->status = 'Finished';
-        if($request->has('note')) {
+        if ($request->has('note')) {
             $transaction->note = $request->note;
         }
         $transaction->save();
@@ -209,8 +234,8 @@ class PsychologistController extends Controller
                     'psychologist_id' => $psychologist_id,
                     'day' => $day,
                     'dateBook' => null,
-                    'startTime' => Carbon::parse('2022-02-02 ' .$hour . ':00:00'),
-                    'endTime' => Carbon::parse('2022-02-02 ' . $hour+1 . ':00:00'),
+                    'startTime' => Carbon::parse('2022-02-02 ' . $hour . ':00:00'),
+                    'endTime' => Carbon::parse('2022-02-02 ' . $hour + 1 . ':00:00'),
                     'detail' => 'Schedule Detail',
                     'status' => 'Open',
                     'isActive' => true,
@@ -250,7 +275,7 @@ class PsychologistController extends Controller
     {
         $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|email|'. Rule::unique('users')->ignore(auth()->user()->id, 'id'),
+            'email' => 'required|email|' . Rule::unique('users')->ignore(auth()->user()->id, 'id'),
             'phone' => 'required|numeric',
             'hospital_id' => 'required',
             'description' => 'required',
