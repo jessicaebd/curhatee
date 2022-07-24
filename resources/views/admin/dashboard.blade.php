@@ -6,12 +6,12 @@
     <div class="content">
         <div class="my_dashboard row mb-4">
             <div class="col-12">
-                <h2 class="nav-title l-font border-bottom mb-3">Users</h2>
+                <h2 class="nav-title l-font border-bottom mb-3">@lang('dashboard_admin.Users')</h2>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
                             <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Total Users</h5>
+                                <h5 class="card-title fw-bold m-font">@lang('dashboard_admin.Total users')</h5>
                                 <p class="card-text l-font text-muted fw-bolder">
                                     {{ $users->count() }}</p>
                             </div>
@@ -21,7 +21,7 @@
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
                             <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Total Psychologists</h5>
+                                <h5 class="card-title fw-bold m-font">@lang('dashboard_admin.Total psychologists')</h5>
                                 <p class="card-text l-font text-muted fw-bolder">{{ $psychologists->count() }}
                                 </p>
                             </div>
@@ -29,12 +29,12 @@
                     </div>
                 </div>
 
-                <h2 class="nav-title l-font border-bottom mb-3">Transaction</h2>
+                <h2 class="nav-title l-font border-bottom mb-3">@lang('dashboard_admin.Transaction')</h2>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
                             <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Total Transactions</h5>
+                                <h5 class="card-title fw-bold m-font">@lang('dashboard_admin.Total transaction')</h5>
                                 <p class="card-text l-font text-muted fw-bolder"> {{ $transactions->count() }}
                                 </p>
                             </div>
@@ -44,7 +44,7 @@
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
                             <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Total Revenue</h5>
+                                <h5 class="card-title fw-bold m-font">@lang('dashboard_admin.total revenue')</h5>
                                 <p class="card-text l-font text-muted fw-bolder">Rp.
                                     {{ $transactions->where('status', '!=', 'Rejected')->sum('price') }} </p>
                             </div>
@@ -54,7 +54,7 @@
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
                             <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Total Online Consultation</h5>
+                                <h5 class="card-title fw-bold m-font">@lang('dashboard_admin.total online consultation')</h5>
                                 <p class="card-text l-font text-muted fw-bolder">
                                     {{ $transactions->where('consultation_type_id', $online_consultation_id)->count() }}
                                 </p>
@@ -65,7 +65,7 @@
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
                             <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Total Offline Consultation</h5>
+                                <h5 class="card-title fw-bold m-font">@lang('dashboard_admin.total offline consultation')</h5>
                                 <p class="card-text l-font text-muted fw-bolder">
                                     {{ $transactions->where('consultation_type_id', $offline_consultation_id)->count() }}
                                 </p>
@@ -74,12 +74,12 @@
                     </div>
                 </div>
 
-                <h2 class="nav-title l-font border-bottom mb-3">Transaction by Status</h2>
+                <h2 class="nav-title l-font border-bottom mb-3">@lang('dashboard_admin.Transaction by Status')</h2>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
                             <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Total Transaction Pending</h5>
+                                <h5 class="card-title fw-bold m-font">@lang('dashboard_admin.total transaction pending')</h5>
                                 <p class="card-text l-font text-muted fw-bolder">
                                     {{ $transactions->where('status', 'Pending')->count() }}
                                 </p>
@@ -90,7 +90,7 @@
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
                             <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Total Transaction Confirmed</h5>
+                                <h5 class="card-title fw-bold m-font">@lang('dashboard_admin.total transaction confirmed')</h5>
                                 <p class="card-text l-font text-muted fw-bolder">
                                     {{ $transactions->where('status', 'Confirmed')->count() }}
                                 </p>
@@ -101,7 +101,7 @@
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
                             <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Total Transaction Success</h5>
+                                <h5 class="card-title fw-bold m-font">@lang('dashboard_admin.total transaction success')</h5>
                                 <p class="card-text l-font text-muted fw-bolder">
                                     {{ $transactions->where('status', 'Finished')->count() }} </p>
                             </div>
@@ -111,7 +111,7 @@
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
                             <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Total Transaction Rejected</h5>
+                                <h5 class="card-title fw-bold m-font">@lang('dashboard_admin.total transaction rejected')</h5>
                                 <p class="card-text l-font text-muted fw-bolder">
                                     {{ $transactions->where('status', 'Rejected')->count() }} </p>
                             </div>
@@ -119,12 +119,12 @@
                     </div>
                 </div>
 
-                <h2 class="nav-title l-font border-bottom mb-3">Others</h2>
+                <h2 class="nav-title l-font border-bottom mb-3">@lang('dashboard_admin.Others')</h2>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
                             <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Total Review</h5>
+                                <h5 class="card-title fw-bold m-font">@lang('dashboard_admin.Total review')</h5>
                                 <p class="card-text l-font text-muted fw-bolder">
                                     {{ $reviews->count() }} </p>
                             </div>
@@ -134,7 +134,7 @@
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
                             <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Total Article</h5>
+                                <h5 class="card-title fw-bold m-font">@lang('dashboard_admin.Total article')</h5>
                                 <p class="card-text l-font text-muted fw-bolder">
                                     {{ $articles->count() }} </p>
                             </div>
@@ -144,7 +144,7 @@
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
                             <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Total Forum Topic</h5>
+                                <h5 class="card-title fw-bold m-font">@lang('dashboard_admin.Total forum topic')</h5>
                                 <p class="card-text l-font text-muted fw-bolder">
                                     {{ $forums->count() }} </p>
                             </div>
@@ -154,7 +154,7 @@
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
                             <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Total Forum Topic</h5>
+                                <h5 class="card-title fw-bold m-font">@lang('dashboard_admin.Total payment 3rd party')</h5>
                                 <p class="card-text l-font text-muted fw-bolder">
                                     {{ $payment_types->count() }} </p>
                             </div>
@@ -167,7 +167,7 @@
         </div>
 
         <div class="row">
-            <h3 class="nav-title">All Transactions</h3>
+            <h3 class="nav-title">@lang('dashboard_admin.all_trx')</h3>
             @if (isset($note))
                 <h3>{{ $note }}</h3>
             @endif

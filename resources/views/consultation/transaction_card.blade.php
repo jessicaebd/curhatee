@@ -153,7 +153,7 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title fw-bolder"
                                             id="transactionDetailModal-{{ $transaction->id }}Label">
-                                            Transaction History Detail</h5>
+                                            @lang('consultation.Transaction History Detail')</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
@@ -198,8 +198,7 @@
                                         </div>
                                         @if ($transaction->status == 'Confirmed' && $transaction->consultationType->name == 'Offline Consultation')
                                             <div class="d-flex flex-column fw-bolder align-items-center mt-3">
-                                                <p class="text-muted mb-2 s-font">Show the QR Code below to the
-                                                    receptionist</p>
+                                                <p class="text-muted mb-2 s-font">@lang('consultation.Show the QR Code below to the receptionist')</p>
                                                 {{ QrCode::size(100)->generate($transaction->id) }}
                                             </div>
                                         @endif

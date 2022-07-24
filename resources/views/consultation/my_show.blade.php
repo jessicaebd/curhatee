@@ -46,7 +46,7 @@
                         </table>
                         @if ($transaction->status == 'Confirmed')
                             <div class="d-flex flex-column fw-bolder align-items-center mt-3">
-                                <p class="text-muted mb-2 s-font">Show the QR Code below to the receptionist</p>
+                                <p class="text-muted mb-2 s-font">@lang('consultation.Show the QR Code below to the receptionist')</p>
                                 {{ QrCode::size(100)->generate($transaction->id) }}
                             </div>
                         @endif

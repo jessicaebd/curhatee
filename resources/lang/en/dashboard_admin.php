@@ -26,6 +26,7 @@
         'all_consultation' => 'All Consultation',
         'online_consultation' => 'Online Consultation',
         'offline_consultation' => 'Offline Consultation',
+        'Users' => 'Users',
         'Total users' => 'Total users:',
         'Total psychologists' => 'Total psychologists:',
         'Total transaction' => 'Total transaction:',
@@ -39,6 +40,9 @@
         'Total review' => 'Total review:',
         'Total article' => 'Total article:',
         'Total forum topic' => 'Total forum topic:',
-        'Total payment 3rd party' => 'Total payment 3rd party:'
+        'Total payment 3rd party' => 'Total payment 3rd party:',
+        'Transaction' => 'Transaction',
+        'Transaction by Status' => 'Transaction by Status',
+        'Others' => 'Others'
     ];
 ?>

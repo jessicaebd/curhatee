@@ -13,6 +13,16 @@
         'total review' => 'Total review:',
         'total revenue' => 'Total revenue:', 
         'Edit' => 'Edit',
+        'Profile' => 'Profile',
+        'Name' => 'Name',
+        'Phone' => 'Phone',
+        'Hospital' => 'Hospital',
+        'Fee' => 'Fee',
+        'Rating' => 'Rating',
+        'Description' => 'Description',
+        'Transaction' => 'Transaction',
+        'Transaction by Status' => 'Transaction by Status',
+        'Others' => 'Others',
 
         // index_user
         'Edit Profile' => 'Edit Profile',

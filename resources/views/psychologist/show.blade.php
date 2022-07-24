@@ -194,7 +194,7 @@
                                 </form>
                             @elseif($transaction->status == 'Finished')
                                 @if ($transaction->review != null)
-                                    <h5 class="fw-bolder s-font">Review from patient:</h5>
+                                    <h5 class="fw-bolder s-font">@lang('psychologist.Review from patient')</h5>
                                     <div class="my-review s-font card px-3 py-2">
                                         <div class="pe-2">
                                             @for ($i = 0; $i < 5; $i++)

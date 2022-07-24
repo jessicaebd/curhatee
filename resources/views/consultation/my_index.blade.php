@@ -56,7 +56,7 @@
                         <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
                             <div class="row">
                                 <div class="history mb-2">
-                                    <b><i class="bi bi-calendar-week"></i> Ongoing Transaction</b>
+                                    <b><i class="bi bi-calendar-week"></i> @lang('consultation.Ongoing Transaction')</b>
                                 </div>
                                 @foreach ($transactions as $transaction)
                                     @include('consultation.transaction_card')
@@ -65,7 +65,7 @@
 
                                 @if (count($transaction_histories) > 0)
                                     <div class="history mb-2 mt-4">
-                                        <b><i class="bi bi-calendar-check"></i> History Transaction</b>
+                                        <b><i class="bi bi-calendar-check"></i> @lang('consultation.History Transaction')</b>
                                     </div>
                                     <br>
                                     @foreach ($transaction_histories as $transaction)

@@ -7,13 +7,13 @@
     <div class="content">
         <div class="my_dashboard row mb-4">
             <div class="col-12">
-                <h2 class="nav-title l-font border-bottom mb-3">Profile</h2>
+                <h2 class="nav-title l-font border-bottom mb-3">@lang('profile.Profile')</h2>
                 <div class="col-lg-12">
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="row fw-bold m-font">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Name</p>
+                                    <p class="mb-0">@lang('profile.Name')</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="mb-0">{{ $psychologist->name }}</p>
@@ -31,7 +31,7 @@
                             <hr>
                             <div class="row fw-bold m-font">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Phone</p>
+                                    <p class="mb-0">@lang('profile.Phone')</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="mb-0">{{ $psychologist->phone }}</p>
@@ -40,7 +40,7 @@
                             <hr>
                             <div class="row fw-bold m-font">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Hospital</p>
+                                    <p class="mb-0">@lang('profile.Hospital')</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="mb-0">{{ $psychologist->hospital->name }}</p>
@@ -49,7 +49,7 @@
                             <hr>
                             <div class="row fw-bold m-font">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Fee</p>
+                                    <p class="mb-0">@lang('profile.Fee')</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="mb-0">{{ $psychologist->fee }}</p>
@@ -58,7 +58,7 @@
                             <hr>
                             <div class="row fw-bold m-font">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Rating</p>
+                                    <p class="mb-0">@lang('profile.Rating')</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="mb-0">{{ $psychologist->rating }}</p>
@@ -67,7 +67,7 @@
                             <hr>
                             <div class="row fw-bold m-font">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Description</p>
+                                    <p class="mb-0">@lang('profile.Description')</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="mb-0">{{ $psychologist->description }}</p>
@@ -83,7 +83,7 @@
                 </div>
 
 
-                <h2 class="nav-title l-font border-bottom mb-3">Transaction</h2>
+                <h2 class="nav-title l-font border-bottom mb-3">@lang('profile.Transaction')</h2>
                 <div class="row">
 
                     <div class="col-md-3">
@@ -129,7 +129,7 @@
                     </div>
                 </div>
 
-                <h2 class="nav-title l-font border-bottom mb-3">Transaction by Status</h2>
+                <h2 class="nav-title l-font border-bottom mb-3">@lang('profile.Transaction by Status')</h2>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
@@ -174,7 +174,7 @@
                     </div>
                 </div>
 
-                <h2 class="nav-title l-font border-bottom mb-3">Others</h2>
+                <h2 class="nav-title l-font border-bottom mb-3">@lang('profile.Others')</h2>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
@@ -189,7 +189,7 @@
                     <div class="col-md-3">
                         <div class="card shadow-sm mb-3">
                             <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Rating</h5>
+                                <h5 class="card-title fw-bold m-font">@lang('profile.Rating')</h5>
                                 <p class="card-text l-font text-muted fw-bolder">
                                     {{ $psychologist->rating }} </p>
                             </div>

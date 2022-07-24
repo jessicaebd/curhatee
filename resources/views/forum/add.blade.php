@@ -8,7 +8,7 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Create New Forum</h3>
+                        <h3 class="card-title">@lang('forum.Create New Forum')</h3>
                     </div>
 
                     <div class="card-body">
@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <label for="image" class="col-form-label text-md-end m-font text-muted">
-                                        (Optional)</label>
+                                        (@lang('forum.Optional'))</label>
                                 </div>
                             </div>
 
@@ -50,7 +50,7 @@
 
                             {{-- Submit Button --}}
                             <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary">Add Forum</button>
+                                <button type="submit" class="btn btn-primary">@lang('forum.Add Forum')</button>
                             </div>
                         </form>
                     </div>

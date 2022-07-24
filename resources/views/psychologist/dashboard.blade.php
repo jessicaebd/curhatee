@@ -6,12 +6,12 @@
     <div class="container p-5">
         <div class="my_dashboard row mb-4">
             <div class="col-12">
-                <h2 class="xl-font fw-bold mb-3">My Dashboard</h2>
+                <h2 class="xl-font fw-bold mb-3">@lang('psychologist.My Dashboard')</h2>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="card shadow-sm">
                             <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Total Earnings</h5>
+                                <h5 class="card-title fw-bold m-font">@lang('psychologist.Total Earnings')</h5>
                                 <p class="card-text l-font text-muted fw-bolder">Rp.
                                     {{ $psychologist->transaction->where('status', '!=', 'Rejected')->sum('price') }}</p>
                             </div>
@@ -21,7 +21,7 @@
                     <div class="col-md-3">
                         <div class="card shadow-sm">
                             <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Total Transaction</h5>
+                                <h5 class="card-title fw-bold m-font">@lang('psychologist.Total Transaction')</h5>
                                 <p class="card-text l-font text-muted fw-bolder">{{ $psychologist->transaction->count() }}
                                 </p>
                             </div>
@@ -31,7 +31,7 @@
                     <div class="col-md-3">
                         <div class="card shadow-sm">
                             <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Ratings</h5>
+                                <h5 class="card-title fw-bold m-font">@lang('psychologist.Ratings')</h5>
                                 <p class="card-text l-font text-muted fw-bolder"> {{ $psychologist->rating }}
                                 </p>
                             </div>
@@ -43,13 +43,13 @@
 
         <div class="latest_transaction row mb-4">
             <div class="col-12">
-                <h2 class="nav-title l-font border-bottom mb-3">Latest Transaction</h2>
+                <h2 class="nav-title l-font border-bottom mb-3">@lang('psychologist.Latest Transaction')</h2>
                 @if ($latest_transaction != null)
                     <div class="col-md-4">
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-title border-bottom">
-                                    <h5 class="m-font fw-bold mb-0">Transaction
+                                    <h5 class="m-font fw-bold mb-0">@lang('psychologist.Transaction')
                                         #{{ Str::limit(Str::substr($latest_transaction->id, -5), 5, '') }}
                                     </h5>
                                     <small
@@ -67,13 +67,13 @@
                                     <div class="">
                                         <h6 class="fw-bolder mb-0">
                                             @if ($latest_transaction->status == 'Pending')
-                                                <span class="badge bg-warning">Pending</span>
+                                                <span class="badge bg-warning">@lang('psychologist.Pending')</span>
                                             @elseif ($latest_transaction->status == 'Confirmed')
-                                                <span class="badge bg-success">Confirmed</span>
+                                                <span class="badge bg-success">@lang('psychologist.Confirmed')</span>
                                             @elseif ($latest_transaction->status == 'Finished')
-                                                <span class="badge bg-secondary">Finished</span>
+                                                <span class="badge bg-secondary">@lang('psychologist.Finished')</span>
                                             @elseif ($latest_transaction->status == 'Rejected')
-                                                <span class="badge bg-danger">Rejected</span>
+                                                <span class="badge bg-danger">@lang('psychologist.Rejected')</span>
                                             @endif
                                         </h6>
                                     </div>
@@ -89,7 +89,7 @@
                         </div>
                     </div>
                 @else
-                    You have no transaction yet.
+                    @lang('psychologist.You have no transaction yet')
                 @endif
 
             </div>
@@ -97,7 +97,7 @@
 
         <div class="row">
             <div class="col-12">
-                <h2 class="nav-title l-font border-bottom mb-3">My Consultation</h2>
+                <h2 class="nav-title l-font border-bottom mb-3">@lang('psychologist.My Consultation')</h2>
 
                 @if (isset($note))
                     <h3>{{ $note }}</h3>
@@ -106,7 +106,7 @@
                     <ul class="nav nav-tabs d-flex justify-content-start align-items-center" id="tableTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all"
-                                type="button" role="tab" aria-controls="all" aria-selected="true">All</button>
+                                type="button" role="tab" aria-controls="all" aria-selected="true">@lang('psychologist.All')</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending"

@@ -4,6 +4,8 @@
         'You have no consultation at the moment' => 'You have no consultation at the moment.',
         'Browse Now' => 'Browse Now',
         'All' => 'All',
+        'Ongoing Transaction' => 'Ongoing Transaction',
+        'History Transaction' => 'History Transaction',
         
         // my_show_old
         'Consultation Type' => 'Consultation Type:',
@@ -18,6 +20,7 @@
         // my_show
         'Note' => 'Note:',
         'Review' => 'Review:',
+        'Show the QR Code below to the receptionist' => 'Show the QR Code below to the receptionist',
 
         // show
         'About Hospital' => 'About Hospital',

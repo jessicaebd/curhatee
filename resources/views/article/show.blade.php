@@ -7,7 +7,7 @@
         <div class="col-md-9">
             <div class="text-center mb-4">
                 <h2 class="fw-bold">{{ $article->title }}</h2>
-                <small class="fw-bolder">by: {{ $article->author }}</small> <br>
+                <small class="fw-bolder">@lang('article.by'): {{ $article->author }}</small> <br>
                 <small
                     class="text-muted s-font">{{ \Carbon\Carbon::parse($article->updated_at)->format('l, d F Y - H:i') }}</small>
             </div>

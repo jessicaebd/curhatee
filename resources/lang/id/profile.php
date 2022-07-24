@@ -13,6 +13,16 @@
         'total review' => 'Total ulasan:',
         'total revenue' => 'Total pendapatan:', 
         'Edit' => 'Edit',
+        'Profile' => 'Profil',
+        'Name' => 'Nama',
+        'Phone' => 'Telefon',
+        'Hospital' => 'Rumah Sakit',
+        'Fee' => 'Biaya',
+        'Rating' => 'Peringkat',
+        'Description' => 'Deskripsi',
+        'Transaction' => 'Transaksi',
+        'Transaction by Status' => 'Transaksi berdasarkan Status',
+        'Others' => 'Lainnya',
 
         // index_user
         'Edit Profile' => 'Sunting Profil',

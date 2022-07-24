@@ -5,6 +5,8 @@
         'Title Topic' => 'Judul Topik',
         'Isi Content' => 'Isi Content',
         'Add Picture (Optional)' => 'Tambahkan Gambar (Opsional)',
+        'Create New Forum' => 'Buat Forum Baru',
+        'Optional' => 'Opsional',
 
         // index
         'Create new topic' => 'Buat topik baru',

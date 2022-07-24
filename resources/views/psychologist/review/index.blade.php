@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container mt-5 pt-5">
-        <h3 class="fw-bolder l-font mb-3">My Review</h3>
+        <h3 class="fw-bolder l-font mb-3">@lang('psychologist.My Review')</h3>
 
         <div class="row">
             @if ($reviews->count() > 0)
@@ -47,7 +47,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">There is still no review.</h3>
+                            <h3 class="card-title">@lang('psychologist.There is still no review')</h3>
                         </div>
                     </div>
                 </div>

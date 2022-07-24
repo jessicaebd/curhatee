@@ -4,6 +4,8 @@
         'You have no consultation at the moment' => 'Anda tidak memiliki konsultasi saat ini.',
         'Browse Now' => 'Jelajahi Sekarang',
         'All' => 'Semua',
+        'Ongoing Transaction' => 'Transaksi yang sedang berlangsung',
+        'History Transaction' => 'Riwayat Transaksi',
         
         // my_show_old
         'Consultation Type' => 'Tipe Konsultasi:',
@@ -18,6 +20,7 @@
         // my_show
         'Note' => 'Catatan:',
         'Review' => 'Ulasan:',
+        'Show the QR Code below to the receptionist' => 'Tunjukkan QR Code di bawah ini ke resepsionis',
 
         // show
         'About Hospital' => 'Tentang Rumah Sakit',
