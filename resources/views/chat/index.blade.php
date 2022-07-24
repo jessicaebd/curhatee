@@ -67,6 +67,7 @@
                 {{ $view == 'User' ? $transaction->psychologist->name : $transaction->user->name }}
             </h3>
 
+
             {{-- status --}}
             @if (session('status'))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">

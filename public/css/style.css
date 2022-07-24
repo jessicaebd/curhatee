@@ -73,7 +73,6 @@ a {
 .btn-primary,
 .btn-blue {
     background-color: var(--main-blue);
-    border: 2px solid var(--main-blue);
     color: white;
 }
 
@@ -116,7 +115,6 @@ a {
     color: black;
 }
 
-
 /*--------------------------------------------------------------
   # Back to top button
   --------------------------------------------------------------*/
@@ -149,7 +147,6 @@ a {
     visibility: visible;
     opacity: 1;
 }
-
 
 /*--------------------------------------------------------------
   # Preloader
@@ -283,7 +280,7 @@ a {
     margin-left: 5px;
 }
 
-.navbar>ul>li>a:before {
+.navbar > ul > li > a:before {
     content: "";
     position: absolute;
     width: 0;
@@ -297,7 +294,7 @@ a {
 }
 
 .navbar a:hover:before,
-.navbar li:hover>a:before,
+.navbar li:hover > a:before,
 .navbar .active:before {
     visibility: visible;
     width: 25px;
@@ -306,7 +303,7 @@ a {
 .navbar a:hover,
 .navbar .active,
 .navbar .active:focus,
-.navbar li:hover>a {
+.navbar li:hover > a {
     color: #fff;
 }
 
@@ -344,11 +341,11 @@ a {
 
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
-.navbar .dropdown ul li:hover>a {
+.navbar .dropdown ul li:hover > a {
     color: #1acc8d;
 }
 
-.navbar .dropdown:hover>ul {
+.navbar .dropdown:hover > ul {
     opacity: 1;
     top: 100%;
     visibility: visible;
@@ -360,7 +357,7 @@ a {
     visibility: hidden;
 }
 
-.navbar .dropdown .dropdown:hover>ul {
+.navbar .dropdown .dropdown:hover > ul {
     opacity: 1;
     top: 0;
     left: 100%;
@@ -372,7 +369,7 @@ a {
         left: -90%;
     }
 
-    .navbar .dropdown .dropdown:hover>ul {
+    .navbar .dropdown .dropdown:hover > ul {
         left: -100%;
     }
 }
@@ -431,7 +428,7 @@ a {
     transition: 0.3s;
 }
 
-.navbar-mobile>ul>li>a:before {
+.navbar-mobile > ul > li > a:before {
     left: 20px;
 }
 
@@ -444,7 +441,7 @@ a {
 
 .navbar-mobile a:hover,
 .navbar-mobile .active,
-.navbar-mobile li:hover>a {
+.navbar-mobile li:hover > a {
     color: #3f43fd;
 }
 
@@ -483,15 +480,15 @@ a {
 
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
-.navbar-mobile .dropdown ul li:hover>a,
+.navbar-mobile .dropdown ul li:hover > a,
 .navbar-mobile .dropdown .dropdown ul a:hover,
 .navbar-mobile .dropdown .dropdown ul .active:hover,
-.navbar-mobile .dropdown .dropdown ul li:hover>a {
+.navbar-mobile .dropdown .dropdown ul li:hover > a {
     color: #1acc8d;
 }
 
-.navbar-mobile .dropdown>.dropdown-active,
-.navbar-mobile .dropdown .dropdown>.dropdown-active {
+.navbar-mobile .dropdown > .dropdown-active,
+.navbar-mobile .dropdown .dropdown > .dropdown-active {
     display: block;
 }
 
@@ -644,7 +641,6 @@ a {
 }
 
 /* aaa */
-
 
 .go-corner {
     display: flex;
