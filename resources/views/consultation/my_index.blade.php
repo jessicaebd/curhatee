@@ -28,7 +28,8 @@
                     <ul class="nav nav-tabs d-flex justify-content-start align-items-center" id="tableTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all"
-                                type="button" role="tab" aria-controls="all" aria-selected="true">@lang('consultation.All')</button>
+                                type="button" role="tab" aria-controls="all"
+                                aria-selected="true">@lang('consultation.All')</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending"
@@ -62,11 +63,11 @@
                                 @endforeach
                                 <br>
 
-                                <div class="history mb-2 mt-4">
-                                    <b><i class="bi bi-calendar-check"></i> History Transaction</b>
-                                </div>
-                                <br>
                                 @if (count($transaction_histories) > 0)
+                                    <div class="history mb-2 mt-4">
+                                        <b><i class="bi bi-calendar-check"></i> History Transaction</b>
+                                    </div>
+                                    <br>
                                     @foreach ($transaction_histories as $transaction)
                                         @include('consultation.transaction_card')
                                     @endforeach

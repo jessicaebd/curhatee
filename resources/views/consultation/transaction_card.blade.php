@@ -267,7 +267,8 @@
                                         </div>
 
                                         <div class="note s-font card px-3 py-2 mb-3">
-                                            <span class="text-muted s-font"><span class="fw-bolder">@lang('consultation.Note')</span>
+                                            <span class="text-muted s-font"><span
+                                                    class="fw-bolder">@lang('consultation.Note')</span>
                                                 @if ($transaction->note != null)
                                                     {{ $transaction->note }}
                                                 @else
