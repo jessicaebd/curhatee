@@ -40,7 +40,6 @@
 
     <div class="row">
         <div class="col-12 col-lg-3 col-navbar d-block">
-
             <aside class="sidebar">
                 <div class="d-flex flex-column justify-content-center align-items-center">
 
@@ -179,23 +178,9 @@
                     </form>
                 </div>
             </aside>
-
         </div>
 
         <div class="col-12 col-xl-9">
-            <div class="nav">
-                <div class="d-flex justify-content-between align-items-center w-100 mb-3 mb-md-0">
-                    <div class="d-flex justify-content-between align-items-center w-100">
-                        <h2 class="nav-title">Psychologist Dashboard</h2>
-                        <button id="toggle-navbar" onclick="toggleNavbar()">
-                            <img src="{{ asset('storage/images/psychologists/' . $psychologist->image) }}"
-                                alt="profile image">
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-
             @yield('content')
         </div>
     </div>
