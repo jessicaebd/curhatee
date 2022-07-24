@@ -239,7 +239,8 @@
                                     <div class="col-4">
                                         <input type="file" class="form-control" id="image" name="image">
                                     </div>
-                                    <button type="submit" class="btn btn-primary ms-3 mt-4 shadow mb-1">@lang('forum.Reply')</button>
+                                    <button type="submit"
+                                        class="btn btn-primary ms-3 mt-4 shadow mb-1">@lang('forum.Reply')</button>
                                 </div>
                             </form>
 
