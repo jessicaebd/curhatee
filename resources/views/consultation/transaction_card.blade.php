@@ -140,10 +140,66 @@
 
                 <div class="ms-2">
                     @if ($transaction->status == 'Pending' || $transaction->status == 'Confirmed')
-                        <a class="btn btn-outline-blue s-font fw-bolder py-1 px-3" id="submit"
-                            href="/consultation/{{ $transaction->id }}">
+                        <a class="btn btn-outline-blue s-font fw-bolder py-1 px-3" type="button"
+                            class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#transactionDetailModal-{{ $transaction->id }}">
                             @lang('my_index.see_detail')
                         </a>
+
+                        <div class="modal fade" id="transactionDetailModal-{{ $transaction->id }}" tabindex="-1"
+                            aria-labelledby="transactionDetailModal-{{ $transaction->id }}Label" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title fw-bolder"
+                                            id="transactionDetailModal-{{ $transaction->id }}Label">
+                                            Transaction History Detail</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="detail mb-3">
+                                            <table class="s-font">
+                                                <tr>
+                                                    <td class="fw-bolder">@lang('my_show.transaction_id')</td>
+                                                    <td>: #{{ Str::limit(Str::substr($transaction->id, -5), 5, '') }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-bolder">@lang('my_show.psychologist')</td>
+                                                    <td>: {{ $transaction->schedule->psychologist->name }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-bolder">@lang('my_show.date')</td>
+                                                    <td>:
+                                                        {{ \Carbon\Carbon::parse($transaction->time)->format('l, d F Y @ H:i') }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-bolder">@lang('my_show.transaction_id')</td>
+                                                    <td>: {{ $transaction->consultationType->name }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-bolder">@lang('my_show.status')</td>
+                                                    <td>: {{ $transaction->status }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-bolder">@lang('my_show.fee')</td>
+                                                    <td>: Rp. {{ number_format($transaction->price, 0, ',', '.') }}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="fw-bolder">@lang('my_show.paid_with')</td>
+                                                    <td>: {{ $transaction->paymentType->type_name }}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @else
                         <a class="btn btn-outline-blue s-font fw-bolder py-1 px-3" type="button"
                             class="btn btn-primary" data-bs-toggle="modal"
