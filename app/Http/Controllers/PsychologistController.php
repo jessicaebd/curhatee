@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use App\Models\Hospital;
 use App\Models\Schedule;
 use App\Models\Transaction;
-use App\Models\Schedule;
 use Illuminate\Support\Str;
 use App\Models\Psychologist;
 use Illuminate\Http\Request;
