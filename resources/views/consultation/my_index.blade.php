@@ -88,27 +88,28 @@
 
                         <div class="tab-pane fade" id="finished" role="tabpanel" aria-labelledby="finished-tab">
                             @if (count($transaction_histories) > 0)
-                                @foreach ($transaction_histories as $transaction)
-                                    @if ($transaction->status == 'Finished')
-                                        @include('consultation.transaction_card')
-                                    @endif
-                                @endforeach
+                                <div class="row">
+                                    @foreach ($transaction_histories as $transaction)
+                                        @if ($transaction->status == 'Finished')
+                                            @include('consultation.transaction_card')
+                                        @endif
+                                    @endforeach
+                                </div>
                             @endif
                         </div>
 
                         <div class="tab-pane fade" id="rejected" role="tabpanel" aria-labelledby="rejected-tab">
                             @if (count($transaction_histories) > 0)
-                                @foreach ($transaction_histories as $transaction)
-                                    @if ($transaction->status == 'Rejected')
-                                        @include('consultation.transaction_card')
-                                    @endif
-                                @endforeach
+                                <div class="row">
+                                    @foreach ($transaction_histories as $transaction)
+                                        @if ($transaction->status == 'Rejected')
+                                            @include('consultation.transaction_card')
+                                        @endif
+                                    @endforeach
+                                </div>
                             @endif
                         </div>
-
                     </div>
-
-
                 @endif
             </div>
         </div>
