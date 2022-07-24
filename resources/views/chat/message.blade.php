@@ -108,6 +108,9 @@
         @endif
     @endif
 @endforeach
+@if ($transaction->status == 'Finished')
+    <h5 class="mt-3 text-muted text-center">@lang('index_chat.consultation_is_finished')</h5>
+@endif
 
 <script>
     var messageContainer = document.querySelector('#message-container');
