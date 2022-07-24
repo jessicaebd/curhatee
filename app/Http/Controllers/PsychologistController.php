@@ -313,6 +313,8 @@ class PsychologistController extends Controller
 
     public function destroy(Psychologist $psychologist)
     {
+        
+        
         $psychologist->delete();
         return redirect()->route('manage_psychologist')->withSuccess('Psychologist successfully deleted');
     }

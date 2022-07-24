@@ -27,6 +27,15 @@ body {
     text-decoration: none;
 }
 
+
+.active-lang {
+    color: var(--main-blue);
+}
+
+.disactive-lang {
+    color: #ccc;
+}
+
 .bg-blue {
     background-color: var(--main-blue);
 }
