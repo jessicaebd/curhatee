@@ -121,16 +121,16 @@
                     setInterval(function() {
                         var pos = $('#message-container').scrollTop();
                         var page = window.location.href;
+
                         $.ajax({
                             url: page + '/message',
                             success: function(data) {
                                 $('#message-container').html(data);
-
+                                $('#message-container').scrollTop(pos);
                             }
-
                         });
-                        $('#message-container').scrollTop(pos);
                     }, 1000);
+
                 });
             </script>
         @endif
