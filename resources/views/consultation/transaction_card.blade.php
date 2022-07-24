@@ -2,7 +2,7 @@
     <div class="card mb-3 shadow-sm">
         <div class="card-body">
             <div class="card-title border-bottom">
-                <h5 class="m-font fw-bold mb-0">Transaction
+                <h5 class="m-font fw-bold mb-0">@lang('consultation.Transaction')
                     #{{ Str::limit(Str::substr($transaction->id, -5), 5, '') }}
                 </h5>
                 <small
@@ -25,13 +25,13 @@
                 <div class="">
                     <h6 class="fw-bolder mb-0">
                         @if ($transaction->status == 'Pending')
-                            <span class="badge bg-warning">Pending</span>
+                            <span class="badge bg-warning">@lang('consultation.Pending')</span>
                         @elseif ($transaction->status == 'Confirmed')
-                            <span class="badge bg-success">Confirmed</span>
+                            <span class="badge bg-success">@lang('consultation.Confirmed')</span>
                         @elseif ($transaction->status == 'Finished')
-                            <span class="badge bg-secondary">Finished</span>
+                            <span class="badge bg-secondary">@lang('consultation.Finished')</span>
                         @elseif ($transaction->status == 'Rejected')
-                            <span class="badge bg-danger">Rejected</span>
+                            <span class="badge bg-danger">@lang('consultation.Rejected')</span>
                         @endif
                     </h6>
                 </div>
@@ -49,14 +49,14 @@
                     @if ($transaction->consultationType->name == 'Online Consultation')
                         <a class="btn btn-blue s-font fw-bolder py-1 px-3"
                             href="{{ route('chat_page_user', $transaction->id) }}">
-                            Chat
+                            @lang('consultation.Chat')
                         </a>
                     @endif
                 @elseif ($transaction->status == 'Finished')
                     @if ($transaction->review == null)
                         <a class="btn btn-secondary s-font fw-bolder py-1 px-3" type="button" class="btn btn-primary"
                             data-bs-toggle="modal" data-bs-target="#reviewModal">
-                            Review
+                            @lang('consultation.Review_tr')
                         </a>
 
                         <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel"
@@ -64,7 +64,7 @@
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title fw-bold" id="reviewModalLabel">Rate your experience </h5>
+                                        <h5 class="modal-title fw-bold" id="reviewModalLabel">@lang('consultation.Rate your experience') </h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
@@ -132,7 +132,7 @@
                         @if ($transaction->consultationType->name == 'Online Consultation')
                             <a class="btn btn-secondary s-font fw-bolder py-1 px-3"
                                 href="{{ route('chat_page_user', $transaction->id) }}">
-                                See Chat History
+                                @lang('consultation.See Chat History')
                             </a>
                         @endif
                     @endif
@@ -148,7 +148,7 @@
                         <a class="btn btn-outline-blue s-font fw-bolder py-1 px-3" type="button"
                             class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#transactionHistoryModal-{{ $transaction->id }}">
-                            See History
+                            @lang('consultation.See History')
                         </a>
 
                         <div class="modal fade" id="transactionHistoryModal-{{ $transaction->id }}" tabindex="-1"
@@ -158,7 +158,7 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title fw-bolder"
                                             id="transactionHistoryModal-{{ $transaction->id }}Label">
-                                            Transaction History Detail</h5>
+                                            @lang('consultation.Transaction History Detail')</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
@@ -203,7 +203,7 @@
                                         </div>
 
                                         <div class="note s-font card px-3 py-2 mb-3">
-                                            <span class="text-muted s-font"><span class="fw-bolder">Note:</span>
+                                            <span class="text-muted s-font"><span class="fw-bolder">@lang('consultation.Note')</span>
                                                 @if ($transaction->note != null)
                                                     {{ $transaction->note }}
                                                 @else
@@ -213,7 +213,7 @@
                                         </div>
 
                                         @if ($transaction->review != null)
-                                            <h5 class="fw-bolder s-font">Review:</h5>
+                                            <h5 class="fw-bolder s-font">@lang('consultation.Review')</h5>
                                             <div class="my-review s-font card px-3 py-2">
                                                 <div class="pe-2">
                                                     @for ($i = 0; $i < 5; $i++)

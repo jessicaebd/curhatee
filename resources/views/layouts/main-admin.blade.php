@@ -169,7 +169,7 @@
             <div class="nav">
                 <div class="d-flex justify-content-between align-items-center w-100 mb-3 mb-md-0">
                     <div class="d-flex justify-content-between align-items-center w-100">
-                        <h2 class="nav-title">Admin Dashboard</h2>
+                        <h2 class="nav-title">@lang('layouts.Admin Dashboard')</h2>
                         <button id="toggle-navbar" onclick="toggleNavbar()">
                             <img src="{{ asset('storage/images/users/' . Auth::user()->image) }}" alt="profile image"
                                 style="object-fit: contain">

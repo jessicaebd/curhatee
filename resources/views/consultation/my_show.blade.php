@@ -88,7 +88,7 @@
                     </div>
 
                     <div class="note s-font card px-3 py-2 mb-3">
-                        <span class="text-muted s-font"><span class="fw-bolder">Note:</span>
+                        <span class="text-muted s-font"><span class="fw-bolder">@lang('consultation.Note')</span>
                             @if ($transaction->note != null)
                                 {{ $transaction->note }}
                             @else
@@ -98,7 +98,7 @@
                     </div>
 
                     @if ($transaction->review != null)
-                        <h5 class="fw-bolder s-font">Review:</h5>
+                        <h5 class="fw-bolder s-font">@lang('consultation.Review')</h5>
                         <div class="my-review s-font card px-3 py-2">
                             <div class="pe-2">
                                 @for ($i = 0; $i < 5; $i++)

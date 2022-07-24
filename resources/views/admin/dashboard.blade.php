@@ -4,35 +4,35 @@
 
 @section('content')
     <div class="content">
-        Total users: {{ $users->count() }}
+        @lang('dashboard_admin.Total users') {{ $users->count() }}
         <br>
-        Total psychologists: {{ $psychologists->count() }}
+        @lang('dashboard_admin.Total psychologists') {{ $psychologists->count() }}
         <br>
-        Total transaction: {{ $transactions->count() }}
+        @lang('dashboard_admin.Total transaction') {{ $transactions->count() }}
         <br>
-        total online consultation
+        @lang('dashboard_admin.total online consultation')
         {{ $transactions->where('consultation_type_id', $online_consultation_id)->count() }}
         <br>
-        total offline consultation
+        @lang('dashboard_admin.total offline consultation')
         {{ $transactions->where('consultation_type_id', $offline_consultation_id)->count() }}
         <br>
-        total transaction pending {{ $transactions->where('status', 'Pending')->count() }}
+        @lang('dashboard_admin.total transaction pending') {{ $transactions->where('status', 'Pending')->count() }}
         <br>
-        total transaction confirmed {{ $transactions->where('status', 'Confirmed')->count() }}
+        @lang('dashboard_admin.total transaction confirmed') {{ $transactions->where('status', 'Confirmed')->count() }}
         <br>
-        total transaction success {{ $transactions->where('status', 'Finished')->count() }}
+        @lang('dashboard_admin.total transaction success') {{ $transactions->where('status', 'Finished')->count() }}
         <br>
-        total transaction rejected {{ $transactions->where('status', 'Rejected')->count() }}
+        @lang('dashboard_admin.total transaction rejected') {{ $transactions->where('status', 'Rejected')->count() }}
         <br>
-        total revenue {{ $transactions->where('status', '!=', 'Rejected')->sum('price') }}
+        @lang('dashboard_admin.total revenue') {{ $transactions->where('status', '!=', 'Rejected')->sum('price') }}
         <br>
-        Total review: {{ $reviews->count() }}
+        @lang('dashboard_admin.Total review') {{ $reviews->count() }}
         <br>
-        Total article: {{ $articles->count() }}
+        @lang('dashboard_admin.Total article') {{ $articles->count() }}
         <br>
-        Total forum topic: {{ $forums->count() }}
+        @lang('dashboard_admin.Total forum topic') {{ $forums->count() }}
         <br>
-        Total payment 3rd party: {{ $payment_types->count() }}
+        @lang('dashboard_admin.Total payment 3rd party') {{ $payment_types->count() }}
         <br>
         <br><br><br>
         <h1>NOTE:</h1>

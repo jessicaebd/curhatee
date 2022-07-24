@@ -63,7 +63,7 @@
         {{-- pscyhologist ongoing transactions --}}
         @if ($transactions->isEmpty())
             <div class="d-flex align-items-center justify-content-center" style="height: 60vh">
-                <h6 class="text-center">You have no consultation at the moment.</h6>
+                <h6 class="text-center">@lang('show_admin_psychologits.you_have_no_consultation_at_the_moment')</h6>
             </div>
         @else
             <h3 class="text-center mb-3">@lang('my_index.my_consultation')</h3>

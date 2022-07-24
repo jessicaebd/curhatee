@@ -182,7 +182,7 @@
                 <a class="link-dark" data-bs-toggle="collapse" href="#hospitalDescription" role="button"
                     aria-expanded="false" aria-controls="hospitalDescription">
                     <div class="d-flex justify-content-between">
-                        <span class="fw-bold">About Hospital</span>
+                        <span class="fw-bold">@lang('consultation.About Hospital')</span>
                         <i class="bi bi-caret-down fw-bold"></i>
                     </div>
                 </a>
@@ -197,9 +197,9 @@
                                 alt="" style="width: 100%;height: 250px;">
                         </div>
                         <div class="col-md-7 s-font text-justify pe-5 ps-3 my-auto">
-                            <span class="s-font fw-bolder">Address: <br> {{ $psychologist->hospital->address }}</span>
+                            <span class="s-font fw-bolder">@lang('consultation.Address') <br> {{ $psychologist->hospital->address }}</span>
                             <br><br>
-                            <span class="s-font fw-bolder">Contact: <br> {{ $psychologist->hospital->contact }}</span>
+                            <span class="s-font fw-bolder">@lang('consultation.Contact') <br> {{ $psychologist->hospital->contact }}</span>
 
                         </div>
                     </div>
@@ -213,7 +213,7 @@
                 <a class="link-dark" data-bs-toggle="collapse" href="#doctorReview" role="button"
                     aria-expanded="false" aria-controls="doctorReview">
                     <div class="d-flex justify-content-between">
-                        <span class="fw-bold">Doctor Review</span>
+                        <span class="fw-bold">@lang('consultation.Doctor Review')</span>
                         <i class="bi bi-caret-down fw-bold"></i>
                     </div>
                 </a>

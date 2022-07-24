@@ -20,64 +20,78 @@ class ReplyForumSeeder extends Seeder
         ReplyForum::create([
             'user_id' => User::all()->random()->id,
             'forum_id' => Forum::all()->random()->id,
-            'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates minima nulla incidunt. Veritatis doloremque beatae magnam molestias voluptatibus illo cupiditate sed omnis. Facilis maxime sed minima fugit, porro consectetur beatae?',
+            'content' => 'Hang in there. Do call a helpline.',
+            'likes' => 3
+        ]);
+
+        ReplyForum::create([
+            'user_id' => User::all()->random()->id,
+            'forum_id' => Forum::all()->random()->id,
+            'content' => 'hello and welcome. Please don’t give up, talk to us, the forum may help',
             'likes' => 30
         ]);
 
         ReplyForum::create([
             'user_id' => User::all()->random()->id,
             'forum_id' => Forum::all()->random()->id,
-            'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates minima nulla incidunt. Veritatis doloremque beatae magnam molestias voluptatibus illo cupiditate sed omnis. Facilis maxime sed minima fugit, porro consectetur beatae?',
+            'content' => '<p>I am so sorry that your struggling right now.</p><br>
+            <p>We at the Mental Health Forum, try our best to support and help each other.</p>
+            <p>With that being said, I hope you will come here often, to receive support and help.</p>',
+            'likes' => 10
+        ]);
+
+        ReplyForum::create([
+            'user_id' => User::all()->random()->id,
+            'forum_id' => Forum::all()->random()->id,
+            'content' => '<p>you can do something called a peer mentoring course</p>
+            <p>your local mental health services
+            should be able to tell you how to apply</p>',
+            'likes' => 50
+        ]);
+
+        ReplyForum::create([
+            'user_id' => User::all()->random()->id,
+            'forum_id' => Forum::all()->random()->id,
+            'content' => 'Talk to your therapist or psychiatrist about this, you may need medication',
             'likes' => 30
         ]);
 
         ReplyForum::create([
             'user_id' => User::all()->random()->id,
             'forum_id' => Forum::all()->random()->id,
-            'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates minima nulla incidunt. Veritatis doloremque beatae magnam molestias voluptatibus illo cupiditate sed omnis. Facilis maxime sed minima fugit, porro consectetur beatae?',
-            'likes' => 30
+            'content' => 'Have you tried therapy?
+            If you have not, it might be something to think about.
+            Just a thought.',
+            'likes' => 35
         ]);
 
         ReplyForum::create([
             'user_id' => User::all()->random()->id,
             'forum_id' => Forum::all()->random()->id,
-            'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates minima nulla incidunt. Veritatis doloremque beatae magnam molestias voluptatibus illo cupiditate sed omnis. Facilis maxime sed minima fugit, porro consectetur beatae?',
-            'likes' => 30
+            'content' => '<p>I am so sorry to here this.</p> 
+            <p>Maybe talk to your dr, about this.</p>',
+            'likes' => 5
         ]);
 
         ReplyForum::create([
             'user_id' => User::all()->random()->id,
             'forum_id' => Forum::all()->random()->id,
-            'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates minima nulla incidunt. Veritatis doloremque beatae magnam molestias voluptatibus illo cupiditate sed omnis. Facilis maxime sed minima fugit, porro consectetur beatae?',
-            'likes' => 30
+            'content' => 'Try not to worry or force yourself to remember anything. Try and stay present with what is.',
+            'likes' => 50
         ]);
 
         ReplyForum::create([
             'user_id' => User::all()->random()->id,
             'forum_id' => Forum::all()->random()->id,
-            'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates minima nulla incidunt. Veritatis doloremque beatae magnam molestias voluptatibus illo cupiditate sed omnis. Facilis maxime sed minima fugit, porro consectetur beatae?',
-            'likes' => 30
+            'content' => 'Find a hobby or two to try out. Even if it is just reading a book. I love jigsaws. Just a case of finding that one thing you would love to do.',
+            'likes' => 20
         ]);
 
         ReplyForum::create([
             'user_id' => User::all()->random()->id,
             'forum_id' => Forum::all()->random()->id,
-            'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates minima nulla incidunt. Veritatis doloremque beatae magnam molestias voluptatibus illo cupiditate sed omnis. Facilis maxime sed minima fugit, porro consectetur beatae?',
-            'likes' => 30
-        ]);
-
-        ReplyForum::create([
-            'user_id' => User::all()->random()->id,
-            'forum_id' => Forum::all()->random()->id,
-            'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates minima nulla incidunt. Veritatis doloremque beatae magnam molestias voluptatibus illo cupiditate sed omnis. Facilis maxime sed minima fugit, porro consectetur beatae?',
-            'likes' => 30
-        ]);
-
-        ReplyForum::create([
-            'user_id' => User::all()->random()->id,
-            'forum_id' => Forum::all()->random()->id,
-            'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates minima nulla incidunt. Veritatis doloremque beatae magnam molestias voluptatibus illo cupiditate sed omnis. Facilis maxime sed minima fugit, porro consectetur beatae?',
-            'likes' => 30
+            'content' => 'I think many to most people feel this way. Certainly there are many prison-like aspects to our reality. Most just try to make the best of it. I’m sorry it’s getting you down.',
+            'likes' => 25
         ]);
     }
 }

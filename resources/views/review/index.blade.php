@@ -27,7 +27,7 @@
         <a href="/hospitals/{{ $psychologist->hospital->id }}" class="card-link text-decoration-underline">
             {{ $psychologist->hospital->name }}
         </a>
-        Total Transactions: {{ $psychologist->transaction->count() }}
+        @lang('index_review.Total Transactions') {{ $psychologist->transaction->count() }}
     </div>
 
     {{-- psychologist some reviews --}}
@@ -39,7 +39,7 @@
                         class="img-fluid rounded rounded-circle me-2" width="30px" height="30px">
                 </div>
                 <h6 class="user-header-name fw-bolder">{{ $review->user->name }}</h6>
-                tgl konsultasi : <h5>{{ $review->transaction->time }}</h5>
+                @lang('index_review.tgl konsultasi') <h5>{{ $review->transaction->time }}</h5>
                 @for ($i = 0; $i < 5; $i++)
                     @if ($i < $review->rating)
                         <i class="bi bi-star-fill text-warning"></i>
@@ -51,7 +51,7 @@
                 {{ $review->rating }}
             </div>
             {{ $review->comment }}
-            tgl review: {{ $review->created_at }}
+            @lang('index_review.tgl review') {{ $review->created_at }}
         @endforeach
     </div>
 @endsection

@@ -37,11 +37,11 @@
             </div>
         </div>
 
-        <h1>Consultation Type: {{ $transaction->consultationType->name }}</h1>
+        <h1>@lang('consultation.Consultation Type:') {{ $transaction->consultationType->name }}</h1>
         <h1>Status: {{ $transaction->status }}</h1>
         @if ($transaction->status == 'Finished' && $transaction->consultationType->name == 'Online Consultation')
             <a href="{{ route('chat_page_user', $transaction->id) }}">
-                <button type="button" class="btn btn-primary">See Chat History</button>
+                <button type="button" class="btn btn-primary">@lang('consultation.See Chat History')</button>
             </a>
         @endif
         @if ($transaction->status == 'Finished' && $transaction->note != null)
@@ -49,23 +49,23 @@
             {{ $transaction->note }}
         @endif
         @if ($transaction->status == 'Pending')
-            <h2>Still waiting psychologist to confirmed consultation</h2>
+            <h2>@lang('consultation.Still waiting psychologist to confirmed consultation')</h2>
         @elseif($transaction->status == 'Confirmed')
             @if ($transaction->consultationType->name == 'Online Consultation')
-                <h2>You can chat with psychologist now</h2>
+                <h2>@lang('consultation.You can chat with psychologist now')</h2>
                 <a href="{{ route('chat_page_user', $transaction->id) }}">
                     <button type="button" class="btn btn-primary">Chat Online</button>
                 </a>
             @elseif($transaction->consultationType->name == 'Offline Consultation')
-                <h2>Dont forget to go on time</h2>
+                <h2>@lang('consultation.Dont forget to go on time')</h2>
             @endif
         @elseif (($transaction->status == 'Finished' || $transaction->status == 'Rejected') && $transaction->review == null)
             {{-- review input form for user who not yet review --}}
-            <h1>Give Your Review</h1>
+            <h1>@lang('consultation.Give Your Review')</h1>
             <div class="input-container mt-3">
                 <form action="{{ route('store_review', $transaction->id) }}" method="post">
                     @csrf
-                    <label for="rating" class="form-label">Overall Rating</label>
+                    <label for="rating" class="form-label">@lang('consultation.Overall Rating')</label>
                     <select class="form-select @error('rating') is-invalid @enderror" name="rating">
                         <option selected disabled>-</option>
                         @for ($i = 1; $i <= 5; $i++)
@@ -94,7 +94,7 @@
             </div>
         @elseif($transaction->status == 'Finished' && $transaction->review->id != null)
             {{-- already review by user --}}
-            <h1>Consultation Rating</h1>
+            <h1>@lang('consultation.Consultation Rating')</h1>
             <div class="pe-2">
                 @for ($i = 0; $i < 5; $i++)
                     @if ($i < $transaction->review->rating)

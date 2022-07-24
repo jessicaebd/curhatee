@@ -17,7 +17,7 @@
     <br>
     {{ $psychologist->image }}
     <br>
-    join at: {{ $psychologist->created_at }}
+    @lang('profile.join at') {{ $psychologist->created_at }}
     <br>
     {{ $psychologist->rating }}
     <br>
@@ -25,36 +25,36 @@
     <br>
     ===========
     <br>
-    total schedule in a week {{ $psychologist->schedule->count() }}
+    @lang('profile.total schedule in a week') {{ $psychologist->schedule->count() }}
     <br>
-    total transaction {{ $psychologist->transaction->count() }}
+    @lang('profile.total transaction') {{ $psychologist->transaction->count() }}
     <br>
-    total online consultation
+    @lang('profile.total online consultation')
     {{ $psychologist->transaction->where('consultation_type_id', $online_consultation_id)->count() }}
     <br>
-    total offline consultation
+    @lang('profile.total offline consultation')
     {{ $psychologist->transaction->where('consultation_type_id', $offline_consultation_id)->count() }}
     <br>
-    total transaction pending {{ $psychologist->transaction->where('status', 'Pending')->count() }}
+    @lang('profile.total transaction pending') {{ $psychologist->transaction->where('status', 'Pending')->count() }}
     <br>
-    total transaction confirmed {{ $psychologist->transaction->where('status', 'Confirmed')->count() }}
+    @lang('profile.total transaction confirmed') {{ $psychologist->transaction->where('status', 'Confirmed')->count() }}
     <br>
-    total transaction success {{ $psychologist->transaction->where('status', 'Finished')->count() }}
+    @lang('profile.total transaction success') {{ $psychologist->transaction->where('status', 'Finished')->count() }}
     <br>
-    total transaction rejected {{ $psychologist->transaction->where('status', 'Rejected')->count() }}
+    @lang('profile.total transaction rejected') {{ $psychologist->transaction->where('status', 'Rejected')->count() }}
     <br>
-    total review {{ $psychologist->review->count() }}
+    @lang('profile.total review') {{ $psychologist->review->count() }}
     <br>
     {{ $psychologist->rating }}
     <br>
-    total revenue {{ $psychologist->transaction->where('status', '!=', 'Rejected')->sum('price') }}
+    @lang('profile.total revenue') {{ $psychologist->transaction->where('status', '!=', 'Rejected')->sum('price') }}
 
 
 
     <div class="d-flex justify-content-end">
         <a href="{{ route('psychologist_edit_psychologist', $psychologist->id) }}"
             class="btn btn-outline-primary me-1 flex-grow-1">
-            <i class="bi bi-pencil-square me-2"></i> Edit
+            <i class="bi bi-pencil-square me-2"></i> @lang('profile.Edit')
         </a>
     </div>
 

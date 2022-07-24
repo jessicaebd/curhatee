@@ -6,7 +6,7 @@
             <div class="col-12 col-lg-12 col-xl-12">
                 <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                     <div class="card-body p-4 p-md-5">
-                        <h3 class="fw-bolder">Schedule for {{ $psychologist->name }}</h3>
+                        <h3 class="fw-bolder">@lang('view_admin_schedule.Schedule for') {{ $psychologist->name }}</h3>
 
                         <hr class="mb-4 pb-2 pb-md-0 mb-md-5" style="color: #2934d0;">
 
@@ -25,14 +25,14 @@
                             <table class="table table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Hour</th>
-                                        <th>Monday</th>
-                                        <th>Tuesday</th>
-                                        <th>Wednesday</th>
-                                        <th>Thursday</th>
-                                        <th>Friday</th>
-                                        <th>Saturday</th>
-                                        <th>Sunday</th>
+                                        <th>@lang('view_admin_schedule.Hour')</th>
+                                        <th>@lang('view_admin_schedule.Monday')</th>
+                                        <th>@lang('view_admin_schedule.Tuesday')</th>
+                                        <th>@lang('view_admin_schedule.Wednesday')</th>
+                                        <th>@lang('view_admin_schedule.Thursday')</th>
+                                        <th>@lang('view_admin_schedule.Friday')</th>
+                                        <th>@lang('view_admin_schedule.Saturday')</th>
+                                        <th>@lang('view_admin_schedule.Sunday')</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -50,7 +50,7 @@
                                                                 <div class="d-flex justify-content-between">
                                                                     <div class="text-white bg-success text-center mx-2 border"
                                                                         style="min-width:75px; border-radius: 8px;">
-                                                                        <span class="align-middle">Active</span>
+                                                                        <span class="align-middle">@lang('view_admin_schedule.Active')</span>
                                                                     </div>
                                                                     <form
                                                                         action="{{ Auth::guard('webpsychologist')->user() != null ? route('update_schedule_psychologist', $schedule->id) : route('update_schedule_admin', $schedule->id) }}"
@@ -68,7 +68,7 @@
                                                                 <div class="d-flex justify-content-between">
                                                                     <div class="text-white bg-danger text-center mx-2 border"
                                                                         style="min-width:75px; border-radius: 8px;">
-                                                                        <span class="align-middle">Inactive</span>
+                                                                        <span class="align-middle">@lang('view_admin_schedule.Inactive')</span>
                                                                     </div>
                                                                     <form
                                                                         action="{{ Auth::guard('webpsychologist')->user() != null ? route('update_schedule_psychologist', $schedule->id) : route('update_schedule_admin', $schedule->id) }}"

@@ -40,7 +40,7 @@
     <div class="container container-margin">
         {{-- back to forum --}}
         <a href="{{ route('forum_page') }}"><button type="button" class="btn btn-secondary mb-3" aria-label="Close"><i
-                    class="bi bi-arrow-left-circle"></i> Back</button></a>
+                    class="bi bi-arrow-left-circle"></i> @lang('forum.Back')</button></a>
 
 
         <h3 class="fw-bold xl-font mb-2">
@@ -90,7 +90,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn text-danger">
-                                                    <i class="bi bi-trash3 me-2"></i>Delete
+                                                    <i class="bi bi-trash3 me-2"></i>@lang('forum.Delete')
                                                 </button>
                                             </form>
                                         </ul>
@@ -121,7 +121,7 @@
                                     </form>
                                     @if ($view != 'Admin')
                                         <span class="mx-3">|</span>
-                                        <a href="#reply" class="link-dark fw-bolder s-font">Reply</a>
+                                        <a href="#reply" class="link-dark fw-bolder s-font">@lang('forum.Reply')</a>
                                     @endif
                                 </div>
                             @endif
@@ -176,7 +176,7 @@
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" class="btn text-danger">
-                                                                    <i class="bi bi-trash3 me-2"></i>Delete
+                                                                    <i class="bi bi-trash3 me-2"></i>@lang('forum.Delete')
                                                                 </button>
                                                             </form>
                                                         </ul>
@@ -220,7 +220,7 @@
                         </div>
                     @else
                         <div class="col-11">
-                            <p>There is no reply in this forum.</p>
+                            <p>@lang('forum.There is no reply in this forum')</p>
                         </div>
                     @endif
 
@@ -239,7 +239,7 @@
                                     <div class="col-4">
                                         <input type="file" class="form-control" id="image" name="image">
                                     </div>
-                                    <button type="submit" class="btn btn-primary ms-3 mt-4 shadow mb-1">Reply</button>
+                                    <button type="submit" class="btn btn-primary ms-3 mt-4 shadow mb-1">@lang('forum.Reply')</button>
                                 </div>
                             </form>
 
