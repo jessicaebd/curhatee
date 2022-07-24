@@ -32,7 +32,7 @@
                                 <div class="d-flex justify-content-center rounded-3 p-2 mb-2"
                                     style="background-color: #efefef;">
                                     <div class="ps-2">
-                                        <p class="small text-center text-muted mb-1">Total transaction</p>
+                                        <p class="small text-center text-muted mb-1">@lang('show_admin_user.Total transaction')</p>
                                         <p class="mb-0 text-center">
                                             {{ $user->transaction->count() }}
                                         </p>

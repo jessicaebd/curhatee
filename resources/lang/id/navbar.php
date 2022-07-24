@@ -1,7 +1,7 @@
 <?php
 return [
     'consultation' => 'Konsultasi',
-    'forum' => 'Diskusi',
+    'forum' => 'Forum',
     'article' => 'Artikel',
     'my_profile' => 'Profil Saya',
     'my_consultation' => 'Konsultasi Saya',

@@ -14,7 +14,7 @@
                                 <a href="{{ route('psychologist_dashboard') }}"><button type="button"
                                         class="btn btn-secondary mt-5" aria-label="Close"><i
                                             class="bi bi-arrow-left-circle"></i>
-                                        Back</button></a>
+                                            @lang('psychologist.Back')</button></a>
                                 <br><br>
                                 <tbody>
                                     <tr>

@@ -18,8 +18,8 @@
             <div class="col-md-10">
                 @if ($transactions->isEmpty())
                     <div class="d-flex align-items-center justify-content-center" style="height: 60vh">
-                        <h6 class="text-center">You have no consultation at the moment.
-                            <a class="link-primary" href="{{ route('consultation_index') }}">Browse Now</a>
+                        <h6 class="text-center">@lang('consultation.You have no consultation at the moment')
+                            <a class="link-primary" href="{{ route('consultation_index') }}">@lang('consultation.Browse Now')</a>
                         </h6>
                     </div>
                 @else
@@ -28,7 +28,7 @@
                     <ul class="nav nav-tabs d-flex justify-content-start align-items-center" id="tableTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all"
-                                type="button" role="tab" aria-controls="all" aria-selected="true">All</button>
+                                type="button" role="tab" aria-controls="all" aria-selected="true">@lang('consultation.All')</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending"
