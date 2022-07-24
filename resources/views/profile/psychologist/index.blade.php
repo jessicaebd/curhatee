@@ -4,51 +4,84 @@
 
 @section('content')
 
-
-    {{ $psychologist->name }}
-    <br>
-    {{ $psychologist->email }}
-    <br>
-    {{ $psychologist->phone }}
-    <br>
-    {{ $psychologist->hospital->name }}
-    <br>
-    {{ $psychologist->fee }}
-    <br>
-    {{ $psychologist->image }}
-    <br>
-    @lang('profile.join at') {{ $psychologist->created_at }}
-    <br>
-    {{ $psychologist->rating }}
-    <br>
-    {{ $psychologist->description }}
-    <br>
-
     <div class="content">
         <div class="my_dashboard row mb-4">
             <div class="col-12">
-                <h2 class="nav-title l-font border-bottom mb-3">Users</h2>
-                {{-- <div class="row">
-                    <div class="col-md-3">
-                        <div class="card shadow-sm mb-3">
-                            <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Total Users</h5>
-                                <p class="card-text l-font text-muted fw-bolder">
-                                    {{ $users->count() }}</p>
+                <h2 class="nav-title l-font border-bottom mb-3">Profile</h2>
+                <div class="col-lg-12">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row fw-bold m-font">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Name</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="mb-0">{{ $psychologist->name }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row fw-bold m-font">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Email</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="mb-0">{{ $psychologist->email }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row fw-bold m-font">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Phone</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="mb-0">{{ $psychologist->phone }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row fw-bold m-font">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Hospital</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="mb-0">{{ $psychologist->hospital->name }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row fw-bold m-font">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Fee</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="mb-0">{{ $psychologist->fee }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row fw-bold m-font">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Rating</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="mb-0">{{ $psychologist->rating }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row fw-bold m-font">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Description</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="mb-0">{{ $psychologist->description }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 mt-4">
+                                    <a href="{{ route('psychologist_edit_psychologist', $psychologist->id) }}" class="btn btn-outline-primary me-1 flex-grow-1"><i class="bi bi-pencil-square me-2"></i>@lang('profile.Edit Profile')</a>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="col-md-3">
-                        <div class="card shadow-sm mb-3">
-                            <div class="card-body text-center">
-                                <h5 class="card-title fw-bold m-font">Total Psychologists</h5>
-                                <p class="card-text l-font text-muted fw-bolder">{{ $psychologists->count() }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
 
                 <h2 class="nav-title l-font border-bottom mb-3">Transaction</h2>
                 <div class="row">
@@ -175,13 +208,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="d-flex justify-content-end">
-        <a href="{{ route('psychologist_edit_psychologist', $psychologist->id) }}"
-            class="btn btn-outline-primary me-1 flex-grow-1">
-            <i class="bi bi-pencil-square me-2"></i> @lang('profile.Edit')
-        </a>
     </div>
 
 @endsection
