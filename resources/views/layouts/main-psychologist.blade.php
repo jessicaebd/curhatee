@@ -54,6 +54,17 @@
 
                     <h4 class="profile-name">{{ $psychologist->name }}</h4>
                     <p class="profile-email">{{ $psychologist->email }}</p>
+
+                    <?php
+                    $lang = App::getLocale();
+                    ?>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <a class="nav-link px-1 {{ ($lang != null) & ($lang == 'en') ? 'active-lang' : 'disactive-lang' }}"
+                            href="/lang/en">EN</a>
+                        <span class="px-1">|</span>
+                        <a class="nav-link px-1  {{ ($lang != null) & ($lang == 'id') ? 'active-lang' : 'disactive-lang' }}"
+                            href="/lang/id">ID</a>
+                    </div>
                 </div>
 
 
