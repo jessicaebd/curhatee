@@ -3,7 +3,7 @@
 @section('title', 'My Consultation')
 
 @section('content')
-    <div class="container mt-5 pt-5" style="min-height: 60vh">
+    <div class="container mt-5 pt-5" style="min-height: 70vh">
         <div class="row d-flex justify-content-center">
             @if ($transaction->status == 'Pending' || $transaction->status == 'Confirmed')
                 <div class="col-md-6 shadow p-5 rounded">
@@ -44,6 +44,12 @@
                                 <td>: {{ $transaction->paymentType->type_name }}</td>
                             </tr>
                         </table>
+                        @if ($transaction->status == 'Confirmed')
+                            <div class="d-flex flex-column fw-bolder align-items-center mt-3">
+                                <p class="text-muted mb-2 s-font">Show the QR Code below to the receptionist</p>
+                                {{ QrCode::size(100)->generate($transaction->id) }}
+                            </div>
+                        @endif
                     </div>
                 </div>
             @else
