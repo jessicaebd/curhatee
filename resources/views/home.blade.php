@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-<link rel="stylesheet" href="{{ asset('css/home.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('css/home.css') }}">
 
 @section('title', 'Home')
 
@@ -198,7 +198,7 @@
 
                         <div class="phone">
                             <i class="bi bi-phone"></i>
-                            <h4>@lang('home.Call')</h4> 
+                            <h4>@lang('home.Call')</h4>
                             <p>+62 822 02320392</p>
                         </div>
                     </div>

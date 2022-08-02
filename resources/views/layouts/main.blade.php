@@ -51,7 +51,7 @@
     </script>
 
     {{-- Custom JS --}}
-    <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ secure_asset('js/script.js') }}"></script>
     <script>
         document.addEventListener('trix-file-accept', function(event) {
             event.preventDefault();
