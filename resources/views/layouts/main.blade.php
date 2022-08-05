@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
     {{-- Custom CSS --}}
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/style.css') }}">
 
     @yield('css')
 
@@ -51,7 +51,7 @@
     </script>
 
     {{-- Custom JS --}}
-    <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ secure_asset('js/script.js') }}"></script>
     <script>
         document.addEventListener('trix-file-accept', function(event) {
             event.preventDefault();
