@@ -6,7 +6,7 @@
 
 <div class="modal-body mt-2 d-flex justify-content-center">
     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        @csrf
         <div class="row d-flex justify-content-center">
             <div class="col-md-10 mb-2">
                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
